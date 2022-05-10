@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:21:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/10 16:48:48 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/10 16:55:00 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void g_redirections()
     {
         dup2(std_out,1);
     }
-    else if (red[0] == '<' && red[1] == 0)
+    else if (red[0] == '< ' && red[1] == 0)
     {
         
         dup2(fd_file,0);
