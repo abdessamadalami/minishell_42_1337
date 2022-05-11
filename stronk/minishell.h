@@ -9,12 +9,20 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+typedef struct s_arg
+{
+	char	*cmad;
+	char	**args;
+}				t_arg;
+
 typedef	struct	s_cmd
 {
+	char	**line;
 	char	**env;
 	char	**path;
-	char 	**cmd;
-	char	**args;
+	// char 	**cmd;
+	// char	**args;
+	t_arg	*cmd;
 	char	**flags;
 	char	*sign;
 	int		input;
@@ -32,6 +40,7 @@ char	**get_path(void);
 
 // ---------------- utils --------------------//
 char	**ft_split(char *s, char c);
+char	**ssplit(char *s);
 char	*ft_strdup(char *s1);
 int		ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
