@@ -34,15 +34,17 @@ char	*get_line_(char **envp)
 	return (NULL);
 }
 
-char	**get_path(char **envp)
+char	**get_path(void)
 {
 	char	*line;
 	char	**path;
 
-	line = get_line_(envp);
+	// line = get_line_(envp);
+	
+	//	free_and_exit(&line);
+	line = getenv("PATH");
 	if (!line)
 		return (NULL);
-	//	free_and_exit(&line);
 	path = ft_split(line, ':');
 	if (!path)
 		return (NULL);

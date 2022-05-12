@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:09 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/10 12:28:46 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/11 22:10:03 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (t);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	int		i;
 	char	*p;
