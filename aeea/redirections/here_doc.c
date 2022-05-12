@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 13:44:15 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/10 16:34:58 by ael-oual         ###   ########.fr       */
+/*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/11 19:46:48 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void    output_in(char **env,char **cmd)
+// read from  here_doc to fd (we can choise between write to pipe or file or terminal) here is to pipe
+void	here_doc(char **argc)
 {
-    
-}
-
-int main(int argc, char **argv , char **env)
-{
-    char	*line;
-	char	**split;
-    char	**envig;
+	char	*line;
+	char	*limtter;
 	int		pi_pe[2];
-    char *path;
 
+	pipe(pi_pe);
+	limtter = ft_strjoin(argc[2], "\n");
 	while (1)
 	{
-		ft_putstr_fd("read for > ", 2);
+		ft_putstr_fd("pipe here_doc> ", 2);
 		line = get_next_line(0);
-        break ;
+		if (line == 0 || ft_strncmp(limtter, line, ft_strlen(limtter)) == 0)
+			break ;
+		ft_putstr_fd(line, pi_pe[1]);
 	}
-    line[ft_strlen(line) - 1] = 0;
-    int index_of = ft_strchr(line, '<') - line;
-    printf(" %d ", index_of);
-    split = ft_split(line, ' ');
-    envig = ft_split(path, ' ');
-    path = get_path(env, split[0]);
-    if(path == NULL)
-        error_print(split);
-    
+	free(limtter);
+	free(line);
+	close(pi_pe[1]);
 }

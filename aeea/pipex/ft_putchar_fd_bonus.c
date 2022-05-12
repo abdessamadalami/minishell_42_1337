@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/11 19:43:13 by ael-oual         ###   ########.fr       */
+/*   Created: 2021/11/07 08:18:07 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/03/01 09:48:51 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-#define MINISHELL_H
-#include<stdio.h>
-#include "../pipex/pipex_42_1337.h"
-#include "../libft/libft.h"
+#include<unistd.h>
+#include <fcntl.h>
+#include "pipex_42_1337.h"
 
-void std_files(char *std_out, int fd);//minishell intra video
-void	here_doc(char **argc);
-#endif
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+/*
+// https://www.cse.cuhk.edu.hk/~ericlo/teaching/os/lab/11-FS/fd.html
+int main()
+{
+
+ int fd = open("test_f_r.txt", O_RDWR);
+ char c; 
+ int bytes;
+   printf(" %d ",fd);
+
+    ft_putchar_fd('d',fd);
+
+ close(fd);  
+}
+*/

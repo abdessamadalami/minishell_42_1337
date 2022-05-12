@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/11 19:43:13 by ael-oual         ###   ########.fr       */
+/*   Created: 2021/11/07 10:23:19 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/03/01 09:49:13 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-#define MINISHELL_H
-#include<stdio.h>
-#include "../pipex/pipex_42_1337.h"
-#include "../libft/libft.h"
+#include "pipex_42_1337.h"
 
-void std_files(char *std_out, int fd);//minishell intra video
-void	here_doc(char **argc);
-#endif
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	index;
+
+	index = 0;
+	if (!s || !fd)
+		return ;
+	while (s[index] != '\0')
+	{
+		ft_putchar_fd(s[index], fd);
+		index++;
+	}
+}
