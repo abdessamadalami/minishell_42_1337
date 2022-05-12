@@ -2,6 +2,7 @@ NAME = minishell
 
 SRCS =  minishell.c\
 		utils/minishell_utils.c\
+		utils/minishell_utils2.c\
 		utils/get_path.c\
 		utils/ssplit/ssplit.c\
 		parsing/parsing.c\

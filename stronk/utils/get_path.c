@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_path.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/12 11:28:26 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/05/12 16:30:39 by ael-asri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../minishell.h"
 
 int	check_line(char	*s)
@@ -52,7 +64,7 @@ char	**get_path(void)
 	return (path);
 }
 
-char	*get_new_path(char **path, char **cmd, int x)
+char	*get_new_path(char **path, char *cmd)
 {
 	int		i;
 	char	*t;
@@ -60,7 +72,7 @@ char	*get_new_path(char **path, char **cmd, int x)
 	i = 0;
 	while (path[i])
 	{
-		t = ft_strjoin(path[i], cmd[x]);
+		t = ft_strjoin(path[i], cmd);
 		if (!t)
 			return (NULL);
 			// free_and_exit(&t);
