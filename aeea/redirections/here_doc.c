@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/11 19:46:48 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:07:04 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void	here_doc(char **argc)
 	int		pi_pe[2];
 
 	pipe(pi_pe);
-	limtter = ft_strjoin(argc[2], "\n");
+	limtter = ft_strjoin(argc[0], "\n");
+	printf("%s\n", limtter);
 	while (1)
 	{
-		ft_putstr_fd("pipe here_doc> ", 2);
+		ft_putstr_fd("here_doc> ", 2);
 		line = get_next_line(0);
 		if (line == 0 || ft_strncmp(limtter, line, ft_strlen(limtter)) == 0)
 			break ;
@@ -31,4 +32,6 @@ void	here_doc(char **argc)
 	free(limtter);
 	free(line);
 	close(pi_pe[1]);
+	dup2(pi_pe[0],0);
+	// read from pipe
 }

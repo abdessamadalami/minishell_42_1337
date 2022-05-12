@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   <input.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/12 13:21:02 by ael-oual         ###   ########.fr       */
+/*   Created: 2022/05/12 13:10:10 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/12 13:10:19 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-#define MINISHELL_H
-#include<stdio.h>
-#include "../pipex/pipex_42_1337.h"
-#include "../libft/libft.h"
+#include "minishell.h"
 
-void std_files(char *std_out, int fd);//minishell intra video
-void here_doc(char **argc);
-void redirect_output(char *std_out, char c);
-void redirect_input(char *std_in);
-void g_redirections(char *cmd,char **eng,char **env,char *red); //we can addapt it 
+void redirect_input(char *std_in)
+{
+	int fd_input;
 
-#endif
+	fd_input = open(std_in, O_RDONLY);
+	if (fd_input == -1)
+	{
+		perror(std_in); // chmod error 
+		exit(1);// exit just the child you must check if a pipe exists or no
+	}
+    dup2(fd_input,0);
+}
