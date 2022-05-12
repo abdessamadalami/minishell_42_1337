@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:38:04 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/12 16:30:44 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:35:50 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,22 +138,48 @@ void	parse_cmd(t_cmd *cmds)
 	}
 	// return (cmds->argy->args);
 }
-/*
-void	so_parsing(t_cmd *cmds)
+
+int	check_so(char *s1, char *s2)
 {
-	int	i;
+	int			i;
 
 	i = 0;
-	while (cmds->line[i] != '\0')
+	while (s1[i] && s2[i])
 	{
-		j = 0;
-		while (cmds->line[i][j] != '\0')
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	parse_so(t_cmd *cmds)
+{
+	int	i;
+	int	j;
+	int	m;
+
+	i = 0;
+	j = 0;
+	m = 0;
+	while (cmds->cmd->args[i] != '\0')
+	{
+		if (check_so(cmds->cmd->args[i],"<") || check_so(cmds->cmd->args[i],"<<")
+			|| check_so(cmds->cmd->args[i],">") || check_so(cmds->cmd->args[i],">>") || check_so(cmds->cmd->args[i],"||"))
 		{
-			if (cmds->line[i][j] == '>>')
+			cmds->cmd->so[j] = cmds->cmd->args[i];
+			printf("so -%s-\n", cmds->cmd->so[j]);
+			j++;
 		}
+		else
+		{
+			cmds->cmd->args[m] = cmds->cmd->args[i];
+			m++;
+		}
+		i++;
 	}
 }
-*/
+
 
 int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 {
@@ -161,16 +187,23 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	cmds->cmd = malloc(sizeof(t_cmd) * 9999);
 	cmds->cmd->cmad = malloc(sizeof(char) * 9999);
 	cmds->cmd->args = malloc(sizeof(char) * 9999);
+	cmds->cmd->so = malloc(sizeof(char) * 9999);
 	cmds->lock = 0;
 	cmds->env = envi;
 	cmds->path = get_path();
 //	cmds->line = ssplit(s);
 	cmds->line = ssplit(cmds, s, ' ');
-	printf("line---%s\n", cmds->line[0]);
+	if (!cmds->line)
+	{
+		printf("number of quotes is odd\n");
+		exit(1);
+	}
+	// printf("line---%s\n", cmds->line[0]);
 	
 	// Parsing commands
 	
 	parse_cmd(cmds);
+	parse_so(cmds);
 	// cmds->argy = malloc(sizeof(t_arg)*99);
 	// for (int i=0; cmds->line[i] != NULL ;i++)
 	// {
@@ -188,14 +221,13 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	// }
 	// for (int i=0; cmds->cmd[i] != NULL ;i++)
 	// {
+	// 	printf(" is `%s`\n", cmds->cmd->cmad);
+	//}
+	for (int i=0; cmds->cmd->args[i] != NULL ;i++)
+	{
 		// printf("line is `%s`\n", cmds->line[i]);
-	// 	printf("cmd is `%s`\n", cmds->cmd->cmad);
-	// //}
-	// for (int i=0; cmds->cmd->args[i] != NULL ;i++)
-	// {
-	// 	// printf("line is `%s`\n", cmds->line[i]);
-	// 	printf("arg of %s is `%s`\n", cmds->cmd->cmad, cmds->cmd->args[i]);
-	// }
+		printf("argyy is `%s`\n", cmds->cmd->args[i]);
+	}
 	// if (!check_isvalid(cmds/*cmds->path, cmds->cmd*/))
 	// {
 	// 	exit(1);

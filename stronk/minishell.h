@@ -13,6 +13,7 @@ typedef struct s_arg
 {
 	char	*cmad;
 	char	**args;
+	char	**so;
 }				t_arg;
 
 typedef	struct	s_cmd

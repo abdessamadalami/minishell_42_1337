@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/12 18:04:41 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:31:27 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s, char c)
 			i++;
 			continue ;
 		}
-		printf("lock %d\n", cmds->lock);
+		// printf("lock %d\n", cmds->lock);
 		while ((s[i] != c && s[i]) || (cmds->lock % 2 != 0))
 		{
 			if (s[i] == '"' || s[i] == '\'')
@@ -94,6 +94,9 @@ char	**ssplit(t_cmd *cmds, char *s, char c)
 	if (s == 0)
 		return (0);
 	count = set_count(cmds, s, c);
+	// if (count % 2 != 0)
+	// 	return (NULL);
+		// exit(1);
 	t = (char **)malloc(sizeof(char *) * (count + 1));
 	if (t == NULL)
 		return (0);
