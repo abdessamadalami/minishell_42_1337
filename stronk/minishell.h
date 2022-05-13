@@ -21,6 +21,7 @@ typedef	struct	s_cmd
 	char	**line;
 	char	**env;
 	char	**path;
+	char	**temp;
 	// char 	**cmd;
 	// char	**args;
 	t_arg	*cmd;
@@ -44,6 +45,7 @@ char	**get_path(void);
 // ---------------- utils --------------------//
 char	**ft_split( char *s, char c);
 char	**ssplit(t_cmd *cmds, char *s, char c);
+char	**sosplit(t_cmd *cmds, char *s);
 char	*ft_strdup(char *s1);
 int		ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);

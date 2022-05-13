@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:38:04 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/12 22:35:50 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/13 22:02:46 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ char	*ssat(char *s)
 	
 	///// count num of chars
 	int	y=0;
-	while (s[i] == ' ')
+	while (s[i] == '>')
 		i++;
-	while (s[i] != ' ')
+	while (s[i] != '>')
 	{
 		y++;
 		i++;
@@ -83,9 +83,9 @@ char	*ssat(char *s)
 	if (!t)
 		return (NULL);
 	i = 0;
-	while (s[i] == ' ')
+	while (s[i] == '>')
 		i++;
-	while (s[i] != ' ')
+	while (s[i] != '>')
 	{
 		t[j] = s[i];
 		i++;
@@ -112,8 +112,23 @@ void	parse_cmd(t_cmd *cmds)
 		if (!get_new_path(cmds->path, cmds->line[m]))
 		{
 			cmds->cmd->args[i] = cmds->line[m];
+			if (!cmds->cmd->args)
+			{
+				printf("okk\n");
+				exit(1);
+			}
+			// else
+			// {
+			// 	cmds->cmd->so[i] = ft_strdup(">");
+			// 	printf("so -%s-\n", cmds->cmd->so[i]);
+			// }
+			// if (!cmds->cmd->args)
+			// {
+			// 	cmds->cmd->args[i][0] = '>';
+			// 	cmds->cmd->args[i][1] = '\0';
+			// }
 		//	cmds->cmd->args[i] = ssat(cmds->cmd->args[i]);
-			printf("arg -%s-\n", cmds->cmd->args[i]);
+//			 printf("arg -%s-\n", cmds->cmd->args[i]);
 			i++;
 		}
 		else
@@ -121,7 +136,7 @@ void	parse_cmd(t_cmd *cmds)
 			// printf("Yo! it's a cmd!\n");
 		//	printf("hhii\n");
 			cmds->cmd->cmad = cmds->line[m];
-			printf("cmd -%s-\n", cmds->cmd->cmad);
+//			printf("cmd -%s-\n", cmds->cmd->cmad);
 		}
 		// if (get_new_path(cmds->path, cmds->line, m) == NULL)
 		// {
@@ -185,25 +200,44 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 {
 	cmds->line = malloc(sizeof(char) * 9999);
 	cmds->cmd = malloc(sizeof(t_cmd) * 9999);
+	cmds->temp = malloc(sizeof(t_cmd) * 9999);
 	cmds->cmd->cmad = malloc(sizeof(char) * 9999);
 	cmds->cmd->args = malloc(sizeof(char) * 9999);
 	cmds->cmd->so = malloc(sizeof(char) * 9999);
 	cmds->lock = 0;
 	cmds->env = envi;
 	cmds->path = get_path();
-//	cmds->line = ssplit(s);
-	cmds->line = ssplit(cmds, s, ' ');
-	if (!cmds->line)
+	cmds->line = sosplit(cmds, s);
+
+	int i=0,j,m=0;
+	while (cmds->cmd->args[i])
 	{
-		printf("number of quotes is odd\n");
-		exit(1);
+		cmds->temp = ssplit(cmds, cmds->line[i], ' ');
+		j=0;
+		m = i;
+		while (cmds->temp[j])
+		{
+			cmds->cmd->args[i] = cmds->temp[j];
+			i++;
+			j++;
+		}
+		free(cmds->temp);
+		i = m;
+		i++;
 	}
+	// if (!cmds->line)
+	// {
+	// 	printf("number of quotes is odd\n");
+	// 	exit(1);
+	// }
 	// printf("line---%s\n", cmds->line[0]);
 	
 	// Parsing commands
-	
+	cmds->lock = 0;
 	parse_cmd(cmds);
-	parse_so(cmds);
+	
+	// parse_so(cmds);
+	printf("everything good\n");
 	// cmds->argy = malloc(sizeof(t_arg)*99);
 	// for (int i=0; cmds->line[i] != NULL ;i++)
 	// {
