@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/13 20:38:47 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/13 21:50:19 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ static int	set_count(t_cmd *cmds, char *s)
 	count++;
 	while (s[i])
 	{
-		if (s[i] == '"' || s[i] == '\'' /*|| s[i] == '>'*/)
+		if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
 			cmds->lock++;
 		if (s[i] == '>' && s[i + 1] != '>' && s[i + 1] != '\0' && (cmds->lock % 2 == 0))
 			count++;
 		i++;
 	}
-//	printf("count so %d\n", count);
+	printf("count %d\n", cmds->lock);
+	if (cmds->lock % 2 != 0)
+		return (-1);
 	return (count);
 }
 
@@ -61,22 +63,19 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s)
 	{
 		
 		temp = i;
-		if (s[i] == '>'/* && (cmds->lock % 2 == 0)*/)
+		if (s[i] == '>' || s[i] == '"' || s[i] == '\''/* && (cmds->lock % 2 == 0)*/)
 		{
-		/*	if (s[i] == '"' || s[i] == '\'')
-				cmds->lock--;*/
-			// t[count][0] = '>';
-			// t[count][1] = '\0';
-			t[count] = ft_strdup(">");
-			count++;
+			if (s[i] == '"' || s[i] == '\'')
+				cmds->lock--;
 			i++;
 			continue ;
 		}
 		// printf("lock %d\n", cmds->lock);
-		while ((s[i] != '>' && s[i]) || (cmds->lock % 2 != 0))
+		while ((s[i] != '>' && s[i] && s[i] != '"' && s[i] != '\'') || (cmds->lock % 2 != 0))
 		{
 			if (s[i] == '"' || s[i] == '\'')
-				cmds->lock--;
+				break;
+			//	cmds->lock--;
 			i++;
 			// cmds->lock--;
 		}
@@ -98,9 +97,12 @@ char	**sosplit(t_cmd *cmds, char *s)
 	if (s == 0)
 		return (0);
 	count = set_count(cmds, s);
-	// if (count % 2 != 0)
-	// 	return (NULL);
-		// exit(1);
+	if (count < 0)
+	{
+		// return (NULL);
+		printf("go to heredoc\n");
+		exit(1);
+	}
 	t = (char **)malloc(sizeof(char *) * (count + 1));
 	if (t == NULL)
 		return (0);

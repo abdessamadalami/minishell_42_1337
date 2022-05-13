@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:38:04 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/13 21:00:33 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/13 22:02:46 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,26 +200,43 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 {
 	cmds->line = malloc(sizeof(char) * 9999);
 	cmds->cmd = malloc(sizeof(t_cmd) * 9999);
+	cmds->temp = malloc(sizeof(t_cmd) * 9999);
 	cmds->cmd->cmad = malloc(sizeof(char) * 9999);
 	cmds->cmd->args = malloc(sizeof(char) * 9999);
 	cmds->cmd->so = malloc(sizeof(char) * 9999);
 	cmds->lock = 0;
 	cmds->env = envi;
 	cmds->path = get_path();
-//	cmds->line = ssplit(s);
-	cmds->line = ssplit(cmds, s, ' ');
-	if (!cmds->line)
+	cmds->line = sosplit(cmds, s);
+
+	int i=0,j,m=0;
+	while (cmds->cmd->args[i])
 	{
-		printf("number of quotes is odd\n");
-		exit(1);
+		cmds->temp = ssplit(cmds, cmds->line[i], ' ');
+		j=0;
+		m = i;
+		while (cmds->temp[j])
+		{
+			cmds->cmd->args[i] = cmds->temp[j];
+			i++;
+			j++;
+		}
+		free(cmds->temp);
+		i = m;
+		i++;
 	}
+	// if (!cmds->line)
+	// {
+	// 	printf("number of quotes is odd\n");
+	// 	exit(1);
+	// }
 	// printf("line---%s\n", cmds->line[0]);
 	
 	// Parsing commands
 	cmds->lock = 0;
 	parse_cmd(cmds);
 	
-	parse_so(cmds);
+	// parse_so(cmds);
 	printf("everything good\n");
 	// cmds->argy = malloc(sizeof(t_arg)*99);
 	// for (int i=0; cmds->line[i] != NULL ;i++)

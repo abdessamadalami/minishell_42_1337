@@ -21,6 +21,7 @@ typedef	struct	s_cmd
 	char	**line;
 	char	**env;
 	char	**path;
+	char	**temp;
 	// char 	**cmd;
 	// char	**args;
 	t_arg	*cmd;
