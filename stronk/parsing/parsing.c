@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:38:04 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/14 18:28:22 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:37:17 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,40 +195,6 @@ void	parse_so(t_cmd *cmds)
 	}
 }
 
-
-void	parss(t_cmd *cmds, char *s)
-{
-	int	i=0, j=0, m=0;
-
-	printf("hiii %s\n", s[i]);
-	while (s[i] != '\0')
-	{
-		if (s[i] == ' ')
-		{
-			i++;
-			j++;
-			m = 0;
-			continue;
-		}
-		else
-		{
-			cmds->cmd->args[j][m] = s[i];
-			m++;
-		}
-		i++;
-	}
-	
-}
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////
-
-
 char	*ft_dirhatma(char *s, char c, int x)
 {
 	int	i;
@@ -248,8 +214,6 @@ char	*ft_dirhatma(char *s, char c, int x)
 	s[i] = '\0';
 	return (s);
 }
-
-
 
 void	parso(t_cmd *cmds)
 {
@@ -311,10 +275,26 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	cmds->lock = 0;
 	cmds->env = envi;
 	cmds->path = get_path();
-//	cmds->line = ssplit(cmds, s, ' ');
-	// cmds->line = ft_split(s, ' ');
+//	cmds->line = sosplit(cmds, s);
+	cmds->line = ssplit(cmds, s, ' ');
 
-	
+	int i=0,j,m=0;
+	while (cmds->cmd->args[i])
+	{
+	//	cmds->temp = ssplit(cmds, cmds->line[i], ' ');
+		cmds->temp = sosplit(cmds, cmds->line[i]);
+		j=0;
+		m = i;
+		while (cmds->temp[j])
+		{
+			cmds->cmd->args[i] = cmds->temp[j];
+			i++;
+			j++;
+		}
+		free(cmds->temp);
+		i = m;
+		i++;
+	}
 	// if (!cmds->line)
 	// {
 	// 	printf("number of quotes is odd\n");
@@ -324,11 +304,11 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	
 	// Parsing commands
 	cmds->lock = 0;
-//	parse_cmd(cmds);
-	parss(cmds, s);
+	parse_cmd(cmds);
+	
 //	parse_so(cmds);
 	//////////////////////////
-//	parso(cmds);
+	parso(cmds);
 	//////////////////////////
 	printf("everything good\n");
 	// cmds->argy = malloc(sizeof(t_arg)*99);

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/14 17:58:17 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:36:38 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	set_count(t_cmd *cmds, char *s, char c)
 			count++;
 		i++;
 	}
-	printf("ssplit count %d\n", cmds->lock);
+	printf("count %d\n", cmds->lock);
 	if (cmds->lock % 2 != 0)
 		return (-1);
 	return (count);
@@ -59,32 +59,27 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s, char c)
 	i = 0;
 	count = 0;
 	
-	while (s[i] && cmds->lock >= 0)
+	while (s[i])
 	{
 		
 		temp = i;
-		if (s[i] == '"' || s[i] == '\'')
-			cmds->lock--;
-		if (s[i] == c && (cmds->lock % 2 == 0))
+		if (s[i] == c || s[i] == '"' || s[i] == '\''/* && (cmds->lock % 2 == 0)*/)
 		{
-		//	printf("tfoo\n");
-			
+			if (s[i] == '"' || s[i] == '\'')
+				cmds->lock--;
 			i++;
 			continue ;
 		}
 		// printf("lock %d\n", cmds->lock);
-		while ((s[i] != c && s[i] /*&& s[i] != '"' && s[i] != '\''*/) && (cmds->lock % 2 == 0))
+		while ((s[i] != c && s[i] && s[i] != '"' && s[i] != '\'') || (cmds->lock % 2 != 0))
 		{
-			
-			// if (s[i] == '"' || s[i] == '\'')
-			// 	break;
+			if (s[i] == '"' || s[i] == '\'')
+				break;
 			//	cmds->lock--;
 			i++;
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-		printf("count %d\n", cmds->lock);
-		printf("--------t-%s-\n", t[count]);
 	//	printf("tttttt-%s-\n", t[count]);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
