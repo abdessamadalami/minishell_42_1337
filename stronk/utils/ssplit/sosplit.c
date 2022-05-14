@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/13 21:50:19 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:27:17 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s)
 			continue ;
 		}
 		// printf("lock %d\n", cmds->lock);
-		while ((s[i] != '>' && s[i] && s[i] != '"' && s[i] != '\'') || (cmds->lock % 2 != 0))
+		while ((s[i] != '>' && s[i] /*&& s[i] != '"' && s[i] != '\''*/) || (cmds->lock % 2 != 0))
 		{
 			if (s[i] == '"' || s[i] == '\'')
 				break;

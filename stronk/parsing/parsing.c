@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:38:04 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/13 22:02:46 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:28:22 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ void	parse_cmd(t_cmd *cmds)
 
 int	check_so(char *s1, char *s2)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	while (s1[i] && s2[i])
@@ -196,6 +196,110 @@ void	parse_so(t_cmd *cmds)
 }
 
 
+void	parss(t_cmd *cmds, char *s)
+{
+	int	i=0, j=0, m=0;
+
+	printf("hiii %s\n", s[i]);
+	while (s[i] != '\0')
+	{
+		if (s[i] == ' ')
+		{
+			i++;
+			j++;
+			m = 0;
+			continue;
+		}
+		else
+		{
+			cmds->cmd->args[j][m] = s[i];
+			m++;
+		}
+		i++;
+	}
+	
+}
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+char	*ft_dirhatma(char *s, char c, int x)
+{
+	int	i;
+
+	i = 0;
+	s = ft_strdup("");
+	// printf("malnaaaaaa %c\n", s[i]);
+	// printf("malnaaaaaa");
+	s[i] = c;
+	
+	if (x)
+	{
+		i++;
+		s[i] = c;
+	}
+	i++;
+	s[i] = '\0';
+	return (s);
+}
+
+
+
+void	parso(t_cmd *cmds)
+{
+	int i=0,j,m=0, v=0;
+	while (cmds->cmd->args[i] != NULL)
+	{
+		if (check_so(cmds->cmd->args[i],"<") || check_so(cmds->cmd->args[i],">")  ||
+			check_so(cmds->cmd->args[i],"|"))
+		{
+			
+			// cmds->cmd->so[j] = cmds->cmd->args[i];
+			// printf("so -%s-\n", cmds->cmd->so[j]);
+			
+		//	if (check_so(cmds->cmd->args[i],cmds->cmd->args[i + 1]))
+			if (cmds->cmd->args[i][0] == cmds->cmd->args[i][1])
+			{
+				cmds->cmd->so[v] = ft_dirhatma(cmds->cmd->so[v], cmds->cmd->args[i][0], 1);
+				printf("Yo there'are two so in here\n");
+				v++;
+			}
+			else
+			{
+			//	cmds->cmd->so[0] = cmds->cmd->args[i][0];
+				cmds->cmd->so[v] = ft_dirhatma(cmds->cmd->so[v], cmds->cmd->args[i][0], 0);
+				// cmds->cmd->so[v] = cmds->cmd->args[i][0];
+				// v++;
+				// cmds->cmd->so[v] = '\0';
+				v++;
+				printf("Yo there's a so in here\n");
+			}
+			i++;
+		}
+		//	continue;
+	//	cmds->temp = ssplit(cmds, cmds->line[i], ' ');
+	//	cmds->temp = sosplit(cmds, cmds->line[i]);
+		
+		j=0;
+		m = i;
+	/*	while (cmds->temp[j])
+		{
+			cmds->cmd->args[i] = cmds->temp[j];
+			i++;
+			j++;
+		}
+		free(cmds->temp);*/
+		i = m;
+		i++;
+	}
+}
+
 int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 {
 	cmds->line = malloc(sizeof(char) * 9999);
@@ -207,24 +311,10 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	cmds->lock = 0;
 	cmds->env = envi;
 	cmds->path = get_path();
-	cmds->line = sosplit(cmds, s);
+//	cmds->line = ssplit(cmds, s, ' ');
+	// cmds->line = ft_split(s, ' ');
 
-	int i=0,j,m=0;
-	while (cmds->cmd->args[i])
-	{
-		cmds->temp = ssplit(cmds, cmds->line[i], ' ');
-		j=0;
-		m = i;
-		while (cmds->temp[j])
-		{
-			cmds->cmd->args[i] = cmds->temp[j];
-			i++;
-			j++;
-		}
-		free(cmds->temp);
-		i = m;
-		i++;
-	}
+	
 	// if (!cmds->line)
 	// {
 	// 	printf("number of quotes is odd\n");
@@ -234,9 +324,12 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	
 	// Parsing commands
 	cmds->lock = 0;
-	parse_cmd(cmds);
-	
-	// parse_so(cmds);
+//	parse_cmd(cmds);
+	parss(cmds, s);
+//	parse_so(cmds);
+	//////////////////////////
+//	parso(cmds);
+	//////////////////////////
 	printf("everything good\n");
 	// cmds->argy = malloc(sizeof(t_arg)*99);
 	// for (int i=0; cmds->line[i] != NULL ;i++)
@@ -255,8 +348,13 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	// }
 	// for (int i=0; cmds->cmd[i] != NULL ;i++)
 	// {
-	// 	printf(" is `%s`\n", cmds->cmd->cmad);
+		printf("cmd is `%s`\n", cmds->cmd->cmad);
+		
 	//}
+	for (int i=0; cmds->cmd->so[i] != NULL ;i++)
+	{
+		printf("so is `%s`\n", cmds->cmd->so[i]);
+	}
 	for (int i=0; cmds->cmd->args[i] != NULL ;i++)
 	{
 		// printf("line is `%s`\n", cmds->line[i]);

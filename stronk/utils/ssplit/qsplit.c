@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ssplit.c                                           :+:      :+:    :+:   */
+/*   qsplit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/14 17:58:17 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/05/14 15:21:21 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/05/14 15:22:18 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static int	set_count(t_cmd *cmds, char *s, char c)
+static int	set_count(t_cmd *cmds, char *s)
 {
 	int	i;
 	int	count;
 
 	count = 0;
 	i = 0;
-	while (s[i] == c)
+	while (s[i] == '>')
 		i++;
 	count++;
 	while (s[i])
 	{
 		if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
 			cmds->lock++;
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0' && (cmds->lock % 2 == 0))
+		if (s[i] == '>' && s[i + 1] != '>' && s[i + 1] != '\0' && (cmds->lock % 2 == 0))
 			count++;
 		i++;
 	}
-	printf("ssplit count %d\n", cmds->lock);
+	printf("count %d\n", cmds->lock);
 	if (cmds->lock % 2 != 0)
 		return (-1);
 	return (count);
@@ -50,7 +50,7 @@ static char	**ft_del(char **t, int count)
 	return (NULL);
 }
 
-static char	**chek_and_fill(t_cmd *cmds, char **t, char *s, char c)
+static char	**chek_and_fill(t_cmd *cmds, char **t, char *s)
 {
 	int	i;
 	int	count;
@@ -59,32 +59,27 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s, char c)
 	i = 0;
 	count = 0;
 	
-	while (s[i] && cmds->lock >= 0)
+	while (s[i])
 	{
 		
 		temp = i;
-		if (s[i] == '"' || s[i] == '\'')
-			cmds->lock--;
-		if (s[i] == c && (cmds->lock % 2 == 0))
+		if (s[i] == '>' || s[i] == '"' || s[i] == '\''/* && (cmds->lock % 2 == 0)*/)
 		{
-		//	printf("tfoo\n");
-			
+			if (s[i] == '"' || s[i] == '\'')
+				cmds->lock--;
 			i++;
 			continue ;
 		}
 		// printf("lock %d\n", cmds->lock);
-		while ((s[i] != c && s[i] /*&& s[i] != '"' && s[i] != '\''*/) && (cmds->lock % 2 == 0))
+		while ((s[i] != '>' && s[i] && s[i] != '"' && s[i] != '\'') || (cmds->lock % 2 != 0))
 		{
-			
-			// if (s[i] == '"' || s[i] == '\'')
-			// 	break;
+			if (s[i] == '"' || s[i] == '\'')
+				break;
 			//	cmds->lock--;
 			i++;
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-		printf("count %d\n", cmds->lock);
-		printf("--------t-%s-\n", t[count]);
 	//	printf("tttttt-%s-\n", t[count]);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
@@ -94,14 +89,14 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s, char c)
 	return (t);
 }
 
-char	**ssplit(t_cmd *cmds, char *s, char c)
+char	**qsplit(t_cmd *cmds, char *s)
 {
 	char	**t;
 	int		count;
 
 	if (s == 0)
 		return (0);
-	count = set_count(cmds, s, c);
+	count = set_count(cmds, s);
 	if (count < 0)
 	{
 		// return (NULL);
@@ -111,5 +106,5 @@ char	**ssplit(t_cmd *cmds, char *s, char c)
 	t = (char **)malloc(sizeof(char *) * (count + 1));
 	if (t == NULL)
 		return (0);
-	return (chek_and_fill(cmds, t, s, c));
+	return (chek_and_fill(cmds, t, s));
 }

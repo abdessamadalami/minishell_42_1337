@@ -46,6 +46,7 @@ char	**get_path(void);
 char	**ft_split( char *s, char c);
 char	**ssplit(t_cmd *cmds, char *s, char c);
 char	**sosplit(t_cmd *cmds, char *s);
+char	**qsplit(t_cmd *cmds, char *s);
 char	*ft_strdup(char *s1);
 int		ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
