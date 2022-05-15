@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/12 13:21:02 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:54:29 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ void std_files(char *std_out, int fd);//minishell intra video
 void here_doc(char **argc);
 void redirect_output(char *std_out, char c);
 void redirect_input(char *std_in);
+void ft_merge_sort(t_list **list);
+void mid_list(t_list *list, t_list **fast, t_list **slow);
 void g_redirections(char *cmd,char **eng,char **env,char *red); //we can addapt it 
+void ft_merge_sort_u(t_list *env);
+void *f(void *ptr);
+void del(void *ptr);
+
+void  c_export(t_list *env, char *var);
+
 
 #endif

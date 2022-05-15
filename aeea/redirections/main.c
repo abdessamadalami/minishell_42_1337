@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   variable.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 13:22:02 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/13 18:34:54 by ael-oual         ###   ########.fr       */
+/*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/14 16:53:13 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
-#include <string.h>
 
-char *env_var(char *cmd)
+int main(int argc, char **argv , char **env)
 {
-    if(cmd[0] == '$')
-    {
-        cmd = cmd + 1;
-        cmd = getenv(cmd);
-    }
-    return cmd;
+    t_list *env_lst;
+    char *cmd = "ev";
+    printf("_________________________________ \n");
+    env_lst = c_env(env);
+    print_list(env_lst);
+    if(ft_strncmp("env",cmd,3) == 0)
+        print_list(env_lst);
+    // c_export(env_lst,0);
+    // c_export(env,"var=76");
+    ///the position in linded list i think is good sort it 
+    return 0;
 }
-
-/*
-int main(int argc, char *argv[])
-{
-  printf(" %s ",env_var("$var"));
-}
-*/
