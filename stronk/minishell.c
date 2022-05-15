@@ -26,17 +26,16 @@ int	ft_arg(char *s1, char *s2)
 	return (1);
 }
 
-int main(int ac, char **av, char **env)
+int main(int ac, char **av)
 {
 	char	*s;
-	t_cmd	cmds;
 
 	(void)*av;
 	if (ac == 1)
 	{
 		while ((s = readline("$>prompt ")) != 0)
 		{
-			if (!ft_parsing(&cmds, s, env))
+			if (!ft_new_parsing(s))
 				return (0);
 			// printf("$%s$\n", s);
 			// if (ft_arg(s,"echo"))

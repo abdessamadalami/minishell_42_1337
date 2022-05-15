@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:38:04 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/14 18:37:17 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:36:30 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*ssat(char *s)
 	return (t);
 }
 
-void	parse_cmd(t_cmd *cmds)
+static void	parse_cmd(t_cmd *cmds)
 {
 	int	i=0,m=0;
 // printf("whhh\n");
@@ -215,33 +215,40 @@ char	*ft_dirhatma(char *s, char c, int x)
 	return (s);
 }
 
-void	parso(t_cmd *cmds)
+static void	parso(t_cmd *cmds)
 {
+	char	*temp;
+	temp = ft_strdup("");
 	int i=0,j,m=0, v=0;
 	while (cmds->cmd->args[i] != NULL)
 	{
 		if (check_so(cmds->cmd->args[i],"<") || check_so(cmds->cmd->args[i],">")  ||
 			check_so(cmds->cmd->args[i],"|"))
 		{
-			
+			temp = sosplit(cmds, cmds->cmd->args[i]);
 			// cmds->cmd->so[j] = cmds->cmd->args[i];
 			// printf("so -%s-\n", cmds->cmd->so[j]);
 			
 		//	if (check_so(cmds->cmd->args[i],cmds->cmd->args[i + 1]))
 			if (cmds->cmd->args[i][0] == cmds->cmd->args[i][1])
 			{
-				cmds->cmd->so[v] = ft_dirhatma(cmds->cmd->so[v], cmds->cmd->args[i][0], 1);
+	//			cmds->cmd->so[v] = ft_dirhatma(cmds->cmd->so[v], cmds->cmd->args[i][0], 1);
+				printf("HAADI FIHAA MOCHKIL %s\n", cmds->cmd->args[i]);
 				printf("Yo there'are two so in here\n");
 				v++;
 			}
 			else
 			{
 			//	cmds->cmd->so[0] = cmds->cmd->args[i][0];
-				cmds->cmd->so[v] = ft_dirhatma(cmds->cmd->so[v], cmds->cmd->args[i][0], 0);
+				// temp = cmds->cmd->args[i];
+				// cmds->cmd->args[i] = ft_dirhatma(cmds->cmd->args[i], cmds->cmd->args[i][0], 0);
+				// i++;
+				// cmds->cmd->args[i]
 				// cmds->cmd->so[v] = cmds->cmd->args[i][0];
 				// v++;
 				// cmds->cmd->so[v] = '\0';
-				v++;
+			//	v++;
+				printf("HAADI FIHAA MOCHKIL %s\n", cmds->cmd->args[i]);
 				printf("Yo there's a so in here\n");
 			}
 			i++;

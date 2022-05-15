@@ -8,7 +8,7 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
+/*
 typedef struct s_arg
 {
 	char	*cmad;
@@ -16,7 +16,7 @@ typedef struct s_arg
 	char	**so;
 }				t_arg;
 
-typedef	struct	s_cmd
+typedef	struct	scmd
 {
 	char	**line;
 	char	**env;
@@ -31,7 +31,29 @@ typedef	struct	s_cmd
 	int		input;
 	int		output;
 	int		lock;
-}				t_cmd;
+}				tcmd;
+*/
+typedef struct s_gg
+{
+	int				count;
+	int				lock;
+}	t_gg;
+// ---------------- struct --------------------//
+	//-- cmd --//
+typedef struct s_arg
+{
+	char			*data;
+
+	// char	**line;
+//	char			**path;
+	// int				count;
+	// int				lock;
+	struct s_arg	*next;
+}	t_arg;
+
+	//--  arg --//
+
+
 
 
 
@@ -44,17 +66,26 @@ char	**get_path(void);
 
 // ---------------- utils --------------------//
 char	**ft_split( char *s, char c);
-char	**ssplit(t_cmd *cmds, char *s, char c);
-char	**sosplit(t_cmd *cmds, char *s);
-char	**qsplit(t_cmd *cmds, char *s);
+char	**ssplit(t_gg *gg, char *s, char c);
+//char	**sosplit(t_cmd *cmds, char *s);
+//char	**qsplit(t_cmd *cmds, char *s);
 char	*ft_strdup(char *s1);
 int		ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char	*s, int start, int len);
-int		check_isvalid(t_cmd *cmds/*char **path, char **cmd*/);
+int		check_isvalid(t_arg *cmds/*char **path, char **cmd*/);
+
+/*					list utils				*/
+t_arg	*ft_lstnew(char	*s);
+int		ft_lstsize(t_arg *lst);
+t_arg	*ft_lstlast(t_arg *lst);
+void	ft_lstadd_front(t_arg **lst, t_arg *new);
+void	ft_lstadd_back(t_arg **lst, t_arg *new);
+
+
 
 // ---------------- parsing ------------------//
-int		ft_parsing(t_cmd *cmds, char *s, char **envi);
+int		ft_new_parsing(char *s);
 
 
 // --------------- commands -----------------//
