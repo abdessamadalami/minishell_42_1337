@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/15 23:57:07 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 00:05:28 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	{
 		
 		temp = i;
-		if (s[i] == '"' || s[i] == '\'')
+		if ((s[i] == '"' || s[i] == '\'') && (gg->lock % 2 != 0))
 		{
 			printf("hooooooo\n");
 			gg->lock--;
-			i++;
+		//	i++;
 			continue ;
 		}
 		if (s[i] == c /* && (cmds->lock % 2 == 0)*/)
