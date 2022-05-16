@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:54:03 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/14 16:49:42 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:51:59 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,11 @@ void ft_merge_sort(t_list **list)
 void ft_merge_sort_u(t_list *env)
 {   
     t_list  *new_list;
-
-   // print_list(env);
+    
     new_list = ft_lstmap(env, f, del);
     ft_merge_sort(&new_list);
-  //  print_list(env);
     print_list_x(new_list);
+   // ft_lstclear(&new_list,del);
 }
 
 /*

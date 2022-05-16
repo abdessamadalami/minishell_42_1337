@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   variable.c                                         :+:      :+:    :+:   */
+/*   tools_fun.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 13:22:02 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/13 18:34:54 by ael-oual         ###   ########.fr       */
+/*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/16 18:12:31 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
-#include <string.h>
 
-char *env_var(char *cmd)
+void del(void *ptr)
 {
-    if(cmd[0] == '$')
+	 free(ptr);
+}
+
+void *f(void *ptr)
+{
+	return(ptr);
+}
+
+void print_list(t_list *list,int a)//s= 0 || s=1 print wirh order
+{
+    while(list != NULL)
     {
-        cmd = cmd + 1;
-        cmd = getenv(cmd);
+        if(ft_strchr(list -> content,'=') && a == 0)
+            printf("%s\n", list->content);
+        else
+            printf("%s \n", list->content);
+        list = list->next;
     }
-    return cmd;
+    printf("\n");
 }
-
-/*
-int main(int argc, char *argv[])
-{
-  printf(" %s ",env_var("$var"));
-}
-*/
