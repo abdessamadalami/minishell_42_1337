@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 18:33:01 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:32:21 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	ft_strllen(char **s)
 	return (i);
 }
 
-void	lst_between(t_arg **arg, char **t, int x)
+void	lst_lastone(t_arg **arg, char **t, int x)
 {
 	int	i;
 
@@ -111,7 +111,7 @@ void	lst_between(t_arg **arg, char **t, int x)
 	for (int i=0;i<ft_strllen(t);i++)
 		printf("t[%d]: %s\n", i, t[i]);
 	i = 0;
-	while (i <= ft_strllen(t))
+	while (i < ft_strllen(t))
 	{
 		node = ft_lstnew(t[i]);
 		ft_lstadd_back(arg, node);
@@ -119,6 +119,53 @@ void	lst_between(t_arg **arg, char **t, int x)
 		(*arg) = (*arg)->next;
 		i++;
 	}
+/*	(*arg)->next = node;
+	(*arg)->next = (*arg);
+	node->next;*/
+	
+}
+
+void	lst_between(t_arg **arg, char **t, int x)
+{
+	int	i;
+
+	
+	i = 0;
+	t_arg	*node;
+	t_arg	*newlist;
+
+
+	newlist = malloc(sizeof(t_arg));
+	node = malloc(sizeof(t_arg));
+	if (!node)
+		exit(1);
+//	node->next = (*arg)->next;
+	printf("x %d\n", x);
+	i = 0;
+	while (i <= ft_strllen(t))
+	{
+		node = ft_lstnew(t[i]);
+		ft_lstadd_back(&newlist, node);
+		printf("newww ma noode `%s`\n", newlist->data);
+		newlist = newlist->next;
+		i++;
+	}
+	newlist->next = ft_lstlast(*arg);
+	i=0;
+	while (i < x-1)
+	{
+		printf("whotaaa %d\n", i);
+		
+		*arg = (*arg)->next;
+		i++;
+	}
+	
+	printf("thats ma noode `%s`\n", (*arg)->data);
+	(*arg)->next = newlist;
+	i = 0;
+	printf("stlll %d\n", ft_strllen(t));
+	for (int i=0;i<ft_strllen(t);i++)
+		printf("t[%d]: %s\n", i, t[i]);
 /*	(*arg)->next = node;
 	(*arg)->next = (*arg);
 	node->next;*/

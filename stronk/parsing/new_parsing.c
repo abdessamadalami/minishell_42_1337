@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 18:21:20 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:28:51 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,13 @@ void	parso(t_arg *arg, t_gg *gg)
 			if (x == ft_lstsize(arg) - 1)
 			{
 				printf("AKHITR W7DA\n");
-				lst_between(&arg, temp, x);
+				lst_lastone(&arg, temp, x);
 			}
 			else
+			{
 				printf("MACHI AKHITR W7DA\n");
+				lst_between(&arg, temp, x);
+			}
 			printf("hppp\n");
 		/*	while (temp[i] != '\0')
 			{
@@ -210,6 +213,13 @@ int	ft_new_parsing(char *s)
 	//////////////////////////
 	parso(arg, gg);
 	//////////////////////////
+	i=0;
+	
+	while (arg != NULL)
+	{
+		printf("--[%s\n", arg->data);
+		arg = arg->next;
+	}
 	printf("everything good\n");
 	
 	
