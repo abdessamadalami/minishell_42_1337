@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 20:32:21 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:00:25 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	lst_lastone(t_arg **arg, char **t, int x)
 {
 	int	i;
 
-	
 	i = 0;
 	t_arg	*node;
 
@@ -132,7 +131,7 @@ void	lst_between(t_arg **arg, char **t, int x)
 	
 	i = 0;
 	t_arg	*node;
-	t_arg	*newlist;
+	t_arg	**newlist;
 
 
 	newlist = malloc(sizeof(t_arg));
@@ -142,26 +141,37 @@ void	lst_between(t_arg **arg, char **t, int x)
 //	node->next = (*arg)->next;
 	printf("x %d\n", x);
 	i = 0;
-	while (i <= ft_strllen(t))
+	while (i < ft_strllen(t)-1)
 	{
 		node = ft_lstnew(t[i]);
-		ft_lstadd_back(&newlist, node);
-		printf("newww ma noode `%s`\n", newlist->data);
-		newlist = newlist->next;
+	//	printf("whyyy\n");
+		ft_lstadd_back(newlist, node);
+		printf("newww ma noode `%s`\n", (*newlist)->data);
+		(*newlist) = (*newlist)->next;
 		i++;
 	}
-	newlist->next = ft_lstlast(*arg);
+	node = ft_lstnew(t[i]);
+	ft_lstadd_back(newlist, node);
+	printf("newlist size %d\n", ft_lstsize(*newlist));
 	i=0;
-	while (i < x-1)
+	while (i < x)
 	{
-		printf("whotaaa %d\n", i);
+		printf("thats ma noode `%s`\n", (*arg)->data);
 		
 		*arg = (*arg)->next;
 		i++;
 	}
+//	printf()
+	*arg = (*arg)->next;
+	printf("malawana\n");
+	printf("newww ma noode `%s`\n", (*newlist)->data);
+	(*newlist)->next = (*arg);
+	
+	
+	i=0;
 	
 	printf("thats ma noode `%s`\n", (*arg)->data);
-	(*arg)->next = newlist;
+	(*arg)->next = (*newlist);
 	i = 0;
 	printf("stlll %d\n", ft_strllen(t));
 	for (int i=0;i<ft_strllen(t);i++)

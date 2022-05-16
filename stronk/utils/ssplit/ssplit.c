@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 00:08:48 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:41:07 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int	set_count(t_gg *gg, char *s, char c)
 			count++;
 		i++;
 	}
-//	printf("count %d\n", arg->lock);
+	gg->qq = gg->lock;
+//	printf("count %d\n", gg->qq);
 	if (gg->lock % 2 != 0)
 		return (-1);
 	return (count);

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 20:28:51 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:45:54 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,32 @@ int	check_q(t_gg *gg, char *s)
 
 	i = 0;
 //	x = 0;
-	gg->count--;
-	printf("sss count %d\n", gg->count);
+	int	q = gg->qq;
+	printf("sss count %d\n", q);
 	while (s[i] != '\0')
 	{
-		if ((s[i] == '"' || s[i] == '\'') && (s[i + 1] == '\0'))
+		if (ft_strlen(s) == 1 && (s[i] == '>') && (s[i + 1] == '\0'))
 		{
+			
 			return (0);
 		//	gg->count--;
 		//	i++;
 		}
-		else if (s[i] == '"' || s[i] == '\'')
+		if (s[i] == '"' || s[i] == '\'')
 		{
-			gg->count--;
-			i++;
+			q--;
+	//		printf("+700 \n");
+		//	i++;
 		}
-		if ((s[i] == '"' || s[i] == '\'') && (gg->count % 2 == 0) && (s[i + 1] != '\0'))
+		if ((s[i] == '"' || s[i] == '\'') && (q % 2 == 0) && (s[i + 1] != '\0'))
 		{
-			printf("this count %d, i is %d\n", gg->count, i);
+			printf("this count %d, i is %d\n", q, i);
 			return (0);
 		}
 		i++;
 	}
 //	if (x == 2)
+	printf("+100 \n");
 		return (1);
 //	return (0);
 }
@@ -145,6 +148,7 @@ int	ft_new_parsing(char *s)
 
 	gg->lock = 0;
 	gg->count = 0;
+	gg->qq = 0;
 //	cmds->path = get_path();
 //	ta ft_lstnew(gg, NULL);
 //	ft_lstadd_back(&cmds, cmds);

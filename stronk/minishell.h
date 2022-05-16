@@ -37,6 +37,7 @@ typedef struct s_gg
 {
 	int				count;
 	int				lock;
+	int	qq;
 }	t_gg;
 // ---------------- struct --------------------//
 	//-- cmd --//

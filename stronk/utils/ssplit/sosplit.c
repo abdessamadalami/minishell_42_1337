@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 21:03:48 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:21:34 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	set_count(char *s)
 			count++;
 		i++;
 	}
-	printf("count %d\n", count);
+//	printf("count %d\n", count);
 //	if (gg->lock % 2 != 0)
 //		return (-1);
 	return (count+1);
@@ -87,7 +87,7 @@ static char	**chek_and_fill(char **t, char *s)
 		{
 			i++;
 			
-			printf("cccc-%c-\n", s[i]);
+	//		printf("cccc-%c-\n", s[i]);
 		//	t[count] = ft_strdup(">");
 		/*	if (s[i+1] == s[i])
 			{
@@ -96,11 +96,11 @@ static char	**chek_and_fill(char **t, char *s)
 			//	i ++;
 			}
 			else*/
-			printf("HAAAAADA TOKEN %s\n", ft_substr(s, temp, i - temp));
+	//		printf("HAAAAADA TOKEN %s\n", ft_substr(s, temp, i - temp));
 			
 			t[count] = ft_substr(s, temp, i - temp);
 			
-			printf("tttttt-%s-\n", t[count]);
+	//		printf("tttttt-%s-\n", t[count]);
 			//	i++;
 			count++;
 			
@@ -116,20 +116,20 @@ static char	**chek_and_fill(char **t, char *s)
 		//		break;
 			//	cmds->lock--;
 			i++;
-			printf("hiiw\n");
+	//		printf("hiiw\n");
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-		printf("tttttt-%s-\n", t[count]);
+//		printf("tttttt-%s-\n", t[count]);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
 		count++;
 	}
-	printf("tttttt after-%d-\n", count);
+//	printf("tttttt after-%d-\n", count);
 	count++;
 	t[count] = 0;
-	for (int i=0;i<count;i++)
-		printf("t/ %s\n", t[i]);
+//	for (int i=0;i<count;i++)
+//		printf("t/ %s\n", t[i]);
 	return (t);
 }
 
