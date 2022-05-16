@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 07:32:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/16 18:12:06 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:38:00 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,24 @@ char *ft_getenv(t_list *list, char *str, int a)
 }
 /*
 */
+void error_hundlening(char *str,int p)
+{
+    int i;
+    
+    i = 0;
+    if (!str)
+        return;
+    if (p != 0)
+        i = p;
+    if (str[0] == '$' && p == 0)  // for dolar handling
+        i++;
+    if ((!ft_isalnum(str[i])) && str[i] != '_')
+    {
+        printf("error: `%s': not a valid identifier \n",str);
+        exit(1); // chiled
+    }
+    
+}
 void  c_export(t_list *env, char *var)
 {
     char *check;
@@ -51,7 +69,8 @@ void  c_export(t_list *env, char *var)
         ft_merge_sort_u(env);
         return;
     }
-    check = strchr(var, '=');
+    check = strchr(var, '=');  //error checking
+    error_hundlening(var,check - var - 1);
     env_var = strdup(var);
     if (check)
     {
