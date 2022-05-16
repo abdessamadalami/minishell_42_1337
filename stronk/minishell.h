@@ -67,7 +67,7 @@ char	**get_path(void);
 // ---------------- utils --------------------//
 char	**ft_split( char *s, char c);
 char	**ssplit(t_gg *gg, char *s, char c);
-//char	**sosplit(t_cmd *cmds, char *s);
+char	**sosplit(char *s);
 //char	**qsplit(t_cmd *cmds, char *s);
 char	*ft_strdup(char *s1);
 int		ft_strlen(const char *s);
@@ -81,7 +81,7 @@ int		ft_lstsize(t_arg *lst);
 t_arg	*ft_lstlast(t_arg *lst);
 void	ft_lstadd_front(t_arg **lst, t_arg *new);
 void	ft_lstadd_back(t_arg **lst, t_arg *new);
-
+void	lst_between(t_arg **arg, char **t, int x);
 
 
 // ---------------- parsing ------------------//

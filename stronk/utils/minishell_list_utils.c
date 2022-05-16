@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/15 18:37:15 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:33:01 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,62 @@ int	ft_lstsize(t_arg *lst)
 		lst = lst->next;
 	}
 	return (count);
+}
+
+int	ft_strllen(char **s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		while (s[i][j])
+			j++;
+		i++;
+	}
+	return (i);
+}
+
+void	lst_between(t_arg **arg, char **t, int x)
+{
+	int	i;
+
+	
+	i = 0;
+	t_arg	*node;
+
+
+	node = malloc(sizeof(t_arg));
+	if (!node)
+		exit(1);
+//	node->next = (*arg)->next;
+	printf("x %d\n", x);
+	while (i < x-1)
+	{
+		printf("whotaaa %d\n", i);
+		
+		*arg = (*arg)->next;
+		i++;
+	}
+	printf("thats ma noode `%s`\n", (*arg)->data);
+	(*arg)->next = NULL;
+	i = 0;
+	printf("stlll %d\n", ft_strllen(t));
+	for (int i=0;i<ft_strllen(t);i++)
+		printf("t[%d]: %s\n", i, t[i]);
+	i = 0;
+	while (i <= ft_strllen(t))
+	{
+		node = ft_lstnew(t[i]);
+		ft_lstadd_back(arg, node);
+		printf("newww ma noode `%s`\n", (*arg)->data);
+		(*arg) = (*arg)->next;
+		i++;
+	}
+/*	(*arg)->next = node;
+	(*arg)->next = (*arg);
+	node->next;*/
+	
 }
