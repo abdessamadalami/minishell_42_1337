@@ -6,13 +6,13 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/14 18:33:58 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:46:25 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static int	set_count(t_cmd *cmds, char *s)
+static int	set_count(char *s)
 {
 	int	i;
 	int	count;
@@ -24,15 +24,15 @@ static int	set_count(t_cmd *cmds, char *s)
 	count++;
 	while (s[i])
 	{
-		if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
-			cmds->lock++;
-		if (s[i] == '>' && s[i + 1] != '>' && s[i + 1] != '\0' && (cmds->lock % 2 == 0))
+	//	if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
+	//		gg->lock++;
+		if (s[i] == '>' && s[i + 1] != '>' && s[i + 1] != '\0')
 			count++;
 		i++;
 	}
-	printf("count %d\n", cmds->lock);
-	if (cmds->lock % 2 != 0)
-		return (-1);
+//	printf("count %d\n", gg->lock);
+//	if (gg->lock % 2 != 0)
+//		return (-1);
 	return (count);
 }
 
@@ -50,7 +50,27 @@ static char	**ft_del(char **t, int count)
 	return (NULL);
 }
 
-static char	**chek_and_fill(t_cmd *cmds, char **t, char *s)
+char	*ft_add(char *s, char c)
+{
+	char	*t;
+	int	i;
+
+	i = 0;
+	t = malloc(sizeof(char) * ft_strlen(s) + 2);
+	if (!t)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		t[i] = s[i];
+		i++;
+	}
+	t[i] = c;
+	i++;
+	t[i] = '\0';
+	return (t);
+}
+
+static char	**chek_and_fill(char **t, char *s)
 {
 	int	i;
 	int	count;
@@ -63,24 +83,39 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s)
 	{
 		
 		temp = i;
-		if (s[i] == '>' || s[i] == '"' || s[i] == '\''/* && (cmds->lock % 2 == 0)*/)
+		if (s[i] == '>')
 		{
-			if (s[i] == '"' || s[i] == '\'')
-				cmds->lock--;
 			i++;
+			
+		//	t[count] = ft_strdup(">");
+		/*	if (s[i+1] == s[i])
+			{
+				i++;
+				t[count] = ft_substr(s, temp, i - temp);
+			//	i ++;
+			}
+			else*/
+			printf("HAAAAADA TOKEN %s\n", ft_substr(s, temp, i - temp));
+				t[count] = ft_substr(s, temp, i - temp);
+				printf("tttttt-%s-\n", t[count]);
+			//	i++;
+			count++;
+	//		if (s[i] == '"' || s[i] == '\'')
+	//			gg->lock--;
+		//	i++;
 			continue ;
 		}
 		// printf("lock %d\n", cmds->lock);
-		while ((s[i] != '>' && s[i] /*&& s[i] != '"' && s[i] != '\''*/) || (cmds->lock % 2 != 0))
+		while (s[i] != '>' && s[i])
 		{
-			if (s[i] == '"' || s[i] == '\'')
-				break;
+		//	if (s[i] == '"' || s[i] == '\'')
+		//		break;
 			//	cmds->lock--;
 			i++;
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-	//	printf("tttttt-%s-\n", t[count]);
+		printf("tttttt-%s-\n", t[count]);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
 		count++;
@@ -89,14 +124,14 @@ static char	**chek_and_fill(t_cmd *cmds, char **t, char *s)
 	return (t);
 }
 
-char	**sosplit(t_cmd *cmds, char *s)
+char	**sosplit(char *s)
 {
 	char	**t;
 	int		count;
 
 	if (s == 0)
 		return (0);
-	count = set_count(cmds, s);
+	count = set_count(s);
 	if (count < 0)
 	{
 		// return (NULL);
@@ -106,5 +141,5 @@ char	**sosplit(t_cmd *cmds, char *s)
 	t = (char **)malloc(sizeof(char *) * (count + 1));
 	if (t == NULL)
 		return (0);
-	return (chek_and_fill(cmds, t, s));
+	return (chek_and_fill(t, s));
 }

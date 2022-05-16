@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 00:05:28 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/16 00:08:48 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 
 	i = 0;
 	count = 0;
-	printf("--i'm lock %d\n", gg->lock);
-	printf("--i'm count %d\n", gg->count);
+//	printf("--i'm lock %d\n", gg->lock);
+//	printf("--i'm count %d\n", gg->count);
 	while (s[i])
 	{
 		
 		temp = i;
 		if ((s[i] == '"' || s[i] == '\'') && (gg->lock % 2 != 0))
 		{
-			printf("hooooooo\n");
+	//		printf("hooooooo\n");
 			gg->lock--;
 		//	i++;
 			continue ;
@@ -85,7 +85,7 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 		{
 			if (s[i] == '"' || s[i] == '\'')
 			{
-				printf("hiiiiiiiiiiii\n");
+	//			printf("hiiiiiiiiiiii\n");
 				gg->lock--;
 			//	printf("hii breakit\n");
 			//	break;
@@ -103,11 +103,11 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	}
 	t[count] = 0;
 	gg->count = count;
-	for (int i=0; t[i] != NULL ;i++)
-	{
-		// printf("line is `%s`\n", cmds->line[i]);
-		printf("-----> t is `%s`\n", t[i]);
-	}
+	// for (int i=0; t[i] != NULL ;i++)
+	// {
+	// 	// printf("line is `%s`\n", cmds->line[i]);
+	// 	printf("-----> t is `%s`\n", t[i]);
+	// }
 	return (t);
 }
 
