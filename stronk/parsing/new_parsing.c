@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 23:45:54 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:06:28 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	check_q(t_gg *gg, char *s)
 	i = 0;
 //	x = 0;
 	int	q = gg->qq;
-	printf("sss count %d\n", q);
+//	printf("sss count %d\n", q);
 	while (s[i] != '\0')
 	{
-		if (ft_strlen(s) == 1 && (s[i] == '>') && (s[i + 1] == '\0'))
+	/*	if (ft_strlen(s) == 1 && (s[i] == '>') && (s[i + 1] == '\0'))
 		{
 			
 			return (0);
@@ -49,8 +49,8 @@ int	check_q(t_gg *gg, char *s)
 			q--;
 	//		printf("+700 \n");
 		//	i++;
-		}
-		if ((s[i] == '"' || s[i] == '\'') && (q % 2 == 0) && (s[i + 1] != '\0'))
+		}*/
+		if ((s[i] == '"' || s[i] == '\'') /*&& (q % 2 == 0) && (s[i + 1] != '\0')*/)
 		{
 			printf("this count %d, i is %d\n", q, i);
 			return (0);
@@ -58,7 +58,7 @@ int	check_q(t_gg *gg, char *s)
 		i++;
 	}
 //	if (x == 2)
-	printf("+100 \n");
+//	printf("+100 \n");
 		return (1);
 //	return (0);
 }
@@ -82,44 +82,72 @@ void	parso(t_arg *arg, t_gg *gg)
 	temp = malloc(sizeof(char) * 9999);
 	while (dv != NULL)
 	{
-		printf("hi %s\n", dv->data);
-		if ((check_so(dv->data, '<') || check_so(dv->data, '>')  || check_so(dv->data, '|')) && check_q(gg, dv->data))
+		if (check_q(gg, dv->data))
 		{
-			printf("YO ONE IN HERE %s\n", dv->data);
-			temp = sosplit(dv->data);
-			if (x == ft_lstsize(arg) - 1)
-			{
-				printf("AKHITR W7DA\n");
-				lst_lastone(&arg, temp, x);
-			}
-			else
-			{
-				printf("MACHI AKHITR W7DA\n");
-				lst_between(&arg, temp, x);
-			}
-			printf("hppp\n");
-		/*	while (temp[i] != '\0')
-			{
-				// printf("line is `%s`\n", cmds->line[i]);
-				
-				node = ft_lstnew(temp[i]);
-				ft_lstadd_back(&arg, node);
-				printf("temp is `%s`\n", temp[i]);
-				i++;
-			}*/
-		/*	if (arg->data[0] == arg->data[1])
-			{
-				printf("HAADI FIHAA MOCHKIL %s\n", arg->data);
-				printf("Yo there'are two so in here\n");
-			}
-			else
-			{
-				printf("HAADI FIHAA MOCHKIL %s\n", arg->data);
-				printf("Yo there's a so in here\n");
-			}*/
 			
-		//	i++;
+			if ((check_so(dv->data, '<') || check_so(dv->data, '>')  || check_so(dv->data, '|')) &&
+				!(ft_strlen(dv->data) == 1 && (dv->data[i] == '>') && (dv->data[i + 1] == '\0'))/* && check_q(gg, dv->data)*/)
+			{
+				printf("YO ONE IN HERE %s\n", dv->data);
+				temp = sosplit(dv->data);
+				if (x == ft_lstsize(arg) - 1)
+				{
+					printf("AKHITR W7DA\n");
+					lst_lastone(&arg, temp, x);
+				}
+				else
+				{
+					printf("MACHI AKHITR W7DA\n");
+					lst_between(&arg, temp, x);
+					arg = arg->next;
+					arg = arg->next;
+					dv = dv->next;
+					arg->next = dv;
+				//	break;
+				//	dv = arg;
+					x++;
+				}
+				printf("hppp\n");
+			/*	while (temp[i] != '\0')
+				{
+					// printf("line is `%s`\n", cmds->line[i]);
+					
+					node = ft_lstnew(temp[i]);
+					ft_lstadd_back(&arg, node);
+					printf("temp is `%s`\n", temp[i]);
+					i++;
+				}*/
+			/*	if (arg->data[0] == arg->data[1])
+				{
+					printf("HAADI FIHAA MOCHKIL %s\n", arg->data);
+					printf("Yo there'are two so in here\n");
+				}
+				else
+				{
+					printf("HAADI FIHAA MOCHKIL %s\n", arg->data);
+					printf("Yo there's a so in here\n");
+				}*/
+				
+			//	i++;
+			}
+		/*	else
+			{
+				printf("YO ONE IN HERE %s\n", dv->data);
+				temp = sosplit(dv->data);
+				if (x == ft_lstsize(arg) - 1)
+				{
+					printf("AKHITR W7DA\n");
+					lst_lastone(&arg, temp, x);
+				}
+				else
+				{
+					printf("MACHI AKHITR W7DA\n");
+					lst_between(&arg, temp, x);
+				}
+				printf("hppp\n");
+			}*/
 		}
+		printf("hdata %s\n", dv->data);
 		x++;
 		dv = dv->next;
 	}

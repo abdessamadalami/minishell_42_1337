@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 23:00:25 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:36:05 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,49 +131,77 @@ void	lst_between(t_arg **arg, char **t, int x)
 	
 	i = 0;
 	t_arg	*node;
-	t_arg	**newlist;
+	t_arg	*newlist=NULL;
 
 
-	newlist = malloc(sizeof(t_arg));
-	node = malloc(sizeof(t_arg));
-	if (!node)
-		exit(1);
+	// newlist = malloc(sizeof(t_arg));
+	// node = malloc(sizeof(t_arg));
+	// if (!node)
+	// 	exit(1);
 //	node->next = (*arg)->next;
 	printf("x %d\n", x);
-	i = 0;
-	while (i < ft_strllen(t)-1)
-	{
-		node = ft_lstnew(t[i]);
-	//	printf("whyyy\n");
-		ft_lstadd_back(newlist, node);
-		printf("newww ma noode `%s`\n", (*newlist)->data);
-		(*newlist) = (*newlist)->next;
-		i++;
-	}
-	node = ft_lstnew(t[i]);
-	ft_lstadd_back(newlist, node);
-	printf("newlist size %d\n", ft_lstsize(*newlist));
-	i=0;
-	while (i < x)
-	{
-		printf("thats ma noode `%s`\n", (*arg)->data);
-		
-		*arg = (*arg)->next;
-		i++;
-	}
-//	printf()
-	*arg = (*arg)->next;
-	printf("malawana\n");
-	printf("newww ma noode `%s`\n", (*newlist)->data);
-	(*newlist)->next = (*arg);
 	
-	
-	i=0;
-	
-	printf("thats ma noode `%s`\n", (*arg)->data);
-	(*arg)->next = (*newlist);
+	////////////////////////////////// creating the new list //////////////////////////////////
 	i = 0;
 	printf("stlll %d\n", ft_strllen(t));
+//	t_arg *sultan;
+//	sultan = *arg;
+	while (t[i])
+	{
+//		printf("t[%d]: %s\n", i,t[i]);
+		node = ft_lstnew(t[i]);
+//		printf("noode `%s`\n", node->data);
+	//	printf("whyyy\n");
+		ft_lstadd_back(&newlist, node);
+	//	printf("newww newlist noode `%s`\n", (*newlist)->data);
+		// (*newlist) = (newlist)->next;
+		i++;
+	}
+//	printf("i %d", i);
+//	printf("newww newlist noode `%s`\n", newlist->data);
+//	sultan = newlist;
+//	printf("kkkk\n");
+	// node = ft_lstnew(t[i]);
+	// ft_lstadd_back(newlist, node);
+/*	while (newlist != NULL)
+	{
+		printf("newww newlist noode `%s`\n", newlist->data);
+		newlist = newlist->next;
+	}*/
+	// printf("newlist size %d\n", ft_lstsize(newlist));
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+	//////////////////////////////// counting till the node that contains tokens so i link it with the new one //////////////////////////////////
+	i=0;
+	while (i < x-1)
+	{
+		printf("i=%d x=%d\n", i, x);
+		printf("thats ma noode `%s`\n", (*arg)->data);
+		
+		i++;
+		
+		if (i+1 == x-1)
+			break;
+		*arg = (*arg)->next;
+		// i++;
+	}
+	printf("+i=%d +x=%d\n", i, x);
+//	*arg = (*arg)->next;
+//	printf("newww ma noode `%s`\n", (*newlist)->data);
+	printf("malawana\n");
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	printf("malawana noode `%s`\n", (*arg)->data);
+//	(newlist)->next = (*arg);
+	
+	printf("HANYA NTI\n");
+	i=0;
+	
+//	printf("thats ma noode `%s`\n", (*arg)->data);
+	(*arg)->next = (newlist);
+	i = 0;
+//	printf("stlll %d\n", ft_strllen(t));
 	for (int i=0;i<ft_strllen(t);i++)
 		printf("t[%d]: %s\n", i, t[i]);
 /*	(*arg)->next = node;

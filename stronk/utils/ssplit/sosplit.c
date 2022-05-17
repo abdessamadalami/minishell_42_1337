@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/16 23:21:34 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:10:28 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ static char	**chek_and_fill(char **t, char *s)
 //	printf("tttttt after-%d-\n", count);
 	count++;
 	t[count] = 0;
-//	for (int i=0;i<count;i++)
-//		printf("t/ %s\n", t[i]);
+	// for (int i=0;i<count;i++)
+	// 	printf("t/ %s\n", t[i]);
 	return (t);
 }
 
