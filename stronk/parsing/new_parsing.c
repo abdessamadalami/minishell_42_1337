@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/17 17:06:28 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:31:00 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	parso(t_arg *arg, t_gg *gg)
 	t_arg	*node;
 	int i;
 	int	x;
+	int	r;
 
 	i = 0;
 	x = 0;
@@ -99,8 +100,14 @@ void	parso(t_arg *arg, t_gg *gg)
 				{
 					printf("MACHI AKHITR W7DA\n");
 					lst_between(&arg, temp, x);
-					arg = arg->next;
-					arg = arg->next;
+					
+					r = ft_strllen(temp);
+					while (r>0)
+					{
+						arg = arg->next;
+						r--;
+					}
+				//	arg = arg->next;
 					dv = dv->next;
 					arg->next = dv;
 				//	break;

@@ -72,6 +72,7 @@ char	**sosplit(char *s);
 //char	**qsplit(t_cmd *cmds, char *s);
 char	*ft_strdup(char *s1);
 int		ft_strlen(const char *s);
+int		ft_strllen(char **s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char	*s, int start, int len);
 int		check_isvalid(t_arg *cmds/*char **path, char **cmd*/);
