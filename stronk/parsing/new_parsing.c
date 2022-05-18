@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/17 18:42:22 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:32:18 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	parso(t_arg *arg, t_gg *gg)
 					
 					r = ft_strllen(temp);
 					
-					if (x != 0)
+				/*	if (x != 0)
 					{
 						while (r>0)
 						{
@@ -117,11 +117,11 @@ void	parso(t_arg *arg, t_gg *gg)
 					//	arg = arg->next;
 						dv = dv->next;
 					}
-					
+				*/
 					
 				//	arg = arg->next;
-					
-					arg->next = dv;
+					dv = dv->next;
+		//			arg->next = dv;
 				//	break;
 				//	dv = arg;
 					x++;

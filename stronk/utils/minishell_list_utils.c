@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/17 16:36:05 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:35:08 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,14 +132,56 @@ void	lst_between(t_arg **arg, char **t, int x)
 	i = 0;
 	t_arg	*node;
 	t_arg	*newlist=NULL;
+	t_arg	*cp;
+	t_arg	*chyata=NULL;
 
 
+	int initialsize = ft_lstsize(*arg);
 	// newlist = malloc(sizeof(t_arg));
 	// node = malloc(sizeof(t_arg));
 	// if (!node)
 	// 	exit(1);
 //	node->next = (*arg)->next;
+		///////////////////////////////////////////////////////// chyata time /////////////////////////////////////////////////////////
+	cp = *arg;
+	printf("initial size %d\n", initialsize-x);
 	printf("x %d\n", x);
+	i =0;
+	while (i < (initialsize-x))
+	{
+		cp = cp->next;
+		i++;
+	}
+	printf("-i %d\n", i);
+//	printf("ssiizzee %d\n", ft_lstsize());
+	i=0;
+	
+	while (i < (initialsize-x-1))
+	{
+//		printf("chyata %s\n", cp->data);
+		node = ft_lstnew(cp->data);
+		ft_lstadd_back(&chyata, node);
+//		printf("lst dyal chyata 9bl %d\n", ft_lstsize(chyata));
+		cp = cp->next;
+		i++;
+	}
+	printf("lst dyal chyata %d\n", ft_lstsize(chyata));
+/*	while (chyata != NULL)
+	{
+		printf("chyatayyy `%s`\n", chyata->data);
+		chyata = chyata->next;
+	}*/
+	
+	
+	
+	
+	printf("i %d\n", i);
+	printf("x %d\n", x);
+	
+
+
+
+
 	
 	////////////////////////////////// creating the new list //////////////////////////////////
 	i = 0;
@@ -150,13 +192,44 @@ void	lst_between(t_arg **arg, char **t, int x)
 	{
 //		printf("t[%d]: %s\n", i,t[i]);
 		node = ft_lstnew(t[i]);
-//		printf("noode `%s`\n", node->data);
+	//	printf("noode `%s`\n", node->data);
 	//	printf("whyyy\n");
 		ft_lstadd_back(&newlist, node);
 	//	printf("newww newlist noode `%s`\n", (*newlist)->data);
 		// (*newlist) = (newlist)->next;
 		i++;
 	}
+	
+	
+	
+	i = 0;
+	while (i < 2)
+	{
+//		printf("chyata `%s`\n", chyata->data);
+		node = ft_lstnew(chyata->data);
+		ft_lstadd_back(&newlist, node);
+		chyata = chyata->next;
+		i++;
+	}
+	while (newlist != NULL)
+	{
+		printf("final `%s`\n", newlist->data);
+		newlist = newlist->next;
+	}
+//	(*arg)->next = newlist;
+
+
+//	arg = &newlist;
+//	printf("size lkherr %d\n", ft_lstsize(newlist));
+//	arg = new
+//printf("newww newlist noode `%s`\n", newlist->data);
+/*	while (newlist != NULL)
+	{
+		printf("newww newlist noode `%s`\n", newlist->data);
+		newlist = newlist->next;
+	}*/
+//	printf("newlista `%s`\n", newlist->data);
+//	newlist->next = chyata;
 //	printf("i %d", i);
 //	printf("newww newlist noode `%s`\n", newlist->data);
 //	sultan = newlist;
@@ -173,7 +246,7 @@ void	lst_between(t_arg **arg, char **t, int x)
 	
 
 	//////////////////////////////// counting till the node that contains tokens so i link it with the new one //////////////////////////////////
-	i=0;
+/*	i=0;
 	while (i < x-1)
 	{
 		printf("i=%d x=%d\n", i, x);
@@ -200,11 +273,21 @@ void	lst_between(t_arg **arg, char **t, int x)
 	
 //	printf("thats ma noode `%s`\n", (*arg)->data);
 	(*arg)->next = (newlist);
+//	(*arg) = (*arg)->next;
+//	(*arg)->next = (chyata);
+//	(*arg) = (*arg)->next;
 	i = 0;
 //	printf("stlll %d\n", ft_strllen(t));
+
+
+
+
+
+
+	
 	for (int i=0;i<ft_strllen(t);i++)
 		printf("t[%d]: %s\n", i, t[i]);
-/*	(*arg)->next = node;
+	(*arg)->next = node;
 	(*arg)->next = (*arg);
 	node->next;*/
 	
