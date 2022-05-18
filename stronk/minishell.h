@@ -87,7 +87,7 @@ void	lst_lastone(t_arg **arg, char **t, int x);
 void	lst_between(t_arg **arg, char **t, int x);
 
 // ---------------- parsing ------------------//
-int		ft_new_parsing(char *s);
+t_arg		*ft_new_parsing(char *s);
 
 
 // --------------- commands -----------------//

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/17 17:31:00 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/17 18:42:22 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,25 @@ void	parso(t_arg *arg, t_gg *gg)
 					lst_between(&arg, temp, x);
 					
 					r = ft_strllen(temp);
-					while (r>0)
+					
+					if (x != 0)
 					{
-						arg = arg->next;
-						r--;
+						while (r>0)
+						{
+							arg = arg->next;
+							r--;
+						}
+						dv = dv->next;
 					}
+					else
+					{
+					//	arg = arg->next;
+						dv = dv->next;
+					}
+					
+					
 				//	arg = arg->next;
-					dv = dv->next;
+					
 					arg->next = dv;
 				//	break;
 				//	dv = arg;
@@ -160,7 +172,7 @@ void	parso(t_arg *arg, t_gg *gg)
 	}
 }
 
-int	ft_new_parsing(char *s)
+t_arg	*ft_new_parsing(char *s)
 {
 	t_arg	*arg;
 	t_arg	*node;
@@ -276,5 +288,6 @@ int	ft_new_parsing(char *s)
 	// 	printf("line is `%s`\n", line[i]);
 	// }
 
-	return (1);
+	return (arg);
+//	return (1);
 }

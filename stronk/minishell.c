@@ -35,8 +35,9 @@ int main(int ac, char **av)
 	{
 		while ((s = readline("$>prompt ")) != 0)
 		{
-			if (!ft_new_parsing(s))
-				return (0);
+			ft_new_parsing(s);
+		//	if (!ft_new_parsing(s))
+		//		return (0);
 			// printf("$%s$\n", s);
 			// if (ft_arg(s,"echo"))
 			// {
