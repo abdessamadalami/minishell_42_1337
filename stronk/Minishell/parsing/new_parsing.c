@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/19 12:17:23 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/19 22:29:09 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 	int i;
 	int	x;
 	int	r;
+	int	sz;
 
 	i = 0;
 	x = 0;
+	sz = ft_lstsize(arg);
 	dv = malloc(sizeof(t_arg));
 	node = malloc(sizeof(t_arg));
 	if (!node || !dv)
@@ -91,10 +93,11 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 			{
 				printf("YO ONE IN HERE %s\n", dv->data);
 				temp = sosplit(dv->data);
-				if (x == ft_lstsize(arg) - 1)
+				if (/*x == ft_lstsize(arg) - 1*/dv->next == NULL)
 				{
 					printf("AKHITR W7DA\n");
-					arg = lst_lastone(&arg, temp, x);
+					arg = akhirw7da(&arg, temp, x);
+			//		arg = lst_lastone(&arg, temp, x);
 					
 					dv = arg;
 				/*	while (dv != NULL)
@@ -107,34 +110,51 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 				else
 				{
 					printf("MACHI AKHITR W7DA\n");
-					lst_between(&arg, temp, x);
-					
+					arg = machi_akhirw7da(&arg, temp, x);
+				//	lst_between(&arg, temp, x);
+					dv = arg;
 					r = ft_strllen(temp);
 					
-				/*	if (x != 0)
+					if (x != 0)
 					{
 						while (r>0)
 						{
-							arg = arg->next;
+							dv = dv->next;
 							r--;
 						}
 						dv = dv->next;
 					}
-					else
+				/*	else
 					{
 					//	arg = arg->next;
 						dv = dv->next;
 					}
 				*/
+				/*	while (arg != NULL)
+					{
+						printf("lst data bisalaam arg %s\n", arg->data);
+						arg = arg->next;
+					}*/
+				//	dv = dv->next;
 					
-				//	arg = arg->next;
-					dv = dv->next;
+
+				//	arg->next = dv;
+			/*		while (dv != NULL)
+					{
+						printf("lst data bisalaam dv %s\n", dv->data);
+						dv = dv->next;
+					}*/
+				//	dv = arg;
+//					dv = dv->next;
+
+
+
 		//			arg->next = dv;
 				//	break;
 				//	dv = arg;
 					x++;
 				}
-				printf("hppp\n");
+		//		printf("hppp\n");
 			/*	while (temp[i] != '\0')
 				{
 					// printf("line is `%s`\n", cmds->line[i]);
@@ -174,7 +194,7 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 				printf("hppp\n");
 			}*/
 		}
-		printf("hdata %s\n", dv->data);
+		printf("hdata dv %s\n", dv->data);
 		x++;
 		if (!dv)
 			break;
@@ -224,7 +244,7 @@ t_arg	*ft_new_parsing(char *s)
 	// 	// printf("line is `%s`\n", cmds->line[i]);
 	// 	printf("line is `%s`\n", line[i]);
 	// }
-	printf("arg_count %d\n", gg->count);
+//	printf("arg_count %d\n", gg->count);
 
 	int	i=0;
 
@@ -242,8 +262,8 @@ t_arg	*ft_new_parsing(char *s)
 	//	free(vv);
 		i++;
 	}
-	printf("hiiii  %d\n", i);
-	printf("lstsize %d\n", ft_lstsize(arg));
+///	printf("hiiii  %d\n", i);
+//	printf("lstsize %d\n", ft_lstsize(arg));
 	i=0;
 /*	while (arg != NULL)
 	{

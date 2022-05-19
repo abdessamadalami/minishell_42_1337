@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/19 13:55:09 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:08:13 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static char	**chek_and_fill(char **t, char *s)
 			
 			t[count] = ft_substr(s, temp, i - temp);
 			
-			printf("tttttt-%s-\n", t[count]);
+	//		printf("tttttt-%s-\n", t[count]);
 			//	i++;
 			count++;
 			
@@ -120,13 +120,13 @@ static char	**chek_and_fill(char **t, char *s)
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-		printf("tttttt-%s-\n", t[count]);
+	//	printf("tttttt-%s-\n", t[count]);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
 		count++;
 	}
-	printf("tttttt after-%d-\n", count);
-	printf("tttttt strllona-%d-\n", ft_strllen(t));
+//	printf("tttttt after-%d-\n", count);
+//	printf("tttttt strllona-%d-\n", ft_strllen(t));
 //	if (ft_strllen(t) > 2)
 //		count++;
 	count++;

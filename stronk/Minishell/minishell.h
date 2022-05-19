@@ -84,7 +84,9 @@ t_arg	*ft_lstlast(t_arg *lst);
 void	ft_lstadd_front(t_arg **lst, t_arg *new);
 void	ft_lstadd_back(t_arg **lst, t_arg *new);
 t_arg	*lst_lastone(t_arg **arg, char **t, int x);
-void	lst_between(t_arg **arg, char **t, int x);
+t_arg	*lst_between(t_arg **arg, char **t, int x);
+t_arg	*akhirw7da(t_arg **arg, char **t, int x);
+t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x);
 
 // ---------------- parsing ------------------//
 t_arg		*ft_new_parsing(char *s);
