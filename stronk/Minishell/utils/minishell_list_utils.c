@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/19 11:58:02 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:39:25 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,30 @@ t_arg	*lst_lastone(t_arg **arg, char **t, int x)
 	t_arg	*node;
 	t_arg	*newlist;
 
-	newlist = (*arg)->next;
+	newlist = (*arg);
+	if (!x)
+	{
+		newlist = (*arg)->next;
+	/*	while (i < x-1)
+		{
+	//		printf("whotaaa %d\n", i);
+			
+			newlist = newlist->next;
+			i++;
+		}*/
+	}
+		
+	else
+	{
+		newlist = (*arg);
+	/*	while (i < x-1)
+		{
+	//		printf("whotaaa %d\n", i);
+			
+			newlist = newlist->next;
+			i++;
+		}*/
+	}
 	node = malloc(sizeof(t_arg));
 	if (!node)
 		exit(1);
@@ -106,7 +129,8 @@ t_arg	*lst_lastone(t_arg **arg, char **t, int x)
 	}
 	
 //	printf("thats ma noode `%s`\n", newlist->data);
-//	newlist->next = NULL;
+	if (x)
+		newlist->next = NULL;
 	i = 0;
 	printf("hhhhyy\n");
 	printf("stlll %d\n", ft_strllen(t));

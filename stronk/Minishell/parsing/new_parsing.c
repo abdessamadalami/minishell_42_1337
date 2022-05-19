@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/19 12:09:35 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:17:23 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 				printf("hppp\n");
 			}*/
 		}
-//		printf("hdata %s\n", dv->data);
+		printf("hdata %s\n", dv->data);
 		x++;
 		if (!dv)
 			break;
