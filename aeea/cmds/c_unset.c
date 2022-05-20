@@ -6,12 +6,12 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 07:22:59 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/16 17:22:23 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:09:47 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include"minishell.h"
+#include"../excuting_headr.h"
 
 // unset for delet var in env variables
 // export for inssrt a local var to environment

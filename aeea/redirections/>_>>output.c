@@ -6,11 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:08:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/12 13:09:47 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:09:47 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../excuting_headr.h"
 
 void redirect_output(char *std_out, char c)
 {

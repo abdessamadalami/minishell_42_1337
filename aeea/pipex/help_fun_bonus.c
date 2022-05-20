@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 15:00:26 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/03/25 08:04:04 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/19 08:44:45 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_path(char **env, char *cmd)
 			ptr = 0;
 		}
 		else
-			break ;
+			break;
 		i++;
 	}
 	free_function(str1);

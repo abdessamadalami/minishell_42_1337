@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:17:01 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/04/26 20:39:58 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/19 11:11:29 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	process_ing(char **argc, char **env, int file, int argv)
 	fd_c.argc = argv;
 	if (ft_strncmp(argc[1], "here_doc", 9) == 0)
 		i = i + 1;
-	while (i < argv - 1)
+	while (i <= argv - 1)
 	{
 		pipe(fd);
 		id2 = fork();
@@ -87,7 +87,7 @@ void	pipex_42(int argv, char **argc, char **env, int file)
 {
 	int	i;
 
-	i = 2;
+	i = 1;
 	if (ft_strncmp(argc[1], "here_doc", 9) != 0 && access(argc[1], R_OK))
 		perror(argc[1]);
 	if (ft_strncmp(argc[1], "here_doc", 9) != 0)

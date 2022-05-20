@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools_fun.c                                        :+:      :+:    :+:   */
+/*   errors_d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/16 18:12:31 by ael-oual         ###   ########.fr       */
+/*   Created: 2022/05/19 11:25:23 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/19 11:41:45 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void del(void *ptr)
+#include "excuting_headr.h"
+void error_printf(int a , char *cmd)
 {
-	 free(ptr);
-}
-
-void *f(void *ptr)
-{
-	return(ptr);
-}
-
-void print_list(t_list *list,int a)//s= 0 || s=1 print wirh order
-{
-    while(list != NULL)
+    if (a == 127 && ft_strchr(cmd , 47) == NULL)
     {
-        if(ft_strchr(list -> content,'=') && a == 0)
-            printf("%s\n", list->content);
-        else
-            printf("%s \n", list->content);
-        list = list->next;
+        ft_putstr_fd(cmd, 2);
+        ft_putstr_fd(": command not found\n", 2);     
     }
-    printf("\n");
+    else if (a == 127 && ft_strchr(cmd , 47))
+    {
+        ft_putstr_fd(cmd, 2);
+        ft_putstr_fd(": No such file or directory\n", 2);
+    }
+    
 }

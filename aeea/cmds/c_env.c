@@ -6,11 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 12:53:11 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/16 13:20:18 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:09:47 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../excuting_headr.h"
 
 t_list *env_list(char **env)
 {

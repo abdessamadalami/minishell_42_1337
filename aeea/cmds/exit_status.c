@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   exit_status.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 18:52:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/10 19:14:11 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/05/19 08:26:32 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/19 11:18:29 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-
-void	ft_pwd(void)
-{
-	char	*s;
-
-	s = malloc(sizeof(char));
-	printf("%s\n", getcwd(s, 1000));
-}
-
-int main()
-{
-	ft_pwd();
-}
+#include "../excuting_headr.h"
+// void exit_status()
+// {
+//     printf(" %d:command not found\n", *exit_s);
+//     exit(1);  
+// }

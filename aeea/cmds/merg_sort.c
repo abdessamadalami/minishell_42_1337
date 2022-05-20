@@ -6,11 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:54:03 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/16 17:51:59 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:09:47 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../excuting_headr.h"
 
 void print_list_x(t_list *a) {
    

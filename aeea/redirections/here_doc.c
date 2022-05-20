@@ -6,20 +6,20 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/12 13:07:04 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:30:05 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../excuting_headr.h"
 // read from  here_doc to fd (we can choise between write to pipe or file or terminal) here is to pipe
-void	here_doc(char **argc)
+void	here_doc(char *lim)
 {
 	char	*line;
 	char	*limtter;
 	int		pi_pe[2];
 
 	pipe(pi_pe);
-	limtter = ft_strjoin(argc[0], "\n");
+	limtter = ft_strjoin(lim, "\n");
 	printf("%s\n", limtter);
 	while (1)
 	{

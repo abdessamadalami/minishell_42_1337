@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 07:56:01 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/10 06:31:59 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/19 11:19:45 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	here_doc_function(int argv, char **argc, char **env)
 
 // 	i = 0;
 // 	file = 0;
-// 	if (argv < 5 || (ft_strncmp(argc[1], "here_doc", 9) == 0 && argv < 6))
+// 	if ((ft_strncmp(argc[1], "here_doc", 9) == 0 && argv < 6))
 // 	{
 // 		write(1, "Error\n", 6);
 // 		exit(0);
