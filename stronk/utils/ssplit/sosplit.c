@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 16:15:17 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/21 17:14:09 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ static int	set_count(char *s, char c)
 	{
 	//	if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
 	//		gg->lock++;
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
+		if (s[i] == c && s[i + 1] != '\0')
+		{
+			if (s[i + 1] == c)
+				i++;
 			count++;
+		}
 		i++;
 	}
-//	printf("count %d\n", count);
+	printf("count %d\n", count);
 //	if (gg->lock % 2 != 0)
 //		return (-1);
 	return (count+1);
@@ -49,7 +53,7 @@ static char	**ft_del(char **t, int count)
 	free(t);
 	return (NULL);
 }
-
+/*
 char	*ft_add(char *s, char c)
 {
 	char	*t;
@@ -69,7 +73,7 @@ char	*ft_add(char *s, char c)
 	t[i] = '\0';
 	return (t);
 }
-
+*/
 static char	**chek_and_fill(char **t, char *s, char c)
 {
 	int	i;
@@ -79,12 +83,14 @@ static char	**chek_and_fill(char **t, char *s, char c)
 	i = 0;
 	count = 0;
 	
-	while (s[i])
+	while (s[i] != '\0')
 	{
 		
 		temp = i;
-		if (s[i] == c)
+		if (s[i] == c )
 		{
+			if (s[i + 1] == c)
+				i++;
 			i++;
 			
 	//		printf("cccc-%c-\n", s[i]);
@@ -120,7 +126,7 @@ static char	**chek_and_fill(char **t, char *s, char c)
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-	//	printf("tttttt-%s-\n", t[count]);
+//		printf("tttttt-%s-\n", t[count]);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
 		count++;

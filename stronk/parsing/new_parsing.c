@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 16:19:17 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/21 17:31:25 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 			if ((check_so(dv->data, '<') || check_so(dv->data, '>')  || check_so(dv->data, '|')) &&
 				!(ft_strlen(dv->data) == 1 && (dv->data[i] == '>' || dv->data[i] == '<' || dv->data[i] == '|') && (dv->data[i + 1] == '\0'))/* && check_q(gg, dv->data)*/)
 			{
+				if (!(ft_strlen(dv->data) == 2 && (dv->data[i+1] == '>' || dv->data[i+1] == '<' || dv->data[i+1] == '|') && (dv->data[i + 2] == '\0')))
+				{
+					
 				printf("YO ONE IN HERE %s\n", dv->data);
 				c = get_token(dv->data);
 				temp = sosplit(dv->data, c);
@@ -198,6 +201,7 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 				}*/
 				
 			//	i++;
+				}
 			}
 		/*	else
 			{
