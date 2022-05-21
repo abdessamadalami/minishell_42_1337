@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sosplit.c                                          :+:      :+:    :+:   */
+/*   qsplit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 17:36:46 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/05/14 15:21:21 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/05/21 20:19:47 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ static char	**chek_and_fill(char **t, char *s, char c)
 	return (t);
 }
 
-char	**sosplit(char *s, char c)
+char	**qusplit(char *s, char c)
 {
 	char	**t;
 	int		count;

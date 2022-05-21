@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 17:31:25 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/21 21:42:12 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,14 @@ int	check_so(char *s1, char c)
 	return (0);
 }
 
-int	check_q(t_gg *gg, char *s)
+int	check_q(char *s)
 {
 	int	i;
 //	int	x;
 
 	i = 0;
 //	x = 0;
-	int	q = gg->qq;
 
-	q = 1;
 //	printf("sss count %d\n", q);
 	while (s[i] != '\0')
 	{
@@ -79,7 +77,42 @@ char	get_token(char *s)
 	return (0);
 }
 
-t_arg	*parso(t_arg *arg, t_gg *gg)
+char	get_qtoken(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '"' || s[i] == '\'')
+			return (s[i]);
+		i++;
+	}
+	return (0);
+}
+
+t_arg	*ft_vv(t_arg *vv)
+{
+	int	x=0;
+	char **temp;
+	t_arg *new;
+	temp = malloc(sizeof(char) * 9999);
+	char	c;
+	while (vv != NULL)
+	{
+		if (!check_q(vv->data))
+		{
+			c = get_qtoken(vv->data);
+			temp = ft_split(vv->data, c);
+			new = machi_akhirw7da(&vv, temp, x);
+		}
+		x++;
+		vv = vv->next;
+	}
+	return (new);
+}
+
+t_arg	*parso(t_arg *arg)
 {
 	char	**temp;
 	t_arg	*dv;
@@ -104,7 +137,7 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 	temp = malloc(sizeof(char) * 9999);
 	while (dv != NULL)
 	{
-		if (check_q(gg, dv->data))
+		if (check_q(dv->data))
 		{
 			
 			if ((check_so(dv->data, '<') || check_so(dv->data, '>')  || check_so(dv->data, '|')) &&
@@ -135,9 +168,12 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 					printf("MACHI AKHITR W7DA\n");
 					arg = machi_akhirw7da(&arg, temp, x);
 				//	lst_between(&arg, temp, x);
-					dv = arg;
+					
 					r = ft_strllen(temp);
 					v ++;
+				//	t_arg *vv = arg;
+					
+					dv = arg;
 				/*	if (x != 0)
 					{
 						while (r>0)
@@ -220,6 +256,96 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 				printf("hppp\n");
 			}*/
 		}
+
+
+
+		////////////// lkhdma hna //////////////////
+		if (!check_q(dv->data))
+		{
+			printf("hi\n");
+			c = get_qtoken(dv->data);
+			temp = ft_split(dv->data, c);
+			arg = machi_akhirw7da(&arg, temp, x);
+			arg = arg->next;
+			dv = arg;
+		}
+		///////////////////////////////////////////
+		printf("hdata dv %s\n", dv->data);
+		x++;
+	//	v++;
+		if (!dv)
+			break;
+		dv = dv->next;
+	}
+//	arg = dv;
+	printf("size dv %d\n", ft_lstsize(arg));
+	return (arg);
+}
+
+t_arg	*parsqu(t_arg *arg)
+{
+	char	**temp;
+	t_arg	*dv;
+	t_arg	*node;
+	int i;
+	int	x;
+	int	r;
+	int	sz;
+	int	v;
+	char	c;
+
+	i = 0;
+	x = 0;
+	v = 0;
+	sz = ft_lstsize(arg);
+	dv = malloc(sizeof(t_arg));
+	node = malloc(sizeof(t_arg));
+	if (!node || !dv)
+		exit(1);
+//		return (NULL);
+	dv = arg;
+	temp = malloc(sizeof(char) * 9999);
+	while (dv != NULL)
+	{
+		if (!check_q(dv->data))
+		{
+			
+			if ((check_so(dv->data, '"') || check_so(dv->data, '\''))/* && check_q(gg, dv->data)*/)
+			{
+			// 	if (!(ft_strlen(dv->data) == 2 && (dv->data[i+1] == '>' || dv->data[i+1] == '<' || dv->data[i+1] == '|') && (dv->data[i + 2] == '\0')))
+			// 	{
+					
+				printf("YO ONE IN HERE %s\n", dv->data);
+				c = get_qtoken(dv->data);
+				temp = ft_split(dv->data, c);
+				printf("temp %s\n", temp[1]);
+				if (/*x == ft_lstsize(arg) - 1*/dv->next == NULL)
+				{
+					printf("AKHITR W7DA\n");
+					arg = akhirw7da(&arg, temp, x);
+			//		arg = lst_lastone(&arg, temp, x);
+					x=0;
+					dv = arg;
+				/*	while (dv != NULL)
+					{
+						printf("lst data bisalaam dv %s\n", dv->data);
+						dv = dv->next;
+					}*/
+				//	dv = dv->next;
+				}
+				else
+				{
+					printf("MACHI AKHITR W7DA\n");
+					arg = machi_akhirw7da(&arg, temp, x);
+				//	lst_between(&arg, temp, x);
+					dv = arg;
+					r = ft_strllen(temp);
+					v ++;
+					x =0;
+				}
+			//	}
+			}
+		 }
 		printf("hdata dv %s\n", dv->data);
 		x++;
 	//	v++;
@@ -323,7 +449,10 @@ t_arg	*ft_new_parsing(char *s)
 //	parse_so(arg);
 	//////////////////////////
 	t_arg *mr;
-	mr = parso(arg, gg);
+	mr = parso(arg);
+	//////////////////////////
+//	mr = parsqu(mr);
+//	mr = parso(mr);
 	//////////////////////////
 	i=0;
 	
