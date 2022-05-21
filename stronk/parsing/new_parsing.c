@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/18 22:32:18 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:56:07 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	check_q(t_gg *gg, char *s)
 	i = 0;
 //	x = 0;
 	int	q = gg->qq;
+
+	q = 1;
 //	printf("sss count %d\n", q);
 	while (s[i] != '\0')
 	{
@@ -52,7 +54,7 @@ int	check_q(t_gg *gg, char *s)
 		}*/
 		if ((s[i] == '"' || s[i] == '\'') /*&& (q % 2 == 0) && (s[i + 1] != '\0')*/)
 		{
-			printf("this count %d, i is %d\n", q, i);
+	//		printf("this count %d, i is %d\n", q, i);
 			return (0);
 		}
 		i++;
@@ -63,7 +65,7 @@ int	check_q(t_gg *gg, char *s)
 //	return (0);
 }
 
-void	parso(t_arg *arg, t_gg *gg)
+t_arg	*parso(t_arg *arg, t_gg *gg)
 {
 	char	**temp;
 	t_arg	*dv;
@@ -71,9 +73,13 @@ void	parso(t_arg *arg, t_gg *gg)
 	int i;
 	int	x;
 	int	r;
+	int	sz;
+	int	v;
 
 	i = 0;
 	x = 0;
+	v = 0;
+	sz = ft_lstsize(arg);
 	dv = malloc(sizeof(t_arg));
 	node = malloc(sizeof(t_arg));
 	if (!node || !dv)
@@ -91,42 +97,70 @@ void	parso(t_arg *arg, t_gg *gg)
 			{
 				printf("YO ONE IN HERE %s\n", dv->data);
 				temp = sosplit(dv->data);
-				if (x == ft_lstsize(arg) - 1)
+				if (/*x == ft_lstsize(arg) - 1*/dv->next == NULL)
 				{
 					printf("AKHITR W7DA\n");
-					lst_lastone(&arg, temp, x);
+					arg = akhirw7da(&arg, temp, x);
+			//		arg = lst_lastone(&arg, temp, x);
+					
+					dv = arg;
+				/*	while (dv != NULL)
+					{
+						printf("lst data bisalaam dv %s\n", dv->data);
+						dv = dv->next;
+					}*/
+				//	dv = dv->next;
 				}
 				else
 				{
 					printf("MACHI AKHITR W7DA\n");
-					lst_between(&arg, temp, x);
-					
+					arg = machi_akhirw7da(&arg, temp, x);
+				//	lst_between(&arg, temp, x);
+					dv = arg;
 					r = ft_strllen(temp);
-					
+					v ++;
 				/*	if (x != 0)
 					{
 						while (r>0)
 						{
-							arg = arg->next;
+							dv = dv->next;
 							r--;
 						}
 						dv = dv->next;
-					}
-					else
+						printf("machi hdata dv %s\n", dv->data);
+					}*/
+				/*	else
 					{
 					//	arg = arg->next;
 						dv = dv->next;
 					}
 				*/
+				/*	while (arg != NULL)
+					{
+						printf("lst data bisalaam arg %s\n", arg->data);
+						arg = arg->next;
+					}*/
+				//	dv = dv->next;
 					
-				//	arg = arg->next;
-					dv = dv->next;
+
+				//	arg->next = dv;
+			/*		while (dv != NULL)
+					{
+						printf("lst data bisalaam dv %s\n", dv->data);
+						dv = dv->next;
+					}*/
+				//	dv = arg;
+//					dv = dv->next;
+
+
+
 		//			arg->next = dv;
 				//	break;
 				//	dv = arg;
-					x++;
+				//	printf("r-1 %d\n", x+r);
+					x =0;
 				}
-				printf("hppp\n");
+		//		printf("hppp\n");
 			/*	while (temp[i] != '\0')
 				{
 					// printf("line is `%s`\n", cmds->line[i]);
@@ -166,10 +200,16 @@ void	parso(t_arg *arg, t_gg *gg)
 				printf("hppp\n");
 			}*/
 		}
-		printf("hdata %s\n", dv->data);
+		printf("hdata dv %s\n", dv->data);
 		x++;
+	//	v++;
+		if (!dv)
+			break;
 		dv = dv->next;
 	}
+//	arg = dv;
+	printf("size dv %d\n", ft_lstsize(arg));
+	return (arg);
 }
 
 t_arg	*ft_new_parsing(char *s)
@@ -211,7 +251,7 @@ t_arg	*ft_new_parsing(char *s)
 	// 	// printf("line is `%s`\n", cmds->line[i]);
 	// 	printf("line is `%s`\n", line[i]);
 	// }
-	printf("arg_count %d\n", gg->count);
+//	printf("arg_count %d\n", gg->count);
 
 	int	i=0;
 
@@ -229,8 +269,8 @@ t_arg	*ft_new_parsing(char *s)
 	//	free(vv);
 		i++;
 	}
-	printf("hiiii  %d\n", i);
-	printf("lstsize %d\n", ft_lstsize(arg));
+///	printf("hiiii  %d\n", i);
+//	printf("lstsize %d\n", ft_lstsize(arg));
 	i=0;
 /*	while (arg != NULL)
 	{
@@ -262,14 +302,15 @@ t_arg	*ft_new_parsing(char *s)
 	
 //	parse_so(arg);
 	//////////////////////////
-	parso(arg, gg);
+	t_arg *mr;
+	mr = parso(arg, gg);
 	//////////////////////////
 	i=0;
 	
-	while (arg != NULL)
+	while (mr != NULL)
 	{
-		printf("--[%s\n", arg->data);
-		arg = arg->next;
+		printf("--[%s\n", mr->data);
+		mr = mr->next;
 	}
 	printf("everything good\n");
 	
