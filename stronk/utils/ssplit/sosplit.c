@@ -6,27 +6,27 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 15:26:01 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:15:17 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static int	set_count(char *s)
+static int	set_count(char *s, char c)
 {
 	int	i;
 	int	count;
 
 	count = 0;
 	i = 0;
-	while (s[i] == '>')
+	while (s[i] == c)
 		i++;
 	count++;
 	while (s[i])
 	{
 	//	if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
 	//		gg->lock++;
-		if (s[i] == '>' && s[i + 1] != '>' && s[i + 1] != '\0')
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
 			count++;
 		i++;
 	}
@@ -70,7 +70,7 @@ char	*ft_add(char *s, char c)
 	return (t);
 }
 
-static char	**chek_and_fill(char **t, char *s)
+static char	**chek_and_fill(char **t, char *s, char c)
 {
 	int	i;
 	int	count;
@@ -83,7 +83,7 @@ static char	**chek_and_fill(char **t, char *s)
 	{
 		
 		temp = i;
-		if (s[i] == '>')
+		if (s[i] == c)
 		{
 			i++;
 			
@@ -110,7 +110,7 @@ static char	**chek_and_fill(char **t, char *s)
 			continue ;
 		}
 		// printf("lock %d\n", cmds->lock);
-		while (s[i] != '>' && s[i])
+		while (s[i] != c && s[i])
 		{
 		//	if (s[i] == '"' || s[i] == '\'')
 		//		break;
@@ -136,14 +136,14 @@ static char	**chek_and_fill(char **t, char *s)
 	return (t);
 }
 
-char	**sosplit(char *s)
+char	**sosplit(char *s, char c)
 {
 	char	**t;
 	int		count;
 
 	if (s == 0)
 		return (0);
-	count = set_count(s);
+	count = set_count(s, c);
 	if (count < 0)
 	{
 		// return (NULL);
@@ -153,5 +153,5 @@ char	**sosplit(char *s)
 	t = (char **)malloc(sizeof(char *) * 9999/*(count + 1)*/);
 	if (t == NULL)
 		return (0);
-	return (chek_and_fill(t, s));
+	return (chek_and_fill(t, s, c));
 }

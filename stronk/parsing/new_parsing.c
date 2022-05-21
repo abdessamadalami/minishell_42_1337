@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 15:56:07 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:19:17 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,20 @@ int	check_q(t_gg *gg, char *s)
 //	return (0);
 }
 
+char	get_token(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '>' || s[i] == '<' || s[i] == '|')
+			return (s[i]);
+		i++;
+	}
+	return (0);
+}
+
 t_arg	*parso(t_arg *arg, t_gg *gg)
 {
 	char	**temp;
@@ -75,6 +89,7 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 	int	r;
 	int	sz;
 	int	v;
+	char	c;
 
 	i = 0;
 	x = 0;
@@ -93,16 +108,17 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 		{
 			
 			if ((check_so(dv->data, '<') || check_so(dv->data, '>')  || check_so(dv->data, '|')) &&
-				!(ft_strlen(dv->data) == 1 && (dv->data[i] == '>') && (dv->data[i + 1] == '\0'))/* && check_q(gg, dv->data)*/)
+				!(ft_strlen(dv->data) == 1 && (dv->data[i] == '>' || dv->data[i] == '<' || dv->data[i] == '|') && (dv->data[i + 1] == '\0'))/* && check_q(gg, dv->data)*/)
 			{
 				printf("YO ONE IN HERE %s\n", dv->data);
-				temp = sosplit(dv->data);
+				c = get_token(dv->data);
+				temp = sosplit(dv->data, c);
 				if (/*x == ft_lstsize(arg) - 1*/dv->next == NULL)
 				{
 					printf("AKHITR W7DA\n");
 					arg = akhirw7da(&arg, temp, x);
 			//		arg = lst_lastone(&arg, temp, x);
-					
+					x=0;
 					dv = arg;
 				/*	while (dv != NULL)
 					{

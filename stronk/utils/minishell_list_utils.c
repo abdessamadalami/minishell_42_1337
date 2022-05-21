@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 15:30:33 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:17:46 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -386,7 +386,7 @@ t_arg	*akhirw7da(t_arg **arg, char **t, int x)
 	while (t[i] != 0)
 	{
 		node = ft_lstnew(t[i]);
-		printf("addin %s\n", node->data);
+//		printf("addin %s\n", node->data);
 		ft_lstadd_back(&newlist, node);
 		i++;
 	}
@@ -419,7 +419,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	{
 		node = ft_lstnew((*arg)->data);
 		ft_lstadd_back(&newlist, node);
-		printf("addin %s\n", node->data);
+//		printf("addin %s\n", node->data);
 		(*arg) = (*arg)->next;
 		i++;
 	}
@@ -430,7 +430,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	while (*arg != NULL)
 	{
 		node = ft_lstnew((*arg)->data);
-		printf("addin chyata %s\n", node->data);
+//		printf("addin chyata %s\n", node->data);
 		ft_lstadd_back(&chyata, node);
 		(*arg) = (*arg)->next;
 	}
@@ -442,7 +442,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	while (t[i] != 0)
 	{
 		node = ft_lstnew(t[i]);
-		printf("addin splitted %s\n", node->data);
+//		printf("addin splitted %s\n", node->data);
 		ft_lstadd_back(&newlist, node);
 		i++;
 	}
@@ -451,7 +451,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	while (chyata != NULL)
 	{
 		node = ft_lstnew(chyata->data);
-		printf("addin chyata %s\n", node->data);
+//		printf("addin chyata %s\n", node->data);
 		ft_lstadd_back(&newlist, node);
 		chyata = chyata->next;
 	}
