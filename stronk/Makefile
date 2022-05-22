@@ -8,6 +8,7 @@ SRCS =  minishell.c\
 		utils/ssplit/ssplit.c\
 		utils/ssplit/sosplit.c\
 		utils/ssplit/qusplit.c\
+		utils/ssplit/squsplit.c\
 		parsing/new_parsing.c\
 	
 		

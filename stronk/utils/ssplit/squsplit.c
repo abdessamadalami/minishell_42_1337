@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ssplit.c                                           :+:      :+:    :+:   */
+/*   squsplit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/22 14:04:07 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/05/22 13:49:19 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/05/22 21:22:58 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,34 +69,47 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	{
 		
 		temp = i;
-		if ((s[i] == '"' || s[i] == '\'') && (gg->lock % 2 != 0))
+		if ((s[i] == '"' || s[i] == '\''))
 		{
-	//		printf("hooooooo\n");
 			gg->lock--;
-		//	i++;
-			continue ;
-		}
-		if (s[i] == c /* && (cmds->lock % 2 == 0)*/)
-		{
 			i++;
 			continue ;
 		}
-		// printf("lock %d\n", cmds->lock);
-		while ((s[i] != c && s[i] /*& s[i] != '"' && s[i] != '\''*/) || ((s[i] == c && s[i]) && gg->lock % 2 != 0))
+		if (s[i] == c && (gg->lock % 2 == 0))
 		{
-			if (s[i] == '"' || s[i] == '\'')
+			if (s[i + 1] == c)
+				i++;
+			i++;
+			t[count] = ft_substr(s, temp, i - temp);
+	//		printf("tttttt-%s-\n", t[count]);
+			count++;
+		//	gg->lock--;
+			continue ;
+		}
+		// printf("lock %d\n", cmds->lock);
+		while (s[i])
+		{
+			if ((s[i] == c && (gg->lock % 2 == 0)) || (s[i] == '"' || s[i] == '\''))
 			{
+			//	i++;
+				break;
+			}
+	//		printf("%c\n", s[i]);
+		//	printf("gg lock %d\n", gg->lock);
+		//	if (s[i] == '"' || s[i] == '\'')
+		//	{
 	//			printf("hiiiiiiiiiiii\n");
-				gg->lock--;
+		//		gg->lock--;
 			//	printf("hii breakit\n");
 			//	break;
-			}
+		//	}
 			//	cmds->lock--;
+		//	printf("%c\n", s[i]);
 			i++;
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-	//	printf("tttttt-%s-\n", t[count]);
+		// printf("tttttt-%s-\n", t[count]);
 	//	printf("finaliiii count %d\n", count);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
@@ -112,7 +125,7 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	return (t);
 }
 
-char	**ssplit(t_gg *gg, char *s, char c)
+char	**squsplit(t_gg *gg, char *s, char c)
 {
 	char	**t;
 	int		count;
@@ -120,7 +133,7 @@ char	**ssplit(t_gg *gg, char *s, char c)
 	if (s == 0)
 		return (0);
 	count = set_count(gg, s, c);
-	// printf("ccccccount %d\n", count);
+	
 	if (count < 0)
 	{
 		// return (NULL);

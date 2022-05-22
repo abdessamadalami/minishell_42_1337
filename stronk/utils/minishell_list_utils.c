@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 20:35:15 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:42:39 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ t_arg	*lst_lastone(t_arg **arg, char **t, int x)
 		newlist->next = NULL;
 	i = 0;
 //	printf("hhhhyy\n");
-	printf("stlll %d\n", ft_strllen(t));
+//	printf("stlll %d\n", ft_strllen(t));
 //	for (int i=0;i<ft_strllen(t);i++)
 //		printf("t[%d]: %s\n", i, t[i]);
 	i = 0;
@@ -152,7 +152,7 @@ t_arg	*lst_lastone(t_arg **arg, char **t, int x)
 //		(*arg) = (*arg)->next;
 		i++;
 	}
-	printf("size of new %d\n", ft_lstsize(newlist));
+//	printf("size of new %d\n", ft_lstsize(newlist));
 //	arg = &newlist;
 /*	while (newlist != NULL)
 	{
@@ -188,13 +188,13 @@ t_arg	*lst_between(t_arg **arg, char **t, int x)
 //	node->next = (*arg)->next;
 		///////////////////////////////////////////////////////// chyata time /////////////////////////////////////////////////////////
 	cp = *arg;
-	printf("initial size %d\n", initialsize-x);
-	printf("x %d\n", x);
+//	printf("initial size %d\n", initialsize-x);
+//	printf("x %d\n", x);
 	i =0;
 	while (i < (initialsize-x-1))
 	{
 		node = ft_lstnew(cp->data);
-		printf("hadi hya cp data %s\n", cp->data);
+//		printf("hadi hya cp data %s\n", cp->data);
 		ft_lstadd_back(&newlist, node);
 		cp = cp->next;
 		i++;
@@ -212,7 +212,7 @@ t_arg	*lst_between(t_arg **arg, char **t, int x)
 		cp = cp->next;
 		i++;
 	}
-	printf("lst dyal chyata %d\n", ft_lstsize(chyata));
+//	printf("lst dyal chyata %d\n", ft_lstsize(chyata));
 /*	while (chyata != NULL)
 	{
 		printf("chyatayyy `%s`\n", chyata->data);
@@ -222,8 +222,8 @@ t_arg	*lst_between(t_arg **arg, char **t, int x)
 	
 	
 	
-	printf("i %d\n", i);
-	printf("x %d\n", x);
+//	printf("i %d\n", i);
+//	printf("x %d\n", x);
 	
 
 
@@ -232,7 +232,7 @@ t_arg	*lst_between(t_arg **arg, char **t, int x)
 	
 	////////////////////////////////// creating the new list //////////////////////////////////
 	i = 0;
-	printf("stlll %d\n", ft_strllen(t));
+//	printf("stlll %d\n", ft_strllen(t));
 //	t_arg *sultan;
 //	sultan = *arg;
 	while (t[i])
@@ -413,7 +413,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	i = 0;
 
 	////////// remove the node that contains the tooken /////////////////
-	printf("x %d\n", x);
+//	printf("x %d\n", x);
 	i=0;
 	while (i < x)
 	{
@@ -430,7 +430,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	while (*arg != NULL)
 	{
 		node = ft_lstnew((*arg)->data);
-		printf("addin chyata %s\n", node->data);
+//		printf("addin chyata %s\n", node->data);
 		ft_lstadd_back(&chyata, node);
 		(*arg) = (*arg)->next;
 	}
@@ -442,7 +442,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	while (t[i] != 0)
 	{
 		node = ft_lstnew(t[i]);
-		printf("addin splitted %s\n", node->data);
+//		printf("addin splitted %s\n", node->data);
 		ft_lstadd_back(&newlist, node);
 		i++;
 	}
