@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/21 17:36:46 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/23 18:11:36 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static int	set_count(char *s, char c)
 		}
 		i++;
 	}
-	printf("count %d\n", count);
+//	printf("count %d\n", count);
 //	if (gg->lock % 2 != 0)
 //		return (-1);
-	return (count+1);
+	return (count+2);
 }
 
 static char	**ft_del(char **t, int count)

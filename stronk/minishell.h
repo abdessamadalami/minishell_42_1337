@@ -44,7 +44,7 @@ typedef struct s_gg
 typedef struct s_arg
 {
 	char			*data;
-
+	int		q;
 	// char	**line;
 //	char			**path;
 	// int				count;

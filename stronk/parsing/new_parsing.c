@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/22 21:43:14 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/23 18:37:45 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int	check_qso(char *s)
 	int	i;
 
 	i = 0;
-//	printf("s %s\n", s);
+	printf("s %s\n", s);
+	if (s[i] )
 	while (s[i] != '\0')
 	{
 		if (s[i] == '"' || s[i] == '\'')
@@ -127,8 +128,8 @@ int	check_qso(char *s)
 				i++;
 		}
 		i++;
-//		printf("s[%d]: %c\n", i, s[i]);
-		if (s[i] == '\0')
+		printf("s[%d]: %c\n", i, s[i]);
+		if (s[i] == '\0' || s[i] == '>' || s[i] == '<' || s[i] == '|')
 			return (0);
 		i++;
 	}
@@ -142,11 +143,13 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 	char	**temp;
 	t_arg	*dv;
 	t_arg	*node;
+	t_arg	*sfa;
 	int i;
 	int	x;
 	int	r;
 	int	sz;
 	int	v;
+	int	lc = 0;
 	char	c;
 
 	i = 0;
@@ -154,6 +157,7 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 	v = 0;
 	sz = ft_lstsize(arg);
 	dv = malloc(sizeof(t_arg));
+	sfa = malloc(sizeof(t_arg));
 	node = malloc(sizeof(t_arg));
 	if (!node || !dv)
 		exit(1);
@@ -161,10 +165,12 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 	dv = arg;
 	temp = malloc(sizeof(char) * 9999);
 	while (dv != NULL)
-	{//printf("hi\n");
+	{
+		
 		if (check_q(dv->data))
 		{
-			
+			printf("ha\n");
+			lc = 0;
 			if ((check_so(dv->data, '<') || check_so(dv->data, '>')  || check_so(dv->data, '|')) &&
 				!(ft_strlen(dv->data) == 1 && (dv->data[i] == '>' || dv->data[i] == '<' || dv->data[i] == '|') && (dv->data[i + 1] == '\0'))/* && check_q(gg, dv->data)*/)
 			{
@@ -182,12 +188,15 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 			//		arg = lst_lastone(&arg, temp, x);
 					x=0;
 					dv = arg;
+					printf("ja\n");
 				/*	while (dv != NULL)
 					{
 						printf("lst data bisalaam dv %s\n", dv->data);
 						dv = dv->next;
 					}*/
 				//	dv = dv->next;
+					
+				//	break;
 				}
 				else
 				{
@@ -283,15 +292,17 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 				printf("hppp\n");
 			}*/
 		}
-		else if (/*!check_q(dv->data) &&*/ check_qso(dv->data))
+		else if (/*!check_q(dv->data) &&*/ !check_qso(dv->data))
 		{
+			printf("ho\n");
 		//	dv = dv->next;
+			lc = 1;
 			printf("dakchi li bghina %s\n", dv->data);
 			c = get_token(dv->data);
 			temp = squsplit(gg, dv->data, c);
 			r = ft_strllen(temp);
-			for (int j=0;j<ft_strllen(temp);j++)
-				printf("s temp %s\n", temp[j]);
+		//	for (int j=0;j<ft_strllen(temp);j++)
+		//		printf("s temp %s\n", temp[j]);
 			if (/*x == ft_lstsize(arg) - 1*/dv->next == NULL)
 			{
 					printf("AKHITR W7DA\n");
@@ -306,27 +317,37 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 						r--;
 					}
 				//	break;
-					
 			}
 			else
 			{
 				printf("MACHI AKHITR W7DA\n");
-				arg = machi_akhirw7da(&arg, temp, x);		
+				arg = machi_akhirw7da(&arg, temp, x);
+			/*	while (arg != NULL)
+				{
+					printf("lst data bisalaam arg %s\n", arg->data);
+					arg = arg->next;
+				}*/
+			//	exit(1);
 				r = ft_strllen(temp);
 			//	arg = arg->next;
-				
 				dv = arg;
+				sfa = arg;
 				x =0;
 				//	dv = dv->next;
 				while (r>0)
 				{
+			//		printf("lst data bisalaam arg %s\n", dv->data);
 					dv = dv->next;
+					
 					r--;
 				}
+			//	continue;
+			//	printf("lst data bisalaam arg %s\n", dv->data);
+			//	dv = dv->next;
 			}
 		}
 
-
+		
 		////////////// lkhdma hna //////////////////
 	/*	if (!check_q(dv->data))
 		{
@@ -375,7 +396,7 @@ t_arg	*parsqu(t_arg *arg)
 	temp = malloc(sizeof(char) * 9999);
 	while (dv != NULL)
 	{
-		if (!check_q(dv->data))
+		if (!check_q(dv->data) && dv->q == 0)
 		{
 			
 			if ((check_so(dv->data, '"') || check_so(dv->data, '\''))/* && check_q(gg, dv->data)*/)
@@ -392,7 +413,7 @@ t_arg	*parsqu(t_arg *arg)
 					printf("AKHITR W7DA\n");
 					arg = akhirw7da(&arg, temp, x);
 			//		arg = lst_lastone(&arg, temp, x);
-					x=0;
+				//	x=0;
 					dv = arg;
 				/*	while (dv != NULL)
 					{
@@ -409,7 +430,7 @@ t_arg	*parsqu(t_arg *arg)
 					dv = arg;
 					r = ft_strllen(temp);
 					v ++;
-					x =0;
+				//	x =0;
 				}
 			//	}
 			}

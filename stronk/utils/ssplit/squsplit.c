@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 13:49:19 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/22 21:22:58 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/23 18:11:55 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static int	set_count(t_gg *gg, char *s, char c)
 		i++;
 	}
 	gg->qq = gg->lock;
-//	printf("count %d\n", gg->qq);
 	if (gg->lock % 2 != 0)
 		return (-1);
-	return (count);
+//	printf("count %d\n", count);
+	return (count+2);
 }
 
 static char	**ft_del(char **t, int count)
@@ -109,7 +109,7 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 			// cmds->lock--;
 		}
 		t[count] = ft_substr(s, temp, i - temp);
-		// printf("tttttt-%s-\n", t[count]);
+//		printf("tttttt-%s-\n", t[count]);
 	//	printf("finaliiii count %d\n", count);
 		if (t[count] == NULL)
 			return (ft_del(t, count));

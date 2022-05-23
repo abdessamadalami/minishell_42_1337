@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/22 21:42:39 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/23 17:31:22 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,12 @@ t_arg	*lst_lastone(t_arg **arg, char **t, int x)
 	if (!node)
 		exit(1);
 //	node->next = (*arg)->next;
-	printf("x %d\n", x);
+//	printf("x %d\n", x);
 	while (i < x-1)
 	{
 //		printf("whotaaa %d\n", i);
 		node = ft_lstnew(cp->data);
-		printf("cp %s\n", cp->data);
+//		printf("cp %s\n", cp->data);
 		ft_lstadd_back(&newlist, node);
 		cp = cp->next;
 	//	newlist = newlist->next;
@@ -146,7 +146,7 @@ t_arg	*lst_lastone(t_arg **arg, char **t, int x)
 	while (i < ft_strllen(t))
 	{
 		node = ft_lstnew(t[i]);
-		printf("t[%d]: %s\n", i, t[i]);
+//		printf("t[%d]: %s\n", i, t[i]);
 		ft_lstadd_back(arg, node);
 	//	printf("newww ma noode `%s`\n", newlist->data);
 //		(*arg) = (*arg)->next;
@@ -199,7 +199,7 @@ t_arg	*lst_between(t_arg **arg, char **t, int x)
 		cp = cp->next;
 		i++;
 	}
-	printf("-i %d\n", i);
+//	printf("-i %d\n", i);
 //	printf("ssiizzee %d\n", ft_lstsize());
 	i=0;
 	cp = cp->next;
@@ -369,7 +369,7 @@ t_arg	*akhirw7da(t_arg **arg, char **t, int x)
 
 	
 	////////// remove the node that contains the tooken /////////////////
-//	printf("x %d\n", x);
+	printf("x %d\n", x);
 	i=0;
 	while (i < x)
 	{
@@ -419,7 +419,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	{
 		node = ft_lstnew((*arg)->data);
 		ft_lstadd_back(&newlist, node);
-		printf("addin %s\n", node->data);
+//		printf("addin %s\n", node->data);
 		(*arg) = (*arg)->next;
 		i++;
 	}
