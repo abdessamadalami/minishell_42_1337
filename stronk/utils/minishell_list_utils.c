@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/23 17:31:22 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/23 18:59:27 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -457,4 +457,31 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x)
 	}
 //	printf("final size %d\n", ft_lstsize(newlist));
 	return (newlist);
+}
+
+void	addbacki_sf(t_arg **sfa, char **t)
+{
+	int	i;
+	t_arg	*node;
+
+	i = 0;
+	////////////////////////////////////////////////////////////////////
+	i=0;
+	while (t[i] != 0)
+	{
+		node = ft_lstnew(t[i]);
+//		printf("addin %s\n", node->data);
+		ft_lstadd_back(sfa, node);
+		i++;
+	}
+	
+/*	i = 0;
+	while (t[i] != 0)
+	{
+		node = ft_lstnew(t[i]);
+		printf("addin %s\n", node->data);
+		ft_lstadd_back(arg, node);
+		i++;
+	}*/
+//	printf("size after addin %d\n", ft_lstsize(*arg));
 }

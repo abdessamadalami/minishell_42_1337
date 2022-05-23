@@ -88,6 +88,7 @@ t_arg	*lst_lastone(t_arg **arg, char **t, int x);
 t_arg	*lst_between(t_arg **arg, char **t, int x);
 t_arg	*akhirw7da(t_arg **arg, char **t, int x);
 t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x);
+void	addbacki_sf(t_arg **sfa, char **t);
 
 // ---------------- parsing ------------------//
 t_arg		*ft_new_parsing(char *s);
