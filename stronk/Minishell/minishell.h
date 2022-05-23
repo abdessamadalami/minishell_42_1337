@@ -68,8 +68,9 @@ char	**get_path(void);
 // ---------------- utils --------------------//
 char	**ft_split( char *s, char c);
 char	**ssplit(t_gg *gg, char *s, char c);
-char	**sosplit(char *s);
-//char	**qsplit(t_cmd *cmds, char *s);
+char	**sosplit(char *s, char c);
+char	**qusplit(char *s, char c);
+char	**squsplit(t_gg *gg, char *s, char c);
 char	*ft_strdup(char *s1);
 int		ft_strlen(const char *s);
 int		ft_strllen(char **s);
