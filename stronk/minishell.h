@@ -68,7 +68,7 @@ char	**get_path(void);
 // ---------------- utils --------------------//
 char	**ft_split( char *s, char c);
 char	**ssplit(t_gg *gg, char *s, char c);
-char	**sosplit(char *s, char c);
+char	**sosplit(char *s);
 char	**qusplit(char *s, char c);
 char	**squsplit(t_gg *gg, char *s, char c);
 char	*ft_strdup(char *s1);
@@ -77,6 +77,7 @@ int		ft_strllen(char **s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char	*s, int start, int len);
 int		check_isvalid(t_arg *cmds/*char **path, char **cmd*/);
+char	*ft_sstrcat(char c);
 
 /*					list utils				*/
 t_arg	*ft_lstnew(char	*s);

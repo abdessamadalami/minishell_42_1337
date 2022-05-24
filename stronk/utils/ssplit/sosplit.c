@@ -6,29 +6,29 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/23 18:11:36 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:56:08 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static int	set_count(char *s, char c)
+static int	set_count(char *s)
 {
 	int	i;
 	int	count;
 
 	count = 0;
 	i = 0;
-	while (s[i] == c)
+	while (s[i] == '<' || s[i] == '>' || s[i] == '|')
 		i++;
 	count++;
 	while (s[i])
 	{
 	//	if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
 	//		gg->lock++;
-		if (s[i] == c && s[i + 1] != '\0')
+		if ((s[i] == '<' || s[i] == '>' || s[i] == '|') && (s[i + 1] != '\0'))
 		{
-			if (s[i + 1] == c)
+			if (s[i + 1] == '<' || s[i + 1] == '>' || s[i + 1] == '|')
 				i++;
 			count++;
 		}
@@ -37,7 +37,7 @@ static int	set_count(char *s, char c)
 //	printf("count %d\n", count);
 //	if (gg->lock % 2 != 0)
 //		return (-1);
-	return (count+2);
+	return (count + 2);
 }
 
 static char	**ft_del(char **t, int count)
@@ -74,7 +74,7 @@ char	*ft_add(char *s, char c)
 	return (t);
 }
 */
-static char	**chek_and_fill(char **t, char *s, char c)
+static char	**chek_and_fill(char **t, char *s)
 {
 	int	i;
 	int	count;
@@ -87,13 +87,13 @@ static char	**chek_and_fill(char **t, char *s, char c)
 	{
 		
 		temp = i;
-		if (s[i] == c )
+		if (s[i] == '<' || s[i] == '>'|| s[i] == '|')
 		{
-			if (s[i + 1] == c)
+			if (s[i + 1] == s[i])
 				i++;
 			i++;
 			
-	//		printf("cccc-%c-\n", s[i]);
+			
 		//	t[count] = ft_strdup(">");
 		/*	if (s[i+1] == s[i])
 			{
@@ -116,8 +116,10 @@ static char	**chek_and_fill(char **t, char *s, char c)
 			continue ;
 		}
 		// printf("lock %d\n", cmds->lock);
-		while (s[i] != c && s[i])
+	//	printf("c %c\n", c);
+		while (s[i] != '<' && s[i] != '>' && s[i] != '|' && s[i])
 		{
+	//		printf("cccc-%c-\n", s[i]);
 		//	if (s[i] == '"' || s[i] == '\'')
 		//		break;
 			//	cmds->lock--;
@@ -125,8 +127,8 @@ static char	**chek_and_fill(char **t, char *s, char c)
 	//		printf("hiiw\n");
 			// cmds->lock--;
 		}
+	//	printf("tttttt-%s-\n", ft_substr(s, temp, i - temp));
 		t[count] = ft_substr(s, temp, i - temp);
-//		printf("tttttt-%s-\n", t[count]);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
 		count++;
@@ -135,29 +137,30 @@ static char	**chek_and_fill(char **t, char *s, char c)
 //	printf("tttttt strllona-%d-\n", ft_strllen(t));
 //	if (ft_strllen(t) > 2)
 //		count++;
-	count++;
+//	count++;
 	t[count] = 0;
-//	for (int i=0;i<count-1;i++)
-//		printf("t/ %s\n", t[i]);
+	// for (int i=0;i<count-1;i++)
+	// 	printf("t/ %s\n", t[i]);
 	return (t);
 }
 
-char	**sosplit(char *s, char c)
+char	**sosplit(char *s)
 {
 	char	**t;
 	int		count;
 
 	if (s == 0)
 		return (0);
-	count = set_count(s, c);
+	count = set_count(s);
+//	printf("count %d\n", count);
 	if (count < 0)
 	{
 		// return (NULL);
 		printf("go to heredoc\n");
 		exit(1);
 	}
-	t = (char **)malloc(sizeof(char *) * 9999/*(count + 1)*/);
+	t = (char **)malloc(sizeof(char *) * (count + 1));
 	if (t == NULL)
 		return (0);
-	return (chek_and_fill(t, s, c));
+	return (chek_and_fill(t, s));
 }

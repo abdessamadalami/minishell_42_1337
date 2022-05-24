@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/23 18:59:27 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:56:07 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -474,14 +474,4 @@ void	addbacki_sf(t_arg **sfa, char **t)
 		ft_lstadd_back(sfa, node);
 		i++;
 	}
-	
-/*	i = 0;
-	while (t[i] != 0)
-	{
-		node = ft_lstnew(t[i]);
-		printf("addin %s\n", node->data);
-		ft_lstadd_back(arg, node);
-		i++;
-	}*/
-//	printf("size after addin %d\n", ft_lstsize(*arg));
 }

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:55:49 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/12 14:56:35 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:34:47 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,16 @@ char	*ft_strdup(char *s1)
 	}
 	p[i] = '\0';
 	return (p);
+}
+
+char	*ft_sstrcat(char c)
+{
+	char	*t;
+
+	t = malloc(sizeof(char) * 2);
+	if (!t)
+		return (NULL);
+	t[0] = c;
+	t[1] = '\0';
+	return (t);
 }

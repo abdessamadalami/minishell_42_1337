@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/23 19:12:53 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:00:09 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ int	check_q(char *s)
 //	return (0);
 }
 
+// count_malloc()
+// {
+	
+// }
 char	get_token(char *s)
 {
 	int	i;
@@ -117,7 +121,7 @@ int	check_qso(char *s)
 	int	i;
 
 	i = 0;
-	printf("s %s\n", s);
+//	printf("s %s\n", s);
 	if (s[i] )
 	while (s[i] != '\0')
 	{
@@ -128,7 +132,7 @@ int	check_qso(char *s)
 				i++;
 		}
 		i++;
-		printf("s[%d]: %c\n", i, s[i]);
+	//	printf("s[%d]: %c\n", i, s[i]);
 		if (s[i] == '\0' || s[i] == '>' || s[i] == '<' || s[i] == '|')
 			return (0);
 		i++;
@@ -180,7 +184,7 @@ t_arg	*parso(t_arg *arg, t_gg *gg)
 					
 				printf("YO ONE IN HERE %s\n", dv->data);
 				c = get_token(dv->data);
-				temp = sosplit(dv->data, c);
+				temp = sosplit(dv->data);
 				if (/*x == ft_lstsize(arg) - 1*/dv->next == NULL)
 				{
 					printf("AKHITR W7DA\n");
@@ -452,49 +456,61 @@ t_arg	*parsqu(t_arg *arg)
 t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 {
 	char	**temp;
-	t_arg	*dv;
+//	t_arg	*dv;
 	t_arg	*node;
 	t_arg	*sfa=NULL;
-	int i;
-	int	x;
-	int	r;
-	int	sz;
+	int		i;
+//	int		t;
+//	int	x;
+//	int	r;
+//	int	sz;
 //	int	v;
 //	int	lc = 0;
 	char	c;
 
 	i = 0;
-	x = 0;
+//	x = 0;
 //	v = 0;
-	sz = ft_lstsize(arg);
-	dv = malloc(sizeof(t_arg));
+//	sz = ft_lstsize(arg);
+//	dv = malloc(sizeof(t_arg));
 //	sfa = malloc(sizeof(t_arg));
+//	t = count_malloc();
 	node = malloc(sizeof(t_arg));
-	if (!node || !dv)
+	temp = malloc(sizeof(char) * 9999);
+	if (!node || !temp)
 		exit(1);
 //		return (NULL);
-	dv = arg;
-	temp = malloc(sizeof(char) * 9999);
-	printf("size sfa malo %d\n", ft_lstsize(sfa));
+//	dv = arg;
+//	printf("size sfa malo %d\n", ft_lstsize(sfa));
 	while (arg != NULL)
 	{
 		
 		if (check_q(arg->data))
 		{
-			printf("hi\n");
 			if ((check_so(arg->data, '<') || check_so(arg->data, '>')  || check_so(arg->data, '|')) &&
 				!(ft_strlen(arg->data) == 1 && (arg->data[i] == '>' || arg->data[i] == '<' || arg->data[i] == '|') && (arg->data[i + 1] == '\0')))
 			{
 				
-				if (!(ft_strlen(arg->data) == 2 && (arg->data[i+1] == '>' || arg->data[i+1] == '<' || arg->data[i+1] == '|') && (arg->data[i + 2] == '\0')))
+				if (ft_strlen(arg->data) == 2 && arg->data[i+1] != arg->data[i])
+				{
+					char *sl;
+					
+					sl = ft_strdup(ft_sstrcat(arg->data[i]));
+					node = ft_lstnew(sl);
+					ft_lstadd_back(&sfa, node);
+					sl = ft_strdup(ft_sstrcat(arg->data[i + 1]));
+					node = ft_lstnew(sl);
+					ft_lstadd_back(&sfa, node);
+				}
+				else if (!(ft_strlen(arg->data) == 2 && (arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i]) && (arg->data[i + 2] == '\0')))
 				{
 					
-				printf("YO ONE IN HERE %s\n", arg->data);
-				c = get_token(arg->data);
-				temp = sosplit(arg->data, c);
-				for (int j=0;j<ft_strllen(temp);j++)
-				printf("s temp %s\n", temp[j]);
-				addbacki_sf(&sfa, temp);
+					printf("YO ONE IN HERE %s\n", arg->data);
+					c = get_token(arg->data);
+					temp = sosplit(arg->data);
+					for (int j=0;j<ft_strllen(temp);j++)
+						printf("s temp %s\n", temp[j]);
+					addbacki_sf(&sfa, temp);
 			/*	if (arg->next == NULL)
 				{
 					printf("AKHITR W7DA\n");
@@ -515,27 +531,16 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 			}
 			else
 			{
-				if (ft_lstsize(sfa) == 0)
-				{
-					sfa = ft_lstnew(arg->data);
-				}
-				else
-				{	
-					node = ft_lstnew(arg->data);
-					printf("ki walo %s\n", node->data);
-					ft_lstadd_back(&sfa, node);
-					
-					printf("w 3lach\n");
-				}
-				printf("size sfa %d\n", ft_lstsize(sfa));
+				node = ft_lstnew(arg->data);
+				ft_lstadd_back(&sfa, node);
 			}
 		}
 		else if (!check_qso(arg->data))
 		{
-			printf("dakchi li bghina %s\n", arg->data);
+	//		printf("dakchi li bghina %s\n", arg->data);
 			c = get_token(arg->data);
 			temp = squsplit(gg, arg->data, c);
-			r = ft_strllen(temp);
+	//		r = ft_strllen(temp);
 			addbacki_sf(&sfa, temp);
 		/*	if (arg->next == NULL)
 			{
@@ -568,12 +573,12 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 		}
 		
 		printf("hdata dv %s\n", arg->data);
-		x++;
+	//	x++;
 	//	if (!arg)
 	//		break;
 		arg = arg->next;
 	}
-	printf("size dv %d\n", ft_lstsize(sfa));
+//	printf("size dv %d\n", ft_lstsize(sfa));
 	return (sfa);
 }
 
