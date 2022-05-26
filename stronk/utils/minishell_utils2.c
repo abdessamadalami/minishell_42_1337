@@ -6,13 +6,13 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:55:49 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/24 12:34:47 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/25 13:07:11 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_strlen(const char *s)
+int	ft_strln(const char *s)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_substr(char	*s, int start, int len)
+char	*ft_subtr(char	*s, int start, int len)
 {
 	char	*tab;
 	int		i;
@@ -31,9 +31,9 @@ char	*ft_substr(char	*s, int start, int len)
 	tab = NULL;
 	if (s == 0)
 		return (0);
-	if (len >= ft_strlen(s))
-		tab = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	else if (len < ft_strlen(s))
+	if (len >= ft_strln(s))
+		tab = malloc(sizeof(char) * (ft_strln(s) + 1));
+	else if (len < ft_strln(s))
 		tab = malloc(sizeof(char) * (len + 1));
 	if (tab == NULL)
 		return (0);
@@ -49,7 +49,7 @@ char	*ft_substr(char	*s, int start, int len)
 	return (tab);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjn(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -57,7 +57,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	t = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
+	t = malloc(sizeof(char) * (ft_strln(s1) + ft_strln(s2) + 2));
 	if (!t)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -77,12 +77,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (t);
 }
 
-char	*ft_strdup(char *s1)
+char	*ft_strdp(char *s1)
 {
 	int		i;
 	char	*p;
 
-	p = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	p = malloc(sizeof(char) * (ft_strln(s1) + 1));
 	if (p == NULL)
 		return (NULL);
 	i = 0;
