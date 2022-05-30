@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/23 16:24:44 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:25:08 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include"../aeea/excuting_headr.h"
 
 int	ft_arg(char *s1, char *s2)
 {
@@ -26,39 +27,19 @@ int	ft_arg(char *s1, char *s2)
 	return (1);
 }
 
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
 	char	*s;
+	t_list *list;
 
 	(void)*av;
+	(void)*env;
 	if (ac == 1)
 	{
 		while ((s = readline("$>prompt ")) != 0)
 		{
-			ft_new_parsing(s);
-		//	if (!ft_new_parsing(s))
-		//		return (0);
-			// printf("$%s$\n", s);
-			// if (ft_arg(s,"echo"))
-			// {
-				
-			//	s = readline(">");
-			//	ft_exec(av, );
-			//	ft_echo(s, env);
-			//	if (execve(s, cmd, envp) == -1)
-			//		return (0);
-			// }
-			//	printf("this is echo\n");
+			list = ft_new_parsing(s);
 			add_history(s);
-			
-		//	printf(">minishell$");
-			
-			
-		//	if (s)
-		//		add_history(s);
-		//	readline(av[1]);
-		//	if (ft_arg(av[1], "echo"))
-		//		ft_echo();
 
 		}
 		return (0);

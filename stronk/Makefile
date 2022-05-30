@@ -1,4 +1,4 @@
-NAME = minishell
+NAME = minihell
 
 SRCS =  minishell.c\
 		utils/minishell_utils.c\

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 07:32:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/20 09:43:56 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:36:05 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,26 @@
 //getenv this function sherch about str in linkedlist and if the
 // a = 1 and str in the linked list should change it and other if a = 0
 // just return the str if is exist in it 
- 
+void ft_shift_plus(char *str)
+{
+    int index;
+    int t = 0;
+    
+    index = 0;
+    while (str[index + 1] != 0)
+    {
+        if ((str[index] == '+' || t == 1) && (str[index + 1] != 0))
+        {
+            str[index] = str[index + 1];
+            t = 1;
+        }
+        index++;
+    }
+    str[index] = '\0';
+}
+
+/*
+*/
 char *ft_getenv(t_list *list, char *str, int a)
 {
     int len;
@@ -26,19 +45,17 @@ char *ft_getenv(t_list *list, char *str, int a)
     {
         len = ft_strlen(str);
         ptr = (char *)list -> content;
-        if ((ft_strncmp(str, list->content, len)) == 0 && ptr[len] == '=')
+        if ((ft_strncmp(str, ptr, len)) == 0)
         {
              if(a == 1) //for remplace
             {
-                str[ft_strlen(str)]= '=';
+                str[ft_strlen(str)] ='=';
                 list->content = str;
             }
             else if(a == 2) // a= 2 for += var
             {
                str[ft_strlen(str)]= '=';
-               //printf("{%s} \n", str +ft_strlen(str) + 1 );
-              // exit(1);
-               list->content = ft_strjoin(list->content,str +ft_strlen(str) + 1 ); 
+               list->content = ft_strjoin(list->content, str + ft_strlen(str) + 1 ); 
             }
             else if ( a == 3)// for dolar
             {
@@ -50,20 +67,20 @@ char *ft_getenv(t_list *list, char *str, int a)
     }
     return (0);
 }
-/*
-*/
+
 void  c_export(t_list *env, char *var)
 {
     char *check;
     char *env_var;
     char *str_return;
     int p = 1;
-
+    int static i = 0;
     if (var == 0)
     {
         ft_merge_sort_u(env);
         return;
     }
+    i++;
     check = strchr(var, '=');  //error checking
     if (check == NULL)
         error_handling(var,0);
@@ -73,15 +90,17 @@ void  c_export(t_list *env, char *var)
     if (check)
     {
         env_var[check - var] = '\0';
-        if (env_var[check - var -1] == '+')
+       // printf("in if _%s_\n", env_var);
+        if (env_var[check - var - 1] == '+')
         {
            env_var[check - var - 1] = '\0';
-            p = 2;
+           ft_shift_plus(var);
+           p = 2;
         }
       //  printf(" %s %ld \n",env_var,check - var);
-        str_return = ft_getenv(env, env_var,p);
-        printf("_%s_ \n\n",str_return);
-       // exit(1); //
+        str_return = ft_getenv(env, env_var, p);
+        //printf("+%s ,%d+\n",str_return, p);
+      //  exit(1); //
         if (!str_return)
             ft_lstadd_back(&env,ft_lstnew(var));  
     }

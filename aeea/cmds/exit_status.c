@@ -6,13 +6,13 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 08:26:32 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/19 11:18:29 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:30:43 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
-// void exit_status()
-// {
-//     printf(" %d:command not found\n", *exit_s);
-//     exit(1);  
-// }
+void exit_status()
+{
+    printf(" %d:command not found\n",  e_st);
+    exit(1);
+}

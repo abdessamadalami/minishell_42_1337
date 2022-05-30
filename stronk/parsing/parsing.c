@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:38:04 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/15 18:36:30 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/25 10:23:17 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,7 +318,7 @@ int	ft_parsing(t_cmd *cmds, char *s, char **envi)
 	parso(cmds);
 	//////////////////////////
 	printf("everything good\n");
-	// cmds->argy = malloc(sizeof(t_arg)*99);
+	// cmds->argy = malloc(sizeof(t_list)*99);
 	// for (int i=0; cmds->line[i] != NULL ;i++)
 	// {
 	// 	printf("line is `%s`\n", cmds->line[i]);

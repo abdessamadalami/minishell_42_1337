@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 07:22:59 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/18 19:09:47 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:14:11 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // unset for delet var in env variables
 // export for inssrt a local var to environment
-//env is the environment variables in environment
+// env is the environment variables in environment
 // best tutorial for this in https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux
 
 void c_unset(t_list **list, char *str)
@@ -48,4 +48,5 @@ void c_unset(t_list **list, char *str)
         node = lst;
         lst = lst->next;
     }
+   e_st = 0;
 }

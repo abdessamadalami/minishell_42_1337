@@ -14,7 +14,7 @@ typedef struct s_arg
 	char	*cmad;
 	char	**args;
 	char	**so;
-}				t_arg;
+}				t_list;
 
 typedef	struct	scmd
 {
@@ -24,7 +24,7 @@ typedef	struct	scmd
 	char	**temp;
 	// char 	**cmd;
 	// char	**args;
-	t_arg	*cmd;
+	t_list	*cmd;
 	char	**flags;
 	char	*sign;
 	char	*var;
@@ -50,7 +50,7 @@ typedef struct s_arg
 	// int				count;
 	// int				lock;
 	struct s_arg	*next;
-}	t_arg;
+}	t_list;
 
 	//--  arg --//
 
@@ -76,21 +76,21 @@ int		ft_strlen(const char *s);
 int		ft_strllen(char **s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char	*s, int start, int len);
-int		check_isvalid(t_arg *cmds/*char **path, char **cmd*/);
+int		check_isvalid(t_list *cmds/*char **path, char **cmd*/);
 
 /*					list utils				*/
-t_arg	*ft_lstnew(char	*s);
-int		ft_lstsize(t_arg *lst);
-t_arg	*ft_lstlast(t_arg *lst);
-void	ft_lstadd_front(t_arg **lst, t_arg *new);
-void	ft_lstadd_back(t_arg **lst, t_arg *new);
-t_arg	*lst_lastone(t_arg **arg, char **t, int x);
-t_arg	*lst_between(t_arg **arg, char **t, int x);
-t_arg	*akhirw7da(t_arg **arg, char **t, int x);
-t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x);
+t_list	*ft_lstnew(char	*s);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*lst_lastone(t_list **arg, char **t, int x);
+t_list	*lst_between(t_list **arg, char **t, int x);
+t_list	*akhirw7da(t_list **arg, char **t, int x);
+t_list	*machi_akhirw7da(t_list **arg, char **t, int x);
 
 // ---------------- parsing ------------------//
-t_arg		*ft_new_parsing(char *s);
+t_list		*ft_new_parsing(char *s);
 
 
 // --------------- commands -----------------//

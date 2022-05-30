@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_d.c                                         :+:      :+:    :+:   */
+/*   c_exit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 11:25:23 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/25 08:53:55 by ael-oual         ###   ########.fr       */
+/*   Created: 2022/05/27 07:56:11 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/28 17:41:24 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "excuting_headr.h"
+#include"../excuting_headr.h"
 
-void error_printf( char *cmd) //! a 
+void c_exit(int a)
 {
-    if (ft_strchr(cmd , 47) == NULL)
-    {
-        ft_putstr_fd(cmd, 2);
-        ft_putstr_fd(": command not found\n", 2);
-        e_st = 127; 
-    }
-    else if ( ft_strchr(cmd , 47))
-    {
-        ft_putstr_fd(cmd, 2);
-        e_st = 1;
-        ft_putstr_fd(": No such file or directory\n", 2);
-    }
-    exit(e_st);
-    
-}
+    ft_putstr_fd("exit\n",1);
+    exit(0);
+    exit(1);
+}//good work

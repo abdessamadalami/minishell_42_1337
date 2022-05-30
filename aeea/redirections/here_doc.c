@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/19 15:30:05 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:17:01 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	here_doc(char *lim)
 	free(line);
 	close(pi_pe[1]);
 	dup2(pi_pe[0],0);
-	// read from pipe
 }

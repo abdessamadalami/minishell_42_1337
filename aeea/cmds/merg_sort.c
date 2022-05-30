@@ -6,14 +6,16 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:54:03 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/18 19:09:47 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:37:25 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
 
 void print_list_x(t_list *a) {
-   
+
+    static int i;
+    printf("i = %d \n", i);
    t_list *ptr = a;
    //start from the beginning
    while(ptr)
@@ -21,6 +23,7 @@ void print_list_x(t_list *a) {
       printf("declare -x %s\n",ptr -> content);
       ptr = ptr->next;
    }
+   i++;
 }
 
 t_list* mergesortedlist(t_list* lst1, t_list* lst2) 
@@ -83,18 +86,20 @@ void ft_merge_sort(t_list **list)
     mid_list(*list,&ptr1,&ptr2);
     ft_merge_sort(&ptr1);
     ft_merge_sort(&ptr2);
-   
     *list = mergesortedlist(ptr1 ,ptr2);
-   
 }
 
 
 void ft_merge_sort_u(t_list *env)
-{   
+{
+    static int i;
+   
     t_list  *new_list;
     
+    new_list = NULL;
     new_list = ft_lstmap(env, f, del);
     ft_merge_sort(&new_list);
+    i++;
     print_list_x(new_list);
    // ft_lstclear(&new_list,del);
 }

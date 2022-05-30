@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/19 14:49:47 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:01:32 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@ void del(void *ptr)
 }
 void *f(void *ptr)
 {
+    char *ptr2;
+    char *s;
+    int i;
+    if (ft_strchr(ptr,'=')!= NULL)
+    {    
+        i =  ft_strchr(ptr, '=') - (char *)ptr;
+        s = ft_strdup_n(ptr ,i); 
+        ptr2 = ft_strrchr(ptr,'=') + 1;
+        ptr2 = ft_strjoin("\"",ptr2);
+        ptr2 = ft_strjoin(ptr2,"\"");
+        ptr2 = ft_strjoin(ft_strjoin(s,"="),ptr2);
+        return (ptr2);
+    }
 	return(ptr);
 }
 
@@ -27,11 +40,10 @@ void print_list(t_list *list,int a)//s= 0 || s=1 print wirh order
     {
         if(ft_strchr(list -> content,'=') && a == 0)
             printf("%s\n", list->content);
-        else if (a == 1) 
+        else if (a == 1 && ft_strchr(list -> content,'=') != NULL) 
             printf("%s \n", list->content);
         list = list->next;
     }
-    printf("\n");
 }
 void print_tab(char **str)
 {
@@ -42,4 +54,23 @@ void print_tab(char **str)
         printf("element %d %s \n", index, str[index]);
         index++;
     }
+}
+int check_redirec(char *red)
+{
+    if (red[0] == '>' && red[1] == 0)
+        return (1);
+    else if (red[0] == '<' && red[1] == 0)
+        return (1);
+    else if (red[0] == '<' && red[1] == '<' && red[2] == 0)
+       return (1);
+	else if (red[0] == '>' && red[1] == '>' && red[3] == 0)
+        return (1);
+	return (0);
+}
+
+int check_for_pipe(char *str)
+{
+	if (str[0] == '|' && str[1] == '\0')
+		return 1;
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:21:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/19 15:31:51 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:36:26 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ std_out is path name of output file : file or stdout
 */
 void g_redirections(char *f_name,char *red)
 {
+    //check_file_name();
     int fd_file;/// fd_file  for this < we need the fd of the file after < 
     if (red[0] == '>' && red[1] == 0)
         redirect_output(f_name, 'r');
@@ -30,3 +31,4 @@ void g_redirections(char *f_name,char *red)
         redirect_output(f_name, 'a');// add the std in to a file
 	//execve(cmd,eng,env);// if this cmd is exists n: zsh is not bash a big deffirent here 
 }
+

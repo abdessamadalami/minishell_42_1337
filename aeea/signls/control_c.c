@@ -1,55 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   control_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 07:58:10 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/28 18:22:38 by ael-oual         ###   ########.fr       */
+/*   Created: 2022/05/25 10:31:51 by ael-oual          #+#    #+#             */
+/*   Updated: 2022/05/28 18:23:59 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include "pipex_42_1337.h"
-
-size_t	ft_strlen(const char *str);
-
-static int	min_mal(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	unsigned int	index;
-	unsigned int	len_sub_str;
-	char			*ptr;
-
-	index = 0;
-	if (!s)
-		return (0);
-	if (start >= ft_strlen(s))
-	{
-		ptr = malloc(1);
-		ptr[0] = 0;
-		return (ptr);
-	}
-	len_sub_str = min_mal(ft_strlen(s) - start, len);
-	ptr = malloc(len_sub_str + 1);
-	if (ptr == NULL)
-		return (0);
-	while (index < len_sub_str && s[index] != '\0')
-	{
-		ptr[index] = s[index + start];
-		index++;
-	}
-	ptr[index] = '\0';
-	return (ptr);
-}
-
+#include "../excuting_headr.h"
+#include <signal.h>
 static char	*ft_strcat_p(char *dest, const char *src, int position)
 {
 	int	len;
@@ -69,7 +31,7 @@ static char	*ft_strcat_p(char *dest, const char *src, int position)
 	return (dest);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_m(char *s1, char *s2)
 {
 	int		index;
 	int		length;
@@ -90,4 +52,28 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	free(s2);
 	return (ptr);
+}
+
+void handler_sig()
+{
+    char *buf = ft_strdup("eloualialami");
+    char *buf2 = ft_strdup("abdessamad");
+    char *str = ft_strjoin_m(buf,buf2);
+    free(str);
+}
+
+int main(int argc, char **argv)
+{
+    handler_sig();
+    system("leaks a.out");
+    return 0;
+    // struct sigaction c;
+    // int x;
+    // c.sa_handler = &handler_sig;
+    // c.sa_flags = SA_RESTART;
+    // sigaction(SIGINT,&c, NULL);
+    // printf("%d",x); 
+    // printf("nbr \n");
+    // scanf("%d",&x);
+   
 }

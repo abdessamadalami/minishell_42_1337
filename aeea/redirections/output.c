@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:08:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/18 19:09:47 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/22 07:31:26 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void redirect_output(char *std_out, char c)
 		perror(std_out); // chmod error for w permission
 		exit(1);// exit just the child you must check if a pipe exists or no
 	}
-	dup2(fd_input,1);
+	dup2(fd_input, 1);
 }

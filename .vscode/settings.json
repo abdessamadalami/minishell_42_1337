@@ -1,0 +1,11 @@
+{
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "go.useLanguageServer": true,
+    "files.autoSave": "afterDelay",
+    "editor.renderControlCharacters": false,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "editor.codeActionsOnSave": {
+    },
+    "editor.gotoLocation.alternativeTypeDefinitionCommand": "editor.action.goToTypeDefinition",
+    "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToImplementation"
+}
