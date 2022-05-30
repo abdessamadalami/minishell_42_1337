@@ -6,13 +6,21 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/25 10:23:47 by ael-oual         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/25 13:10:18 by ael-asri         ###   ########.fr       */
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+<<<<<<< HEAD
 t_list	*ft_lstnew(char *s)
+=======
+t_arg	*ftlstnew(char *s)
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 {
 	t_list	*ptr;
 
@@ -24,20 +32,32 @@ t_list	*ft_lstnew(char *s)
 	return (ptr);
 }
 
+<<<<<<< HEAD
 t_list	*ft_lstlast(t_list *lst)
+=======
+t_arg	*ftlstlast(t_arg *lst)
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 {
 	while (lst != NULL && lst->next != NULL)
 		lst = lst->next;
 	return (lst);
 }
 
+<<<<<<< HEAD
 void	ft_lstadd_front(t_list **lst, t_list *new)
+=======
+void	ftlstadd_front(t_arg **lst, t_arg *new)
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 {
 	new->next = *lst;
 	*lst = new;
 }
 
+<<<<<<< HEAD
 void	ft_lstadd_back(t_list **lst, t_list *new)
+=======
+void	ftlstadd_back(t_arg **lst, t_arg *new)
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 {
 	t_list	*list;
 
@@ -54,7 +74,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	list->next = new;
 }
 
+<<<<<<< HEAD
 int	ft_lstsize(t_list *lst)
+=======
+int	ftlstsize(t_arg *lst)
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 {
 	int	count;
 
@@ -83,6 +107,7 @@ int	ft_strllen(char **s)
 	return (i);
 }
 
+<<<<<<< HEAD
 t_list	*lst_lastone(t_list **arg, char **t, int x)
 {
 	int	i;
@@ -460,18 +485,24 @@ t_list	*machi_akhirw7da(t_list **arg, char **t, int x)
 }
 
 void	addbacki_sf(t_list **sfa, char **t)
+=======
+void	addbacki_sf(t_arg **sfa, char **t)
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 {
 	int	i;
 	t_list	*node;
 
 	i = 0;
-	////////////////////////////////////////////////////////////////////
-	i=0;
 	while (t[i] != 0)
 	{
+<<<<<<< HEAD
 		node = ft_lstnew(t[i]);
 //		printf("addin %s\n", node->content);
 		ft_lstadd_back(sfa, node);
+=======
+		node = ftlstnew(t[i]);
+		ftlstadd_back(sfa, node);
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 		i++;
 	}
 }

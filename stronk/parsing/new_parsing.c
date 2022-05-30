@@ -6,7 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/25 10:23:47 by ael-oual         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/26 14:52:17 by ael-asri         ###   ########.fr       */
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +33,19 @@ int	check_so(char *s1, char c)
 int	check_q(char *s)
 {
 	int	i;
-//	int	x;
 
 	i = 0;
-//	x = 0;
-
-//	printf("sss count %d\n", q);
 	while (s[i] != '\0')
 	{
-	/*	if (ft_strlen(s) == 1 && (s[i] == '>') && (s[i + 1] == '\0'))
+		if ((s[i] == '"' || s[i] == '\''))
 		{
-			
-			return (0);
-		//	gg->count--;
-		//	i++;
-		}
-		if (s[i] == '"' || s[i] == '\'')
-		{
-			q--;
-	//		printf("+700 \n");
-		//	i++;
-		}*/
-		if ((s[i] == '"' || s[i] == '\'') /*&& (q % 2 == 0) && (s[i + 1] != '\0')*/)
-		{
-	//		printf("this count %d, i is %d\n", q, i);
 			return (0);
 		}
 		i++;
 	}
-//	if (x == 2)
-//	printf("+100 \n");
 		return (1);
-//	return (0);
 }
 
-// count_malloc()
-// {
-	
-// }
 char	get_token(char *s)
 {
 	int	i;
@@ -94,6 +73,7 @@ char	get_qtoken(char *s)
 	}
 	return (0);
 }
+<<<<<<< HEAD
 /*
 t_list	*ft_vv(t_list *vv)
 {
@@ -116,12 +96,14 @@ t_list	*ft_vv(t_list *vv)
 	return (new);
 }
 */
+=======
+
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 int	check_qso(char *s)
 {
 	int	i;
 
 	i = 0;
-//	printf("s %s\n", s);
 	if (s[i] )
 	while (s[i] != '\0')
 	{
@@ -132,16 +114,14 @@ int	check_qso(char *s)
 				i++;
 		}
 		i++;
-	//	printf("s[%d]: %c\n", i, s[i]);
 		if (s[i] == '\0' || s[i] == '>' || s[i] == '<' || s[i] == '|')
 			return (0);
 		i++;
 	}
-	// if (s[i] == '"' || s[i] == '\'')
-	// 	return (0);
 	return (1);
 }
 
+<<<<<<< HEAD
 t_list	*parso(t_list *arg, t_gg *gg)
 {
 	char	**temp;
@@ -459,16 +439,19 @@ t_list	*parsin_dyalbss7(t_list *arg, t_gg *gg)
 //	t_list	*dv;
 	t_list	*node;
 	t_list	*sfa=NULL;
+=======
+t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
+{
+	char	**temp;
+	char	*sl;
+	t_arg	*node;
+	t_arg	*sfa=NULL;
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 	int		i;
-//	int		t;
-//	int	x;
-//	int	r;
-//	int	sz;
-//	int	v;
-//	int	lc = 0;
 	char	c;
 
 	i = 0;
+<<<<<<< HEAD
 //	x = 0;
 //	v = 0;
 //	sz = ft_lstsize(arg);
@@ -476,17 +459,18 @@ t_list	*parsin_dyalbss7(t_list *arg, t_gg *gg)
 //	sfa = malloc(sizeof(t_list));
 //	t = count_malloc();
 	node = malloc(sizeof(t_list));
+=======
+	node = malloc(sizeof(t_arg));
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 	temp = malloc(sizeof(char) * 9999);
 	if (!node || !temp)
 		exit(1);
-//		return (NULL);
-//	dv = arg;
-//	printf("size sfa malo %d\n", ft_lstsize(sfa));
 	while (arg != NULL)
 	{
 		
 		if (check_q(arg->content))
 		{
+<<<<<<< HEAD
 			if ((check_so(arg->content, '<') || check_so(arg->content, '>')  || check_so(arg->content, '|')) &&
 				!(ft_strlen(arg->content) == 1 && (arg->content[i] == '>' || arg->content[i] == '<' || arg->content[i] == '|') && (arg->content[i + 1] == '\0')))
 			{
@@ -510,75 +494,65 @@ t_list	*parsin_dyalbss7(t_list *arg, t_gg *gg)
 					temp = sosplit(arg->content);
 				// 	for (int j=0;j<ft_strllen(temp);j++)
 				// //		printf("s temp %s\n", temp[j]);
-					addbacki_sf(&sfa, temp);
-			/*	if (arg->next == NULL)
+=======
+			if ((check_so(arg->data, '<') || check_so(arg->data, '>')  || check_so(arg->data, '|')) &&
+				!(ft_strln(arg->data) == 1 && (arg->data[i] == '>' || arg->data[i] == '<' || arg->data[i] == '|') && (arg->data[i + 1] == '\0')))
+			{
+				
+				if (ft_strln(arg->data) == 2 && arg->data[i+1] != arg->data[i])
 				{
-					printf("AKHITR W7DA\n");
-					sfa = akhirw7da(&arg, temp, x);
-					x=0;
-				//	dv = arg;
+					sl = ft_strdp(ft_sstrcat(arg->data[i]));
+					node = ftlstnew(sl);
+					ftlstadd_back(&sfa, node);
+					sl = ft_strdp(ft_sstrcat(arg->data[i + 1]));
+					node = ftlstnew(sl);
+					ftlstadd_back(&sfa, node);
 				}
-				else
+				else if (!(ft_strln(arg->data) == 2 && (arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i]) && (arg->data[i + 2] == '\0')))
 				{
-					printf("MACHI AKHITR W7DA\n");
-					sfa = machi_akhirw7da(&arg, temp, x);
-					r = ft_strllen(temp);
-				//	v ++;
-				//	dv = arg;
-					x =0;
-				}*/
+					c = get_token(arg->data);
+					temp = sosplit(arg->data);
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
+					addbacki_sf(&sfa, temp);
 				}
 			}
 			else
 			{
+<<<<<<< HEAD
 				node = ft_lstnew(arg->content);
 				ft_lstadd_back(&sfa, node);
+=======
+				node = ftlstnew(arg->data);
+				ftlstadd_back(&sfa, node);
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 			}
 		}
 		else if (!check_qso(arg->content))
 		{
+<<<<<<< HEAD
 	//		printf("dakchi li bghina %s\n", arg->content);
 			c = get_token(arg->content);
 			temp = squsplit(gg, arg->content, c);
 	//		r = ft_strllen(temp);
+=======
+			c = get_token(arg->data);
+			temp = squsplit(gg, arg->data);
+		//	for (int i=0;temp[i];i++)
+		//		printf("hi %s\n", temp[i]);
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 			addbacki_sf(&sfa, temp);
-		/*	if (arg->next == NULL)
-			{
-					printf("AKHITR W7DA\n");
-					sfa = akhirw7da(&arg, temp, x);
-					x=0;
-			//		dv = dv->next;
-			//		dv = arg;
-					// while (r>0)
-					// {
-					// 	dv = dv->next;
-					// 	r--;
-					// }
-			}
-			else
-			{
-				printf("MACHI AKHITR W7DA\n");
-				sfa = machi_akhirw7da(&arg, temp, x);
-				r = ft_strllen(temp);
-			//	dv = arg;
-				sfa = arg;
-				x =0;
-				// while (r>0)
-				// {
-				// 	dv = dv->next;
-					
-				// 	r--;
-				// }
-			}*/
 		}
+<<<<<<< HEAD
 		
 	//	printf("hdata dv %s\n", arg->content);
 	//	x++;
 	//	if (!arg)
 	//		break;
+=======
+		printf("h data %s\n", arg->data);
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 		arg = arg->next;
 	}
-//	printf("size dv %d\n", ft_lstsize(sfa));
 	return (sfa);
 }
 
@@ -588,47 +562,31 @@ t_list	*ft_new_parsing(char *s)
 	t_list	*node;
 	t_gg	*gg;
 	char	**line;
+<<<<<<< HEAD
 //	char	*path;
 	arg = malloc(sizeof(t_list));
 	node = malloc(sizeof(t_list));
-	gg = malloc(sizeof(t_gg));
-	line = malloc(sizeof(char) * ft_strlen(s));
-//	arg->path = malloc(sizeof(char) * 9999);
-//	cmds->cmd = malloc(sizeof(t_cmd) * 9999);
-//	cmds->temp = malloc(sizeof(t_cmd) * 9999);
-//	cmds->cmd->cmad = malloc(sizeof(char) * 9999);
-//	cmds->cmd->args = malloc(sizeof(char) * 9999);
-//	cmds->cmd->so = malloc(sizeof(char) * 9999);
-//	cmds->env = envi;
-	
-//	node = ft_lstnew(s);
+=======
+	int		i;
 
+	arg = malloc(sizeof(t_arg));
+	node = malloc(sizeof(t_arg));
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
+	gg = malloc(sizeof(t_gg));
+	line = malloc(sizeof(char) * ft_strln(s));
 	gg->lock = 0;
 	gg->count = 0;
 	gg->qq = 0;
-//	cmds->path = get_path();
-//	ta ft_lstnew(gg, NULL);
-//	ft_lstadd_back(&cmds, cmds);
-
+	i = 0;
 
 
 
 	line = ssplit(gg, s, ' ');
-
-	// line = ft_split(s, ' ');
-	// for (int i=0; line[i] != NULL ;i++)
-	// {
-	// 	// printf("line is `%s`\n", cmds->line[i]);
-	// 	printf("line is `%s`\n", line[i]);
-	// }
-//	printf("arg_count %d\n", gg->count);
-
-	int	i=0;
-
-	arg = ft_lstnew(line[i]);
+	arg = ftlstnew(line[i]);
 	i++;
 	while (i < gg->count)
 	{
+<<<<<<< HEAD
 		node = ft_lstnew(line[i]);
 	//	printf("line %s\n", line[i]);
 		ft_lstadd_back(&arg, node);
@@ -674,18 +632,22 @@ t_list	*ft_new_parsing(char *s)
 	//////////////////////////
 	t_list *mr;
 //	mr = parso(arg, gg);
+=======
+		node = ftlstnew(line[i]);
+		ftlstadd_back(&arg, node);
+		i++;
+	}
+	//////////////////////////
+	t_arg *mr;
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 	mr = parsin_dyalbss7(arg, gg);
 	//////////////////////////
-//	mr = parsqu(mr);
-//	mr = parso(mr);
-	//////////////////////////
-	i=0;
-	
 	while (mr != NULL)
 	{
 		//printf("--[%s\n", mr->content);
 		mr = mr->next;
 	}
+<<<<<<< HEAD
 //	printf("everything good\n");
 	
 	
@@ -703,6 +665,8 @@ t_list	*ft_new_parsing(char *s)
 	// 	printf("line is `%s`\n", line[i]);
 	// }
 
+=======
+	printf("everything good\n");
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 	return (arg);
-//	return (1);
 }

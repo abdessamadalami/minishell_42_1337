@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:09 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/12 16:30:08 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/25 13:06:36 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	**chek_and_fill(char **t, char *s, char c)
 		}
 		while (s[i] != c && s[i])
 			i++;
-		t[count] = ft_substr(s, temp, i - temp);
+		t[count] = ft_subtr(s, temp, i - temp);
 		if (t[count] == NULL)
 			return (ft_del(t, count));
 		count++;
@@ -72,7 +72,7 @@ static char	**chek_and_fill(char **t, char *s, char c)
 	return (t);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_msplit(char *s, char c)
 {
 	char	**t;
 	int		count;

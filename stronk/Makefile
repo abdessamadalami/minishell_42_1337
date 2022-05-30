@@ -4,7 +4,6 @@ SRCS =  minishell.c\
 		utils/minishell_utils.c\
 		utils/minishell_utils2.c\
 		utils/minishell_list_utils.c\
-		utils/get_path.c\
 		utils/ssplit/ssplit.c\
 		utils/ssplit/sosplit.c\
 		utils/ssplit/qusplit.c\

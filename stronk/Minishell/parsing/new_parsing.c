@@ -6,7 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/25 10:23:47 by ael-oual         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/30 15:52:20 by ael-asri         ###   ########.fr       */
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +33,17 @@ int	check_so(char *s1, char c)
 int	check_q(char *s)
 {
 	int	i;
-//	int	x;
 
 	i = 0;
-//	x = 0;
-
-//	printf("sss count %d\n", q);
 	while (s[i] != '\0')
 	{
-	/*	if (ft_strlen(s) == 1 && (s[i] == '>') && (s[i + 1] == '\0'))
+		if ((s[i] == '"' || s[i] == '\''))
 		{
-			
-			return (0);
-		//	gg->count--;
-		//	i++;
-		}
-		if (s[i] == '"' || s[i] == '\'')
-		{
-			q--;
-	//		printf("+700 \n");
-		//	i++;
-		}*/
-		if ((s[i] == '"' || s[i] == '\'') /*&& (q % 2 == 0) && (s[i + 1] != '\0')*/)
-		{
-	//		printf("this count %d, i is %d\n", q, i);
 			return (0);
 		}
 		i++;
 	}
-//	if (x == 2)
-//	printf("+100 \n");
 		return (1);
-//	return (0);
 }
 
 char	get_token(char *s)
@@ -90,6 +73,7 @@ char	get_qtoken(char *s)
 	}
 	return (0);
 }
+<<<<<<< HEAD
 /*
 t_list	*ft_vv(t_list *vv)
 {
@@ -112,12 +96,15 @@ t_list	*ft_vv(t_list *vv)
 	return (new);
 }
 */
+=======
+
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 int	check_qso(char *s)
 {
 	int	i;
 
 	i = 0;
-//	printf("s %s\n", s);
+	if (s[i] )
 	while (s[i] != '\0')
 	{
 		if (s[i] == '"' || s[i] == '\'')
@@ -127,16 +114,14 @@ int	check_qso(char *s)
 				i++;
 		}
 		i++;
-//		printf("s[%d]: %c\n", i, s[i]);
-		if (s[i] == '\0')
+		if (s[i] == '\0' || s[i] == '>' || s[i] == '<' || s[i] == '|')
 			return (0);
 		i++;
 	}
-	// if (s[i] == '"' || s[i] == '\'')
-	// 	return (0);
 	return (1);
 }
 
+<<<<<<< HEAD
 t_list	*parso(t_list *arg, t_gg *gg)
 {
 	char	**temp;
@@ -275,15 +260,48 @@ t_list	*parso(t_list *arg, t_gg *gg)
 				printf("YO ONE IN HERE %s\n", dv->content);
 				temp = sosplit(dv->content);
 				if (x == ft_lstsize(arg) - 1)
+=======
+t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
+{
+	char	**temp;
+	char	*sl;
+	t_arg	*node;
+	t_arg	*sfa=NULL;
+	int		i;
+//	char	c;
+
+	i = 0;
+	node = malloc(sizeof(t_arg));
+	temp = malloc(sizeof(char) * 9999);
+	if (!node || !temp)
+		exit(1);
+	while (arg != NULL)
+	{
+		
+		if (check_q(arg->data))
+		{
+			if ((check_so(arg->data, '<') || check_so(arg->data, '>')  || check_so(arg->data, '|')) &&
+				!(ft_strln(arg->data) == 1 && (arg->data[i] == '>' || arg->data[i] == '<' || arg->data[i] == '|') && (arg->data[i + 1] == '\0')))
+			{
+				
+				if (ft_strln(arg->data) == 2 && arg->data[i+1] != arg->data[i])
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 				{
-					printf("AKHITR W7DA\n");
-					lst_lastone(&arg, temp, x);
+					sl = ft_strdp(ft_sstrcat(arg->data[i]));
+					node = ftlstnew(sl);
+					ftlstadd_back(&sfa, node);
+					sl = ft_strdp(ft_sstrcat(arg->data[i + 1]));
+					node = ftlstnew(sl);
+					ftlstadd_back(&sfa, node);
+				//	free(sl);
 				}
-				else
+				else if (!(ft_strln(arg->data) == 2 && (arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i]) && (arg->data[i + 2] == '\0')))
 				{
-					printf("MACHI AKHITR W7DA\n");
-					lst_between(&arg, temp, x);
+				//	c = get_token(arg->data);
+					temp = sosplit(arg->data);
+					addbacki_sf(&sfa, temp);
 				}
+<<<<<<< HEAD
 				printf("hppp\n");
 			}*/
 		}
@@ -358,12 +376,47 @@ t_list	*parso(t_list *arg, t_gg *gg)
 		if (!dv)
 			break;
 		dv = dv->next;
+=======
+			}
+			else
+			{
+				node = ftlstnew(arg->data);
+				ftlstadd_back(&sfa, node);
+			//	free(node->data);
+			}
+		}
+		else if (!check_qso(arg->data))
+		{
+		//	printf("jwa\n");
+		//	printf("q %s\n", arg->data);
+		//	c = get_token(arg->data);
+			temp = squsplit(gg, arg->data);
+			// for (int i=0;temp[i];i++)
+			// 	printf("hi %s\n", temp[i]);
+			addbacki_sf(&sfa, temp);
+		}
+	/*	else
+		{
+			printf("jwa\n");
+			node = ftlstnew(arg->data);
+			ftlstadd_back(&sfa, node);
+		}*/
+		arg = arg->next;
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 	}
-//	arg = dv;
-//	printf("size dv %d\n", ft_lstsize(arg));
-	return (arg);
+//	printf("sfa %s\n", sfa->data);
+	free(temp);
+//	free(node);
+//	free(sl);
+/*while (node != NULL)
+	{
+		free(node->data);
+		node = node->next;
+	}*/
+	return (sfa);
 }
 
+<<<<<<< HEAD
 t_list	*parsqu(t_list *arg)
 {
 	char	**temp;
@@ -416,17 +469,35 @@ t_list	*parsqu(t_list *arg)
 				//	dv = dv->next;
 				}
 				else
+=======
+t_arg	*remove_quotes(t_arg *arg)
+{
+	int		i;
+	int		j;
+	t_arg	*sfa=NULL;
+	t_arg	*node;
+	char	*s;
+
+	i =0;
+	j = 0;
+	while (arg != NULL)
+	{
+	//	printf("zft %s\n", arg->data);
+		if (!check_q(arg->data))
+		{
+			
+			s = malloc(sizeof(char) * (ft_strln(arg->data) - 1));
+			while (arg->data[i])
+			{
+				if (arg->data[i] != '"' && arg->data[i] != '\'')
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 				{
-//					printf("MACHI AKHITR W7DA\n");
-					arg = machi_akhirw7da(&arg, temp, x);
-				//	lst_between(&arg, temp, x);
-					dv = arg;
-					r = ft_strllen(temp);
-					v ++;
-					x =0;
+					s[j] = arg->data[i];
+					j++;
 				}
-			//	}
+				i++;
 			}
+<<<<<<< HEAD
 		 }
 //		printf("hdata dv %s\n", dv->content);
 		x++;
@@ -434,14 +505,28 @@ t_list	*parsqu(t_list *arg)
 		if (!dv)
 			break;
 		dv = dv->next;
+=======
+			s[j] = '\0';
+	//		printf("sss %s\n", s);
+			node = ftlstnew(s);
+			ftlstadd_back(&sfa, node);
+		}
+		else
+		{
+	//		printf("cc\n");
+			node = ftlstnew(arg->data);
+			ftlstadd_back(&sfa, node);
+		}
+		
+		arg = arg->next;
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 	}
-//	arg = dv;
-//	printf("size dv %d\n", ft_lstsize(arg));
-	return (arg);
+	return (sfa);
 }
 
 t_list	*ft_new_parsing(char *s)
 {
+<<<<<<< HEAD
 	// if (!s)
 	// 	printf("walo\n");
 	t_list	*arg;
@@ -462,33 +547,31 @@ t_list	*ft_new_parsing(char *s)
 //	cmds->env = envi;
 	
 //	node = ft_lstnew(s);
+=======
+	t_arg	*arg;
+	t_arg	*node;
+	t_gg	*gg;
+	char	**line;
+	int		i;
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 
+//	arg = malloc(sizeof(t_arg));
+//	node = malloc(sizeof(t_arg));
+	gg = malloc(sizeof(t_gg));
+	line = malloc(sizeof(char) * ft_strln(s));
 	gg->lock = 0;
 	gg->count = 0;
 	gg->qq = 0;
-//	cmds->path = get_path();
-//	ta ft_lstnew(gg, NULL);
-//	ft_lstadd_back(&cmds, cmds);
-
-
-
+	i = 0;
 
 	line = ssplit(gg, s, ' ');
-
-	// line = ft_split(s, ' ');
-	// for (int i=0; line[i] != NULL ;i++)
-	// {
-	// 	// printf("line is `%s`\n", cmds->line[i]);
-	// 	printf("line is `%s`\n", line[i]);
-	// }
-//	printf("arg_count %d\n", gg->count);
-
-	int	i=0;
-
-	arg = ft_lstnew(line[i]);
+	
+	arg = ftlstnew(line[i]);
 	i++;
+	
 	while (i < gg->count)
 	{
+<<<<<<< HEAD
 		node = ft_lstnew(line[i]);
 	//	printf("line %s\n", line[i]);
 		ft_lstadd_back(&arg, node);
@@ -524,14 +607,17 @@ t_list	*ft_new_parsing(char *s)
 		}
 		free(cmds->temp);
 		i = m;
+=======
+		node = ftlstnew(line[i]);
+		ftlstadd_back(&arg, node);
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
 		i++;
 	}
-
-	cmds->lock = 0;*/
-//	parse_cmd(cmds);
-	
-//	parse_so(arg);
+	free(gg);
+//	free(node);
+//	
 	//////////////////////////
+<<<<<<< HEAD
 	t_list *mr;
 	mr = parso(arg, gg);
 	//////////////////////////
@@ -546,22 +632,34 @@ t_list	*ft_new_parsing(char *s)
 		mr = mr->next;
 	}
 	printf("everything good\n");*/
+=======
+	t_arg *mr;
+	t_arg *dv;
+	mr = parsin_dyalbss7(arg, gg);
+//	free(line);
+>>>>>>> 49a307ac50c24b8947080a6787c3b93827d46ebd
+	
+	//////////////////////////
+	dv = remove_quotes(mr);
 	
 	
-	
-//	vv = arg;
-	// for (int i=0; i < arg->count ;i++)
+	// while (node != NULL)
 	// {
-	// 	printf("daataa `%s`\n", vv->gg);
-	// 	vv = arg->next; 
-	// 	// printf("so is `%s`\n", cmds->cmd->so[i]);
+	// 	free(node->data);
+	// 	node = node->next;
 	// }
-	// for (int i=0; line[i] != NULL ;i++)
-	// {
-	// 	// printf("line is `%s`\n", cmds->line[i]);
-	// 	printf("line is `%s`\n", line[i]);
-	// }
-
-	return (arg);
-//	return (1);
+//	free(gg);
+//	free(line);
+//	free(mr);
+// free(arg);
+	
+//	arg = mr;
+	// while (mr != NULL)
+	// 		{
+	// 			printf("--[%s\n", mr->data);
+	// 			mr = mr->next;
+	// 		}
+	// 		printf("everything good\n");
+//	system("leaks minishell");
+	return (dv);
 }
