@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 13:49:19 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/29 19:58:30 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:53:24 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@ static int	set_count(t_gg *gg, char *s)
 		if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
 			gg->lock++;
 		if (((s[i] == '<' && s[i + 1] != '<') || (s[i] == '>' && s[i + 1] != '>')
-			|| (s[i] == '|' && s[i + 1] != '|')) && (s[i + 1] != '\0') && (gg->lock % 2 == 0))
-			count++;
+			|| (s[i] == '|' && s[i + 1] != '|')) /*&& (s[i + 1] != '\0')*/ && (gg->lock % 2 == 0))
+		{
+	//		printf("%c\n", s[i]);
+				count++;
+		}
 		i++;
 	}
 	gg->qq = gg->lock;
 	if (gg->lock % 2 != 0)
 		return (-1);
+//	printf("count+2 %d\n", count+2);
 	return (count + 2);
 }
 
@@ -68,7 +72,7 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s)
 			gg->lock--;
 			i++;
 			// temp++;
-			continue ;
+		//	continue ;
 		}
 		if ((s[i] == '<' || s[i] == '>'|| s[i] == '|') && (gg->lock % 2 == 0))
 		{
@@ -81,10 +85,13 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s)
 		}
 		while (s[i])
 		{
-			printf("s[%d]: %c\n", i, s[i]);
-		//	if (s[i] == '"' || s[i] == '\'')
-		//		i++;
-			if (((s[i] == '<' || s[i] == '>'|| s[i] == '|') && (gg->lock % 2 == 0)) || (s[i] == '"' || s[i] == '\''))
+		//	printf("s[%d]: %c\n", i, s[i]);
+			if (s[i] == '"' || s[i] == '\'')
+			{
+				i++;
+				gg->lock--;
+			}
+			if (((s[i] == '<' || s[i] == '>'|| s[i] == '|') && (gg->lock % 2 == 0))/* || (s[i] == '"' || s[i] == '\'')*/)
 			{
 				break;
 			}
@@ -97,8 +104,8 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s)
 	}
 	t[count] = 0;
 	gg->count = count;
-	for(int i=0;t[i];i++)
-		printf("t %s\n", t[i]);
+	// for(int i=0;t[i];i++)
+	// 	printf("t %s\n", t[i]);
 	return (t);
 }
 

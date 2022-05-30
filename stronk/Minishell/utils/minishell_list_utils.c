@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/28 21:12:53 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:09:02 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	addbacki_sf(t_arg **sfa, char **t)
 		ftlstadd_back(sfa, node);
 		i++;
 	}
+//	free(node);
 	// while (node != NULL)
 	// {
 	// 	free(node->data);

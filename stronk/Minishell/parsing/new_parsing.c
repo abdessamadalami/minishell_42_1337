@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/29 20:58:45 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:52:20 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ int	check_qso(char *s)
 	return (1);
 }
 
-t_arg	*parsin_dyalbss7(t_arg *arg)
+t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 {
 	char	**temp;
 	char	*sl;
 	t_arg	*node;
 	t_arg	*sfa=NULL;
 	int		i;
-	char	c;
+//	char	c;
 
 	i = 0;
 	node = malloc(sizeof(t_arg));
@@ -109,8 +109,8 @@ t_arg	*parsin_dyalbss7(t_arg *arg)
 	while (arg != NULL)
 	{
 		
-	//	if (check_q(arg->data))
-	//	{
+		if (check_q(arg->data))
+		{
 			if ((check_so(arg->data, '<') || check_so(arg->data, '>')  || check_so(arg->data, '|')) &&
 				!(ft_strln(arg->data) == 1 && (arg->data[i] == '>' || arg->data[i] == '<' || arg->data[i] == '|') && (arg->data[i + 1] == '\0')))
 			{
@@ -127,7 +127,7 @@ t_arg	*parsin_dyalbss7(t_arg *arg)
 				}
 				else if (!(ft_strln(arg->data) == 2 && (arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i] || arg->data[i+1] == arg->data[i]) && (arg->data[i + 2] == '\0')))
 				{
-					c = get_token(arg->data);
+				//	c = get_token(arg->data);
 					temp = sosplit(arg->data);
 					addbacki_sf(&sfa, temp);
 				}
@@ -138,15 +138,22 @@ t_arg	*parsin_dyalbss7(t_arg *arg)
 				ftlstadd_back(&sfa, node);
 			//	free(node->data);
 			}
-	/*	}
+		}
 		else if (!check_qso(arg->data))
 		{
+		//	printf("jwa\n");
 		//	printf("q %s\n", arg->data);
-			c = get_token(arg->data);
+		//	c = get_token(arg->data);
 			temp = squsplit(gg, arg->data);
-			for (int i=0;temp[i];i++)
-				printf("hi %s\n", temp[i]);
+			// for (int i=0;temp[i];i++)
+			// 	printf("hi %s\n", temp[i]);
 			addbacki_sf(&sfa, temp);
+		}
+	/*	else
+		{
+			printf("jwa\n");
+			node = ftlstnew(arg->data);
+			ftlstadd_back(&sfa, node);
 		}*/
 		arg = arg->next;
 	}
@@ -222,10 +229,7 @@ t_arg	*ft_new_parsing(char *s)
 	gg->qq = 0;
 	i = 0;
 
-
-
 	line = ssplit(gg, s, ' ');
-	
 	
 	arg = ftlstnew(line[i]);
 	i++;
@@ -236,12 +240,15 @@ t_arg	*ft_new_parsing(char *s)
 		ftlstadd_back(&arg, node);
 		i++;
 	}
+	free(gg);
 //	free(node);
 //	
 	//////////////////////////
 	t_arg *mr;
 	t_arg *dv;
-	mr = parsin_dyalbss7(arg);
+	mr = parsin_dyalbss7(arg, gg);
+//	free(line);
+	
 	//////////////////////////
 	dv = remove_quotes(mr);
 	
@@ -253,14 +260,16 @@ t_arg	*ft_new_parsing(char *s)
 	// }
 //	free(gg);
 //	free(line);
-//free(arg);
-//	system("leaks minishell");
+//	free(mr);
+// free(arg);
+	
 //	arg = mr;
-	while (mr != NULL)
-			{
-				printf("--[%s\n", mr->data);
-				mr = mr->next;
-			}
-			printf("everything good\n");
+	// while (mr != NULL)
+	// 		{
+	// 			printf("--[%s\n", mr->data);
+	// 			mr = mr->next;
+	// 		}
+	// 		printf("everything good\n");
+//	system("leaks minishell");
 	return (dv);
 }
