@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/29 13:14:13 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:19:26 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@ int main(int ac, char **av)
 	(void)*av;
 	if (ac == 1)
 	{
-		while ((s = readline("$>prompt ")) != 0)
+		while ((s = readline("$>prompt ")) != NULL)
 		{
-			mr = ft_new_parsing(s);
+			if (s[0] == '\0')
+				continue;
+			//	exit(1);
+			mr = ft_parsing(s);
 		//	if (!ft_new_parsing(s))
 		//		return (0);
 			// printf("$%s$\n", s);
@@ -69,7 +72,8 @@ int main(int ac, char **av)
 		//		ft_echo();
 
 		}
-		
+		if (!s)
+			printf("cha\n");
 		return (0);
 		
 	}

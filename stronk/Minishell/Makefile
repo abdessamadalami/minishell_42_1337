@@ -8,9 +8,8 @@ SRCS =  minishell.c\
 		utils/ssplit/sosplit.c\
 		utils/ssplit/qusplit.c\
 		utils/ssplit/squsplit.c\
-		parsing/new_parsing.c\
-	
-		
+		parsing/parsing.c\
+		parsing/parsing_utils.c\
 
 OBJS = $(SRCS:.c=.o)
 
