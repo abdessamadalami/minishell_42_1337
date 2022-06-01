@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/28 21:15:07 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:01:13 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	**ssplit(t_gg *gg, char *s, char c)
 	count = set_count(gg, s, c);
 	if (count < 0)
 	{
-		printf("go to heredoc\n");
+		printf("Error tmma\n");
 		exit(1);
 	}
 	t = (char **)malloc(sizeof(char *) * (count + 1));

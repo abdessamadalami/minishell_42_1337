@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:11:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/25 12:14:40 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:23:16 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_echo(char **av, int x)
 		printf("\n");
 	
 }
-
+-
 int main(int ac, char **av)
 {
 	int	p;

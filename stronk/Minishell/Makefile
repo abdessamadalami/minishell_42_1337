@@ -10,12 +10,13 @@ SRCS =  minishell.c\
 		utils/ssplit/squsplit.c\
 		parsing/parsing.c\
 		parsing/parsing_utils.c\
+		parsing/parsing_syntax.c\
 
 OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/30 21:19:26 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:05:52 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	ft_arg(char *s1, char *s2)
 int main(int ac, char **av)
 {
 	char	*s;
-	t_arg	*mr=NULL;
+	t_arg	*mr;
 
+	mr = malloc(sizeof(t_arg));
 	(void)*av;
 	if (ac == 1)
 	{
@@ -59,9 +60,13 @@ int main(int ac, char **av)
 				printf("--[%s\n", mr->data);
 				mr = mr->next;
 			}
-			printf("everything good\n");
+			// printf("everything good\n");
 			add_history(s);
-			
+			while (mr != NULL)
+			{
+				free(mr->data);
+				mr = mr->next;
+			}
 		//	printf(">minishell$");
 			
 			
