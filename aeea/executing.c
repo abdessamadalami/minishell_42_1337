@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/30 16:25:26 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:16:26 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ static int chiled_processe(t_list *pars_il ,t_list *env, int std_in, int std_out
 	int		cmd;	
 
 	cmd = 0;
+
 	argv = make_argv(pars_il, env);
+	if (argv == NULL)
+		return 1;
 	cmd = chec_for_cmds(argv, env);
-	if (!cmd && std_in != -1)
+	if (!cmd && std_in != -1) //for other redirction ???
 	{
-		path = get_path_env(env, argv[0]);
-		//close(fd[0]);//!close
+		if (access_func(argv))
+			path = access_func(argv);
+		else
+			path = get_path_env(env, argv[0]);
 		if(path == NULL)
 			 error_printf(argv[0]);//!free memory
 		dup2(std_in, 0);
@@ -72,10 +77,17 @@ void executing(t_list *pars_il, t_list *env)
 	int 	i;
 	int		n_p;
 	t_var	v_pipe;
+	int		a;
 
+	a = dup(0);
+	int b = dup(1);
 	i = 0;
 	if (f_building(&n_p,env, pars_il, &ids) == 1)
-		return;
+	{
+		dup2(a,0);
+		dup2(b,1);
+		return ;
+	}
 	while (i <= n_p)
 	{
 		pipe_aff(&v_pipe, n_p, i);
@@ -84,7 +96,7 @@ void executing(t_list *pars_il, t_list *env)
 		{
 		  	//?if we have pipe with building command we must exit thr child prossece
 			if(chiled_processe(pars_il, env, v_pipe.std_in, v_pipe.std_out))
-				exit(0);
+				exit(0);			
 		}
 		close_aff(&v_pipe);
 		if (dup_parm(&pars_il, v_pipe.fd) == 0 && n_p > 0)
@@ -92,4 +104,6 @@ void executing(t_list *pars_il, t_list *env)
 		i++;
 	}
 	wait_exit_status(ids, n_p);
+	dup2(a,0);
+	dup2(b,1);
 }

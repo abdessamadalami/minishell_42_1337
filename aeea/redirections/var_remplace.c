@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:22:02 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/20 10:00:36 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/31 18:31:47 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ char *bezero_seprateur(char *str)
 
 char *env_var(char *arg, t_list **env ,int a)
 {
-    //dolar
     char *check_d;
     char **do_str;
     char *new_arg;
     char *s;
     int i;
     char ret_char;
+    
     a = 0; 
     i = 0;
     check_d = strchr(arg, '$');
@@ -83,7 +83,7 @@ char *env_var(char *arg, t_list **env ,int a)
         if (new_arg)
             s = ft_strjoin(s, new_arg);
         if (check_d != NULL)
-            s = ft_strjoin(s,check_d);
+            s = ft_strjoin(s, check_d);
         i++;
         free(check_d);
     }

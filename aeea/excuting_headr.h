@@ -39,12 +39,12 @@ int dup_parm(t_list **pars_il, int *fd);
 void get_par( t_list *list , char *env);
 void std_files(char *std_out, int fd);//minishell intra video
 void error_handling(char *str, int p);
-void here_doc(char *lim);
+void here_doc(char *lim, t_list *env);
 void redirect_output(char *std_out, char c);
 void redirect_input(char *std_in);
 void ft_merge_sort(t_list **list);
 void mid_list(t_list *list, t_list **fast, t_list **slow);
-void g_redirections(char *cmd, char *red); //we can addapt it 
+void g_redirections(char *cmd, char *red, t_list *env); //we can addapt it 
 void ft_merge_sort_u(t_list *env);
 void *f(void *ptr);
 void del(void *ptr);
@@ -66,6 +66,6 @@ void executing(t_list *pars_il, t_list *env);
 t_list  *make_list_fork(t_list *list);
 int chec_for_pipe(t_list *list);
 char  **make_argv(t_list *list, t_list *env);
-void c_exit(int a);
+void c_exit(char **args);
 
 #endif

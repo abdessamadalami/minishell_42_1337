@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/29 19:11:39 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:23:56 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void header_inline(char *s, t_list *env)
 	exit(0);
 //	s = ft_strdup("dkfkfkf");
 }
+
 void handler_sig(int sig)
 {
 	if (sig == SIGINT)
@@ -28,7 +29,6 @@ void handler_sig(int sig)
         // rl_redisplay();
     }
 }
-
 
 int main(int argc, char **argv, char **env)
 {	
@@ -47,16 +47,20 @@ int main(int argc, char **argv, char **env)
 	while (1)
 	{
 		//list = ft_new_parsing(s);
+		// printf("\033[1;33m");
 		s = readline("$>prompt ");
-		printf("_________(%s)________\n", s);
+		//printf("_________(%s)________\n", s);
 		if (s == 0)
 			header_inline(s, env_lst);
 		if (ft_strlen(s) != 0)
 		{
 			par = c_env(ft_split(s, ' '));
-			executing(par ,env_lst);
-		}
+			executing(par, env_lst);     
+		}   
 		add_history(s);
+		//4294967295
+		//9223372036854775807 
 	}
+	printf("\033[13m");
 	return (0);
-	}
+}

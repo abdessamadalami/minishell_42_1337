@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:11:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/25 08:51:34 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:22:59 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 
 
-static int redir(t_list **list,int *bol)
+static int redir(t_list **list,int *bol, t_list *env)
 {
-    g_redirections((*list)->next->content, (*list)->content);
-    if ((*list)-> next -> next == NULL)
+    g_redirections((*list)->next->content, (*list)->content,env);
+    if ((*list)->next->next == NULL)
         return (0);
     else
         *list = (*list)->next;
@@ -36,15 +36,17 @@ char  **make_argv(t_list *list, t_list *env)
 	bol = 1;
 	while (list)
 	{
+		if(ft_strncmp(list ->content,"$?\0",4) == 0)
+			list ->content = ft_itoa(e_st);
 		if(env_var(list ->content, &env ,0) && ft_strncmp(list ->content,"$?\0",4))// for dollar sign
 			list -> content = env_var(list ->content, &env ,3);
 		if (check_for_pipe(list ->content))
-			break;
+				break;
 		if (check_redirec(list ->content)) 
-          { 
-               if(redir(&list,&bol) == 0)
-                break;
-		  }
+		{ 			
+			if(redir(&list, &bol, env) == 0)
+				break;
+		}
         else
 			bol = 1;
 		if (bol == 1)

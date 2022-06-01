@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:42:06 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/30 06:50:49 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:27:00 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ int chec_for_cmds(char **argv,t_list *env)
 	//! error syntax and parcil
 	if (!ft_strncmp(argv[index], "$?\0", 4)) // exit status
 	{
-		printf(" justee exit status: %d\n", e_st);
+		printf(" command not found: %d\n", e_st);
 		return 1;
 	}
 	if (!ft_strncmp(argv[index], "exit\0", 4)) // exit status
 	{
-		c_exit(0);
+		c_exit(argv);
 		return 1;
 	}
 	return 0;
