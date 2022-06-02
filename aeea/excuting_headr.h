@@ -67,5 +67,6 @@ t_list  *make_list_fork(t_list *list);
 int chec_for_pipe(t_list *list);
 char  **make_argv(t_list *list, t_list *env);
 void c_exit(char **args);
+int c_cd(t_list *env,char **argv);
 
 #endif

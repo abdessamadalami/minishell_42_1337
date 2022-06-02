@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:56:11 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/01 11:55:20 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/02 08:30:30 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,74 @@ static int	index_fun(const char *nbr, int *s)
 	return (i);
 }
 
-int	ft_atoi(const char *nbr)
+int	ft_atoi_l(const char *nbr)
 {
 	int	i;
-	int	nb;
+	unsigned long long	nb;
 	int	s;
 
 	nb = 0;
 	s = 1;
 	i = index_fun(nbr, &s);
-	while (nbr[i] >= '0' && nbr[i] <= '9' )
+	while (nbr[i] >= '0' && nbr[i] <= '9')
 	{			
 		nb = nb * 10 + nbr[i] - '0';
+		if (nb > 9223372036854775807)
+		{
+			printf("MINISHELL exit: %s: numeric argument required \n", nbr);
+			return (255);
+		}
 		i++;
 	}
-	return (nb * s);
+	return ((nb * s) & 255);
+}
+
+int ft_isnbr(char *str)
+{
+	int index;
+
+	index = 0;
+	if (str[index] == '-')
+		index++;
+	while (str[index] != '\0')
+	{
+		if(!ft_isdigit(str[index]))
+		{
+			printf("MINISHELL exit: %s: numeric argument required\n", str);
+			exit(255);
+		}
+		index++;
+	}
+	return (1);
 }
 
 void c_exit(char **args)
 {
-    int a;
-    printf("_%s_ \n",args[1]);
-    a = ft_atoi(args[1]) & 255;
-    printf("a %d\n", a);
-    ft_putstr_fd("exit\n",1);
-    exit(a);
-}//good work
+	if (args[1] == NULL)
+		exit(0);
+	if (args[1] != 0)
+	{
+		if(ft_isnbr(args[1]))
+		{
+			if (args[2] != NULL)
+			{
+				printf("MINIHELL :exit: too many arguments\n");
+				e_st = 1;
+				return ;
+			}
+			exit(ft_atoi_l(args[1]));
+		}
+	}
+}
+
+//good work//? mini long long and negative number 
+/*
+	bash-3.2$ cat > file << ss
+	> alami
+	> elouali
+	> ss
+	bash-3.2$ cat file
+	alami
+	elouali
+	bash-3.2$ 
+*/

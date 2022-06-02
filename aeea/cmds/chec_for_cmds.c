@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:42:06 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/01 11:27:00 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/02 08:36:30 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int chec_for_cmds(char **argv,t_list *env)
 	//print_list(env,0);
 	if (!ft_strncmp(argv[index], "export\0",8))
 		return (str_n_cmp(env, argv));
+	if (!ft_strncmp(argv[index], "cd\0",8))
+		return (c_cd(env, argv));
 	if (!ft_strncmp(argv[index], "unset\0",7))
 		return (unset_cmd(argv, env));
 	if (!ft_strncmp(argv[index], "env\0", 7)) // what about agr with env
