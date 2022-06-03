@@ -64,7 +64,9 @@ int		check_q(char *s);
 char	get_token(char *s);
 char	get_qtoken(char *s);
 int		check_qso(char *s);
-void	check_syntax(char *s);
+void	check_syntax(t_arg *arg);
+char	first_occc(char *s);
+int	count_q(char *s, char c);
 
 // --------------- builtins -----------------//
 void	ft_echo(char **s, int x);

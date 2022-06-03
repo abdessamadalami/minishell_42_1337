@@ -6,33 +6,69 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/01 13:01:13 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:42:30 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+char	first_occ(char *s)
+{
+	int	i;
+	char	f;
+	int	x=0;
+//	int	y=0;
+
+	i = 0;
+	while(s[i] != '\0')
+	{
+		if (s[i] == '"' || s[i] == '\'')
+			f = s[i];
+		i++;
+	}
+	while (s[i])
+	{
+	//	if (s->data[i] == '>' || s->data[i] == '<' || s->data[i] == '|')
+		if (s[i] == f)
+		{
+			x++;
+			// c = s->data[i];
+		}
+	/*	if (s[i] == l && x%2 == 0)
+		{
+			y++;
+			// c = s->data[i];
+		}*/
+		i++;
+	}
+	return (x);
+}
+
 static int	set_count(t_gg *gg, char *s, char c)
 {
 	int	i;
 	int	count;
+	char	f;
 
 	count = 0;
 	i = 0;
+	f = first_occ(s);
+	// printf("f %c\n", f);
 	while (s[i] == c)
 		i++;
 	count++;
 	while (s[i])
 	{
-		if (s[i] == '"' || s[i] == '\'')
+		if (s[i] == f)
 			gg->lock++;
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0' && (gg->lock % 2 == 0))
 			count++;
 		i++;
 	}
 	gg->qq = gg->lock;
-	if (gg->lock % 2 != 0)
-		return (-1);
+	// if (gg->lock % 2 != 0)
+	// 	return (-1);
+	printf("count %d\n", gg->lock);
 	return (count);
 }
 
@@ -87,6 +123,8 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	}
 	t[count] = 0;
 	gg->count = count;
+	// for (int i=0;t[i];i++)
+	// 	printf("chta %s\n", t[i]);
 	return (t);
 }
 
@@ -100,7 +138,7 @@ char	**ssplit(t_gg *gg, char *s, char c)
 	count = set_count(gg, s, c);
 	if (count < 0)
 	{
-		printf("Error tmma\n");
+		printf("Error tmma ss\n");
 		exit(1);
 	}
 	t = (char **)malloc(sizeof(char *) * (count + 1));

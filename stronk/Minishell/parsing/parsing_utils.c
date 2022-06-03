@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:35:06 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/30 20:35:31 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:43:26 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	check_qso(char *s)
 
 	i = 0;
 	if (s[i] )
+	printf("Yo\n");
 	while (s[i] != '\0')
 	{
 		if (s[i] == '"' || s[i] == '\'')
@@ -90,4 +91,20 @@ int	check_qso(char *s)
 		i++;
 	}
 	return (1);
+}
+
+int	count_q(char *s, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
 }
