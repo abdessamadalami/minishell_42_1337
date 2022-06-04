@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/03 21:45:00 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/04 11:52:07 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 		exit(1);
 	while (arg != NULL)
 	{
-		printf("arga %s\n", arg->data);
+	//	printf("arga %s\n", arg->data);
 			
 		if (check_q(arg->data))
-		{printf("mmm\n");
+		{//printf("mmm\n");
 			if ((check_so(arg->data, '<') || check_so(arg->data, '>')  || check_so(arg->data, '|'))/* &&
 				!(ft_strln(arg->data) == 1 && (arg->data[0] == '>' || arg->data[0] == '<' || arg->data[0] == '|') && (arg->data[i + 1] == '\0'))*/)
 			{
-				if (ft_strln(arg->data) == 1 || (ft_strln(arg->data) == 2 && (arg->data[0] == arg->data[1])))
+				if (ft_strln(arg->data) == 1 || (ft_strln(arg->data) == 2 && (arg->data[0] == arg->data[1]) && arg->data[0] != '|'))
 				{
 					node = ftlstnew(arg->data);
 					ftlstadd_back(&sfa, node);
@@ -45,16 +45,16 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 			else
 			{
 				node = ftlstnew(arg->data);
-				printf("www %s\n", node->data);
+		//		printf("www %s\n", node->data);
 				ftlstadd_back(&sfa, node);
 			}
 		}
 		else// if (!check_qso(arg->data))
-		{printf("rr\n");
+		{//printf("rr\n");
 			temp = squsplit(gg, arg->data);
 			addbacki_sf(&sfa, temp);
 		}
-		printf("mmm\n");
+	//	printf("mmm\n");
 	//	
 		arg = arg->next;
 	}
@@ -80,14 +80,12 @@ t_arg	*remove_quotes(t_arg *arg)
 	{
 		if (!check_q(arg->data))
 		{
-			// printf("data %s\n", arg->data);
 			c = first_occc(arg->data);
 			gg = count_q(arg->data, c);
 			if (c == '"')
 				l = '\'';
 			else
 				l = '"';
-			// printf("c %c\n", c);
 			s = malloc(sizeof(char) * (ft_strln(arg->data) - 1));
 			while (arg->data[i])
 			{
@@ -97,13 +95,10 @@ t_arg	*remove_quotes(t_arg *arg)
 				{
 					if (arg->data[i] == l && (gg % 2 == 0))
 					{
-						// printf("%d\n", gg->lock);
-						// printf("%d %c\n", i,arg->data[i]);
 						i++;
 						continue;
 					}
-				//	if (!(arg->data[i] == l && (gg->lock % 2 == 0)))
-						s[j] = arg->data[i];
+					s[j] = arg->data[i];
 					j++;
 				}
 				else if (arg->data[i] == l && (gg % 2 != 0))
@@ -166,7 +161,7 @@ t_arg	*ft_parsing(char *s)
 //	free(node);
 	check_syntax(arg);
 	//////////////////////////
-	printf("lstsize dyal arg %d\n", ftlstsize(arg));
+//	printf("lstsize dyal arg %d\n", ftlstsize(arg));
 	mr = parsin_dyalbss7(arg, gg);
 //	free(line);
 	// while (arg != NULL)
@@ -189,12 +184,12 @@ t_arg	*ft_parsing(char *s)
 // free(arg);
 	
 //	arg = mr;
-	while (mr != NULL)
-	{
-		printf("--[%s\n", mr->data);
-		mr = mr->next;
-	}
-	printf("everything good\n");
+	// while (mr != NULL)
+	// {
+	// 	printf("--[%s\n", mr->data);
+	// 	mr = mr->next;
+	// }
+	// printf("everything good\n");
 //	system("leaks minishell");
 	
 	return (dv);

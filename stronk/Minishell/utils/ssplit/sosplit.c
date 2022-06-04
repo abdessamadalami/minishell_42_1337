@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/03 18:44:41 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/04 11:55:29 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	set_count(char *s)
 	{
 		if ((s[i] == '<' || s[i] == '>' || s[i] == '|') && (s[i + 1] != '\0'))
 		{
-			if (s[i + 1] == '<' || s[i + 1] == '>' || s[i + 1] == '|')
+			if (s[i + 1] == s[i] && s[i] != '|')
 				i++;
 			count++;
 		}
@@ -64,7 +64,7 @@ static char	**chek_and_fill(char **t, char *s)
 		temp = i;
 		if (s[i] == '<' || s[i] == '>'|| s[i] == '|')
 		{
-			if (s[i + 1] == s[i])
+			if (s[i + 1] == s[i] && s[i] != '|')
 				i++;
 			i++;
 			t[count] = ft_subtr(s, temp, i - temp);
