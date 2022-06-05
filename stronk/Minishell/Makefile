@@ -4,10 +4,12 @@ SRCS =  minishell.c\
 		utils/minishell_utils.c\
 		utils/minishell_utils2.c\
 		utils/minishell_list_utils.c\
+		utils/minishell_erroring.c\
 		utils/ssplit/ssplit.c\
 		utils/ssplit/sosplit.c\
 		utils/ssplit/qusplit.c\
 		utils/ssplit/squsplit.c\
+		utils/ssplit/wildsplit.c\
 		parsing/parsing.c\
 		parsing/parsing_utils.c\
 		parsing/parsing_syntax.c\

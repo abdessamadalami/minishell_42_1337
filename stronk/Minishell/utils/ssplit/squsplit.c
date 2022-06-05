@@ -6,13 +6,13 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 13:49:19 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/03 13:02:47 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/05 21:00:30 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static int	set_count(t_gg *gg, char *s)
+static int	set_count(t_gg *gg, char *s, char c)
 {
 	int	i;
 	int	count;
@@ -22,13 +22,14 @@ static int	set_count(t_gg *gg, char *s)
 	while (s[i] == '<' || s[i] == '>' || s[i] == '|')
 		i++;
 	count++;
-	while (s[i])
+	while (s[i] != '\0')
 	{
-		if (s[i] == '"' || s[i] == '\''/* || s[i] == '>' || s[i] == '<'*/)
+		if (s[i] == c/* || s[i] == '>' || s[i] == '<'*/)
 			gg->lock++;
-		if (((s[i] == '<' && s[i + 1] != '<') || (s[i] == '>' && s[i + 1] != '>')
-			|| (s[i] == '|' && s[i + 1] != '|')) /*&& (s[i + 1] != '\0')*/ && (gg->lock % 2 == 0))
+		if (((s[i] == '<') || (s[i] == '>' )|| (s[i] == '|')) && (gg->lock % 2 == 0))
 		{
+			if (s[i + 1] == s[i])
+				i++;
 	//		printf("%c\n", s[i]);
 				count++;
 		}
@@ -55,7 +56,7 @@ static char	**ft_del(char **t, int count)
 	return (NULL);
 }
 
-static char	**chek_and_fill(t_gg *gg, char **t, char *s)
+static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 {
 	int	i;
 	int	count;
@@ -67,7 +68,7 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s)
 	{
 		
 		temp = i;
-		if ((s[i] == '"' || s[i] == '\''))
+		if (s[i] == c)
 		{
 			gg->lock--;
 			i++;
@@ -86,7 +87,7 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s)
 		while (s[i])
 		{
 		//	printf("s[%d]: %c\n", i, s[i]);
-			if (s[i] == '"' || s[i] == '\'')
+			if (s[i] == c)
 			{
 				i++;
 				gg->lock--;
@@ -104,20 +105,20 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s)
 	}
 	t[count] = 0;
 	gg->count = count;
-	// for(int i=0;t[i];i++)
-	// 	printf("t %s\n", t[i]);
+	for(int i=0;t[i];i++)
+		printf("t %s\n", t[i]);
 	return (t);
 }
 
-char	**squsplit(t_gg *gg, char *s)
+char	**squsplit(t_gg *gg, char *s, char c)
 {
 	char	**t;
 	int		count;
 
 	if (s == 0)
 		return (0);
-	count = set_count(gg, s);
-	
+	count = set_count(gg, s, c);
+	printf("count %d\n", count);
 	if (count < 0)
 	{
 		printf("Error tmma\n");
@@ -126,5 +127,5 @@ char	**squsplit(t_gg *gg, char *s)
 	t = (char **)malloc(sizeof(char *) * (count + 1));
 	if (t == NULL)
 		return (0);
-	return (chek_and_fill(gg, t, s));
+	return (chek_and_fill(gg, t, s, c));
 }

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/05 15:02:26 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:52:04 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 	char	**temp;
 	t_arg	*node;
 	t_arg	*sfa=NULL;
+	char	c;
 
 	node = malloc(sizeof(t_arg));
 	temp = malloc(sizeof(char) * 9999);
@@ -47,7 +48,9 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 		}
 		else
 		{
-			temp = squsplit(gg, arg->data);
+			printf("hii %s\n", arg->data);
+			c = first_occc(arg->data);
+			temp = squsplit(gg, arg->data, c);
 			addbacki_sf(&sfa, temp);
 		}
 		arg = arg->next;
@@ -116,6 +119,43 @@ t_arg	*remove_quotes(t_arg *arg)
 	return (sfa);
 }
 
+t_arg	*parsing_wildcard(t_arg *arg)
+{
+	char	**temp;
+	t_arg	*node;
+	t_arg	*sfa=NULL;
+
+	node = malloc(sizeof(t_arg));
+	temp = malloc(sizeof(char) * 9999);
+	if (!node || !temp)
+		exit(1);
+	while (arg != NULL)
+	{
+		if (check_q(arg->data))
+		{
+			printf("chtff'' %s\n", arg->data);
+			if (check_so(arg->data, '*'))
+			{
+				temp = wildsplit(arg->data);
+				addbacki_sf(&sfa, temp);
+			}
+			else
+			{
+				node = ftlstnew(arg->data);
+				ftlstadd_back(&sfa, node);
+			}
+		}
+		else
+		{
+			node = ftlstnew(arg->data);
+			ftlstadd_back(&sfa, node);
+		}
+		arg = arg->next;
+	}
+	free(temp);
+	return (sfa);
+}
+
 t_arg	*ft_parsing(char *s)
 {
 	t_arg	*arg;
@@ -123,8 +163,9 @@ t_arg	*ft_parsing(char *s)
 	t_gg	*gg;
 	char	**line;
 	int		i;
-	t_arg *mr;
-	t_arg *dv;
+	t_arg	*mr;
+	t_arg	*dv;
+	t_arg	*ms;
 
 	
 	//	printf("rra -%s-\n", s);
@@ -139,8 +180,8 @@ t_arg	*ft_parsing(char *s)
 
 	
 	line = ssplit(gg, s, ' ');
-	for(int k=0;line[k];k++)
-		printf("line %s\n", line[k]);
+	// for(int k=0;line[k];k++)
+		// printf("line %s\n", line[k]);
 	arg = ftlstnew(line[i]);
 	i++;
 	
@@ -155,6 +196,7 @@ t_arg	*ft_parsing(char *s)
 	check_syntax(arg);
 	//////////////////////////
 //	printf("lstsize dyal arg %d\n", ftlstsize(arg));
+	gg->lock = 0;
 	mr = parsin_dyalbss7(arg, gg);
 //	free(line);
 	// while (arg != NULL)
@@ -163,8 +205,9 @@ t_arg	*ft_parsing(char *s)
 	// 			arg = arg->next;
 	// 		}
 	//////////////////////////
-	dv = remove_quotes(mr);
 	
+	ms = parsing_wildcard(mr);
+	dv = remove_quotes(ms);
 	
 	// while (node != NULL)
 	// {
