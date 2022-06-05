@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/01 11:23:56 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/04 19:07:28 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main(int argc, char **argv, char **env)
 	{
 		//list = ft_new_parsing(s);
 		// printf("\033[1;33m");
-		s = readline("$>prompt ");
+		s = readline("\e[0;32m$>prompt \e[0m");
 		//printf("_________(%s)________\n", s);
 		if (s == 0)
 			header_inline(s, env_lst);

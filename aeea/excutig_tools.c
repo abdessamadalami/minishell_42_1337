@@ -6,11 +6,12 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:12:50 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/30 16:24:36 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 09:09:34 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "excuting_headr.h"
+
 
 int pip_number(t_list *list)
 {

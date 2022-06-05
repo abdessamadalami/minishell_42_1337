@@ -6,13 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:11:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/31 20:22:59 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 11:48:55 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "excuting_headr.h"
-
-
 
 static int redir(t_list **list,int *bol, t_list *env)
 {
@@ -25,6 +23,25 @@ static int redir(t_list **list,int *bol, t_list *env)
     return (1);
 }
 
+void chec_for_here_doc(t_list *lst, t_list *env)
+{
+	t_list *list;
+	t_list *temp;
+	
+	list = lst;
+	while (list)
+	{
+		if (list-> next != NULL && ft_strncmp(list-> next->content, "<<\0", 4) == 0)
+		{
+			here_doc(list->next->next->content, env);
+			list -> next = list->next->next->next;
+			return;
+		}
+		list = list->next;
+	}
+}
+
+
 char  **make_argv(t_list *list, t_list *env)
 {
 	char *str;
@@ -34,6 +51,7 @@ char  **make_argv(t_list *list, t_list *env)
 	str = 0;
 	argv = 0;
 	bol = 1;
+	 chec_for_here_doc(list, env);
 	while (list)
 	{
 		if(ft_strncmp(list ->content,"$?\0",4) == 0)

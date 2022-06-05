@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/31 19:37:29 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 10:50:42 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	here_doc(char *lim, t_list *env)
 
 	pipe(pi_pe);
 	limtter = ft_strjoin(lim, "\n");
+	printf(" %s \n",limtter);
 	while (1)
 	{
 		 

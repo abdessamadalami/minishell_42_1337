@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/28 17:01:32 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 10:56:10 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void print_list(t_list *list,int a)//s= 0 || s=1 print wirh order
         if(ft_strchr(list -> content,'=') && a == 0)
             printf("%s\n", list->content);
         else if (a == 1 && ft_strchr(list -> content,'=') != NULL) 
+            printf("%s \n", list->content);
+        else
             printf("%s \n", list->content);
         list = list->next;
     }

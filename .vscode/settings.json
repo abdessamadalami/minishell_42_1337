@@ -7,5 +7,8 @@
     "editor.codeActionsOnSave": {
     },
     "editor.gotoLocation.alternativeTypeDefinitionCommand": "editor.action.goToTypeDefinition",
-    "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToImplementation"
+    "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToImplementation",
+    "files.associations": {
+        "sstream": "c"
+    }
 }

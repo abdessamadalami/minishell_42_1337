@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 07:32:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/28 17:36:05 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/04 19:04:34 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char *ft_getenv(t_list *list, char *str, int a)
         ptr = (char *)list -> content;
         if ((ft_strncmp(str, ptr, len)) == 0)
         {
+            //printf("<%d> <%s> <%s> \n", len ,str,ptr);
              if(a == 1) //for remplace
             {
                 str[ft_strlen(str)] ='=';
@@ -74,13 +75,12 @@ void  c_export(t_list *env, char *var)
     char *env_var;
     char *str_return;
     int p = 1;
-    int static i = 0;
+    
     if (var == 0)
     {
         ft_merge_sort_u(env);
         return;
     }
-    i++;
     check = strchr(var, '=');  //error checking
     if (check == NULL)
         error_handling(var,0);
@@ -90,7 +90,6 @@ void  c_export(t_list *env, char *var)
     if (check)
     {
         env_var[check - var] = '\0';
-       // printf("in if _%s_\n", env_var);
         if (env_var[check - var - 1] == '+')
         {
            env_var[check - var - 1] = '\0';
