@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:21:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/31 15:59:30 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 14:42:52 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void g_redirections(char *f_name,char *red, t_list *env)
         redirect_output(f_name, 'r');
     else if (red[0] == '<' && red[1] == 0)
         redirect_input(f_name);
-    else if (red[0] == '<' && red[1] == '<' && red[2] == 0)
-        here_doc(f_name,env);//read from here_doc 
+    // else if (red[0] == '<' && red[1] == '<' && red[2] == 0)
+    //     here_doc(f_name,env);//read from here_doc 
 	else if (red[0] == '>' && red[1] == '>' && red[3] == 0)
         redirect_output(f_name, 'a');// add the std in to a file
 	//execve(cmd,eng,env);// if this cmd is exists n: zsh is not bash a big deffirent here 

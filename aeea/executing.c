@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/31 20:16:26 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 14:44:05 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,31 @@ static int f_building(int *n_p, t_list *env, t_list *pars_il , int **ids)
 	return (0);
 }
 
+void chec_for_here_doc(t_list **lst, t_list *env)
+{
+	t_list *list;
+	t_list *temp;
+	
+	list = *lst;
+	while (list)
+	{
+		if (list-> next != NULL && ft_strncmp(list-> next ->content, "<<\0", 4) == 0)
+		{
+			here_doc(list->next->next->content, env);
+			list -> next = list->next->next->next;
+			return;
+		}
+		if (ft_lstsize(list) == 2 && ft_strncmp(list->content, "<<\0", 4) == 0)
+		{
+			here_doc(list->next->content, env);
+			*lst = 0;
+			return;
+		}
+		
+		list = list->next;
+	}
+}
+
 void executing(t_list *pars_il, t_list *env)
 {
 	int		*ids;
@@ -82,6 +107,8 @@ void executing(t_list *pars_il, t_list *env)
 	a = dup(0);
 	int b = dup(1);
 	i = 0;
+	
+	chec_for_here_doc(&pars_il , env);
 	if (f_building(&n_p,env, pars_il, &ids) == 1)
 	{
 		dup2(a,0);

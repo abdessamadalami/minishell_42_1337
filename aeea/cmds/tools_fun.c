@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/05 10:56:10 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 14:43:35 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int check_redirec(char *red)
         return (1);
     else if (red[0] == '<' && red[1] == 0)
         return (1);
-    else if (red[0] == '<' && red[1] == '<' && red[2] == 0)
-       return (1);
+    // else if (red[0] == '<' && red[1] == '<' && red[2] == 0)
+    //    return (1);
 	else if (red[0] == '>' && red[1] == '>' && red[3] == 0)
         return (1);
 	return (0);
