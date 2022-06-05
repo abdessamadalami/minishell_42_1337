@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:44:02 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/04 17:34:23 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/05 13:37:14 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ char	first_occc(char *s)
 	int	i;
 
 	i = 0;
-//	printf("s `%s`\n", s);
-	while(s[i] != '\0')
+	while (s[i] != '\0')
 	{
 		if (s[i] == '"' || s[i] == '\'')
 			return (s[i]);
@@ -27,49 +26,69 @@ char	first_occc(char *s)
 	return ('\0');
 }
 
-void	check_syntax(t_arg *arg)
+void	check_qt(t_arg *s)
 {
-	t_arg	*s;
+//	t_arg	*s;
 	int		i;
-	int		x;
-	int		y;
-//	char	c;
+	int		count;
 	char	f;
 	char	l;
-	int		w;
-	int		p;
-	char	r;
-	int		count;
+	int		x;
+	int		y;
 
-	i = 0;
-	x = 0;
-	y = 0;
-	w = 0;
-	p = 0;
-	s = arg;
-/*	while(s[i+1] != '\0')
-		i++;
-	
-	if ((s[0]=='<' && s[1] == '>' && s[2] == '\0') || (s[i] == '>' || s[i] == '<'))
-	{
-		printf("syntax error near unexpected token `newline'\n");
-		exit(1);
-	}*/
-	printf("wa blaati db\n");
+//	s = arg;
 	while (s != NULL)
 	{
 		i = 0;
 		x = 0;
+		y = 0;
 		f = first_occc(s->data);
 		count = count_q(s->data, f);
 		if (f == '"')
 			l = '\'';
 		else
 			l = '"';
-//		printf("f %c\n", f);
-		while (s->data[i] != '\0')
+		while (s->data[i])
 		{
 			if (s->data[i] == f)
+			{
+				x++;
+			}
+			if (s->data[i] == l && x % 2 == 0)
+			{
+				y++;
+			}
+			i++;
+		}
+		if (x % 2 != 0)
+		{
+			printf("syntax error near unexpected token `%c'\n", f);
+			exit(1);
+		}
+		if (y % 2 != 0)
+		{
+			printf("syntax error near unexpected token `%c'\n", l);
+			exit(1);
+		}
+		s = s->next;
+	}
+}
+
+void	check_red(t_arg *s)
+{
+	int		i;
+	int		count;
+	int		w;
+	char	r;
+
+	while (s != NULL)
+	{
+		i = 0;
+		w = 0;
+		count = count_q(s->data, first_occc(s->data));
+		while (s->data[i] != '\0')
+		{
+			if (s->data[i] == first_occc(s->data))
 				count--;
 			if ((s->data[i] == '>' || s->data[i] == '<') && (count % 2 == 0))
 			{
@@ -80,19 +99,32 @@ void	check_syntax(t_arg *arg)
 		}
 		if (w > 2)
 		{
-		//	printf("hi\n");
 			if (w == 3)
 				printf("syntax error near unexpected token `%c'\n", r);
 			else
 				printf("syntax error near unexpected token `%c%c'\n", r, r);
 			exit(1);
 		}
+		s = s->next;
+	}
+}
+
+void	check_pip(t_arg *s)
+{
+	int		i;
+	int		count;
+	int		p;
+
+	while (s != NULL)
+	{
 		i = 0;
+		p = 0;
+		count = count_q(s->data, '|');
 		while (s->data[i] != '\0')
 		{
 			if (s->data[i] == '|')
 				count--;
-			if ((s->data[i] == '|') && (count%2 == 0))
+			if ((s->data[i] == '|') && (count % 2 == 0))
 				p++;
 			i++;
 		}
@@ -104,35 +136,27 @@ void	check_syntax(t_arg *arg)
 				printf("syntax error near unexpected token `||'\n");
 			exit(1);
 		}
-		i = 0;
-		while (s->data[i])
-		{
-		//	if (s->data[i] == '>' || s->data[i] == '<' || s->data[i] == '|')
-			if (s->data[i] == f)
-			{
-				x++;
-				// c = s->data[i];
-			}
-			if (s->data[i] == l && x % 2 == 0)
-			{
-				y++;
-				// c = s->data[i];
-			}
-			i++;
-		}
-//		printf("x %d\n", x);
-	//	if (x>2)
-		if (x % 2 != 0)
-		{
-			printf("syntax error near unexpected token `%c'\n", f);
-			exit(1);
-		}
-		if (y % 2 != 0)
-		{
-			printf("syntax error near unexpected token `%c'\n", l);
-			exit(1);
-		}
-		printf("%s\n", s->data);
 		s = s->next;
+	}
+}
+
+void	check_syntax(t_arg *arg)
+{
+	printf("wa blaati db\n");
+
+	check_qt(arg);
+	check_red(arg);
+	check_pip(arg);
+	while (arg->next != NULL)
+	{
+		arg = arg->next;
+	}
+	// printf("data %s\n", arg->data);
+	// printf("%d\n", ft_strln(arg->data));
+	// printf("hadi hya -%c-\n", arg->data[ft_strln(arg->data)-1]);
+	if (arg->data[ft_strln(arg->data)-1] == '>' || arg->data[ft_strln(arg->data)-1] == '<')
+	{
+		printf("syntax error near unexpected token `newline'\n");
+		exit(1);
 	}
 }

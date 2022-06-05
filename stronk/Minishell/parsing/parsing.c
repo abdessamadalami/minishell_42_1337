@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/04 11:52:07 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/05 15:02:26 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 		exit(1);
 	while (arg != NULL)
 	{
-	//	printf("arga %s\n", arg->data);
-			
 		if (check_q(arg->data))
-		{//printf("mmm\n");
-			if ((check_so(arg->data, '<') || check_so(arg->data, '>')  || check_so(arg->data, '|'))/* &&
-				!(ft_strln(arg->data) == 1 && (arg->data[0] == '>' || arg->data[0] == '<' || arg->data[0] == '|') && (arg->data[i + 1] == '\0'))*/)
+		{
+			if ((check_so(arg->data, '<') || check_so(arg->data, '>')  || check_so(arg->data, '|')))
 			{
 				if (ft_strln(arg->data) == 1 || (ft_strln(arg->data) == 2 && (arg->data[0] == arg->data[1]) && arg->data[0] != '|'))
 				{
@@ -45,21 +42,17 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 			else
 			{
 				node = ftlstnew(arg->data);
-		//		printf("www %s\n", node->data);
 				ftlstadd_back(&sfa, node);
 			}
 		}
-		else// if (!check_qso(arg->data))
-		{//printf("rr\n");
+		else
+		{
 			temp = squsplit(gg, arg->data);
 			addbacki_sf(&sfa, temp);
 		}
-	//	printf("mmm\n");
-	//	
 		arg = arg->next;
 	}
 	free(temp);
-//	free(node);
 	return (sfa);
 }
 
@@ -165,7 +158,7 @@ t_arg	*ft_parsing(char *s)
 	mr = parsin_dyalbss7(arg, gg);
 //	free(line);
 	// while (arg != NULL)
-	// 		{
+	// {
 	// 			printf("--[%s\n", arg->data);
 	// 			arg = arg->next;
 	// 		}

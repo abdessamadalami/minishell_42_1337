@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:42:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/04 11:55:29 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/05 13:06:59 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,10 @@ static char	**chek_and_fill(char **t, char *s)
 
 	i = 0;
 	count = 0;
-	
 	while (s[i] != '\0')
 	{
-		
 		temp = i;
-		if (s[i] == '<' || s[i] == '>'|| s[i] == '|')
+		if (s[i] == '<' || s[i] == '>' || s[i] == '|')
 		{
 			if (s[i + 1] == s[i] && s[i] != '|')
 				i++;
@@ -92,11 +90,11 @@ char	**sosplit(char *s)
 	if (s == 0)
 		return (0);
 	count = set_count(s);
-	if (count < 0)
-	{
-		printf("Error tmma so\n");
-		exit(1);
-	}
+	// if (count < 0)
+	// {
+	// 	printf("Error tmma so\n");
+	// 	exit(1);
+	// }
 	t = (char **)malloc(sizeof(char *) * (count + 1));
 	if (t == NULL)
 		return (0);

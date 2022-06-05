@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/30 13:09:02 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/05 13:19:12 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	ft_strllen(char **s)
 
 void	addbacki_sf(t_arg **sfa, char **t)
 {
-	int	i;
 	t_arg	*node;
+	int		i;
 
 	i = 0;
 	while (t[i] != 0)
