@@ -36,7 +36,7 @@ char	**get_path(void);
 char	**ssplit(t_gg *gg, char *s, char c);
 char	**sosplit(char *s);
 char	**qusplit(char *s, char c);
-char	**squsplit(t_gg *gg, char *s, char c);
+char	**squsplit(t_gg *gg, char *s);
 char	**wildsplit(char *s);
 char	*ft_strdp(char *s1);
 int		ft_strln(const char *s);
@@ -68,9 +68,6 @@ int		check_qso(char *s);
 void	check_syntax(t_arg *arg);
 char	first_occc(char *s);
 int		count_q(char *s, char c);
-
-// --------------- erroring -----------------//
-void	print_syntax_error(int x, char c);
 
 // --------------- builtins -----------------//
 void	ft_echo(char **s, int x);

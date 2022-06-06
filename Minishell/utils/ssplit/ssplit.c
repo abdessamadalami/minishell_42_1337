@@ -1,45 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   squsplit.c                                         :+:      :+:    :+:   */
+/*   ssplit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 13:49:19 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/05 21:00:30 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/06/03 18:42:30 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+char	first_occ(char *s)
+{
+	int	i;
+	char	f;
+	int	x=0;
+//	int	y=0;
+
+	i = 0;
+	while(s[i] != '\0')
+	{
+		if (s[i] == '"' || s[i] == '\'')
+			f = s[i];
+		i++;
+	}
+	while (s[i])
+	{
+	//	if (s->data[i] == '>' || s->data[i] == '<' || s->data[i] == '|')
+		if (s[i] == f)
+		{
+			x++;
+			// c = s->data[i];
+		}
+	/*	if (s[i] == l && x%2 == 0)
+		{
+			y++;
+			// c = s->data[i];
+		}*/
+		i++;
+	}
+	return (x);
+}
+
 static int	set_count(t_gg *gg, char *s, char c)
 {
 	int	i;
 	int	count;
+	char	f;
 
 	count = 0;
 	i = 0;
-	while (s[i] == '<' || s[i] == '>' || s[i] == '|')
+	f = first_occ(s);
+	// printf("f %c\n", f);
+	while (s[i] == c)
 		i++;
 	count++;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == c/* || s[i] == '>' || s[i] == '<'*/)
+		if (s[i] == f)
 			gg->lock++;
-		if (((s[i] == '<') || (s[i] == '>' )|| (s[i] == '|')) && (gg->lock % 2 == 0))
-		{
-			if (s[i + 1] == s[i])
-				i++;
-	//		printf("%c\n", s[i]);
-				count++;
-		}
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0' && (gg->lock % 2 == 0))
+			count++;
 		i++;
 	}
 	gg->qq = gg->lock;
 	// if (gg->lock % 2 != 0)
 	// 	return (-1);
-//	printf("count+2 %d\n", count+2);
-	return (count + 2);
+	printf("count %d\n", gg->lock);
+	return (count);
 }
 
 static char	**ft_del(char **t, int count)
@@ -68,33 +98,21 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	{
 		
 		temp = i;
-		if (s[i] == c)
+		if ((s[i] == '"' || s[i] == '\'') && (gg->lock % 2 != 0))
 		{
 			gg->lock--;
-			i++;
-			// temp++;
-		//	continue ;
-		}
-		if ((s[i] == '<' || s[i] == '>'|| s[i] == '|') && (gg->lock % 2 == 0))
-		{
-			if (s[i + 1] == s[i])
-				i++;
-			i++;
-			t[count] = ft_subtr(s, temp, i - temp);
-			count++;
 			continue ;
 		}
-		while (s[i])
+		if (s[i] == c)
 		{
-		//	printf("s[%d]: %c\n", i, s[i]);
-			if (s[i] == c)
+			i++;
+			continue ;
+		}
+		while ((s[i] != c && s[i]) || ((s[i] == c && s[i]) && gg->lock % 2 != 0))
+		{
+			if (s[i] == '"' || s[i] == '\'')
 			{
-				i++;
 				gg->lock--;
-			}
-			if (((s[i] == '<' || s[i] == '>'|| s[i] == '|') && (gg->lock % 2 == 0))/* || (s[i] == '"' || s[i] == '\'')*/)
-			{
-				break;
 			}
 			i++;
 		}
@@ -105,12 +123,12 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	}
 	t[count] = 0;
 	gg->count = count;
-	for(int i=0;t[i];i++)
-		printf("t %s\n", t[i]);
+	// for (int i=0;t[i];i++)
+	// 	printf("chta %s\n", t[i]);
 	return (t);
 }
 
-char	**squsplit(t_gg *gg, char *s, char c)
+char	**ssplit(t_gg *gg, char *s, char c)
 {
 	char	**t;
 	int		count;
@@ -118,10 +136,9 @@ char	**squsplit(t_gg *gg, char *s, char c)
 	if (s == 0)
 		return (0);
 	count = set_count(gg, s, c);
-	printf("count %d\n", count);
 	if (count < 0)
 	{
-		printf("Error tmma\n");
+		printf("Error tmma ss\n");
 		exit(1);
 	}
 	t = (char **)malloc(sizeof(char *) * (count + 1));
