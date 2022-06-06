@@ -19,7 +19,7 @@ typedef struct s_gg
 
 typedef struct s_arg
 {
-	char	*data;
+	char			*data;
 	struct s_arg	*next;
 }	t_arg;
 
@@ -36,7 +36,7 @@ char	**get_path(void);
 char	**ssplit(t_gg *gg, char *s, char c);
 char	**sosplit(char *s);
 char	**qusplit(char *s, char c);
-char	**squsplit(t_gg *gg, char *s, char c);
+char	**squsplit(t_gg *gg, char *s);
 char	**wildsplit(char *s);
 char	*ft_strdp(char *s1);
 int		ft_strln(const char *s);
@@ -60,6 +60,10 @@ void	addbacki_sf(t_arg **sfa, char **t);
 
 // ---------------- parsing ------------------//
 t_arg	*ft_parsing(char *s);
+t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg);
+t_arg	*remove_quotes(t_arg *arg);
+t_arg	*parsing_spaces(char *s);
+t_arg	*parsing_wildcard(t_arg *arg);
 int		check_so(char *s1, char c);
 int		check_q(char *s);
 char	get_token(char *s);
@@ -67,6 +71,7 @@ char	get_qtoken(char *s);
 int		check_qso(char *s);
 void	check_syntax(t_arg *arg);
 char	first_occc(char *s);
+char	last_occc(char *s);
 int		count_q(char *s, char c);
 
 // --------------- erroring -----------------//

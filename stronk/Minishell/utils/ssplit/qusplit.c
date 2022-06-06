@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 15:21:21 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/05 13:07:06 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/06 06:04:52 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,6 @@ char	**qusplit(char *s, char c)
 	if (s == 0)
 		return (0);
 	count = set_count(s, c);
-	// if (count < 0)
-	// {
-	// 	printf("Error tmma\n");
-	// 	exit(1);
-	// }
 	t = (char **)malloc(sizeof(char *) * 9999/*(count + 1)*/);
 	if (t == NULL)
 		return (0);

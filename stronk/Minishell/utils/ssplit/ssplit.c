@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:08:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/03 18:42:30 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:32:46 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	set_count(t_gg *gg, char *s, char c)
 	count++;
 	while (s[i])
 	{
-		if (s[i] == f)
+		if (s[i] ==  first_occc(s))
 			gg->lock++;
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0' && (gg->lock % 2 == 0))
 			count++;
@@ -96,22 +96,23 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	count = 0;
 	while (s[i])
 	{
-		
 		temp = i;
-		if ((s[i] == '"' || s[i] == '\'') && (gg->lock % 2 != 0))
+		if (s[i] == first_occc(s))
 		{
 			gg->lock--;
-			continue ;
+			// i++;
+			// continue ;
 		}
-		if (s[i] == c)
+		if (s[i] == c  && (gg->lock % 2 == 0))
 		{
 			i++;
 			continue ;
 		}
 		while ((s[i] != c && s[i]) || ((s[i] == c && s[i]) && gg->lock % 2 != 0))
 		{
-			if (s[i] == '"' || s[i] == '\'')
+			if (s[i] == first_occc(s))
 			{
+				printf("c %c %d\n", s[i], gg->lock);
 				gg->lock--;
 			}
 			i++;
@@ -123,8 +124,8 @@ static char	**chek_and_fill(t_gg *gg, char **t, char *s, char c)
 	}
 	t[count] = 0;
 	gg->count = count;
-	// for (int i=0;t[i];i++)
-	// 	printf("chta %s\n", t[i]);
+	for (int i=0;t[i];i++)
+		printf("chta -%s-\n", t[i]);
 	return (t);
 }
 

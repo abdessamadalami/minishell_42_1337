@@ -11,6 +11,10 @@ SRCS =  minishell.c\
 		utils/ssplit/squsplit.c\
 		utils/ssplit/wildsplit.c\
 		parsing/parsing.c\
+		parsing/parsing_spaces.c\
+		parsing/parsing_wildcard.c\
+		parsing/parsing_quotes.c\
+		parsing/parsing_soperators.c\
 		parsing/parsing_utils.c\
 		parsing/parsing_syntax.c\
 

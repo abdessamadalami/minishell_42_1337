@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:35:06 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/03 21:43:26 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/06 08:38:39 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_q(char *s)
 		}
 		i++;
 	}
-		return (1);
+	return (1);
 }
 
 char	get_token(char *s)
@@ -75,8 +75,6 @@ int	check_qso(char *s)
 	int	i;
 
 	i = 0;
-	if (s[i] )
-	printf("Yo\n");
 	while (s[i] != '\0')
 	{
 		if (s[i] == '"' || s[i] == '\'')
