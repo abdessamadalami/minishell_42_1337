@@ -39,7 +39,7 @@ int dup_parm(t_list **pars_il, int *fd);
 void get_par( t_list *list , char *env);
 void std_files(char *std_out, int fd);//minishell intra video
 void error_handling(char *str, int p);
-void here_doc(char *lim, t_list *env);
+int here_doc(char *lim, t_list *env);
 void redirect_output(char *std_out, char c);
 void redirect_input(char *std_in);
 void ft_merge_sort(t_list **list);

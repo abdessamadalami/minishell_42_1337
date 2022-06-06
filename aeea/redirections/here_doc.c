@@ -6,13 +6,13 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/05 14:26:51 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/05 15:07:55 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
 // read from  here_doc to fd (we can choise between write to pipe or file or terminal) here is to pipe
-void	here_doc(char *lim, t_list *env)
+int	here_doc(char *lim, t_list *env)
 {
 	char	*line;
 	char	*limtter;
@@ -35,5 +35,6 @@ void	here_doc(char *lim, t_list *env)
 	free(limtter);
 	free(line);
 	close(pi_pe[1]);
-	dup2(pi_pe[0],0);
+	return pi_pe[0];
+	//dup2(pi_pe[0],0);
 }

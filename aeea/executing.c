@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/05 14:44:05 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/06 07:33:37 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static int chiled_processe(t_list *pars_il ,t_list *env, int std_in, int std_out
 	int		cmd;	
 
 	cmd = 0;
-
+	// printf("<<<< %d >>> \n",std_in);
+	// exit(0);
 	argv = make_argv(pars_il, env);
 	if (argv == NULL)
 		return 1;
@@ -58,7 +59,7 @@ static void pipe_aff(t_var *v_pipe ,int n_p ,int i)
 static int f_building(int *n_p, t_list *env, t_list *pars_il , int **ids)
 {
 	int a;
-
+	
 	a = 0;
 	*n_p = pip_number(pars_il);
 	if (*n_p == 0)
@@ -71,29 +72,125 @@ static int f_building(int *n_p, t_list *env, t_list *pars_il , int **ids)
 	return (0);
 }
 
-void chec_for_here_doc(t_list **lst, t_list *env)
+void delete_here(t_list **lst)
+{
+	int index;
+	t_list *list;
+	t_list *prev;
+	
+	
+	list = *lst;
+	index = 0;
+	
+	if (list != NULL && ft_strncmp(list ->content,"<<\0",4) == 0) 
+	{
+		*lst = list->next->next;
+	}
+	else
+	{
+		while(list != NULL && ft_strncmp(list ->content,"<<\0",4) != 0)
+		{
+			prev = list;
+			list = list ->next;
+		}
+		if (list -> next != NULL)
+			prev -> next = list -> next -> next;
+		else
+			prev = NULL;
+	}
+}
+
+int check_redirec_list(t_list *lst)
+{
+	while (lst)
+	{
+		if (ft_strncmp(lst->content, "<<\0", 4))
+			return 1;
+		lst = lst -> next;
+	}
+	return 0;
+}
+
+int redirect_inpu(char *std_in)
+{
+	int fd_input;
+	int pid;
+
+	fd_input = open(std_in, O_RDONLY);
+	if (fd_input == -1)
+	{
+		perror(std_in); // chmod error 
+		exit(1);// exit just the child you must check if a pipe exists or no
+	}
+   return fd_input;
+}
+
+int chec_for_infile(t_list *lst)
+{
+	int in_p;
+	int h_p;
+	int i;
+	char *stdin_n;
+
+	in_p = 0;
+	h_p = 0;
+	i = 0;
+	while (lst)
+	{
+		if (ft_strncmp(lst->content, ">\0", 4))
+		{
+			stdin_n = lst->content;
+			in_p = i;
+		}
+		if (ft_strncmp(lst->content, "<<\0", 4))
+			 h_p = i;
+		i++;
+	}
+	if (in_p > h_p)
+		return (redirect_inpu(stdin_n));
+	return (0);
+}
+
+t_list *chec_for_here_doc(t_list **lst, t_list *env)
 {
 	t_list *list;
 	t_list *temp;
+	t_list *fds;
 	
 	list = *lst;
+	int f;
+	int fd;
+	int i;
+	f = 1;
+	fds = 0;
+	i = 0;
+	
 	while (list)
 	{
-		if (list-> next != NULL && ft_strncmp(list-> next ->content, "<<\0", 4) == 0)
+		if (ft_strncmp(list->content, "|\0", 4) == 0)
+			f = 1;
+		if (ft_strncmp(list->content, "<<\0", 4) == 0)
 		{
-			here_doc(list->next->next->content, env);
-			list -> next = list->next->next->next;
-			return;
+			fd = here_doc(list->next->content, env);
+			i++;
+			if(f == 1)
+				ft_lstadd_back(&fds, ft_lstnew(&fd));
+			f = 0;
+			//printf("fd of the first pipe is %d\n", *(int *)fds->content);
 		}
-		if (ft_lstsize(list) == 2 && ft_strncmp(list->content, "<<\0", 4) == 0)
-		{
-			here_doc(list->next->content, env);
-			*lst = 0;
-			return;
-		}
-		
 		list = list->next;
 	}
+	if (chec_for_infile(*lst))
+	{
+		close(*(int *)fds->content);
+		*(int *)fds->content = chec_for_infile(*lst);
+	}
+	while (i)
+	{
+		delete_here(lst);
+		i--;
+	}
+	return fds;
 }
 
 void executing(t_list *pars_il, t_list *env)
@@ -102,19 +199,25 @@ void executing(t_list *pars_il, t_list *env)
 	int 	i;
 	int		n_p;
 	t_var	v_pipe;
+	t_list *fds_here_doc;
 	int		a;
 
 	a = dup(0);
 	int b = dup(1);
 	i = 0;
-	
-	chec_for_here_doc(&pars_il , env);
+	if(check_redirec_list(pars_il))
+		 fds_here_doc = chec_for_here_doc(&pars_il, env);
+	// print_list(pars_il, 747);
+	// printf("_%p_\n",pars_il);
+	// print_list(pars_il,45);
 	if (f_building(&n_p,env, pars_il, &ids) == 1)
 	{
 		dup2(a,0);
 		dup2(b,1);
 		return ;
 	}
+	if (fds_here_doc != NULL)
+		v_pipe.std_in = *(int *)fds_here_doc->content;
 	while (i <= n_p)
 	{
 		pipe_aff(&v_pipe, n_p, i);
