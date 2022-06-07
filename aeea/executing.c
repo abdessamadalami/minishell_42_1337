@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/07 12:13:47 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/07 13:15:23 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,11 +135,11 @@ int redirect_inpu(char *std_in)
 	int pid;
 
 	fd_input = open(std_in, O_RDONLY);
-	if (fd_input == -1)
-	{
-		perror(std_in); // chmod error 
-		//exit(1);// exit just the child you must check if a pipe exists or no
-	}
+	// if (fd_input == -1)
+	// {
+	// 	//perror(std_in); // chmod error 
+	// 	//exit(1);// exit just the child you must check if a pipe exists or no
+	// }
    return fd_input;
 }
 
@@ -168,7 +168,7 @@ int chec_for_infile(t_list *lst)
 	// printf("%d	in_p %d h_p	",in_p,h_p);
 	// exit(0);
 	if (in_p > h_p)
-		return (redirect_inpu(stdin_n));
+		return (redirect_inpu(stdin_n));// we have tow case here
 	return (0);
 }
 
@@ -202,6 +202,8 @@ t_list *chec_for_here_doc(t_list **lst, t_list *env)
 		list = list->next;
 	}
 	bol_infile = chec_for_infile(*lst);
+	if (bol_infile != -1)
+		i++;
 	if (bol_infile && bol_infile != -1) // !u mast delet in file if u  have her
 	{
 		dup2(bol_infile ,0);
@@ -235,8 +237,8 @@ void executing(t_list *pars_il, t_list *env)
 			v_pipe.std_in = *(int *)fds_here_doc->content;
 		//printf("almify %d\n",*(int *)fds_here_doc -> content);
 	}
-	print_list(pars_il ,3233);
-	exit(0);
+	// print_list(pars_il ,3233);
+	// exit(0);
 	// printf(" _%d_ \n" , getpid());
 	if (f_building(&n_p,env, pars_il, &ids) == 1)
 	{
