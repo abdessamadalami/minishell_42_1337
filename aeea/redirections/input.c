@@ -6,22 +6,19 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:10:10 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/06 07:12:09 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/07 12:11:37 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
 
-void redirect_input(char *std_in)
+int redirect_input(char *std_in)
 {
 	int fd_input;
-	int pid;
 
 	fd_input = open(std_in, O_RDONLY);
+	printf("jfjfjfjfj\n");
 	if (fd_input == -1)
-	{
-		perror(std_in); // chmod error 
-		exit(1);// exit just the child you must check if a pipe exists or no
-	}
-    dup2(fd_input,0);
+		perror(std_in);
+	return (fd_input);	
 }
