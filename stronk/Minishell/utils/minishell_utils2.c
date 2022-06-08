@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:55:49 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/28 22:35:36 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:45:14 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,19 @@ char	*ft_subtr(char	*s, int start, int len)
 		return (0);
 	i = 0;
 	j = 0;
+//	printf("start %d\n", start);
+//	printf("len %d\n", len);
 	while (s[i] != '\0')
 	{
-		if (i >= start && j < len)
+		if (i >= start && i < len)
+		{
+	//		printf("s[%d]: %c\n", i, s[i]);
 			tab[j++] = s[i];
+		}
 		i++;
 	}
 	tab[j] = '\0';
+//	printf("sbtura -%s-\n", tab);
 	return (tab);
 }
 
@@ -53,28 +59,30 @@ char	*ft_strjn(char *s1, char *s2)
 {
 	int		i;
 	int		j;
-	char	*t;
+	char	*tab;
 
+	if (s2 == 0)
+		return (0);
+	if (s1 == 0)
+		s1 = ft_strdp("");
+	tab = malloc (sizeof(char) * (ft_strln(s1) + ft_strln(s2) + 1));
+	if (!tab)
+		return (0);
 	i = 0;
-	j = 0;
-	t = malloc(sizeof(char *) * (ft_strln(s1) + ft_strln(s2) + 2));
-	if (!t)
-		return (NULL);
-	while (s1[i] != '\0')
+	while (s1[i])
 	{
-		t[i] = s1[i];
+		tab[i] = s1[i];
 		i++;
 	}
-	t[i] = '/';
-	i++;
-	while (s2[j] != '\0')
+	j = 0;
+	while (s2[j])
 	{
-		t[i] = s2[j];
+		tab[i] = s2[j];
 		i++;
 		j++;
 	}
-	t[i] = '\0';
-	return (t);
+	tab[i] = '\0';
+	return (tab);
 }
 
 char	*ft_strdp(char *s1)

@@ -23,13 +23,11 @@ typedef struct s_arg
 	struct s_arg	*next;
 }	t_arg;
 
-
 int		ft_exec(char **av, char **path, char **envp);
 char	*get_new_path(char **path, char *cmd);
 
 // ----------------- path ---------------------//
 char	**get_path(void);
-
 
 // ---------------- utils --------------------//
 //char	**ft_msplit( char *s, char c);			
@@ -45,6 +43,7 @@ char	*ft_strjn(char *s1, char *s2);
 char	*ft_subtr(char	*s, int start, int len);
 int		check_isvalid(t_arg *cmds);
 char	*ft_sstrcat(char c);
+char	**ft_split(char *s, char c);
 
 /*					list utils				*/
 t_arg	*ftlstnew(char	*s);					//

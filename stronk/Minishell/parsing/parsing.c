@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:29:38 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/06 16:13:59 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:31:09 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_arg	*ft_parsing(char *s)
 {
 	t_arg	*arg;
-//	t_arg	*node;
+	// t_arg	*node;
 	t_gg	*gg;
 	char	**line;
 	int		i;
@@ -35,14 +35,14 @@ t_arg	*ft_parsing(char *s)
 	i = 0;
 
 	
-	// line = ssplit(gg, s, ' ');
+	// line = ft_split(s, ' ');
 	arg = parsing_spaces(s);
 	// for(int k=0;line[k];k++)
 		// printf("line %s\n", line[k]);
-/*	arg = ftlstnew(line[i]);
+	/*arg = ftlstnew(line[i]);
 	i++;
 	
-	while (i < 3)
+	while (line[i])
 	{
 		node = ftlstnew(line[i]);
 		ftlstadd_back(&arg, node);

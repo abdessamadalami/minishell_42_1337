@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 09:04:55 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/06 16:22:32 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:39:34 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,23 @@ char	*parsing_quotes(char *s)
 		exit(1);
 	while (s[i] != '\0')
 	{
-	//	j = i;
 		if (s[i] == '"')
 		{
 			i++;
 			printf("c $%c$ %d\n", s[i], j);
 			while (s[i] != '\0' && s[i] != '"')
 			{
-				// printf("c $%c$ %d\n", s[i], j);
 				t[j] = s[i];
 				i++;
 				j++;
 			}
 			i++;
-			
 		}
 		if (s[i] == '\'')
 		{
 			i++;
 			while (s[i] != '\0' && s[i] != '\'')
 			{
-		//		printf("c $%c$ %d\n", s[i], j);
 				t[j] = s[i];
 				i++;
 				j++;
@@ -94,7 +90,6 @@ char	*parsing_quotes(char *s)
 		}
 		else
 		{
-		//	printf("c $%c$ %d\n", s[i], j);
 			if (s[i] != '\0' && s[i] != '"' && s[i] != '\'')
 			{
 				t[j] = s[i];
@@ -106,7 +101,6 @@ char	*parsing_quotes(char *s)
 		}
 	}
 	t[j] = '\0';
-//	printf("s-%s-\n", t);
 	return (t);
 }
 
