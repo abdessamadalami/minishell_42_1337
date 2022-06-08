@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/07 13:15:23 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/08 08:58:57 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void pipe_aff(t_var *v_pipe ,int n_p ,int i)
 {
 	if (n_p > 0)
 		{
-			pipe(v_pipe ->fd);
+			pipe(v_pipe->fd);
 			(*v_pipe).std_out = v_pipe ->fd[1];
 		}
 		if (i == n_p)
@@ -149,10 +149,12 @@ int chec_for_infile(t_list *lst)
 	int h_p;
 	int i;
 	char *stdin_n;
+	int fd;
 
 	in_p = 0;
 	h_p = 0;
 	i = 0;
+	stdin_n = 0;
 	while (lst)
 	{
 		if (ft_strncmp(lst->content, "<\0", 3) == 0)
@@ -165,11 +167,18 @@ int chec_for_infile(t_list *lst)
 		i++;
 		lst = lst->next;
 	}
-	// printf("%d	in_p %d h_p	",in_p,h_p);
-	// exit(0);
-	if (in_p > h_p)
-		return (redirect_inpu(stdin_n));// we have tow case here
+	if (stdin_n != NULL)
+		fd = redirect_inpu(stdin_n);
+	if (in_p > h_p || fd == -1)
+		return (fd);// we have tow case here
 	return (0);
+}
+int *ff(int a)
+{
+    int *ptr;
+	ptr = (int *)malloc(4);
+	*ptr = a;
+	return ptr;
 }
 
 t_list *chec_for_here_doc(t_list **lst, t_list *env)
@@ -186,34 +195,30 @@ t_list *chec_for_here_doc(t_list **lst, t_list *env)
 	f = 1;
 	fds = 0;
 	i = 0;
+	fd = 0;
 	while (list)
 	{
-		if (ft_strncmp(list->content, "|\0", 4) == 0) //!cas of pipe 
-			f = 1;
+		if (ft_strncmp(list->content, "|\0", 3) == 0)
+		{
+			printf(" i am here %d\n",fd);
+			ft_lstadd_back(&fds, ft_lstnew(ff(fd)));
+			printf ("( %d )",*(int *)fds -> content);
+		}
 		if (ft_strncmp(list->content, "<<\0", 4) == 0)
 		{
 			fd = here_doc(list->next->content, env);
-			i++;
-			if(f == 1)
-				ft_lstadd_back(&fds, ft_lstnew(&fd));
-			f = 0;
-			//printf("fd of the first pipe is %d\n", *(int *)fds->content);
+				i++;
 		}
 		list = list->next;
 	}
+	ft_lstadd_back(&fds, ft_lstnew(ff(fd)));
 	bol_infile = chec_for_infile(*lst);
-	if (bol_infile != -1)
-		i++;
-	if (bol_infile && bol_infile != -1) // !u mast delet in file if u  have her
-	{
-		dup2(bol_infile ,0);
-		fds = 0;
-	}
 	while (i)
 	{
 		delete_here(lst);
 		i--;
 	}
+	print_list(*lst ,4233);
 	return fds;
 }
 
@@ -233,11 +238,16 @@ void executing(t_list *pars_il, t_list *env)
 	{
 		//printf(" %d \n",check_redirec_list(pars_il));
 		fds_here_doc = chec_for_here_doc(&pars_il, env);
-		if (fds_here_doc != NULL)
-			v_pipe.std_in = *(int *)fds_here_doc->content;
+		// printf("%d \n",*(int *)fds_here_doc->content);
+		// if (fds_here_doc != NULL)
+		// 	v_pipe.std_in = *(int *)fds_here_doc->content;
+		// if (fds_here_doc != NULL && ft_lstsize(fds_here_doc) == 1)
+		// 	v_pipe.std_in = *(int *)fds_here_doc->content;
 		//printf("almify %d\n",*(int *)fds_here_doc -> content);
 	}
+	
 	// print_list(pars_il ,3233);
+	// print_list(fds_here_doc ,4);
 	// exit(0);
 	// printf(" _%d_ \n" , getpid());
 	if (f_building(&n_p,env, pars_il, &ids) == 1)
@@ -248,7 +258,20 @@ void executing(t_list *pars_il, t_list *env)
 	}
 	while (i <= n_p)
 	{
-		pipe_aff(&v_pipe, n_p, i);
+		
+		// if (fds_here_doc)
+		// {	
+		// 	dup2(*(int *)fds_here_doc -> content, 0);
+		// 	fds_here_doc = fds_here_doc -> next;
+		// }
+		//!pipe_aff(&v_pipe, n_p, i);
+		if (n_p > 0)
+		{
+			pipe(v_pipe.fd);
+			(v_pipe).std_out = v_pipe.fd[1];
+		}
+		if (i == n_p)
+			(v_pipe).std_out = 1;
 		ids[i] = fork();
 		if (ids[i] == 0)
 		{
@@ -256,7 +279,12 @@ void executing(t_list *pars_il, t_list *env)
 			if(chiled_processe(pars_il, env, v_pipe.std_in, v_pipe.std_out))
 				exit(0);			
 		}
-		close_aff(&v_pipe);
+		//!close_aff(t_var *v_pipe)
+			close(v_pipe.fd[1]);
+			if (v_pipe.to_close)
+				close(v_pipe.to_close);
+			v_pipe.std_in = v_pipe.fd[0];
+			v_pipe.to_close = v_pipe.std_in;
 		if (dup_parm(&pars_il, v_pipe.fd) == 0 && n_p > 0)
 			break;
 		i++;
