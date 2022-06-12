@@ -8,6 +8,7 @@ SRCS =  minishell.c\
 		parsing/errors/minishell_erroring.c\
 		parsing/utils/splits/sosplit.c\
 		parsing/utils/splits/squsplit.c\
+		parsing/utils/splits/dosplit.c\
 		parsing/utils/splits/wildsplit.c\
 		parsing/utils/splits/splits_utils.c\
 		parsing/utils/parsing_utils.c\

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:04:48 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/12 12:22:50 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/12 16:03:14 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	*ft_subtr(char	*s, int start, int len);
 char	*ft_ssubtr(char	*s, int start, int len);
 void	*ft_calloc(int count, int size);
 int		check_isvalid(t_arg *cmds);
-char	**ft_split(char *s, char c);
+char	**dosplit(char *s, char c);
 int		so_counter(char *s);
 t_arg	*ftlstnew(char	*s);
 int		ftlstsize(t_arg *lst);

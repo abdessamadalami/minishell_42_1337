@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:55:49 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/12 12:27:02 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/12 19:01:10 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*ft_strjn(char *s1, char *s2)
 	while (s2[j])
 		tab[i++] = s2[j++];
 	tab[i] = '\0';
-	free(s1);
+//	free(s1);
 	return (tab);
 }
 
