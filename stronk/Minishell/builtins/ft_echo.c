@@ -6,11 +6,19 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:11:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/05/31 14:23:16 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/10 18:13:00 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	check_flag(int i, int *p)
+{
+	*p = i;
+	if (i)
+		return (1);
+	return (0);
+}
 
 int	ft_check_arg(char **s, int *p)
 {
@@ -23,27 +31,14 @@ int	ft_check_arg(char **s, int *p)
 	{
 		j = 0;
 		if (s[i][0] != '-')
-		{
-			
-			*p = i;
-			if (i)
-				return (1);
-			return (0);
-		}
+			return (check_flag(i, p));
 		j++;
 		while (s[i][j] != '\0')
 		{
 			if (s[i][j] != 'n')
-			{
-				*p = i;
-				if (i)
-					return (1);
-				return (0);
-			}
+				return (check_flag(i, p));
 			j++;
-			
 		}
-		
 		*p = i;
 		i++;
 	}
@@ -56,7 +51,7 @@ void	ft_echo(char **av, int x)
 {
 	int	i;
 
-	i =0;
+	i = 0;
 	while (av[i] != NULL)
 	{
 		printf("%s", av[i]);
@@ -66,17 +61,16 @@ void	ft_echo(char **av, int x)
 	}
 	if (!x)
 		printf("\n");
-	
 }
--
-int main(int ac, char **av)
+
+int	main(int ac, char **av)
 {
 	int	p;
 
 	p = 0;
-	if (ft_check_arg(*(&av)+1, &p))
+	if (ft_check_arg(*(&av) + 1, &p))
 	{
-		ft_echo(*(&av) + p+1, 1);
+		ft_echo(*(&av) + p + 1, 1);
 	}
 	else
 		ft_echo(*(&av) + 1, 0);

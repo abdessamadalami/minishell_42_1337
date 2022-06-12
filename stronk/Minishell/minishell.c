@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/06 09:39:26 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/10 20:04:05 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,40 +39,19 @@ int	main(int ac, char **av)
 		{
 			if (s[0] == '\0')
 				continue ;
-			//	exit(1);
 			mr = ft_parsing(s);
-		//	if (!ft_new_parsing(s))
-		//		return (0);
-			// printf("$%s$\n", s);
-			// if (ft_arg(s,"echo"))
-			// {
-				
-			//	s = readline(">");
-			//	ft_exec(av, );
-			//	ft_echo(s, env);
-			//	if (execve(s, cmd, envp) == -1)
-			//		return (0);
-			// }
-			//	printf("this is echo\n");
 	//		system("leaks minishell");
 			while (mr != NULL)
 			{
 				printf("--[%s\n", mr->data);
 				mr = mr->next;
 			}
-			// printf("everything good\n");
 			add_history(s);
 			while (mr != NULL)
 			{
 				free(mr->data);
 				mr = mr->next;
 			}
-		//	printf(">minishell$");
-		//	if (s)
-		//		add_history(s);
-		//	readline(av[1]);
-		//	if (ft_arg(av[1], "echo"))
-		//		ft_echo();
 		}
 		if (!s)
 			printf("cha\n");

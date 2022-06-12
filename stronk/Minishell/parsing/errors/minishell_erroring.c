@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   minishell_erroring.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 18:52:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/10 19:59:30 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/06/05 17:09:24 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/06/10 20:06:41 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-void	ft_pwd(void)
+void	print_syntax_error(int x, char c)
 {
-	char	*s;
-
-	s = malloc(sizeof(char));
-	printf("%s\n", getcwd(s, 100));
-}
-
-int	main(void)
-{
-	ft_pwd();
+	if (x == 1)
+		printf("syntax error near unexpected token `%c'\n", c);
+	else
+		printf("syntax error near unexpected token `%c%c'\n", c, c);
+	exit(1);
 }

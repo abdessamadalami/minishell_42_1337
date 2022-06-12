@@ -1,22 +1,29 @@
 NAME = minishell
 
 SRCS =  minishell.c\
-		utils/minishell_utils.c\
-		utils/minishell_utils2.c\
-		utils/minishell_list_utils.c\
-		utils/minishell_erroring.c\
-		utils/ssplit/ssplit.c\
-		utils/ssplit/sosplit.c\
-		utils/ssplit/qusplit.c\
-		utils/ssplit/squsplit.c\
-		utils/ssplit/wildsplit.c\
+		parsing/utils/minishell_utils.c\
+		parsing/utils/minishell_utils2.c\
+		parsing/utils/minishell_list_utils.c\
+		parsing/utils/minishell_list_utils2.c\
+		parsing/errors/minishell_erroring.c\
+		parsing/utils/splits/sosplit.c\
+		parsing/utils/splits/squsplit.c\
+		parsing/utils/splits/wildsplit.c\
+		parsing/utils/splits/splits_utils.c\
+		parsing/utils/parsing_utils.c\
+		parsing/utils/parsing_utils2.c\
 		parsing/parsing.c\
-		parsing/parsing_spaces.c\
-		parsing/parsing_wildcard.c\
-		parsing/parsing_quotes.c\
-		parsing/parsing_soperators.c\
-		parsing/parsing_utils.c\
-		parsing/parsing_syntax.c\
+		parsing/parsing_spaces/parsing_spaces.c\
+		parsing/parsing_spaces/parsing_spaces_utils.c\
+		parsing/parsing_wildcard/parsing_wildcard.c\
+		parsing/parsing_quotes/parsing_quotes.c\
+		parsing/parsing_quotes/parsing_quotes_utils.c\
+		parsing/parsing_so/parsing_soperators.c\
+		parsing/syntax_checking/parsing_syntax.c\
+		parsing/syntax_checking/check_pip/pip_syntax.c\
+		parsing/syntax_checking/check_qt/qt_syntax.c\
+		parsing/syntax_checking/check_qt/qt_syntax_utils.c\
+		parsing/syntax_checking/check_red/red_syntax.c\
 
 OBJS = $(SRCS:.c=.o)
 

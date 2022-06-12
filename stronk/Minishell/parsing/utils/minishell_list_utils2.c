@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   minishell_list_utils2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 18:52:22 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/10 19:59:30 by ael-asri         ###   ########.fr       */
+/*   Created: 2022/06/10 20:07:39 by ael-asri          #+#    #+#             */
+/*   Updated: 2022/06/10 20:08:39 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-void	ft_pwd(void)
+int	ft_strllen(char **s)
 {
-	char	*s;
+	int	i;
+	int	j;
 
-	s = malloc(sizeof(char));
-	printf("%s\n", getcwd(s, 100));
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		while (s[i][j])
+			j++;
+		i++;
+	}
+	return (i);
 }
 
-int	main(void)
+void	addbacki_sf(t_arg **sfa, char **t)
 {
-	ft_pwd();
+	t_arg	*node;
+	int		i;
+
+	i = 0;
+	while (t[i] != 0)
+	{
+		node = ftlstnew(t[i]);
+		ftlstadd_back(sfa, node);
+		i++;
+	}
 }
