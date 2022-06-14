@@ -3,6 +3,7 @@ NAME = minishell
 SRCS =  minishell.c\
 		parsing/utils/minishell_utils.c\
 		parsing/utils/minishell_utils2.c\
+		parsing/utils/minishell_utils3.c\
 		parsing/utils/minishell_list_utils.c\
 		parsing/utils/minishell_list_utils2.c\
 		parsing/errors/minishell_erroring.c\
@@ -20,6 +21,8 @@ SRCS =  minishell.c\
 		parsing/parsing_quotes/parsing_quotes.c\
 		parsing/parsing_quotes/parsing_quotes_utils.c\
 		parsing/parsing_so/parsing_soperators.c\
+		parsing/dollar_handling/handle_dollar.c\
+		parsing/dollar_handling/handle_dollar_utils.c\
 		parsing/syntax_checking/parsing_syntax.c\
 		parsing/syntax_checking/check_pip/pip_syntax.c\
 		parsing/syntax_checking/check_qt/qt_syntax.c\

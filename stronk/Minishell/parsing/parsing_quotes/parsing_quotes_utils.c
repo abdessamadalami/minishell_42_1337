@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 19:18:33 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/11 13:29:27 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:02:50 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	parse_quotes_fordq(char *s, char *t, int *i, int *j)
 		(*i)++;
 		(*j)++;
 	}
-	if (s[*i] != '\0')
-		(*i)++;
+	(*i)++;
 }
 
 void	parse_quotes_forsq(char *s, char *t, int *i, int *j)
@@ -34,8 +33,7 @@ void	parse_quotes_forsq(char *s, char *t, int *i, int *j)
 		(*i)++;
 		(*j)++;
 	}
-	if (s[*i] != '\0')
-		(*i)++;
+	(*i)++;
 }
 
 void	parse_quotes_lastone(char *s, char *t, int *i, int *j)
@@ -46,6 +44,4 @@ void	parse_quotes_lastone(char *s, char *t, int *i, int *j)
 		(*i)++;
 		(*j)++;
 	}
-	if (s[*i] != '\0')
-		(*i)++;
 }

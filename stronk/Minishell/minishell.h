@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:04:48 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/12 16:03:14 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:10:12 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	check_syntax(t_arg *arg);
 char	first_occc(char *s);
 char	last_occc(char *s);
 int		count_q(char *s, char c);
+t_arg	*check_for_dollar(t_arg *arg);
 
 // --------------------- splits -------------------------//
 char	**squsplit(t_gg *gg, char *s);
@@ -116,6 +117,15 @@ t_arg	*lst_between(t_arg **arg, char **t, int x);
 t_arg	*akhirw7da(t_arg **arg, char **t, int x);
 t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x);
 void	addbacki_sf(t_arg **sfa, char **t);
+char	*ft_itoa(int n);
+int		is_there_dq(char *s);
+
+//>>	dollar handling:
+int		checki_checki(char *s);
+int		check_dollar_mark(char *s);
+int		check_dollar(char *s);
+int		check_qdollar(char *s);
+int		lot_ofthem(char *s);
 
 // --------------------- errors -----------------------//
 void	print_syntax_error(int x, char c);
