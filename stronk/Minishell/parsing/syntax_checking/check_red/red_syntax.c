@@ -21,7 +21,13 @@ int	check_red_condition(char *s, int i, int count)
 	return (0);
 }
 
-void	check_red(t_arg *s)
+void	decrement_count(char *s, int i, int *count)
+{
+	if (s[i] == first_occc(s))
+		(*count)--;
+}
+
+int	check_red(t_arg *s)
 {
 	int		i;
 	int		count;
@@ -35,8 +41,7 @@ void	check_red(t_arg *s)
 		count = count_q(s->data, first_occc(s->data));
 		while (s->data[i] != '\0')
 		{
-			if (s->data[i] == first_occc(s->data))
-				count--;
+			decrement_count(s->data, i, &count);
 			if (check_red_condition(s->data, i, count))
 			{
 				r = s->data[i + 2];
@@ -45,7 +50,8 @@ void	check_red(t_arg *s)
 			i++;
 		}
 		if (w > 0)
-			print_syntax_error(w, r);
+			return (print_syntax_error(w, r));
 		s = s->next;
 	}
+	return (1);
 }

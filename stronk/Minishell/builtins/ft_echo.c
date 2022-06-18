@@ -12,67 +12,53 @@
 
 #include "../minishell.h"
 
-int	check_flag(int i, int *p)
-{
-	*p = i;
-	if (i)
-		return (1);
-	return (0);
-}
-
-int	ft_check_arg(char **s, int *p)
+int	check_forflag(char *s)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (s[i] != NULL)
+	while (s[i] == '\\')
+		i++;
+	if (s[0] != '-')
+		return (0);
+	while (s[i] == '\\')
+		i++;
+	i++;
+	while (s[i] != '\0')
 	{
-		j = 0;
-		if (s[i][0] != '-')
-			return (check_flag(i, p));
-		j++;
-		while (s[i][j] != '\0')
+		if (s[i] != 'n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	ft_echo(char **av)
+{
+	int	i;
+	int	f;
+
+	i = 0;
+	if (*av != NULL)
+	{
+		f = check_forflag(*av);
+		if (f)
+			i++;
+		while (av[i] != NULL)
 		{
-			if (s[i][j] != 'n')
-				return (check_flag(i, p));
-			j++;
+			printf("%s", av[i]);
+			if (av[i + 1] != '\0')
+				printf(" ");
+			i++;
 		}
-		*p = i;
-		i++;
+		if (f)
+			return ;
 	}
-	if (i)
-		return (1);
-	return (0);
-}
-
-void	ft_echo(char **av, int x)
-{
-	int	i;
-
-	i = 0;
-	while (av[i] != NULL)
-	{
-		printf("%s", av[i]);
-		if (av[i + 1] != '\0')
-			printf(" ");
-		i++;
-	}
-	if (!x)
-		printf("\n");
+	printf("\n");
 }
 
 int	main(int ac, char **av)
 {
-	int	p;
-
-	p = 0;
-	if (ft_check_arg(*(&av) + 1, &p))
-	{
-		ft_echo(*(&av) + p + 1, 1);
-	}
-	else
-		ft_echo(*(&av) + 1, 0);
-	return (0);
+	ac = 1;
+	ft_echo(&av[1]);
 }

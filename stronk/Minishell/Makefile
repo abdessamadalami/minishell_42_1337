@@ -21,8 +21,8 @@ SRCS =  minishell.c\
 		parsing/parsing_quotes/parsing_quotes.c\
 		parsing/parsing_quotes/parsing_quotes_utils.c\
 		parsing/parsing_so/parsing_soperators.c\
-		parsing/dollar_handling/handle_dollar.c\
-		parsing/dollar_handling/handle_dollar_utils.c\
+		parsing/env_variables/env_variables.c\
+		parsing/env_variables/env_variables_utils.c\
 		parsing/syntax_checking/parsing_syntax.c\
 		parsing/syntax_checking/check_pip/pip_syntax.c\
 		parsing/syntax_checking/check_qt/qt_syntax.c\
@@ -33,7 +33,7 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #$-fsanitize=address -g
 
 all: $(NAME)
 

@@ -12,11 +12,11 @@
 
 #include "../../minishell.h"
 
-void	print_syntax_error(int x, char c)
+int	print_syntax_error(int x, char c)
 {
 	if (x == 1)
 		printf("syntax error near unexpected token `%c'\n", c);
 	else
 		printf("syntax error near unexpected token `%c%c'\n", c, c);
-	exit(1);
+	return (0);
 }

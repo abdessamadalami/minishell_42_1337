@@ -36,12 +36,13 @@ char	last_occc(char *s)
 	return ('"');
 }
 
-void	print_if(int x, int y)
+int	print_if(int x, int y)
 {
 	if (x % 2 != 0)
-		print_syntax_error(1, '"');
+		return (print_syntax_error(1, '"'));
 	if (y % 2 != 0)
-		print_syntax_error(1, '\'');
+		return (print_syntax_error(1, '\''));
+	return (1);
 }
 
 int	just_while(char *s, char c, int i)

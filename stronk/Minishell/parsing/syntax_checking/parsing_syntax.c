@@ -12,19 +12,18 @@
 
 #include "../../minishell.h"
 
-void	check_syntax(t_arg *arg)
+int	check_syntax(t_arg *arg)
 {
-	check_qt(arg);
-	check_red(arg);
-	check_pip(arg);
+	if (!check_qt(arg) || !check_red(arg) || !check_pip(arg))
+		return (0);
 	while (arg->next != NULL)
-	{
 		arg = arg->next;
-	}
+	printf("griiii\n");
 	if (arg->data[ft_strln(arg->data) - 1] == '>'
 		|| arg->data[ft_strln(arg->data) - 1] == '<')
 	{
 		printf("syntax error near unexpected token `newline'\n");
-		exit(1);
+		return (0);
 	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:31:51 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/10 20:08:34 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/16 11:39:13 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_arg	*ftlstnew(char *s)
 	ptr = malloc(sizeof(t_arg));
 	if (ptr == NULL)
 		return (0);
-	ptr->data = s;
+	ptr->data = ft_strdp(s);
 	ptr->next = NULL;
 	return (ptr);
 }

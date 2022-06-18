@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 09:04:55 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/14 11:59:13 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:44:45 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ char	*parsing_quotes(char *s)
 			parse_quotes_forsq(s, t, &i, &j);
 		else
 			parse_quotes_lastone(s, t, &i, &j);
-	//	i++;
 	}
 	t[j] = '\0';
 	return (t);
@@ -65,7 +64,6 @@ t_arg	*remove_quotes(t_arg *arg)
 		if (!check_q(arg->data))
 		{
 			s = parsing_quotes(arg->data);
-			printf("hola %s\n", s);
 			if (*s != '\0')
 				diklmzyana(&sfa, s);
 		}

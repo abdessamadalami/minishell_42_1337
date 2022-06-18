@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-t_arg	*fill_list(char **t)
+t_arg	*fill_list(char **t, t_normsht *normsht)
 {
 	t_arg	*arg;
 	t_arg	*node;
@@ -20,6 +20,7 @@ t_arg	*fill_list(char **t)
 
 	i = 0;
 	arg = NULL;
+	t[normsht->count + 1] = 0;
 	while (t[i] != NULL)
 	{
 		node = ftlstnew(t[i]);

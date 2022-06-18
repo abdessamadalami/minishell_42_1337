@@ -48,7 +48,7 @@ void	parse_spaces_lastone(char *s, char **t, int *i, t_normsht *normsht)
 	normsht->count++;
 	while (s[*i] == ' ' && s[*i] != '\0')
 		(*i)++;
-	normsht->init = (*i);
+	normsht->init = *i;
 }
 
 t_arg	*parsing_spaces(char *s)
@@ -77,5 +77,5 @@ t_arg	*parsing_spaces(char *s)
 		else
 			i++;
 	}
-	return (fill_list(t));
+	return (fill_list(t, &normsht));
 }

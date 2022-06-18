@@ -12,7 +12,7 @@
 
 #include "../../../minishell.h"
 
-void	check_pip(t_arg *s)
+int	check_pip(t_arg *s)
 {
 	int		i;
 	int		count;
@@ -32,7 +32,8 @@ void	check_pip(t_arg *s)
 			i++;
 		}
 		if (p > 1)
-			print_syntax_error(p, '|');
+			return (print_syntax_error(p, '|'));
 		s = s->next;
 	}
+	return (1);
 }

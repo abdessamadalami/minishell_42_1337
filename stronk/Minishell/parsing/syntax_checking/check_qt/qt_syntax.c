@@ -12,7 +12,7 @@
 
 #include "../../../minishell.h"
 
-void	count_quotes(char *s, int x, int y)
+int	count_quotes(char *s, int x, int y)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ void	count_quotes(char *s, int x, int y)
 		}
 		i++;
 	}
-	print_if(x, y);
+	return (print_if(x, y));
 }
 
 int	*count_sdq(char *s, char f, char l)
@@ -65,7 +65,7 @@ int	*count_sdq(char *s, char f, char l)
 	return (t);
 }
 
-void	check_qt(t_arg *s)
+int	check_qt(t_arg *s)
 {
 	int	x;
 	int	y;
@@ -74,7 +74,8 @@ void	check_qt(t_arg *s)
 	{
 		x = 0;
 		y = 0;
-		count_quotes(s->data, x, y);
+		return (count_quotes(s->data, x, y));
 		s = s->next;
 	}
+	return (1);
 }
