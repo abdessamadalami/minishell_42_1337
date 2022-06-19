@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   biulding_cmd_x.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:55:36 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 16:37:13 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/18 17:23:48 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ static void exe_c(int *id,char *path, char **argv, t_list *env)
 	char	**argv;
 	int		cmd;
     int     id;
-	
+
 	std_out = 1;
 	path = 0;
 	argv = make_argv(pars_il, env, &std_in, &std_out);
 	//! rhe status in redirect_inpu
 	if (argv == NULL || std_in == -1 || std_out == -1)
 	{
-		free_function(argv);
+		if (argv != NULL)
+		 	free_function(argv);
 		ft_lstclear(&pars_il, del);
 		return (1);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   excutig_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:12:50 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/16 13:48:45 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/18 15:42:43 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,14 @@ void close_aff(t_var *v_pipe)
 int dup_parm(t_list **pars_il, int *fd, t_list **std_in)
 {
     t_list *lst;
-    static int a;
+   static int a;
+    
 
     printf("dup_parm %d\n", *fd);
     // char buf[100];
     // int k = read(*fd, buf, sizeof(buf));
-
-    
     lst = make_list_fork(*pars_il);
-    if (*std_in != NULL)
+    if (*std_in != NULL && a != 0)
     {
         if (*(int *)(*std_in) -> content != -1 && 
          *(int *)(*std_in) -> content != 0
@@ -74,26 +73,28 @@ int dup_parm(t_list **pars_il, int *fd, t_list **std_in)
             close(*fd);
             *fd = *(int *)(*std_in) -> content;
         }
-        // if (*(int *)(*std_in) -> content == -1)
-        // {
-        //    // lst = make_list_fork(lst);
-        //     printf("std in -1 %d\n", *fd);
-        //     	print_list(lst,23);
-        // }
+        if (*(int *)(*std_in) -> content == -1)
+        {
+            // lst = make_list_fork(lst);
+            printf("std in in (-1)  %d\n", *fd);
+           // print_list(lst,23);
+            a = 1;
+        }
         if((*std_in) -> next != NULL)
+        {
             *std_in = (*std_in) -> next;
+            //printf("std in next %d ",*(int *)(*std_in) -> content);
+        }
     }
-    printf("std in -1 %d\n",*fd);
+    //printf("std in -1 %d\n", *fd);
     //  printf(" %d std_in of pipe %d\n", a , *fd);
-    // print_list(lst, 434);
+    print_list(lst, 434);
     a++;
     *pars_il = lst;
     // char buf[100];
     // int k = read(*fd, buf, sizeof(buf));
     // buf[k] = '\0';
     // printf("%s \n",buf);
-    
-    if (lst != NULL)
-        return 1;
-    return 0;
+
+    return a;
 }

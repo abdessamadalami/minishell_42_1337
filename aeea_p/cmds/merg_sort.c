@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merg_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:54:03 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 11:55:26 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:25:16 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void print_list_x(t_list **a) {
         }
             p = ptr->next;
             c = ptr -> content;
-            printf("declare -x %s\n",ptr -> content);
+            printf("declare -x %s\n",(char *)ptr -> content);
             ptr = ptr->next;
         }
     free(c);

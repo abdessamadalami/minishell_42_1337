@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_fun.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 14:29:38 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:42:35 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ void print_list(t_list *list,int a)//s= 0 || s=1 print wirh order
     while(list != NULL)
     {
         if(ft_strchr(list -> content,'=') && a == 0)
-            printf("%s\n", list->content);
+            printf("%s\n", (char *)list->content);
         else if (a == 1 && ft_strchr(list -> content,'=') != NULL) 
-            printf("%s \n", list->content);
+            printf("%s \n", (char *)list->content);
         else if(a ==4)
             printf("%d \n", *(int *)list->content);
         else if ( a > 10)
-             printf("%s \n", list->content);
+             printf("%s \n", (char *)list->content);
         list = list->next;
     }
 }

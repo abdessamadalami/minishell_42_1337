@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executing.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 10:40:59 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/18 18:35:16 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,17 @@ void executing(t_list *pars_il, t_list **env)
 		if (fds_std_in == NULL )
 			return;
 	}
+	
+	print_list(pars_il ,23);
+	printf("look up\n");
+	if(fds_std_in != NULL && *(int *)fds_std_in -> content == -1 && fds_std_in -> next == 0)
+	{
+		printf("rjt\n");
+		return;
+	}
+	//print_list(fds_std_in ,4);
+	printf(" look up\n");
+	
 	if (f_building(&n_p,env, pars_il, &ids,v_pipe) == 1)
 	{
 		dup2(a,0);
@@ -168,25 +179,41 @@ void executing(t_list *pars_il, t_list **env)
 		}
 		if (i == n_p)
 		{
-			printf("jj %d \n", (v_pipe).std_out);
+			if ( fds_std_in != 0 && *(int *)fds_std_in -> content == -1)
+				break ;
+			printf(" the last cmd  %d \n", v_pipe.std_in);
+			print_list(pars_il,23);
+			if(pars_il == NULL)
+				break;
 			v_pipe.std_out = 1;
+			printf("jj %d \n", (v_pipe).std_out);
 		}
 		ids[i] = fork();
 		if (ids[i] == 0)
+		{
+			//printf("in the ");
 			chiled_processe(pars_il, *env, v_pipe.std_in, v_pipe.std_out);
+		}
+		if (fds_std_in != NULL && *(int *)fds_std_in -> content == -1 && fds_std_in -> next == 0)
+			break;
 		//close_aff(&v_pipe);
 		close(v_pipe.fd[1]);
 		if (v_pipe.to_close)
 			close(v_pipe.to_close);
 		v_pipe.std_in = v_pipe.fd[0];
 		v_pipe.to_close = v_pipe.std_in;
-		if (dup_parm(&pars_il, &v_pipe.std_in ,&fds_std_in) == 0)
-			break;
+		if ( pars_il != 0 && dup_parm(&pars_il, &v_pipe.std_in ,&fds_std_in) == 0 && i != n_p)
+		{
+			printf(" iam in brak \n");
+			printf("home std_in %d\n", v_pipe.std_in);
+			printf(" parcile %p \n", pars_il);
+			i++;
+		}
 		i++;	
 	}
 	wait_exit_status(ids, n_p);
 	dup2(a,0);
 	dup2(b,1);
-	close(v_pipe.std_in);
+	//close(v_pipe.std_in);
 	//system("leaks minishell");
 }
