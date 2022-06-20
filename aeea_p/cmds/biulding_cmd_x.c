@@ -6,7 +6,7 @@
 /*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:55:36 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/18 17:23:48 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/20 13:22:55 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ static void exe_c(int *id,char *path, char **argv, t_list *env)
 	//! rhe status in redirect_inpu
 	if (argv == NULL || std_in == -1 || std_out == -1)
 	{
+		printf(" i am gere");
 		if (argv != NULL)
 		 	free_function(argv);
-		ft_lstclear(&pars_il, del);
 		return (1);
 	}
 	dup2(std_in, 0);
