@@ -23,6 +23,7 @@ int	is_alphanum(char c)
 void	normal_case(char **t, char *s, int *i, int *j)
 {
 	char	*var;
+	char	*tmp;
 	int		x;
 
 	var = ft_allocate(s);
@@ -32,17 +33,25 @@ void	normal_case(char **t, char *s, int *i, int *j)
 	var[x] = '\0';
 	if (getenv(var) != NULL)
 	{
-		*t = ft_strjn(*t, getenv(var));
+		tmp = *t;
+		*t = ft_strjnnn(*t, getenv(var));
 		*j += ft_strln(getenv(var));
+		free(tmp);
 	}
+	free(var);
 }
 
 void	mult_case(char **t, int count, int *j)
 {
+	char	*tmp;
+
+	(void)j;
 	(*j) += ft_strln(ft_itoa(getpid())) * (count / 2);
 	while (count > 0)
 	{
-		*t = ft_strjn(*t, ft_itoa(getpid()));
+		tmp = *t;
+		*t = ft_strjnnn(tmp, ft_itoa(getpid())); // getpid makaynach waitpid
+		free(tmp);
 		count -= 2;
 	}
 }

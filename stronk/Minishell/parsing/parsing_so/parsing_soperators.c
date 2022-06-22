@@ -39,26 +39,13 @@ int	so_counter(char *s)
 	return (count);
 }
 
-static void	diklmzyana(t_arg **sfa, char *s)
-{
-	t_arg	*node;
-
-	node = malloc(sizeof(t_arg));
-	if (!node)
-		exit(1);
-	node = ftlstnew(s);
-	ftlstadd_back(sfa, node);
-}
-
 static void	diklmzyanalokhra(t_arg **sfa, char *s)
 {
 	char	**temp;
 	int		so_c;
 
+	temp = NULL;
 	so_c = so_counter(s);
-	temp = malloc(sizeof(char) * (so_c + 1));
-	if (!temp)
-		exit(1);
 	temp = sosplit(s);
 	addbacki_sf(sfa, temp);
 }
@@ -66,12 +53,12 @@ static void	diklmzyanalokhra(t_arg **sfa, char *s)
 static void	diklmzyanalokhrawsf(t_arg **sfa, t_gg *gg, char *s)
 {
 	char	**temp;
+	char	**b;
 	int		so_c;
 
+	temp = NULL;
 	so_c = so_counter(s);
-	temp = malloc(sizeof(char) * (so_c + 1));
-	if (!temp)
-		exit(1);
+	b = temp;
 	temp = squsplit(gg, s);
 	addbacki_sf(sfa, temp);
 }
@@ -91,12 +78,12 @@ t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
 				if (ft_strln(arg->data) == 1 || (ft_strln(arg->data) == 2
 						&& (arg->data[0] == arg->data[1])
 						&& arg->data[0] != '|'))
-					diklmzyana(&sfa, arg->data);
+					ftlstadd_back(&sfa, ftlstnew(arg->data));
 				else
 					diklmzyanalokhra(&sfa, arg->data);
 			}
 			else
-				diklmzyana(&sfa, arg->data);
+				ftlstadd_back(&sfa, ftlstnew(arg->data));
 		}
 		else
 			diklmzyanalokhrawsf(&sfa, gg, arg->data);

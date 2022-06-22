@@ -30,14 +30,14 @@ int	ft_strllen(char **s)
 
 void	addbacki_sf(t_arg **sfa, char **t)
 {
-	t_arg	*node;
-	int		i;
+	int	i;
 
 	i = 0;
 	while (t[i] != 0)
 	{
-		node = ftlstnew(t[i]);
-		ftlstadd_back(sfa, node);
+		ftlstadd_back(sfa, ftlstnew(t[i]));
+		free(t[i]);
 		i++;
 	}
+	free(t);
 }

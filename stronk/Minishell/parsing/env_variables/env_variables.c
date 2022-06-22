@@ -28,6 +28,7 @@ void	env_varhandling(char **t, char *s, int *i, int *j)
 		gg = ft_strdp("?");
 		printf("%s\n", getenv(gg));
 		*t = ft_strjn(*t, getenv(gg));
+	printf("lll\n");
 		j += ft_strln(getenv(gg));
 		printf("shh\n");
 	}
@@ -53,7 +54,7 @@ char	*ft_putenv_variables(char *s)
 	int		lock;
 	int		dlock;
 
-	t = ft_allocate(s);
+	t = ft_calloc((ft_strln(s) + 1), sizeof(char));
 	i = 0;
 	j = 0;
 	lock = 1;
@@ -74,12 +75,21 @@ t_arg	*check_envvars(t_arg *arg)
 {
 	t_arg	*sfa;
 	t_arg	*node;
+	char	*t;
 
 	sfa = NULL;
+	t = NULL;
 	while (arg != NULL)
 	{
 		if (!(arg->data[0] == '$' && arg->data[1] == '\0'))
-			node = ftlstnew(ft_putenv_variables(arg->data));
+		{
+			t = ft_putenv_variables(arg->data);
+			node = ftlstnew(t);
+			free (t);
+			t = NULL;
+		}
+		else
+			node = ftlstnew(arg->data);
 		if (node->data[0] != '\0')
 			ftlstadd_back(&sfa, node);
 		arg = arg->next;

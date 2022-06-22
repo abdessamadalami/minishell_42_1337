@@ -33,7 +33,7 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror #$-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 all: $(NAME)
 

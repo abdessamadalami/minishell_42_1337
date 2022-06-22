@@ -99,6 +99,36 @@ char	*ft_strjn(char *s1, char *s2)
 	while (s2[j])
 		tab[i++] = s2[j++];
 	tab[i] = '\0';
+	free(s1);
+	free(s2);
+	return (tab);
+}
+
+char	*ft_strjnnn(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+	char	*tab;
+
+	if (s2 == 0)
+		s2 = ft_strdp("");
+	if (s1 == 0)
+		s1 = ft_strdp("");
+	tab = (char *)malloc(sizeof(char) * (ft_strln(s1) + ft_strln(s2) + 1));
+	if (!tab)
+		return (0);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		tab[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+		tab[i++] = s2[j++];
+	tab[i] = '\0';
+	// free(s1);
+	// free(s2);
 	return (tab);
 }
 

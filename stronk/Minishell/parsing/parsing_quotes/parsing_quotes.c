@@ -12,17 +12,6 @@
 
 #include "../../minishell.h"
 
-static void	diklmzyana(t_arg **sfa, char *s)
-{
-	t_arg	*node;
-
-	node = malloc(sizeof(t_arg));
-	if (!node)
-		exit(1);
-	node = ftlstnew(s);
-	ftlstadd_back(sfa, node);
-}
-
 char	*parsing_quotes(char *s)
 {
 	char	*t;
@@ -65,10 +54,12 @@ t_arg	*remove_quotes(t_arg *arg)
 		{
 			s = parsing_quotes(arg->data);
 			if (*s != '\0')
-				diklmzyana(&sfa, s);
+				ftlstadd_back(&sfa, ftlstnew(s));
+			free(s);
+			s = NULL;
 		}
 		else
-			diklmzyana(&sfa, arg->data);
+			ftlstadd_back(&sfa, ftlstnew(arg->data));
 		arg = arg->next;
 	}
 	return (sfa);

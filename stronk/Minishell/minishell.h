@@ -39,7 +39,9 @@ typedef struct s_normsht
 
 typedef struct s_files
 {
-	char	*file_name;
+	char			*file_name;
+	int				state;
+	struct s_files	*next;
 }	t_files;
 
 typedef struct s_squsplit
@@ -57,7 +59,7 @@ typedef struct s_arg
 }	t_arg;
 
 // --------------------- parsing -------------------------//
-void	parse_quotes_fordq(char *s, char *t, int *i, int *j);
+void	parse_quotes_fordq(char *s, char *t, int *i, int *j);////////update
 void	parse_quotes_forsq(char *s, char *t, int *i, int *j);
 void	parse_quotes_lastone(char *s, char *t, int *i, int *j);
 t_arg	*ft_parsing(char *s);
@@ -115,6 +117,7 @@ char	*ft_strdp(char *s1);
 int		ft_strln(char *s);
 int		ft_strllen(char **s);
 char	*ft_strjn(char *s1, char *s2);
+char	*ft_strjnnn(char *s1, char *s2);
 char	*ft_subtr(char	*s, int start, int len);
 char	*ft_ssubtr(char	*s, int start, int len);
 void	*ft_calloc(int count, int size);
@@ -125,8 +128,11 @@ t_arg	*ftlstnew(char	*s);
 int		ftlstsize(t_arg *lst);
 void	ftlstadd_front(t_arg **lst, t_arg *new);
 void	ftlstadd_back(t_arg **lst, t_arg *new);
+t_files	*ftlstnewmf(char *s);
+void	ftlstadd_backmf(t_files **lst, t_files *new);
 t_arg	*lst_lastone(t_arg **arg, char **t, int x);
 t_arg	*lst_between(t_arg **arg, char **t, int x);
+void	ftlstclear(t_arg **lst, void (*del)(void	*));
 t_arg	*akhirw7da(t_arg **arg, char **t, int x);
 t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x);
 void	addbacki_sf(t_arg **sfa, char **t);
@@ -134,25 +140,25 @@ char	*ft_itoa(int n);
 int		is_there_dq(char *s);
 
 //>>	dollar handling:
-int		checki_checki(char *s);
-int		check_dollar_mark(char *s);
-int		check_dollar(char *s);
-int		check_qdollar(char *s);
-int		lot_ofthem(char *s);
-void	handle_mixed_quotes(t_arg *sfa, char *s);
-void	bzzaf_tdollarats(t_arg *sfa, char *s);
-int		conditions_topassd(char c);
-int		ds_index(char *s);
-char	*check_get_env(char *s, char *var, int *lock, int *i);
-char	**getsplitted(char *s);
-void	addback_wsf(t_arg *z3ta, char *s);
+// int		checki_checki(char *s);
+// int		check_dollar_mark(char *s);
+// int		check_dollar(char *s);
+// int		check_qdollar(char *s);
+// int		lot_ofthem(char *s);
+// void	handle_mixed_quotes(t_arg *sfa, char *s);
+// void	bzzaf_tdollarats(t_arg *sfa, char *s);
+// int		conditions_topassd(char c);
+// int		ds_index(char *s);
+// char	*check_get_env(char *s, char *var, int *lock, int *i);
+// char	**getsplitted(char *s);
+// void	addback_wsf(t_arg *z3ta, char *s);
 char	*ft_allocate(char *s);
-char	**getsplitted(char *s);
-void	lock_malo2(char c, char v, int *lock);
-void	lock_malo(char c, int *lock);
-void	put_z3tindaplaces2(t_arg *sfa, t_arg *z3ta, char *s);
-void	addback_wsf2(t_arg **z3ta, char *s);
-char	*check_get_env2(char *var, int *lock);
+// char	**getsplitted(char *s);
+// void	lock_malo2(char c, char v, int *lock);
+// void	lock_malo(char c, int *lock);
+// void	put_z3tindaplaces2(t_arg *sfa, t_arg *z3ta, char *s);
+// void	addback_wsf2(t_arg **z3ta, char *s);
+// char	*check_get_env2(char *var, int *lock);
 
 t_arg	*check_envvars(t_arg *arg);
 

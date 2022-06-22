@@ -12,18 +12,18 @@
 
 #include "minishell.h"
 
-int	ft_arg(char *s1, char *s2)
+void	ftlstclear(t_arg **lst, void (*del)(void	*))
 {
-	int	i;
+	t_arg	*list;
 
-	i = 0;
-	while (s1[i])
+	list = *lst;
+	while (*lst != NULL)
 	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
+		*lst = list->next;
+		del(list->data);
+		free(list);
+		list = *lst;
 	}
-	return (1);
 }
 
 int	main(int ac, char **av)
@@ -31,9 +31,7 @@ int	main(int ac, char **av)
 	char	*s;
 	t_arg	*mr;
 
-	mr = malloc(sizeof(t_arg));
-	if (!mr)
-		exit(1);
+	mr = NULL;
 	(void)*av;
 	if (ac == 1)
 	{
@@ -46,21 +44,15 @@ int	main(int ac, char **av)
 				continue ;
 			mr = ft_parsing(s);
 			if (mr != NULL)
-			{
-				
 				add_history(s);
-
-			}
-			while (mr != NULL)
-				{
-					printf("--[%s\n", mr->data);
-					mr = mr->next;
-				}
 			while (mr != NULL)
 			{
-				free(mr->data);
+				printf("--[%s\n", mr->data);
 				mr = mr->next;
 			}
+			ftlstclear(&mr, free);
+			free(s);
+	//		system("leaks minishell");
 		}
 		return (0);
 	}

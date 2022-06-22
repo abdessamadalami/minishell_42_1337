@@ -24,9 +24,11 @@ t_arg	*fill_list(char **t, t_normsht *normsht)
 	while (t[i] != NULL)
 	{
 		node = ftlstnew(t[i]);
+		free(t[i]);
 		ftlstadd_back(&arg, node);
 		i++;
 	}
+	free(t);
 	return (arg);
 }
 

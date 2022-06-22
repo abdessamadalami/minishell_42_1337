@@ -54,6 +54,35 @@ void	ftlstadd_back(t_arg **lst, t_arg *new)
 	list->next = new;
 }
 
+t_files	*ftlstnewmf(char *s)
+{
+	t_files	*ptr;
+
+	ptr = malloc(sizeof(t_files));
+	if (ptr == NULL)
+		return (0);
+	ptr->file_name = ft_strdp(s);
+	ptr->next = NULL;
+	return (ptr);
+}
+
+void	ftlstadd_backmf(t_files **lst, t_files *new)
+{
+	t_files	*list;
+
+	list = *lst;
+	if (*lst == 0)
+	{
+		*lst = new;
+		return ;
+	}
+	while (list->next != NULL)
+	{
+		list = list->next;
+	}
+	list->next = new;
+}
+
 int	ftlstsize(t_arg *lst)
 {
 	int	count;

@@ -18,7 +18,6 @@ int	check_syntax(t_arg *arg)
 		return (0);
 	while (arg->next != NULL)
 		arg = arg->next;
-	printf("griiii\n");
 	if (arg->data[ft_strln(arg->data) - 1] == '>'
 		|| arg->data[ft_strln(arg->data) - 1] == '<')
 	{

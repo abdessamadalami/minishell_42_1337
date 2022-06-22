@@ -33,6 +33,7 @@ t_arg	*ft_parsing(char *s)
 	t_gg	*gg;
 	t_arg	*mr;
 	t_arg	*dv;
+	t_arg	*dg;
 
 	gg = malloc(sizeof(t_gg));
 	gg->lock = 0;
@@ -43,10 +44,12 @@ t_arg	*ft_parsing(char *s)
 		return (NULL);
 	gg->lock = 0;
 	mr = parsin_dyalbss7(arg, gg);
-	arg = NULL;
-	arg = check_envvars(mr);
+	dg = check_envvars(mr);
 	mr = NULL;
-	mr = parsing_wildcard(arg);
+	mr = parsing_wildcard(dg);
 	dv = remove_quotes(mr);
+	ftlstclear(&arg, free);
+	ftlstclear(&dg, free);
+	ftlstclear(&mr, free);
 	return (dv);
 }
