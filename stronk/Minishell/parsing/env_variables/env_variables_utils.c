@@ -46,11 +46,11 @@ void	mult_case(char **t, int count, int *j)
 	char	*tmp;
 
 	(void)j;
-	(*j) += ft_strln(ft_itoa(getpid())) * (count / 2);
+	(*j) += ft_strln("1337") * (count / 2);
 	while (count > 0)
 	{
 		tmp = *t;
-		*t = ft_strjnnn(tmp, ft_itoa(getpid())); // getpid makaynach waitpid
+		*t = ft_strjnnn(tmp, "1337");
 		free(tmp);
 		count -= 2;
 	}

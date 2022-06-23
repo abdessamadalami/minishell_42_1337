@@ -57,11 +57,29 @@ void	*ft_calloc(int count, int size)
 	i = 0;
 	t = malloc(count * size);
 	if (t == NULL)
-		return (0);
+		exit(1);
 	while (i < (size * count))
 	{
 		t[i] = '\0';
 		i++;
 	}
 	return (t);
+}
+
+char	*ft_strdp(char *s1)
+{
+	int		i;
+	char	*p;
+
+	p = malloc(sizeof(char) * (ft_strln(s1) + 1));
+	if (p == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		p[i] = s1[i];
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
 }

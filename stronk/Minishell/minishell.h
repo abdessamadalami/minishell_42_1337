@@ -63,7 +63,9 @@ void	parse_quotes_fordq(char *s, char *t, int *i, int *j);////////update
 void	parse_quotes_forsq(char *s, char *t, int *i, int *j);
 void	parse_quotes_lastone(char *s, char *t, int *i, int *j);
 t_arg	*ft_parsing(char *s);
-t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg);
+// t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg);
+t_arg	*parse_so(t_arg *arg);
+//int		socounter(char *s);
 t_arg	*remove_quotes(t_arg *arg);
 t_arg	*parsing_spaces(char *s);
 t_arg	*fill_list(char **t, t_normsht *normsht);
@@ -112,6 +114,17 @@ void	normal_case(char **t, char *s, int *i, int *j);
 void	mult_case(char **t, int count, int *j);
 void	ft_lock(char c, int *lock, int *dlock);
 
+//>>	wildcard
+void	get_files(t_arg **sfa, char *s, char **suffix, char *prefix);
+int		suffix_checker(char *s, char **suffix);
+int		prefix_checker(char *s, char *prefix);
+int		ft_wildstrcmp(char *s1, char *suff, int x);
+char	*get_prefix(char *s);
+char	**get_suffix(char *s);
+void	fill_fileslist(t_arg **sfa, t_arg *node, char *s, int w);
+int		just_fileincrement(char *s, int i, int x);
+int		ft_index(char *s, char *needle);
+
 // --------------------- utils ------------------------//
 char	*ft_strdp(char *s1);
 int		ft_strln(char *s);
@@ -138,7 +151,7 @@ t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x);
 void	addbacki_sf(t_arg **sfa, char **t);
 char	*ft_itoa(int n);
 int		is_there_dq(char *s);
-
+void	ft_putstr(char *s);
 //>>	dollar handling:
 // int		checki_checki(char *s);
 // int		check_dollar_mark(char *s);

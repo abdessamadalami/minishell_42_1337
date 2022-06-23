@@ -65,33 +65,3 @@ t_files	*ftlstnewmf(char *s)
 	ptr->next = NULL;
 	return (ptr);
 }
-
-void	ftlstadd_backmf(t_files **lst, t_files *new)
-{
-	t_files	*list;
-
-	list = *lst;
-	if (*lst == 0)
-	{
-		*lst = new;
-		return ;
-	}
-	while (list->next != NULL)
-	{
-		list = list->next;
-	}
-	list->next = new;
-}
-
-int	ftlstsize(t_arg *lst)
-{
-	int	count;
-
-	count = 0;
-	while (lst != NULL)
-	{
-		count++;
-		lst = lst->next;
-	}
-	return (count);
-}

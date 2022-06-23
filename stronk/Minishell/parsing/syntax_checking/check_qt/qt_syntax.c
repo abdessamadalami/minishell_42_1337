@@ -39,7 +39,7 @@ int	count_quotes(char *s, int x, int y)
 	}
 	return (print_if(x, y));
 }
-
+/*
 int	*count_sdq(char *s, char f, char l)
 {
 	int	*t;
@@ -64,7 +64,7 @@ int	*count_sdq(char *s, char f, char l)
 	t[2] = '\0';
 	return (t);
 }
-
+*/
 int	check_qt(t_arg *s)
 {
 	int	x;

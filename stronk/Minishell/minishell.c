@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 			}
 			ftlstclear(&mr, free);
 			free(s);
-	//		system("leaks minishell");
+			// system("leaks minishell");
 		}
 		return (0);
 	}

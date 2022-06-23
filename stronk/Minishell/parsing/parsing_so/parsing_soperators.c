@@ -12,81 +12,103 @@
 
 #include "../../minishell.h"
 
-int	so_counter(char *s)
+void	parse_so_fordq(char *s, char **t, int *i, t_normsht *normsht)
 {
-	int	i;
-	int	count;
+	normsht->init = *i;
+	(*i)++;
+	while (s[*i] != '"' && s[*i] != '\0')
+		(*i)++;
+	if (s[*i] == '"')
+		(*i)++;
+	t[normsht->count] = ft_strjn(t[normsht->count],
+			ft_subtr(s, (normsht->init), *i));
+	normsht->init = *i;
+}
+
+void	parse_so_forsq(char *s, char **t, int *i, t_normsht *normsht)
+{
+	normsht->init = *i;
+	(*i)++;
+	while (s[*i] != '\'' && s[*i] != '\0')
+		(*i)++;
+	if (s[*i] == '\'')
+		(*i)++;
+	t[normsht->count] = ft_strjn(t[normsht->count],
+			ft_subtr(s, (normsht->init), *i));
+	normsht->init = *i;
+}
+
+void	parse_so_forso(char *s, char **t, int *i, t_normsht *normsht)
+{
+	if (i != 0 && s[(*i) - 1] != '<'
+		&& s[(*i) - 1] != '>' && s[(*i) - 1] != '|')
+		normsht->count++;
+	normsht->init = *i;
+	(*i)++;
+	if (s[*i] == s[(*i) - 1] && s[*i] != '|')
+		(*i)++;
+	t[normsht->count] = ft_subtr(s, (normsht->init), *i);
+	normsht->count++;
+}
+
+char	**get_parsed_so(char *s)
+{
+	char		**t;
+	t_normsht	normsht;
+	int			i;
 
 	i = 0;
-	count = 0;
+	normsht.count = 0;
+	normsht.init = 0;
+	t = (char **)ft_calloc(sizeof(char *), (so_counter(s) * ft_strln(s)));
 	while (s[i] != '\0')
 	{
-		if (s[i] == '>' || s[i] == '<' || s[i] == '|')
+		if (s[i] == '"')
+			parse_so_fordq(s, t, &i, &normsht);
+		else if (s[i] == '\'')
+			parse_so_forsq(s, t, &i, &normsht);
+		else if (s[i] == '>' || s[i] == '<' || s[i] == '|')
+			parse_so_forso(s, t, &i, &normsht);
+		else
 		{
-			if (i > 0)
-				count++;
-			if (s[i + 1] == '>' || s[i + 1] == '<')
-				i++;
-			count++;
+			normsht.init = i;
+			t[normsht.count] = ft_strjn(t[normsht.count],
+					ft_subtr(s, (normsht.init), ++i));
 		}
-		if (s[i + 1] == '\0' && s[i] != '>' && s[i] != '<')
-		{
-			count++;
-			break ;
-		}
-		i++;
 	}
-	return (count);
+	t[++normsht.count] = 0;
+	return (t);
 }
 
-static void	diklmzyanalokhra(t_arg **sfa, char *s)
+t_arg	*parse_so(t_arg *arg)
 {
-	char	**temp;
-	int		so_c;
-
-	temp = NULL;
-	so_c = so_counter(s);
-	temp = sosplit(s);
-	addbacki_sf(sfa, temp);
-}
-
-static void	diklmzyanalokhrawsf(t_arg **sfa, t_gg *gg, char *s)
-{
-	char	**temp;
-	char	**b;
-	int		so_c;
-
-	temp = NULL;
-	so_c = so_counter(s);
-	b = temp;
-	temp = squsplit(gg, s);
-	addbacki_sf(sfa, temp);
-}
-
-t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg)
-{
-	t_arg	*sfa;
+	t_arg		*sfa;
+	t_arg		*node;
+	char		**t;
+	int			i;
 
 	sfa = NULL;
 	while (arg != NULL)
 	{
-		if (check_q(arg->data))
+		if (check_so(arg->data, '>') || check_so(arg->data, '<')
+			|| check_so(arg->data, '|'))
 		{
-			if ((check_so(arg->data, '<') || check_so(arg->data, '>')
-					|| check_so(arg->data, '|')))
+			t = get_parsed_so(arg->data);
+			i = 0;
+			while (t[i] != '\0')
 			{
-				if (ft_strln(arg->data) == 1 || (ft_strln(arg->data) == 2
-						&& (arg->data[0] == arg->data[1])
-						&& arg->data[0] != '|'))
-					ftlstadd_back(&sfa, ftlstnew(arg->data));
-				else
-					diklmzyanalokhra(&sfa, arg->data);
+				node = ftlstnew(t[i]);
+				free(t[i]);
+				ftlstadd_back(&sfa, node);
+				i++;
 			}
-			else
-				ftlstadd_back(&sfa, ftlstnew(arg->data));
+			free(t);
 		}
 		else
-			diklmzyanalokhrawsf(&sfa, gg, arg->data);
+		{
+			node = ftlstnew(arg->data);
+			ftlstadd_back(&sfa, node);
+		}
 		arg = arg->next;
 	}
 	return (sfa);

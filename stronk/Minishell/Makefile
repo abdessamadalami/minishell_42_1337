@@ -8,7 +8,6 @@ SRCS =  minishell.c\
 		parsing/utils/minishell_list_utils2.c\
 		parsing/errors/minishell_erroring.c\
 		parsing/utils/splits/sosplit.c\
-		parsing/utils/splits/squsplit.c\
 		parsing/utils/splits/dosplit.c\
 		parsing/utils/splits/wildsplit.c\
 		parsing/utils/splits/splits_utils.c\
@@ -18,9 +17,12 @@ SRCS =  minishell.c\
 		parsing/parsing_spaces/parsing_spaces.c\
 		parsing/parsing_spaces/parsing_spaces_utils.c\
 		parsing/parsing_wildcard/parsing_wildcard.c\
+		parsing/parsing_wildcard/parsing_wildcard_utils.c\
+		parsing/parsing_wildcard/parsing_wildcard_utils2.c\
 		parsing/parsing_quotes/parsing_quotes.c\
 		parsing/parsing_quotes/parsing_quotes_utils.c\
 		parsing/parsing_so/parsing_soperators.c\
+		parsing/parsing_so/parsing_soperators_utils.c\
 		parsing/env_variables/env_variables.c\
 		parsing/env_variables/env_variables_utils.c\
 		parsing/syntax_checking/parsing_syntax.c\

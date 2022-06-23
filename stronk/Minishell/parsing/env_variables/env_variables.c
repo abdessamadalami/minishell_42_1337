@@ -71,27 +71,46 @@ char	*ft_putenv_variables(char *s)
 	return (t);
 }
 
+void	ftlstadd_backfff(t_arg **lst, t_arg *new)
+{
+	t_arg	*list;
+	char	*t;
+
+	list = *lst;
+	if (*lst == 0)
+	{
+		t = new->data;
+		*lst = ftlstnew(t);
+		free(t);
+		return ;
+	}
+	while (list->next != NULL)
+	{
+		list = list->next;
+	}
+	list->next = new;
+}
+
 t_arg	*check_envvars(t_arg *arg)
 {
 	t_arg	*sfa;
-	t_arg	*node;
 	char	*t;
 
 	sfa = NULL;
 	t = NULL;
 	while (arg != NULL)
 	{
-		if (!(arg->data[0] == '$' && arg->data[1] == '\0'))
+		if (!(arg->data[0] == '$' && arg->data[1] == '\0') 
+			&& (check_so(arg->data, '$')))
 		{
 			t = ft_putenv_variables(arg->data);
-			node = ftlstnew(t);
+			if (t[0] != '\0')
+				ftlstadd_backfff(&sfa, ftlstnew(t));
 			free (t);
 			t = NULL;
 		}
 		else
-			node = ftlstnew(arg->data);
-		if (node->data[0] != '\0')
-			ftlstadd_back(&sfa, node);
+			ftlstadd_back(&sfa, ftlstnew(arg->data));
 		arg = arg->next;
 	}
 	return (sfa);

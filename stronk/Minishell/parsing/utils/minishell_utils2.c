@@ -127,25 +127,5 @@ char	*ft_strjnnn(char *s1, char *s2)
 	while (s2[j])
 		tab[i++] = s2[j++];
 	tab[i] = '\0';
-	// free(s1);
-	// free(s2);
 	return (tab);
-}
-
-char	*ft_strdp(char *s1)
-{
-	int		i;
-	char	*p;
-
-	p = malloc(sizeof(char) * (ft_strln(s1) + 1));
-	if (p == NULL)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		p[i] = s1[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
 }
