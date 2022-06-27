@@ -6,8 +6,18 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:33:22 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 14:33:28 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:27:16 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
+
+void	ft_pwd(void)
+{
+	char	*ptr;
+
+	ptr = getcwd(0,0);
+	printf("%s\n", ptr);
+	free(ptr);
+	ptr = 0;
+}

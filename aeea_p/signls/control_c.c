@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 10:31:51 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/28 18:23:59 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:22:58 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void handler_sig()
 int main(int argc, char **argv)
 {
     handler_sig();
-    system("leaks a.out");
+   // system("leaks a.out");
     return 0;
     // struct sigaction c;
     // int x;

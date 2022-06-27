@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_env.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 12:53:11 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 10:47:58 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/21 19:19:25 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_list *env_list(char **env)
     list = 0;
     while(env[index] != NULL)
     {
-        node = ft_lstnew(env[index]);
+        node = ft_lstnew(ft_strdup(env[index]));
         ft_lstadd_back(&list, node);
         index++;
     }

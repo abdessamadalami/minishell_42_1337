@@ -6,16 +6,16 @@
 #    By: sultan <sultan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 08:52:13 by ael-oual          #+#    #+#              #
-#    Updated: 2022/06/18 11:02:00 by sultan           ###   ########.fr        #
+#    Updated: 2022/06/25 19:57:42 by sultan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#  here_doc/here_doc.c  here_doc/delete_heredoc.c
+#  here_doc/here_doc.c  here_doc/delete_heredoc.c ar -rc $(NAME) redirections/*.o pipex/*.o libft/*.o cmds/*.o here_doc/*.o executing/*.o
 
 CFLAsdGS = -Wall -Wextra -Werror #-fsanitize=address -g
 CC = gcc 
 CFsLAGS = -Wall -Wextra -Werror
-NAME = minishell
+NAME = minishell.a
 all: $(NAME)
 $(NAME):
 		cd redirections && make;
@@ -24,7 +24,7 @@ $(NAME):
 		cd cmds && make;
 		cd here_doc && make;
 		cd executing && make;
-	cc $(CFLAGS) main_aeea.c redirections/*.o pipex/*.o libft/*.o cmds/*.o here_doc/*.o executing/*.o -lreadline -L /goinfre/$(USER)/.brew/opt/readline/lib -I/goinfre/$(USER)/.brew/opt/readline/include  -o $(NAME)
+	cc $(CFLAGS) main_aeea.c redirections/*.o pipex/*.o libft/*.o cmds/*.o here_doc/*.o executing/*.o -lreadline -L /usr/local/opt/readline/lib/include -I /usr/local/opt/readline/lib/include  -o $(NAME)
 clean:
 	cd pipex && make clean;
 	cd libft && make clean;

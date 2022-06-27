@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 07:22:59 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 10:33:16 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/26 17:55:04 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,29 @@
 void c_unset(t_list *list, char *str)
 {
     int len;
-    t_list *node;
-    t_list *lst;
-    lst = list;
+    t_list  *node;
+    t_list  *lst;
+    char    *ptr;
 
+    lst = list;
     node = 0;
+    ptr = 0;
     while (lst)
     {
         len = ft_strlen(str); 
-        if (ft_strncmp(str, lst->content,len) == 0)
+        if (ft_strncmp(str, lst->content, len) == 0)
         {
-            if(node == NULL)
+            if(node == 0)
             {
-                node = (list);
+                ptr = (list -> content);
                 list = list -> next;
-                node -> next = 0;
-               // free(node->content);
+                free(ptr);
+                ptr = 0;
             }
             else
             {
-                node -> next = lst->next;//the first node
-                //free(lst -> content);
+                node -> next = lst->next;
+                free(lst -> content);
             }
            break;
         }

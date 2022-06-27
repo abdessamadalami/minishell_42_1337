@@ -6,7 +6,7 @@
 /*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/18 10:42:35 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/21 18:43:41 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void *f(void *ptr)
         ptr2 = ft_strjoin_n(ft_strjoin_n(s,ft_strdup("=")),ptr2);
         return (ptr2);
     }
-	return(ptr);
+	ptr2 = ft_strdup(ptr);
+	return(ptr2);
 }
 
 void del(void *ptr)

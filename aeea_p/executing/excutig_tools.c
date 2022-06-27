@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   excutig_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:12:50 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/18 15:42:43 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/26 19:54:10 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,59 +42,57 @@ void wait_exit_status(int *ids, int n_p)
             e_st = WEXITSTATUS(exit_s);
         i++;
     }
+    free(ids);
+    ids = 0;
 }
 
-void close_aff(t_var *v_pipe)
+void make_ne(t_list **pars_il, t_list **fds_std_in)
 {
-    close(v_pipe->fd[1]);
-    if (v_pipe->to_close)
-        close(v_pipe->to_close);
-    v_pipe->std_in = v_pipe->fd[0];
-    v_pipe->to_close = v_pipe->std_in;
+    while(1)
+	{
+		if (*pars_il == 0)
+			break;
+		if (*(int *)(*fds_std_in) -> content != -1)
+		{
+			if ((*fds_std_in) -> next != 0)
+				    (*fds_std_in) = (*fds_std_in)->next;
+			break;
+		}
+		else
+		{
+            if (*fds_std_in != 0) 
+                (*fds_std_in) = (*fds_std_in)->next;
+            if (*pars_il == 0)
+                break;
+            *pars_il = make_list_fork(*pars_il);
+                
+		}
+	}
 }
 
-int dup_parm(t_list **pars_il, int *fd, t_list **std_in)
+void dup_parm(t_list **pars_il, int *fd, t_list **std_in)
 {
     t_list *lst;
-   static int a;
-    
 
-    printf("dup_parm %d\n", *fd);
-    // char buf[100];
-    // int k = read(*fd, buf, sizeof(buf));
     lst = make_list_fork(*pars_il);
-    if (*std_in != NULL && a != 0)
+    if (lst == 0)
+            return ;     
+    if (*std_in != 0)
     {
-        if (*(int *)(*std_in) -> content != -1 && 
-         *(int *)(*std_in) -> content != 0
-        )
+        if (*(int *)(*std_in) -> content != 0)
         {
-            printf(" fdf %d \n", *(int *)(*std_in) -> content);
-            close(*fd);
             *fd = *(int *)(*std_in) -> content;
+            if((*std_in) -> next) 
+                *std_in = (*std_in) -> next;
         }
-        if (*(int *)(*std_in) -> content == -1)
+        if (*(int *)(*std_in) -> content == 0)
         {
-            // lst = make_list_fork(lst);
-            printf("std in in (-1)  %d\n", *fd);
-           // print_list(lst,23);
-            a = 1;
-        }
-        if((*std_in) -> next != NULL)
-        {
-            *std_in = (*std_in) -> next;
-            //printf("std in next %d ",*(int *)(*std_in) -> content);
-        }
+            if ((*std_in) -> next != 0)
+                    *std_in = (*std_in) -> next;
+            else
+                *std_in = 0;
+        }       
     }
-    //printf("std in -1 %d\n", *fd);
-    //  printf(" %d std_in of pipe %d\n", a , *fd);
-    print_list(lst, 434);
-    a++;
     *pars_il = lst;
-    // char buf[100];
-    // int k = read(*fd, buf, sizeof(buf));
-    // buf[k] = '\0';
-    // printf("%s \n",buf);
 
-    return a;
 }

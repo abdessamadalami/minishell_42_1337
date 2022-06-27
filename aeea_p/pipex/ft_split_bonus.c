@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:08:31 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/14 11:56:12 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:59:40 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ char	**ft_split(char const *s, char c)
 		index += 2;
 	}
 	array[m] = NULL;
+	free(ptr_se);
+	ptr_se = 0;
 	return (array);
 }

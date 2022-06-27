@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/17 14:24:40 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:05:45 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@ static void header_inline(char *s, t_list *env)
 {  
 	printf("\n");
 	exit(e_st);
-//	s = ft_strdup("dkfkfkf");
 }
 
 void handler_sig(int sig)
 {
-	printf("sig %d\n", sig);
-	
 	if (sig == SIGINT)
     {
-		printf("sdff");
         printf("\n");
         // rl_on_new_line();
         // rl_replace_line("", 0);
@@ -46,8 +42,12 @@ int main(int argc, char **argv, char **env)
     c.sa_handler = &handler_sig;
     c.sa_flags = SA_RESTART;
 	char	*s;
+	char **str;
+
+	str = 0;
+	s = 0;
 	env_lst = c_env(env);
-	sigaction(SIGINT, &c, NULL);
+	sigaction(SIGINT, &c, 0);
 	while (1)
 	{
 		//list = ft_new_parsing(s);
@@ -58,14 +58,16 @@ int main(int argc, char **argv, char **env)
 			header_inline(s, env_lst);
 		if (ft_strlen(s) != 0)
 		{
-			par = c_env(ft_split(s, ' '));
+			str = ft_split(s, ' ');
+			par = c_env(str);
+			// exit(0);
 			executing(par, &env_lst);
-			// printf("_________________\n");
-			// print_list(env_lst,2);    
-		}
-		
+			system("leaks minishell.a");
+		} 
 		add_history(s);
+		str = 0;
 		free(s);
+		s = 0;
 	}
 	printf("\033[13m");
 	return (0);

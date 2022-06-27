@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_fun.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 10:15:05 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/12 11:06:54 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/26 10:56:06 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int check_redirec_list(t_list *lst)
 int redirect_inpu(char *std_in)
 {
 	int fd_input;
-	int pid;
 
 	fd_input = open(std_in, O_RDONLY);
    return fd_input;

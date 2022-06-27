@@ -6,7 +6,7 @@
 /*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:54:03 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/18 10:25:16 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/26 10:46:02 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void print_list_x(t_list **a) {
         }
     free(c);
     free(p);
+    free(*a);
+    ptr = 0;
+    *a = 0;
 }
 
 t_list* mergesortedlist(t_list* lst1, t_list* lst2) 
@@ -64,9 +67,8 @@ void mid_list(t_list *list, t_list **fast, t_list **slow)
     t_list *ptr2;
     t_list *ptr1;
     
-    ptr1  = list ->next;
+    ptr1 = list ->next;
     ptr2 = list;
-	// ptr1 is incrmented twice and ptr2 is icremented once.
 	while (ptr1 != NULL)
     { 
 		ptr1 = ptr1->next; 
@@ -76,7 +78,6 @@ void mid_list(t_list *list, t_list **fast, t_list **slow)
 			ptr1 = ptr1->next; 
 		} 
 	} 
-	// ptr2 is at the midpoint.
 	*fast = list; 
 	*slow = ptr2->next; 
 	ptr2->next = NULL; 
@@ -87,23 +88,21 @@ void ft_merge_sort(t_list **list)
     t_list *ptr1;
     t_list *ptr2;
 
-    if ((*list) -> next == NULL || (*list) == NULL)
+    if ((*list)->next == NULL || (*list) == NULL)
         return;
     mid_list(*list,&ptr1,&ptr2);
     ft_merge_sort(&ptr1);
     ft_merge_sort(&ptr2);
     *list = mergesortedlist(ptr1 ,ptr2);
+    
 }
 
 void ft_merge_sort_u(t_list *env)
 {
-    static int i;
-   
     t_list  *new_list;
     new_list = NULL;
     new_list = ft_lstmap(env, f, del);
     ft_merge_sort(&new_list);
-    i++;
     print_list_x(&new_list);
 }
 

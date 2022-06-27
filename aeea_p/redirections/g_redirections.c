@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   g_redirections.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:21:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/11 12:47:56 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/26 11:02:57 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ red string is about the signed of redirections signed : < or > or << or >>
 std_in is path name  of input file : read from pipe or stdin of file 
 std_out is path name of output file : file or stdout
 */
-int g_redirections(char *f_name,char *red, t_list *env,int *std_in, int *std_out)
+int g_redirections(char *f_name, char *red, int *std_in, int *std_out)
 {
-    //check_file_name();
-    int fd_file;/// fd_file  for this < we need the fd of the file after < 
+    
     if (red[0] == '>' && red[1] == 0)
     {
         *std_out = redirect_output(f_name, 'r');

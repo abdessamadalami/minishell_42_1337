@@ -1,5 +1,11 @@
-ls
-kjf
-tt
-jdf
-skdfj
+array length 0x7fc34c40aa10 tr_se
+array length 0x7fc34c816600 tr_se
+Makefile
+aeea_p
+builtins
+file
+minishell
+minishell.c
+minishell.h
+minishell.o
+parsing

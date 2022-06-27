@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:08:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/08 11:46:18 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/26 11:06:46 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int redirect_output(char *std_out, char c)
 {
 	int fd_input;
+	
+	fd_input = 0;
 	if (c == 'r')
 		fd_input = open(std_out, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else if (c == 'a')

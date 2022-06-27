@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   biulding_cmd_x.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:55:36 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/18 17:23:48 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/26 18:04:50 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void catch_s(int id)
     int exit_s;
 
     exit_s = 0;
-    waitpid(id,&exit_s, 0);
+    waitpid(id, &exit_s, 0);
 	if (WIFEXITED(exit_s))
 		e_st = WEXITSTATUS(exit_s);
 }
@@ -31,20 +31,19 @@ static void exe_c(int *id,char *path, char **argv, t_list *env)
             path = access_func(argv);
         else
             path = get_path_env(env, argv[0]);
-		
-        if(path == NULL)
+        if(path == 0)
 		{
 			free(path);
             error_printf(argv[0]);
 			free_function(argv);
-		}//!free memory
+		}
         execve(path, argv, make_arrenv(env));
 		free(path);
 		free_function(argv);
     }
 }
          
- int chiled_build(t_list *pars_il ,t_list *env, int std_in, int std_out)
+ int chiled_build(t_list *pars_il, t_list *env, int std_in, int std_out)
 {
 	char	*path;
 	char	**argv;
@@ -54,24 +53,20 @@ static void exe_c(int *id,char *path, char **argv, t_list *env)
 	std_out = 1;
 	path = 0;
 	argv = make_argv(pars_il, env, &std_in, &std_out);
-	//! rhe status in redirect_inpu
-	if (argv == NULL || std_in == -1 || std_out == -1)
+	if (argv == 0 || std_in == -1 || std_out == -1)
 	{
-		if (argv != NULL)
-		 	free_function(argv);
-		ft_lstclear(&pars_il, del);
+		if (argv != 0)
+		free_function(argv);
 		return (1);
 	}
 	dup2(std_in, 0);
 	dup2(std_out, 1);
-	cmd = chec_for_cmds(argv, env);///!  lekes in this function here 
-	if(cmd == 1)
+	cmd = chec_for_cmds(argv, env);
+	if (cmd != 1)
 	{
-		//free_function(argv);
-		return (1);
-	}
-	else
         exe_c(&id, path, argv, env);
-    catch_s(id);
+		catch_s(id);
+	}
+	free_function(argv);
 	return (1);
 }
