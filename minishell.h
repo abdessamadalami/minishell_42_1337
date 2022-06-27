@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:04:48 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/16 14:57:44 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:26:23 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <dirent.h>
+#include "aeea_p/excuting_headr.h"
 
 typedef struct s_gg
 {

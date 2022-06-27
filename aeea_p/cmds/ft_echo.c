@@ -6,11 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:11:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/27 11:55:43 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:01:28 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../excuting_headr.h"
 
 int	check_forflag(char *s)
 {

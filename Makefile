@@ -40,12 +40,14 @@ CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		cc $(CFLAGS) -lreadline -L /goinfre/$(USER)/.brew/opt/readline/lib -I/goinfre/$(USER)/.brew/opt/readline/include $^ -o $@
-
+		cd aeea_p ; make
+		cc $(CFLAGS) $(OBJS) aeea_p/minishell.a -lreadline -L/goinfre/$(USER)/.brew/opt/readline/lib -I/goinfre/$(USER)/.brew/opt/readline/include -o $(NAME)
 clean:
+	cd aeea_p ; rm minishell.a ;make clean
 	rm -f $(OBJS)
 
 fclean: clean
+		cd aeea_p ; rm minishell.a ;make clean
 		rm -f $(NAME)
 
 re: fclean all
