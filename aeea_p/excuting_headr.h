@@ -41,6 +41,10 @@ void	handler_sig(int sig);
 int		chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out);
 void	pipe_excuting(t_var *v_pipe, t_list **env, t_list *pars_il);
 int		ft_echo_o(char **av);
+<<<<<<< HEAD
+=======
+int		ft_echo_o(char **av);
+>>>>>>> c98d8e9ad619210a622a92fb91f1529c64ed4023
 void	ft_pwd(void);
 void	pipe_aff(t_var *v_pipe, int n_p, int i);
 int		error_handlin_g(char *str, int f);
