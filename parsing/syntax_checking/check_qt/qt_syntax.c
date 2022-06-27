@@ -65,6 +65,7 @@ int	*count_sdq(char *s, char f, char l)
 	return (t);
 }
 */
+
 int	check_qt(t_arg *s)
 {
 	int	x;
@@ -74,7 +75,8 @@ int	check_qt(t_arg *s)
 	{
 		x = 0;
 		y = 0;
-		return (count_quotes(s->data, x, y));
+		if (!count_quotes(s->data, x, y))
+			return (0);
 		s = s->next;
 	}
 	return (1);

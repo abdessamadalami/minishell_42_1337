@@ -22,7 +22,8 @@ int	check_syntax(t_arg *arg)
 	while (arg->next != NULL)
 		arg = arg->next;
 	if (arg->data[ft_strln(arg->data) - 1] == '>'
-		|| arg->data[ft_strln(arg->data) - 1] == '<')
+		|| arg->data[ft_strln(arg->data) - 1] == '<'
+		|| arg->data[ft_strln(arg->data) - 1] == '|')
 	{
 		printf("syntax error near unexpected token `newline'\n");
 		ftlstclear(&arg, free);

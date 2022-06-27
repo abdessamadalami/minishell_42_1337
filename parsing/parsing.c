@@ -26,31 +26,6 @@ void	ft_pfree(t_arg **mr, t_arg **arg, t_gg **gg, char ***line)
 		i++;
 	}
 }
-/*
-t_arg	*ft_parsing(char *s)
-{
-	t_arg	*arg;
-	t_arg	*mr;
-	t_arg	*dv;
-	t_arg	*dg;
-
-	arg = parsing_spaces(s);
-	if (!check_syntax(arg))
-		return (NULL);
-<<<<<<< HEAD:parsing/parsing.c
-=======
-	gg->lock = 0;
-	mr = parsin_dyalbss7(arg, gg);
-	ftlstclear(&arg, free);
-	dg = check_envvars(mr);
-	ftlstclear(&mr, free);
-	arg = parsing_wildcard(dg);
-	ftlstclear(&dg, free);
-	dv = remove_quotes(arg);
-	ftlstclear(&arg, free);
-	ftlstclear(&mr, free);
-	return (dv);
-}*/
 
 t_arg	*ft_parsing(char *s)
 {
@@ -62,10 +37,6 @@ t_arg	*ft_parsing(char *s)
 	arg = parsing_spaces(s);
 	if (!check_syntax(arg))
 		return (NULL);
-<<<<<<< HEAD:parsing/parsing.c
->>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9:stronk/Minishell/parsing/parsing.c
-=======
->>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9:stronk/Minishell/parsing/parsing.c
 	mr = parse_so(arg);
 	dg = check_envvars(mr);
 	ftlstclear(&mr, free);

@@ -35,17 +35,19 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CFdLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		cd 
-		cc $(CFLAGS) $(OBJS) -lreadline -L /goinfre/$(USER)/.brew/opt/readline/lib -I/goinfre/$(USER)/.brew/opt/readline/include -o $(NAME)
+		cc $(CFLAGS) -lreadline -L /goinfre/$(USER)/.brew/opt/readline/lib -I/goinfre/$(USER)/.brew/opt/readline/include $^ -o $@
+
 clean:
-	cd aeea_p;make clean
 	rm -f $(OBJS)
+
 fclean: clean
 		rm -f $(NAME)
+
 re: fclean all
+
 .PHONY: all clean fclean re

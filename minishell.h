@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:04:48 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/25 15:24:16 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/16 14:57:44 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <dirent.h>
-# include "aeea_p/excuting_headr.h"
 
 typedef struct s_gg
 {
@@ -66,6 +65,8 @@ void	parse_quotes_lastone(char *s, char *t, int *i, int *j);
 t_arg	*ft_parsing(char *s);
 // t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg);
 t_arg	*parse_so(t_arg *arg);
+int		ft_condistions(char *s);
+void	fill_list_so(t_arg **sfa, char	**t);
 //int		socounter(char *s);
 t_arg	*remove_quotes(t_arg *arg);
 t_arg	*parsing_spaces(char *s);
