@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/27 15:32:31 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:28:20 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,7 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 		list = *lst;
 	}
 }
-/*
-static void header_inline(char *s, t_list *env)
-{  
-	(void)s;
-	(void)env;
-	printf("\n");
-	exit(e_st);
-}
-*/
+
 void handler_sig(int sig)
 {
 	if (sig == SIGINT)
