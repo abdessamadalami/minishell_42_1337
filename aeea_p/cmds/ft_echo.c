@@ -38,21 +38,24 @@ void	ft_echo_o(char **av)
 	int	i;
 	int	f;
 
-	i = 0;
-	if (*av != NULL)
+	i = 1;
+	if (av[i] != NULL)
 	{
-		f = check_forflag(*av);
-		if (f)
-			i++;
-		while (av[i] != NULL)
+		if (*av != NULL)
 		{
-			printf("%s", av[i]);
-			if (av[i + 1] != '\0')
-				printf(" ");
-			i++;
+			f = check_forflag(av[i]);
+			if (f)
+				i++;
+			while (av[i] != NULL)
+			{
+				printf("%s", av[i]);
+				if (av[i + 1] != '\0')
+					printf(" ");
+				i++;
+			}
+			if (f)
+				return ;
 		}
-		if (f)
-			return ;
 	}
 	printf("\n");
 }
