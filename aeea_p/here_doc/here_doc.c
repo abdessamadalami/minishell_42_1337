@@ -12,9 +12,9 @@
 
 #include "../excuting_headr.h"
 
-void printf_err(t_list *str)
+void	printf_err(t_list *str)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = str;
 	while (str)
@@ -25,38 +25,39 @@ void printf_err(t_list *str)
 	ft_lstclear(&str, del);
 	//! good work
 }
-static void here_docc(int *fd, char *str, t_list *env)
+
+static void	here_docc(int *fd, char *str, t_list *env)
 {
-	int a;
+	int	a;
 
 	a = 0;
-    if (*fd == -1)
+	if (*fd == -1)
 	{
-        a = here_doc(str, env);
+		a = here_doc(str, env);
 		close(a);
 	}
-    else
-    {	
-        if (*fd != 0)
-            close(*fd);
-        *fd = here_doc(str, env);
-    }
+	else
+	{
+		if (*fd != 0)
+			close(*fd);
+		*fd = here_doc(str, env);
+	}
 }
 //! file input q// the content in the fd vaiable is the the fd of the last one 
 
-static void input(int *fd,char *str)
+static void	input(int *fd, char *str)
 {
-    if (*fd != 0)
-        close(*fd);
-    *fd = redirect_inpu(str);
+	if (*fd != 0)
+		close(*fd);
+	*fd = redirect_inpu(str);
 }
 
-t_list *chec_for_here_doc(t_list **lst, t_list *env)
+t_list	*chec_for_here_doc(t_list **lst, t_list *env)
 {
-	t_list  *list;
-	t_list  *fds;
-	t_list  *str;
-	int     fd;
+	t_list	*list;
+	t_list	*fds;
+	t_list	*str;
+	int		fd;
 
 	list = *lst;
 	fds = 0;
@@ -70,12 +71,12 @@ t_list *chec_for_here_doc(t_list **lst, t_list *env)
 			fd = 0;
 		}
 		if (ft_strncmp(list->content, "<<\0", 4) == 0)
-				 here_docc(&fd,list->next->content, env);
+			here_docc(&fd, list->next->content, env);
 		if (ft_strncmp(list->content, "<\0", 3) == 0)
 		{
-			input(&fd ,list->next->content);
+			input(&fd, list->next->content);
 			if (fd == -1)
-				ft_lstadd_back(&str,ft_lstnew(list->next->content));
+				ft_lstadd_back(&str, ft_lstnew(list->next->content));
 		}
 		list = list->next;
 	}
@@ -84,5 +85,5 @@ t_list *chec_for_here_doc(t_list **lst, t_list *env)
 	//printf("the fd %d\n",*(int *)fds -> content);
 	//bol_infile = chec_for_infile(*lst);
 	delete_here(lst);
-	return fds;
+	return (fds);
 }

@@ -12,11 +12,11 @@
 
 #include "../excuting_headr.h"
 
-t_list *make_list_fork(t_list *list)
+t_list	*make_list_fork(t_list *list)
 {
 	t_list	*head;
 	char	*str;
-		
+
 	while (list)
 	{
 		str = list -> content;
@@ -27,14 +27,14 @@ t_list *make_list_fork(t_list *list)
 		}
 		list = list -> next;
 	}
-	return 0;
+	return (0);
 }
 
-int chec_for_pipe(t_list *list)
+int	chec_for_pipe(t_list *list)
 {
-	char *str;
-	
-	while(list)
+	char	*str;
+
+	while (list)
 	{
 		str = list -> content;
 		if (str[0] == '|' && str[1] == '\0')

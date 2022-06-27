@@ -12,12 +12,12 @@
 
 #include "../excuting_headr.h"
 
-int redirect_input(char *std_in)
+int	redirect_input(char *std_in)
 {
-	int fd_input;
+	int	fd_input;
 
 	fd_input = open(std_in, O_RDONLY);
 	if (fd_input == -1)
 		perror(std_in);
-	return (fd_input);	
+	return (fd_input);
 }

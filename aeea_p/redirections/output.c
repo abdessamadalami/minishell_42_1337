@@ -12,10 +12,10 @@
 
 #include "../excuting_headr.h"
 
-int redirect_output(char *std_out, char c)
+int	redirect_output(char *std_out, char c)
 {
-	int fd_input;
-	
+	int	fd_input;
+
 	fd_input = 0;
 	if (c == 'r')
 		fd_input = open(std_out, O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -23,8 +23,8 @@ int redirect_output(char *std_out, char c)
 		fd_input = open(std_out, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd_input == -1)
 	{
-		perror(std_out); // chmod error for w permission
+		perror(std_out);// chmod error for w permission
 		//exit(1);// exit just the child you must check if a pipe exists or no
 	}
-	return fd_input;
+	return (fd_input);
 }
