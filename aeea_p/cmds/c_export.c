@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_export.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 07:32:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/25 15:14:37 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/27 18:51:09 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,8 @@ char	*ft_getenv(t_list *list, char *str, int a)
 			//printf("<%d> <%s> <%s> \n", len ,str,ptr);
 			if (a == 1)//for remplace
 			{
-				//printf(" i am here for remplace %s \n", str);
 				str[ft_strlen(str)] = '=';
-				//printf(" i am here for remplace %s \n", str);
-				// free(list-> content);
 				tem = list->content;
-				//printf("</ %p >\n", tem);
 				list->content = ft_strdup(str);
 				free(tem);
 				tem = 0;

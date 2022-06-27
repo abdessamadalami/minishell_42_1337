@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 07:22:59 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 17:55:04 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:40:10 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,27 @@
 // export for inssrt a local var to environment
 // env is the environment variables in environment
 // best tutorial for this in https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux
+static void	help_un(t_list *node, t_list *list ,t_list *lst)
+{
+	char *ptr;
+
+	ptr = 0;
+	if (node == 0)
+	{
+		ptr = list->content;
+		list = list->next;
+		free(ptr);
+		ptr = 0;
+	}
+	else
+	{
+		node->next = lst->next;
+		free(lst->content);
+	}
+}
 
 void	c_unset(t_list *list, char *str)
 {
-	int		len;
 	t_list	*node;
 	t_list	*lst;
 	char	*ptr;
@@ -30,21 +47,21 @@ void	c_unset(t_list *list, char *str)
 	ptr = 0;
 	while (lst)
 	{
-		len = ft_strlen(str);
-		if (ft_strncmp(str, lst->content, len) == 0)
+		if (ft_strncmp(str, lst->content, ft_strlen(str)) == 0)
 		{
-			if (node == 0)
-			{
-				ptr = (list -> content);
-				list = list -> next;
-				free(ptr);
-				ptr = 0;
-			}
-			else
-			{
-				node -> next = lst->next;
-				free(lst -> content);
-			}
+			help_un(node, list, lst);
+			// if (node == 0)
+			// {
+			// 	ptr = list->content;
+			// 	list = list->next;
+			// 	free(ptr);
+			// 	ptr = 0;
+			// }
+			// else
+			// {
+			// 	node->next = lst->next;
+			// 	free(lst -> content);
+			// }
 			break ;
 		}
 		node = lst;

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 12:35:37 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:37:26 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out)
 
 	path = 0;
 	argv = make_argv(pars_il, env, &std_in, &std_out);
-	printf("argv %s   %d %d \n", argv[0], std_in, std_out);
 	dup2(std_in, 0);
 	dup2(std_out, 1);
 	cmd = chec_for_cmds(argv, env);
