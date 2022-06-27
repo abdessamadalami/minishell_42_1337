@@ -12,26 +12,21 @@
 
 #include "../excuting_headr.h"
 
-
-void delete_here(t_list **lst)
+void	delete_here(t_list **lst)
 {
-	int index;
-	t_list *list;
-	t_list *prev;
-	
-	
+	int		index;
+	t_list	*list;
+	t_list	*prev;
+
 	list = *lst;
 	index = 0;
-	
-	if (list != NULL && (ft_strncmp(list ->content,"<<\0",4) == 0 || 
-	ft_strncmp(list ->content,"<\0",3) == 0)) 
-	{
+	if (list != NULL && (ft_strncmp(list ->content, "<<\0", 4) == 0
+			|| ft_strncmp(list ->content, "<\0", 3) == 0))
 		*lst = list->next->next;
-	}
 	else
 	{
-		while(list != NULL && (ft_strncmp(list ->content,"<<\0",4) != 0 && 
-		ft_strncmp(list ->content,"<\0",3) != 0))
+		while (list != NULL && (ft_strncmp(list ->content, "<<\0", 4) != 0
+				&& ft_strncmp(list ->content, "<\0", 3) != 0))
 		{
 			prev = list;
 			list = list ->next;
@@ -43,6 +38,6 @@ void delete_here(t_list **lst)
 	}
 	//printf("%d\n",check_redirec_d(*lst));
 	//print_list(*lst,444);
-	if ( *lst != NULL && check_redirec_d(*lst))
+	if (*lst != NULL && check_redirec_d(*lst))
 		delete_here(lst);
 }

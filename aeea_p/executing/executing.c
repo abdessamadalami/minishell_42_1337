@@ -10,69 +10,66 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../excuting_headr.h"
 
-char **make_arrenv(t_list *env)
+char	**make_arrenv(t_list *env)
 {
-	char *str;
-	char *temp;
-	char **ptr;
-	
+	char	*str;
+	char	*temp;
+	char	**ptr;
+
 	str = 0;
 	while (env)
 	{
 		temp = str;
-		str = ft_strjoin(str,env-> content);
+		str = ft_strjoin(str, env->content);
 		free(temp);
 		str = ft_strjoin(str, " ");
 		env = env->next;
 	}
-	ptr = ft_split(str,' ');
+	ptr = ft_split(str, ' ');
 	return (ptr);
 }
 
-int chiled_processe(t_list *pars_il ,t_list *env, int std_in, int std_out)
+int	chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out)
 {
 	char	*path;
 	char	**argv;
-	int 	cmd;
-	
+	int		cmd;
+
 	path = 0;
-	argv = make_argv(pars_il, env ,&std_in, &std_out);
-	printf("argv %s   %d %d \n", argv[0] , std_in , std_out);
+	argv = make_argv(pars_il, env, &std_in, &std_out);
+	printf("argv %s   %d %d \n", argv[0], std_in, std_out);
 	dup2(std_in, 0);
 	dup2(std_out, 1);
 	cmd = chec_for_cmds(argv, env);
-	if(std_in == -1 || argv == 0 || cmd == 1)
-	{
+	if (std_in == -1 || argv == 0 || cmd == 1)
 		exit(1);
-	}
 	if (std_in != -1)
 	{
 		if (access_func(argv))
 			path = access_func(argv);
 		else
 			path = get_path_env(env, argv[0]);
-		if(path == 0)
-			 error_printf(argv[0]);//!free memory
+		if (path == 0)
+			error_printf(argv[0]);//!free memory
 		execve(path, argv, 0);
 	}
-	return 0;
+	return (0);
 }
 
-static int f_building(int *n_p, t_list **env, t_list *pars_il , int **ids,t_var v_pipe)
+static int	f_building(int *n_p, t_list **env, t_list *pars_il, int **ids, t_var v_pipe)
 {
-	int a;
-	
+	int	a;
+
 	a = 0;
 	*n_p = pip_number(pars_il);
 	if (*n_p == 0)
-		 a = chiled_build(pars_il, *env, v_pipe.std_in ,v_pipe.std_out);
+		a = chiled_build(pars_il, *env, v_pipe.std_in, v_pipe.std_out);
 	if (a == 1)
 	{
-		dup2(v_pipe.a,0); 
-		dup2(v_pipe.b,1);
+		dup2(v_pipe.a, 0);
+		dup2(v_pipe.b, 1);
 		return (1);
 	}
 	*ids = malloc((*n_p + 1) * sizeof(int));
@@ -81,18 +78,18 @@ static int f_building(int *n_p, t_list **env, t_list *pars_il , int **ids,t_var 
 	return (0);
 }
 
-t_list *here_doc_return(t_list **pars_il, t_list *env)
- {
-	t_list *fds_std_in;
+t_list	*here_doc_return(t_list **pars_il, t_list *env)
+{
+	t_list	*fds_std_in;
 
 	fds_std_in = 0;
 	fds_std_in = chec_for_here_doc(pars_il, env);
-	return fds_std_in;
- }
- 
-void executing(t_list *pars_il, t_list **env)
+	return (fds_std_in);
+}
+
+void	executing(t_list *pars_il, t_list **env)
 {
-	int 	i;
+	int		i;
 	t_var	v_pipe;
 
 	i = 0;
@@ -104,13 +101,13 @@ void executing(t_list *pars_il, t_list **env)
 	v_pipe.fds_std_in = 0;
 	if (check_redirec_list(pars_il))
 	{
-		v_pipe.fds_std_in = here_doc_return( &pars_il, *env);
+		v_pipe.fds_std_in = here_doc_return(&pars_il, *env);
 		v_pipe.std_in = *(int *)v_pipe.fds_std_in->content;
-		v_pipe.fds_std_in = v_pipe.fds_std_in->next;	
+		v_pipe.fds_std_in = v_pipe.fds_std_in->next;
 		if (pars_il == 0)
-			return;
+			return ;
 	}
-	if (f_building(&v_pipe.n_p,env, pars_il, &v_pipe.ids,v_pipe) == 1)
+	if (f_building(&v_pipe.n_p, env, pars_il, &v_pipe.ids, v_pipe) == 1)
 		return ;
 	pipe_excuting(&v_pipe, env, pars_il);
 }
