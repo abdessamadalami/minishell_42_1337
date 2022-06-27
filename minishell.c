@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/27 13:46:37 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:28:20 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,13 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 		list = *lst;
 	}
 }
-/*
-static void header_inline(char *s, t_list *env)
-{  
-	(void)s;
-	(void)env;
-	printf("\n");
-	exit(e_st);
-}
-*/
+
 void handler_sig(int sig)
 {
 	if (sig == SIGINT)
     {
-        printf("\n");
+        printf("alami \n");
+		
         // rl_on_new_line();
         // rl_replace_line("", 0);
         // rl_redisplay();
@@ -70,7 +63,7 @@ int	main(int ac, char **av, char **env)
 	char	*s;
 	t_arg	*mr;
 	
-	struct sigaction c;
+	
     c.sa_handler = &handler_sig;
     c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
@@ -87,10 +80,8 @@ int	main(int ac, char **av, char **env)
 				continue ;
 			mr = ft_parsing(s);
 			if (mr != NULL)
-			{
-				add_history(s);
 				merge(mr, env);
-			}
+			add_history(s);
 			// while (mr != NULL)
 			// {
 			// 	printf("--[%s\n", mr->data);
