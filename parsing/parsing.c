@@ -62,6 +62,9 @@ t_arg	*ft_parsing(char *s)
 	arg = parsing_spaces(s);
 	if (!check_syntax(arg))
 		return (NULL);
+<<<<<<< HEAD:parsing/parsing.c
+>>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9:stronk/Minishell/parsing/parsing.c
+=======
 >>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9:stronk/Minishell/parsing/parsing.c
 	mr = parse_so(arg);
 	dg = check_envvars(mr);

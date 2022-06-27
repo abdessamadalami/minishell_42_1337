@@ -6,7 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/06/26 19:57:41 by ael-oual         ###   ########.fr       */
+=======
+/*   Updated: 2022/06/20 13:07:34 by sultan           ###   ########.fr       */
+>>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +44,7 @@ int chiled_processe(t_list *pars_il ,t_list *env, int std_in, int std_out)
 	
 	path = 0;
 	argv = make_argv(pars_il, env ,&std_in, &std_out);
+	printf("argv %s   %d %d \n", argv[0] , std_in , std_out);
 	dup2(std_in, 0);
 	dup2(std_out, 1);
 	cmd = chec_for_cmds(argv, env);
@@ -80,7 +85,12 @@ static int f_building(int *n_p, t_list **env, t_list *pars_il , int **ids,t_var 
 	return (0);
 }
 
+<<<<<<< HEAD
 t_list *here_doc_return(t_list **pars_il, t_list *env)
+=======
+
+ t_list *here_doc_return(t_list **pars_il, t_list *env , t_var *v_pipe)
+>>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9
  {
 	t_list *fds_std_in;
 
@@ -103,6 +113,7 @@ void executing(t_list *pars_il, t_list **env)
 	v_pipe.fds_std_in = 0;
 	if (check_redirec_list(pars_il))
 	{
+<<<<<<< HEAD
 		v_pipe.fds_std_in = here_doc_return( &pars_il, *env);
 		v_pipe.std_in = *(int *)v_pipe.fds_std_in->content;
 		v_pipe.fds_std_in = v_pipe.fds_std_in->next;	
@@ -112,4 +123,44 @@ void executing(t_list *pars_il, t_list **env)
 	if (f_building(&v_pipe.n_p,env, pars_il, &v_pipe.ids,v_pipe) == 1)
 		return ;
 	pipe_excuting(&v_pipe, env, pars_il);
+=======
+		fds_std_in = here_doc_return( &pars_il, *env , &v_pipe);
+		c_lst = fds_std_in;
+		v_pipe.std_in = *(int *)fds_std_in->content;
+		fds_std_in = fds_std_in ->next;	
+		if (pars_il == NULL)
+			return;
+	}
+	if (f_building(&n_p,env, pars_il, &ids,v_pipe) == 1)
+	{
+		dup2(a,0);
+		dup2(b,1);
+		return ;
+	}
+	while (i <= n_p)
+	{
+		if(pars_il == NULL)
+			break;
+		if (i == n_p)
+			v_pipe.std_out = 1;
+		else if (n_p > 0)
+		{
+			pipe(v_pipe.fd);
+			(v_pipe).std_out = v_pipe.fd[1];
+		}
+		ids[i] = fork();
+		if (ids[i] == 0)
+			chiled_processe(pars_il, *env, v_pipe.std_in, v_pipe.std_out);
+		close(v_pipe.fd[1]);
+		if (v_pipe.to_close)
+			close(v_pipe.to_close);
+		v_pipe.std_in = v_pipe.fd[0];
+		v_pipe.to_close = v_pipe.std_in; 
+		dup_parm(&pars_il, &v_pipe.std_in ,&fds_std_in);
+		i++;	
+	}
+	wait_exit_status(ids, n_p);
+	dup2(a,0);
+	dup2(b,1);
+>>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9
 }

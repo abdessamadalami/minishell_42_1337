@@ -6,7 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:55:36 by ael-oual          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/06/26 18:04:50 by ael-oual         ###   ########.fr       */
+=======
+/*   Updated: 2022/06/20 13:22:55 by sultan           ###   ########.fr       */
+>>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +59,14 @@ static void exe_c(int *id,char *path, char **argv, t_list *env)
 	argv = make_argv(pars_il, env, &std_in, &std_out);
 	if (argv == 0 || std_in == -1 || std_out == -1)
 	{
+<<<<<<< HEAD
 		if (argv != 0)
 		free_function(argv);
+=======
+		printf(" i am gere");
+		if (argv != NULL)
+		 	free_function(argv);
+>>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9
 		return (1);
 	}
 	dup2(std_in, 0);

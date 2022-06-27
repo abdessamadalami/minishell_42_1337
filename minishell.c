@@ -73,6 +73,10 @@ int	main(int ac, char **av, char **env)
 			}
 			ftlstclear(&mr, free);
 			free(s);
+<<<<<<< HEAD:minishell.c
+=======
+			// system("leaks minishell");
+>>>>>>> fc06e8ab05661b92026104deb2cdaf0b7035d0b9:stronk/Minishell/minishell.c
 		}
 		return (0);
 	}
