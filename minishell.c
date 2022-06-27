@@ -64,8 +64,10 @@ int	main(int ac, char **av, char **env)
 				continue ;
 			mr = ft_parsing(s);
 			if (mr != NULL)
+			{
 				add_history(s);
-			merge(mr, env);
+				merge(mr, env);
+			}
 			// while (mr != NULL)
 			// {
 			// 	printf("--[%s\n", mr->data);
