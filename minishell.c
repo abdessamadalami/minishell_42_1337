@@ -25,24 +25,25 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 		list = *lst;
 	}
 }
-void merge(t_arg *pa, char **env)
+
+void	merge(t_arg *pa, char **env)
 {
-	t_list *list;
-	t_list *node;
-	t_list *env_lst;
+	t_list	*list;
+	t_list	*node;
+	t_list	*env_lst;
 
 	list = 0;
 	node = 0;
 	env_lst = c_env(env);
 	while (pa)
 	{
-		node =  ft_lstnew(ft_strdup(pa->data));
+		node = ft_lstnew(ft_strdup(pa->data));
 		ft_lstadd_back(&list, node);
 		//printf(" %s ", node -> content);
 		pa = pa->next;
 	}
 	//executing(list, &env_lst);
-	executing(list,&env_lst);
+	executing(list, &env_lst);
 }
 
 int	main(int ac, char **av, char **env)

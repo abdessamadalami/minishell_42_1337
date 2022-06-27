@@ -22,17 +22,14 @@ void	env_varhandling(char **t, char *s, int *i, int *j)
 		count++;
 		(*i)++;
 	}
-/*	if (s[*i] == '?')
+	if (s[*i] == '?')
 	{
-		char *gg;
-		gg = ft_strdp("?");
-		printf("%s\n", getenv(gg));
-		*t = ft_strjn(*t, getenv(gg));
-	printf("lll\n");
-		j += ft_strln(getenv(gg));
-		printf("shh\n");
+		*t = ft_strjn(*t, ft_itoa(e_st));
+		j += ft_strln(ft_itoa(e_st));
+		// printf("t %s\n", *t);
+		// exit(1);
 	}
-	else*/ if (count > 1)
+	else if (count > 1)
 	{
 		if (!(count % 2))
 			mult_case(t, count, j);

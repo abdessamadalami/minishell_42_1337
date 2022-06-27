@@ -63,7 +63,7 @@ int main(int argc, char **argv, char **env)
 			// exit(0);
 			executing(par, &env_lst);
 			system("leaks minishell.a");
-		} 
+		}
 		add_history(s);
 		str = 0;
 		free(s);
