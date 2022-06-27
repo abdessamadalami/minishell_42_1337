@@ -12,25 +12,25 @@
 
 #include "../excuting_headr.h"
 
-t_list *env_list(char **env)
+t_list	*env_list(char **env)
 {
-    int index;
-    t_list *list;
-    t_list *node;
-    
-    index = 0;
-    list = 0;
-    while(env[index] != NULL)
-    {
-        node = ft_lstnew(ft_strdup(env[index]));
-        ft_lstadd_back(&list, node);
-        index++;
-    }
-    return list;
+	int		index;
+	t_list	*list;
+	t_list	*node;
+
+	index = 0;
+	list = 0;
+	while (env[index] != NULL)
+	{
+		node = ft_lstnew(ft_strdup(env[index]));
+		ft_lstadd_back(&list, node);
+		index++;
+	}
+	return (list);
 }
 
-t_list  *c_env(char **env)
+t_list	*c_env(char **env)
 {
-      // this is the environment for cmd env and for the current prossece 
-     return (env_list(env));
+	// this is the environment for cmd env and for the current prossece 
+	return (env_list(env));
 }

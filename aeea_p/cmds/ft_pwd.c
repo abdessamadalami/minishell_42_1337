@@ -16,7 +16,7 @@ void	ft_pwd(void)
 {
 	char	*ptr;
 
-	ptr = getcwd(0,0);
+	ptr = getcwd(0, 0);
 	printf("%s\n", ptr);
 	free(ptr);
 	ptr = 0;

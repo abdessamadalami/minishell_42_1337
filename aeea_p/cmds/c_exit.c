@@ -31,9 +31,9 @@ static int	index_fun(const char *nbr, int *s)
 
 int	ft_atoi_l(const char *nbr)
 {
-	int	i;
+	int					i;
 	unsigned long long	nb;
-	int	s;
+	int					s;
 
 	nb = 0;
 	s = 1;
@@ -48,16 +48,16 @@ int	ft_atoi_l(const char *nbr)
 	return ((nb * s) & 255);
 }
 
-int ft_isnbr(char *str)
+int	ft_isnbr(char *str)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	if (str[index] == '-')
 		index++;
 	while (str[index] != '\0')
 	{
-		if(!ft_isdigit(str[index]))
+		if (!ft_isdigit(str[index]))
 			exit(255);
 		index++;
 	}
@@ -66,7 +66,7 @@ int ft_isnbr(char *str)
 
 void	c_exit(char **args)
 {
-	int f;
+	int	f;
 
 	f = 0;
 	if (args[1] == 0)
@@ -76,7 +76,7 @@ void	c_exit(char **args)
 	}
 	if (args[1] != 0)
 	{
-		if(ft_isnbr(args[1]))
+		if (ft_isnbr(args[1]))
 		{
 			if (args[2] != 0)
 			{

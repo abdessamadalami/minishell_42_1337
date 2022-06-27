@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   excuting_headr.h                                        :+:      :+:    :+:   */
+/*   excuting_headr.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,6 +12,7 @@
 
 #ifndef EXCUTING_HEADR_H
 #define EXCUTING_HEADR_H
+
 # include <stdio.h>
 # include "pipex/pipex_42_1337.h"
 # include "libft/libft.h"
@@ -36,11 +37,11 @@ typedef struct s_var
 	t_list	*fds_std_in;
 }	t_var;
 
-int		chiled_processe(t_list *pars_il ,t_list *env, int std_in, int std_out);
+int		chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out);
 void	pipe_excuting(t_var *v_pipe, t_list **env, t_list *pars_il);
 void	ft_echo_o(char **av);
 void	ft_pwd(void);
-void	pipe_aff(t_var *v_pipe ,int n_p ,int i);
+void	pipe_aff(t_var *v_pipe, int n_p, int i);
 int		error_handlin_g(char *str, int f);
 int		error_handling_e(char *str, int p);
 char	*ft_strjoin_n(char *s1, char *s2);
@@ -54,29 +55,29 @@ void	delete_here(t_list **lst);
 void	printf_err(t_list *str);
 int		redirect_inpu(char *std_in);
 t_list	*chec_for_here_doc(t_list **lst, t_list *env);
-void    close_aff(t_var *v_pipe);
-int     pip_number(t_list *list);
+void	close_aff(t_var *v_pipe);
+int		pip_number(t_list *list);
 void	wait_exit_status(int *ids, int n_p);
 int		e_st;
-void    dup_parm(t_list **pars_il, int *fd, t_list **std_in);
-void    get_par( t_list *list, char *env);
-void    std_files(char *std_out, int fd);//minishell intra video
-int     error_handling(char *str);
-int     here_doc(char *lim, t_list *env);
-int     redirect_output(char *std_out, char c);
-int     redirect_input(char *std_in);
-void    ft_merge_sort(t_list **list);
-void    mid_list(t_list *list, t_list **fast, t_list **slow);
+void	dup_parm(t_list **pars_il, int *fd, t_list **std_in);
+void	get_par( t_list *list, char *env);
+void	std_files(char *std_out, int fd);//minishell intra video
+int		error_handling(char *str);
+int		here_doc(char *lim, t_list *env);
+int		redirect_output(char *std_out, char c);
+int		redirect_input(char *std_in);
+void	ft_merge_sort(t_list **list);
+void	mid_list(t_list *list, t_list **fast, t_list **slow);
 int		g_redirections(char *cmd, char *red, int *std_in, int *std_out); //we can addapt it 
-void    ft_merge_sort_u(t_list *env);
-void    *f(void *ptr);
-void    del(void *ptr);
-void    print_list(t_list *list, int a);
-void    c_export(t_list *env, char *var);
+void	ft_merge_sort_u(t_list *env);
+void	*f(void *ptr);
+void	del(void *ptr);
+void	print_list(t_list *list, int a);
+void	c_export(t_list *env, char *var);
 t_list	*c_env(char **env);
-void    c_unset(t_list *list, char *str);
-char    *env_var(char *arg, t_list **env, int a);
-char    *ft_getenv(t_list *list, char *str, int a);
+void	c_unset(t_list *list, char *str);
+char	*env_var(char *arg, t_list **env, int a);
+char	*ft_getenv(t_list *list, char *str, int a);
 void	exit_status(void);
 char	*get_path_env(t_list *env, char *cmd);
 void	error_printf(char *cmd);

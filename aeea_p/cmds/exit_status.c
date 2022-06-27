@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
-void exit_status()
+
+void	exit_status(void)
 {
-    printf(" i am here \n");
-    printf(" %d :command not found\n",  e_st);
-    exit(1);
+	printf(" i am here \n");
+	printf(" %d :command not found\n", e_st);
+	exit(1);
 }

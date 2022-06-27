@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../excuting_headr.h"
 
 char	*get_path_env(t_list *env, char *cmd)
@@ -19,12 +18,12 @@ char	*get_path_env(t_list *env, char *cmd)
 	char	*str;
 	char	*ptr;
 	char	**str1;
-	char    *ptr2;
+	char	*ptr2;
 
 	i = 0;
 	ptr2 = ft_getenv(env, "PATH", 0);
 	if (ptr2 == NULL)
-		return 0;
+		return (0);
 	str1 = ft_split(ptr2, ':');
 	while (str1[i] != 0)
 	{
@@ -38,7 +37,7 @@ char	*get_path_env(t_list *env, char *cmd)
 			ptr = 0;
 		}
 		else
-			break;
+			break ;
 		i++;
 	}
 	free_function(str1);

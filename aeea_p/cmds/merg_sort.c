@@ -12,26 +12,26 @@
 
 #include "../excuting_headr.h"
 
-void print_list_x(t_list **a) {
-
-   t_list *ptr = *a;
-   void *p;
-   void *c;
-   p = 0;
-   c = 0;
-   //start from the beginning
-   while(ptr)
-   {
-        if (p != 0 && c != 0)
-        {
-            free(c);
-            free(p);
-        }
-            p = ptr->next;
-            c = ptr -> content;
-            printf("declare -x %s\n",(char *)ptr -> content);
-            ptr = ptr->next;
-        }
+void print_list_x(t_list **a)
+{
+    t_list *ptr = *a;
+    void *p;
+    void *c;
+    p = 0;
+    c = 0;
+    //start from the beginning
+    while(ptr)
+    {
+         if (p != 0 && c != 0)
+         {
+             free(c);
+             free(p);
+         }
+             p = ptr->next;
+             c = ptr -> content;
+             printf("declare -x %s\n",(char *)ptr -> content);
+             ptr = ptr->next;
+         }
     free(c);
     free(p);
     free(*a);

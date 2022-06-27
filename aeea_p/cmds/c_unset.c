@@ -18,37 +18,37 @@
 // env is the environment variables in environment
 // best tutorial for this in https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux
 
-void c_unset(t_list *list, char *str)
+void	c_unset(t_list *list, char *str)
 {
-    int len;
-    t_list  *node;
-    t_list  *lst;
-    char    *ptr;
+	int		len;
+	t_list	*node;
+	t_list	*lst;
+	char	*ptr;
 
-    lst = list;
-    node = 0;
-    ptr = 0;
-    while (lst)
-    {
-        len = ft_strlen(str); 
-        if (ft_strncmp(str, lst->content, len) == 0)
-        {
-            if(node == 0)
-            {
-                ptr = (list -> content);
-                list = list -> next;
-                free(ptr);
-                ptr = 0;
-            }
-            else
-            {
-                node -> next = lst->next;
-                free(lst -> content);
-            }
-           break;
-        }
-        node = lst;
-        lst = lst->next;
-    }
-   e_st = 0;
+	lst = list;
+	node = 0;
+	ptr = 0;
+	while (lst)
+	{
+		len = ft_strlen(str);
+		if (ft_strncmp(str, lst->content, len) == 0)
+		{
+			if (node == 0)
+			{
+				ptr = (list -> content);
+				list = list -> next;
+				free(ptr);
+				ptr = 0;
+			}
+			else
+			{
+				node -> next = lst->next;
+				free(lst -> content);
+			}
+			break ;
+		}
+		node = lst;
+		lst = lst->next;
+	}
+	e_st = 0;
 }

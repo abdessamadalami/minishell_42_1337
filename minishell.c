@@ -25,13 +25,15 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 		list = *lst;
 	}
 }
-
+/*
 static void header_inline(char *s, t_list *env)
 {  
+	(void)s;
+	(void)env;
 	printf("\n");
 	exit(e_st);
 }
-
+*/
 void handler_sig(int sig)
 {
 	if (sig == SIGINT)

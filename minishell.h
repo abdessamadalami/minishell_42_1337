@@ -22,7 +22,7 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <dirent.h>
-#include "aeea_p/excuting_headr.h"
+# include "aeea_p/excuting_headr.h"
 
 typedef struct s_gg
 {
