@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 15:23:54 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:41:51 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,7 @@ typedef struct s_var
 void	handler_sig(int sig);
 int		chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out);
 void	pipe_excuting(t_var *v_pipe, t_list **env, t_list *pars_il);
-<<<<<<< HEAD
 int		ft_echo_o(char **av);
-=======
-int	ft_echo_o(char **av);
->>>>>>> 2eb343ce0d9124c6ffdacda7d00754e59732a533
 void	ft_pwd(void);
 void	pipe_aff(t_var *v_pipe, int n_p, int i);
 int		error_handlin_g(char *str, int f);
