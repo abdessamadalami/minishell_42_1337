@@ -56,71 +56,73 @@ char	*ft_strjoin_n(char *s1, char *s2)
 	return (ptr);
 }
 
-void *f(void *ptr)
+void	*f(void *ptr)
 {
-    char *ptr2;
-    char *s;
-    int i;
-    if (ft_strchr(ptr,'=')!= NULL)
-    {    
-        i =  ft_strchr(ptr, '=') - (char *)ptr;
-        s = ft_strdup_n(ptr ,i); 
-        ptr2 = ft_strrchr(ptr,'=') + 1;
-        ptr2 = ft_strjoin_n(ft_strdup("\"") ,ft_strdup (ptr2));
-        ptr2 = ft_strjoin_n(ptr2,ft_strdup("\""));
-        ptr2 = ft_strjoin_n(ft_strjoin_n(s,ft_strdup("=")),ptr2);
-        return (ptr2);
-    }
+	char	*ptr2;
+	char	*s;
+	int		i;
+
+	if (ft_strchr(ptr, '=') != NULL)
+	{
+		i = ft_strchr(ptr, '=') - (char *)ptr;
+		s = ft_strdup_n(ptr, i);
+		ptr2 = ft_strrchr(ptr, '=') + 1;
+		ptr2 = ft_strjoin_n(ft_strdup("\""), ft_strdup (ptr2));
+		ptr2 = ft_strjoin_n(ptr2, ft_strdup("\""));
+		ptr2 = ft_strjoin_n(ft_strjoin_n(s, ft_strdup("=")), ptr2);
+		return (ptr2);
+	}
 	ptr2 = ft_strdup(ptr);
-	return(ptr2);
+	return (ptr2);
 }
 
-void del(void *ptr)
+void	del(void *ptr)
 {
-	 free(ptr);
+	free(ptr);
 }
 
-void print_list(t_list *list,int a)//s= 0 || s=1 print wirh order
+void	print_list(t_list *list, int a)//s= 0 || s=1 print wirh order
 {
-    while(list != NULL)
-    {
-        if(ft_strchr(list -> content,'=') && a == 0)
-            printf("%s\n", (char *)list->content);
-        else if (a == 1 && ft_strchr(list -> content,'=') != NULL) 
-            printf("%s \n", (char *)list->content);
-        else if(a ==4)
-            printf("%d \n", *(int *)list->content);
-        else if ( a > 10)
-             printf("%s \n", (char *)list->content);
-        list = list->next;
-    }
+	while (list != NULL)
+	{
+		if (ft_strchr(list -> content, '=') && a == 0)
+			printf("%s\n", (char *)list->content);
+		else if (a == 1 && ft_strchr(list->content, '=') != NULL)
+			printf("%s \n", (char *)list->content);
+		else if (a == 4)
+			printf("%d \n", *(int *)list->content);
+		else if (a > 10)
+			printf("%s \n", (char *)list->content);
+		list = list->next;
+	}
 }
 
-void print_tab(char **str)
+void	print_tab(char **str)
 {
-    int index = 0;
+	int	index;
 
-    while (str[index])
-    {
-        printf("element %d %s \n", index, str[index]);
-        index++;
-    }
+	index = 0;
+	while (str[index])
+	{
+		printf("element %d %s \n", index, str[index]);
+		index++;
+	}
 }
 
-int check_redirec(char *red)
+int	check_redirec(char *red)
 {
-    if (red[0] == '>' && red[1] == 0)
-        return (1);
-    else if (red[0] == '<' && red[1] == 0)
-        return (1);
+	if (red[0] == '>' && red[1] == 0)
+		return (1);
+	else if (red[0] == '<' && red[1] == 0)
+		return (1);
 	else if (red[0] == '>' && red[1] == '>' && red[3] == 0)
-        return (1);
+		return (1);
 	return (0);
 }
 
-int check_for_pipe(char *str)
+int	check_for_pipe(char *str)
 {
 	if (str[0] == '|' && str[1] == '\0')
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
