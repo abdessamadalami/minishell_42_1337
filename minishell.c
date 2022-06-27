@@ -80,7 +80,7 @@ int	main(int ac, char **av, char **env)
 	{
 		while (1)
 		{
-			s = readline("\e[0;32m$>prompt \e[0m");
+			s = readline("$>prompt ");
 			if (!s)
 				break ;
 			if (s[0] == '\0')

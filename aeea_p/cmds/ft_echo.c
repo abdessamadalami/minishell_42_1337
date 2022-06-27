@@ -33,7 +33,7 @@ int	check_forflag(char *s)
 	return (1);
 }
 
-void	ft_echo_o(char **av)
+int	ft_echo_o(char **av)
 {
 	int	i;
 	int	f;
@@ -54,10 +54,11 @@ void	ft_echo_o(char **av)
 				i++;
 			}
 			if (f)
-				return ;
+				return (1);
 		}
 	}
 	printf("\n");
+	return (1);
 }
 
 // int	main(int ac, char **av)

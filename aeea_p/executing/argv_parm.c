@@ -12,34 +12,36 @@
 
 #include "../excuting_headr.h"
 
-static int redir(t_list **list,int *bol, int *std_in, int *std_out)
+static int	redir(t_list **list, int *bol, int *std_in, int *std_out)
 {
-	int fd;// just test for 
+	int	fd;// just test for
 
-	 fd = g_redirections((*list)->next->content, (*list)->content, std_in, std_out);
-    if(fd == -1)
+	fd = g_redirections((*list)->next->content,
+			(*list)->content, std_in, std_out);
+	if (fd == -1)
 		return (-1);
-    if ((*list)->next->next == 0)
+	if ((*list)->next->next == 0)
 	{
-		 *list = 0;
-        return (2);
+		*list = 0;
+		return (2);
 	}
-    else
-        *list = (*list)->next;
-    *bol = 0;
-    return (1);
+	else
+		*list = (*list)->next;
+	*bol = 0;
+	return (1);
 }
 
-static void str_f(char **str, char *content)
+static void	str_f(char **str, char *content)
 {
 	*str = ft_strjoin_n(*str, content);
 	*str = ft_strjoin_n(*str, ft_strdup(" "));
 }
 
-static int statment_f(char *content, t_list *env)
+static int	statment_f(char *content, t_list *env)
 {
 	//char *ptr;
-	if (env_var(content, &env, 0) && ft_strncmp(content, "$?\0", 4))// for dollar sign
+	if (env_var(content, &env, 0)
+			&& ft_strncmp(content, "$?\0", 4))// for dollar sign
 		content = env_var(content, &env, 3);
 	if (check_for_pipe(content))
 		return (1);
@@ -52,10 +54,10 @@ static int statment_f(char *content, t_list *env)
 		// if (check_for_pipe(list ->content))
 		// 	break;
 
-static char **sp_str(char *str)
+static char	**sp_str(char *str)
 {
-	char **argv;
-	
+	char	**argv;
+
 	argv = ft_split(str, ' ');
 	free(str);
 	str = 0;
@@ -63,7 +65,7 @@ static char **sp_str(char *str)
 	return (argv);
 }
 
-char  **make_argv(t_list *list, t_list *env, int *std_in,int *std_out)
+char 	**make_argv(t_list *list, t_list *env, int *std_in, int *std_out)
 {
 	char	*str;
 	int		bol;
@@ -73,8 +75,8 @@ char  **make_argv(t_list *list, t_list *env, int *std_in,int *std_out)
 	while (list)
 	{
 		if (statment_f(list->content, env))
-				break ;
-		if (check_redirec(list ->content)) // good idea abou 
+			break ;
+		if (check_redirec(list ->content))// good idea abou 
 		{
 			redir(&list, &bol, std_in, std_out);
 			if (list == 0 || *std_in == -1)
