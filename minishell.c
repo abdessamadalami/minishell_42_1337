@@ -45,11 +45,11 @@ int	main(int ac, char **av)
 			mr = ft_parsing(s);
 			if (mr != NULL)
 				add_history(s);
-			// while (mr != NULL)
-			// {
-			// 	printf("--[%s\n", mr->data);
-			// 	mr = mr->next;
-			// }
+			while (mr != NULL)
+			{
+				printf("--[%s\n", mr->data);
+				mr = mr->next;
+			}
 			ftlstclear(&mr, free);
 			free(s);
 			// system("leaks minishell");
