@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/27 13:03:25 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:46:37 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 		free(list);
 		list = *lst;
 	}
+}
+
+static void header_inline(char *s, t_list *env)
+{  
+	printf("\n");
+	exit(e_st);
+}
+
+void handler_sig(int sig)
+{
+	if (sig == SIGINT)
+    {
+        printf("\n");
+        // rl_on_new_line();
+        // rl_replace_line("", 0);
+        // rl_redisplay();
+    }
 }
 
 void	merge(t_arg *pa, char **env)
@@ -50,7 +67,11 @@ int	main(int ac, char **av, char **env)
 {
 	char	*s;
 	t_arg	*mr;
-
+	
+	struct sigaction c;
+    c.sa_handler = &handler_sig;
+    c.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &c, 0);
 	mr = NULL;
 	(void)*av;
 	if (ac == 1)

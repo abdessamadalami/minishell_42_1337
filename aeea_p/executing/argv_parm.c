@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:11:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 18:28:08 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:43:45 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ static void str_f(char **str, char *content)
 static int statment_f(char *content, t_list *env)
 {
 	//char *ptr;
-	if (ft_strncmp(content, "$?\0", 4) == 0)
-		return (0);
 	if (env_var(content, &env, 0) && ft_strncmp(content, "$?\0", 4))// for dollar sign
 		content = env_var(content, &env, 3);
 	if (check_for_pipe(content))
@@ -61,7 +59,7 @@ static char **sp_str(char *str)
 	argv = ft_split(str, ' ');
 	free(str);
 	str = 0;
-	print_tab(argv);
+	//print_tab(argv);
 	return (argv);
 }
 

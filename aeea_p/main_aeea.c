@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 18:05:45 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:45:28 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,17 @@ int main(int argc, char **argv, char **env)
 {	
     t_list *env_lst;
 	t_list *par;
-	int exit_s;
-	int id;
 	struct sigaction c;
-   	static int x;
-	
     c.sa_handler = &handler_sig;
     c.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &c, 0);
 	char	*s;
 	char **str;
 
 	str = 0;
 	s = 0;
 	env_lst = c_env(env);
-	sigaction(SIGINT, &c, 0);
+	
 	while (1)
 	{
 		//list = ft_new_parsing(s);
