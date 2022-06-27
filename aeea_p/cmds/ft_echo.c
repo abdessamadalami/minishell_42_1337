@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:11:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/27 13:01:28 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 14:42:27 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_forflag(char *s)
 	return (1);
 }
 
-void	ft_echo_o(char **av)
+int	ft_echo_o(char **av)
 {
 	int	i;
 	int	f;
@@ -52,9 +52,10 @@ void	ft_echo_o(char **av)
 			i++;
 		}
 		if (f)
-			return ;
+			return (1);
 	}
 	printf("\n");
+	return 1;
 }
 
 // int	main(int ac, char **av)
