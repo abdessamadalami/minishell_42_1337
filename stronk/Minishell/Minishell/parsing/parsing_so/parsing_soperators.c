@@ -40,15 +40,25 @@ void	parse_so_forsq(char *s, char **t, int *i, t_normsht *normsht)
 
 void	parse_so_forso(char *s, char **t, int *i, t_normsht *normsht)
 {
-	if (i != 0 && s[(*i) - 1] != '<'
-		&& s[(*i) - 1] != '>' && s[(*i) - 1] != '|')
-		normsht->count++;
-	normsht->init = *i;
-	(*i)++;
-	if (s[*i] == s[(*i) - 1] && s[*i] != '|')
+	if (ft_condistions(s))
+	{
+		normsht->init = *i;
 		(*i)++;
-	t[normsht->count] = ft_subtr(s, (normsht->init), *i);
-	normsht->count++;
+		if (s[*i] == s[(*i) - 1] && s[*i] != '|')
+			(*i)++;
+		t[normsht->count] = ft_subtr(s, (normsht->init), *i);
+	}
+	else
+	{
+		if (*i != 0)
+			normsht->count++;
+		normsht->init = *i;
+		(*i)++;
+		if (s[*i] == s[(*i) - 1] && s[*i] != '|')
+			(*i)++;
+		t[normsht->count] = ft_subtr(s, (normsht->init), *i);
+		normsht->count++;
+	}
 }
 
 char	**get_parsed_so(char *s)
@@ -85,7 +95,6 @@ t_arg	*parse_so(t_arg *arg)
 	t_arg		*sfa;
 	t_arg		*node;
 	char		**t;
-	int			i;
 
 	sfa = NULL;
 	while (arg != NULL)
@@ -94,15 +103,7 @@ t_arg	*parse_so(t_arg *arg)
 			|| check_so(arg->data, '|'))
 		{
 			t = get_parsed_so(arg->data);
-			i = 0;
-			while (t[i] != '\0')
-			{
-				node = ftlstnew(t[i]);
-				free(t[i]);
-				ftlstadd_back(&sfa, node);
-				i++;
-			}
-			free(t);
+			fill_list_so(&sfa, t);
 		}
 		else
 		{
