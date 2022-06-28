@@ -12,6 +12,16 @@
 
 #include "../../minishell.h"
 
+char	*ft_allocate(char *s)
+{
+	char	*t;
+
+	t = malloc(sizeof(char) * (ft_strln(s) + 1));
+	if (!t)
+		exit(1);
+	return (t);
+}
+
 void	env_varhandling(char **t, char *s, int *i, int *j)
 {
 	int		count;
@@ -22,14 +32,7 @@ void	env_varhandling(char **t, char *s, int *i, int *j)
 		count++;
 		(*i)++;
 	}
-	if (s[*i] == '?')
-	{
-		*t = ft_strjn(*t, ft_itoa(e_st));
-		j += ft_strln(ft_itoa(e_st));
-		// printf("t %s\n", *t);
-		// exit(1);
-	}
-	else if (count > 1)
+	if (count > 1)
 	{
 		if (!(count % 2))
 			mult_case(t, count, j);
