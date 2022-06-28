@@ -17,9 +17,9 @@
 // export for inssrt a local var to environment
 // env is the environment variables in environment
 // best tutorial for this in https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux
-static void	help_un(t_list *node, t_list *list ,t_list *lst)
+static void	help_un(t_list *node, t_list *list, t_list *lst)
 {
-	char *ptr;
+	char	*ptr;
 
 	ptr = 0;
 	if (node == 0)

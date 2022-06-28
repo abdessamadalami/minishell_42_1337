@@ -20,6 +20,29 @@ int	is_alphanum(char c)
 	return (0);
 }
 
+void	ques_mark(char **t, char *s, int *i, int *j)
+{
+	char	*var;
+	char	*tmp;
+	int		x;
+
+	var = ft_allocate(s);
+	x = 0;
+	*t = ft_strjnnn(*t, ft_itoa(e_st));
+	(*i)++;
+	while (s[*i] == '?' && s[*i] != '\0')
+		var[x++] = s[(*i)++];
+	var[x] = '\0';
+	if (var != NULL)
+	{
+		tmp = *t;
+		*t = ft_strjnnn(*t, var);
+		*j += ft_strln(ft_itoa(e_st)) + ft_strln(var);
+		free(tmp);
+	}
+	free(var);
+}
+
 void	normal_case(char **t, char *s, int *i, int *j)
 {
 	char	*var;
@@ -28,17 +51,22 @@ void	normal_case(char **t, char *s, int *i, int *j)
 
 	var = ft_allocate(s);
 	x = 0;
-	while (is_alphanum(s[*i]) && s[*i] != '\0')
-		var[x++] = s[(*i)++];
-	var[x] = '\0';
-	if (getenv(var) != NULL)
+	if (s[*i] == '?')
+		ques_mark(t, s, i, j);
+	else
 	{
-		tmp = *t;
-		*t = ft_strjnnn(*t, getenv(var));
-		*j += ft_strln(getenv(var));
-		free(tmp);
+		while (is_alphanum(s[*i]) && s[*i] != '\0')
+			var[x++] = s[(*i)++];
+		var[x] = '\0';
+		if (getenv(var) != NULL)
+		{
+			tmp = *t;
+			*t = ft_strjnnn(*t, getenv(var));
+			*j += ft_strln(getenv(var));
+			free(tmp);
+		}
+		free(var);
 	}
-	free(var);
 }
 
 void	mult_case(char **t, int count, int *j)
@@ -66,14 +94,4 @@ void	ft_lock(char c, int *lock, int *dlock)
 		*lock = 0;
 	else if (c == '\'' && !(*lock) && !(*dlock))
 		*lock = 1;
-}
-
-char	*ft_allocate(char *s)
-{
-	char	*t;
-
-	t = malloc(sizeof(char) * (ft_strln(s) + 1));
-	if (!t)
-		exit(1);
-	return (t);
 }
