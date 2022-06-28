@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identi_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 07:05:44 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 11:05:39 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/28 11:40:41 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ int	error_handling(char *str)
 	s = 0;
 	if (!str)
 		return (0);
-	// if (str[0] <= '9' && str[0] >= '0')
-	//if (str[0] == '$' && p == 0)  // for dolar handling
-	//  i++;
-	printf(" char  %c  \n", s);
 	while (str[i])
 	{
 		if (((!ft_isalnum(str[i])) && str[i] != '_' )
@@ -51,7 +47,6 @@ int	error_handlin_g(char *str, int f)
 	// if (str[0] <= '9' && str[0] >= '0')
 	//if (str[0] == '$' && p == 0)  // for dolar handling
 	//  i++;
-	printf(" char  %c  \n", s);
 	if (!f)
 	{
 		if (str[0] <= '9' && str[0] >= '0')

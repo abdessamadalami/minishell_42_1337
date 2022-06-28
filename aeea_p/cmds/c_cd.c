@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 08:34:05 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 16:41:53 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:53:56 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	c_cd(t_list *env, char **argv )
 	if (old_pwd == NULL)
 		old_pwd = ft_strdup(" ");
 	if (argv[1] == NULL)
-		argv[1] = ft_getenv(env, "HOME=", 0) + 5; 
-	if (chdir(argv[1]) == -1)
+		new_pwd = ft_getenv(env, "HOME=", 0) + 5; 
+	if (chdir(new_pwd) == -1)
 	{
 		free(old_pwd);
 		return (cd_error(argv));

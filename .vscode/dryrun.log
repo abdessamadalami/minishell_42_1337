@@ -2,6 +2,7 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ael-oual/Desktop/minishell_42_1337'
 cc -Wall -Wextra -Werror    -c -o minishell.o minishell.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/minishell_utils.o parsing/utils/minishell_utils.c
+ 
 cc -Wall -Wextra -Werror    -c -o parsing/utils/minishell_utils2.o parsing/utils/minishell_utils2.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/minishell_utils3.o parsing/utils/minishell_utils3.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/minishell_list_utils.o parsing/utils/minishell_list_utils.c
@@ -11,6 +12,7 @@ cc -Wall -Wextra -Werror    -c -o parsing/utils/splits/sosplit.o parsing/utils/s
 cc -Wall -Wextra -Werror    -c -o parsing/utils/splits/dosplit.o parsing/utils/splits/dosplit.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/splits/wildsplit.o parsing/utils/splits/wildsplit.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/splits/splits_utils.o parsing/utils/splits/splits_utils.c
+ 
 cc -Wall -Wextra -Werror    -c -o parsing/utils/parsing_utils.o parsing/utils/parsing_utils.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/parsing_utils2.o parsing/utils/parsing_utils2.c
 cc -Wall -Wextra -Werror    -c -o parsing/parsing.o parsing/parsing.c

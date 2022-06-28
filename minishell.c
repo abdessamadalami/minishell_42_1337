@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/27 16:28:20 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:08:36 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,20 @@ void handler_sig(int sig)
 {
 	if (sig == SIGINT)
     {
-        printf("alami \n");
-		
         // rl_on_new_line();
         // rl_replace_line("", 0);
         // rl_redisplay();
     }
 }
 
-void	merge(t_arg *pa, char **env)
+void	merge(t_arg *pa, t_list *env)
 {
 	t_list	*list;
 	t_list	*node;
-	t_list	*env_lst;
+	
 
 	list = 0;
 	node = 0;
-	env_lst = c_env(env);
 	while (pa)
 	{
 		node = ft_lstnew(ft_strdup(pa->data));
@@ -55,13 +52,14 @@ void	merge(t_arg *pa, char **env)
 		pa = pa->next;
 	}
 	//executing(list, &env_lst);
-	executing(list, &env_lst);
+	executing(list, &env);
 }
 
 int	main(int ac, char **av, char **env)
 {
 	char	*s;
 	t_arg	*mr;
+	t_list	*env_lst;
 	
 	
     c.sa_handler = &handler_sig;
@@ -69,6 +67,7 @@ int	main(int ac, char **av, char **env)
 	sigaction(SIGINT, &c, 0);
 	mr = NULL;
 	(void)*av;
+	env_lst = c_env(env);
 	if (ac == 1)
 	{
 		while (1)
@@ -80,7 +79,7 @@ int	main(int ac, char **av, char **env)
 				continue ;
 			mr = ft_parsing(s);
 			if (mr != NULL)
-				merge(mr, env);
+				merge(mr,env_lst);
 			add_history(s);
 			// while (mr != NULL)
 			// {

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 07:32:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 18:51:09 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:13:51 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ char	*ft_getenv(t_list *list, char *str, int a)
 			}
 			else if (a == 2)// a= 2 for += var
 			{
+				//printf("in  %s ", str);
 				str[ft_strlen(str)] = '=';
 				list->content = ft_strjoin(list->content, str + ft_strlen(str) + 1);
+			//	printf("in  %s ", list -> content);
 			}
 			else if (a == 3)// for dolar
 				return (ptr + len + 1);
@@ -73,6 +75,51 @@ char	*ft_getenv(t_list *list, char *str, int a)
 	}
 	return (0);
 }
+static int non_arg(char *var, char **check, char **env_var , t_list *env)
+{
+	int		re;
+	
+	re = 0;
+	if (var == 0)
+	{
+		ft_merge_sort_u(env);
+		return (1);
+	}
+	*env_var = ft_strdup(var);
+	*check = strchr(var, '=');
+	if (ft_strncmp(var, "=\0", 3) == 0)
+	{
+		printf("error: `=': not a valid identifier \n");// we need cmd
+		return (1);
+	}
+	if (*check == NULL )
+		re = error_handling(var);
+	else
+		re = error_handling_e(var, *check - var);
+	if (re)
+		return (1);
+	return (0);
+}
+
+// void add_replace(int *p, t_list *env, char *check, char **var, char **env_var)
+// {
+// 	char	*str_return;
+
+// 	str_return = 0;
+// 	*env_var[check - var] = '\0';
+// 	if (*env_var[check - var - 1] == '+')
+// 	{
+// 		*env_var[check - var - 1] = '\0';
+// 		ft_shift_plus(*var);
+// 		*p = 2;
+// 	}
+// 	str_return = ft_getenv(env, var, *p);	
+// 	if (str_return == NULL)
+// 	{
+// 		var[check - var] = '=';
+// 		ft_lstadd_back(&env, ft_lstnew(ft_strdup(var)));
+// 	}
+// }
 
 void	c_export(t_list *env, char *var)
 {
@@ -80,59 +127,36 @@ void	c_export(t_list *env, char *var)
 	char	*env_var;
 	char	*str_return;
 	int		p;
-	int		re;
 
 	p = 1;
-	// printf ("error_handling %s\n", var);
-	if (var == 0)
-	{
-		// printf(" i am here in export 0");
-		ft_merge_sort_u(env);// nor work as i am need
-		//system("leaks -list minishell");        
+	str_return = 0;
+	if (non_arg(var, &check ,&env_var, env))
 		return ;
-	}
-	env_var = strdup(var);
-	check = strchr(var, '=');//error checking
-	if (ft_strncmp(var, "=\0", 3) == 0)
-	{
-		printf("error: `=': not a valid identifier \n");// we need cmd
-		return ;
-	}
-	if (check == NULL )
-		re = error_handling(var);
-	else
-		re = error_handling_e(var, check - var);
-	if (re)
-		return ;
-	// env_var = var;
 	if (check)
 	{
-		//printf("error: check failed_function %s\n", env_var);
-		env_var[check - var] = '\0';
-		// printf("check failed_function %s \n", env_var);
+		//add_replace(&p,env, check, var, &env_var);
+		
 		if (env_var[check - var - 1] == '+')
 		{
-			env_var[check - var - 1] = '\0';
-			ft_shift_plus(var);
+			//printf(" i am here\n");
+			//printf(" _%s_ \n", env_var);
+		    // env_var	= env_var + (check - var) ;
+		//	printf(" _%s_ \n", env_var);
+			ft_shift_plus(env_var);
+			//printf("dd_%s_ \n", env_var);
 			p = 2;
 		}
-		//  printf(" %s %ld \n",env_var,check - var);
-		str_return = ft_getenv(env, var, p);
-		// printf("str_return from getenv %s , and the p par is : %d +\n" ,str_return, p);
-		//  exit(1); //
+		env_var[check - var] = '\0';
+	//	printf(" _%s_ \n", env_var);
+		str_return = ft_getenv(env, env_var, p);
 		if (str_return == NULL)
 		{
-			var [check - var] = '=';
-			printf("env %s\n", var);
+			var[check - var] = '=';
 			ft_lstadd_back(&env, ft_lstnew(ft_strdup(var)));
 		}
-		//system("leaks -list minishell");
 	}
 	else if (!check && var != NULL)
-	{
-		printf(" i am here %s\n", var);
 		if (ft_getenv(env, env_var, 2) == NULL)
 			ft_lstadd_back(&env, ft_lstnew(ft_strdup(env_var)));
-	}
-	free(env_var);
+	//free(env_var);
 }
