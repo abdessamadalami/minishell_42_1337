@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:11:41 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/27 17:03:08 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/28 16:20:05 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_echo_o(char **av)
 			while (av[i] != NULL)
 			{
 				printf("%s", av[i]);
-				if (av[i + 1] != '\0')
+				if (av[i + 1] != 0)
 					printf(" ");
 				i++;
 			}

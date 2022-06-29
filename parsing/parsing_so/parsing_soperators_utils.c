@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_soperators_utils.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-asri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:31:21 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/23 19:31:23 by ael-asri         ###   ########.fr       */
+/*   Updated: 2022/06/28 16:18:41 by sultan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	fill_list_so(t_arg **sfa, char	**t)
 	int		i;
 
 	i = 0;
-	while (t[i] != '\0')
+	while (t[i] != 0)
 	{
 		node = ftlstnew(t[i]);
 		free(t[i]);
