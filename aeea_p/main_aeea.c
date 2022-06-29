@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 13:45:28 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:44:06 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(int argc, char **argv, char **env)
 	{
 		//list = ft_new_parsing(s);
 		// printf("\033[1;33m");
-		s = readline("\e[0;32m$>prompt \e[0m");
+		s = readline("$>prompt ");
 		//printf("_________(%s)________\n", s);
 		if (s == 0)
 			header_inline(s, env_lst);
@@ -59,13 +59,16 @@ int main(int argc, char **argv, char **env)
 			par = c_env(str);
 			// exit(0);
 			executing(par, &env_lst);
-			system("leaks minishell.a");
+			free_function(str);
+			
 		}
 		add_history(s);
 		str = 0;
 		free(s);
 		s = 0;
+		// ft_lstclear(&par, del);
+	
+		//system("leaks a.out");
 	}
-	printf("\033[13m");
 	return (0);
 }

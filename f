@@ -1,0 +1,9 @@
+Makefile
+aeea_p
+f
+file
+minishell
+minishell.c
+minishell.h
+minishell.o
+parsing

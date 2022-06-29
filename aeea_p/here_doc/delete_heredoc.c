@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 09:46:29 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/11 09:51:34 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:53:07 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	delete_here(t_list **lst)
 		else
 			prev = NULL;
 	}
-	//printf("%d\n",check_redirec_d(*lst));
-	//print_list(*lst,444);
 	if (*lst != NULL && check_redirec_d(*lst))
 		delete_here(lst);
 }

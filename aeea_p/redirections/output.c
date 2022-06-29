@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:08:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 11:06:46 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/29 18:15:02 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	redirect_output(char *std_out, char c)
 		fd_input = open(std_out, O_WRONLY | O_APPEND | O_CREAT, 0644);
 	if (fd_input == -1)
 	{
-		perror(std_out);// chmod error for w permission
-		//exit(1);// exit just the child you must check if a pipe exists or no
+		perror(std_out);
 	}
 	return (fd_input);
 }

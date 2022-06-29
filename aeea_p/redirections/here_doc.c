@@ -6,12 +6,13 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/06 14:46:43 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:05:45 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
 // read from  here_doc to fd (we can choise between write to pipe or file or terminal) here is to pipe
+
 int	here_doc(char *lim, t_list *env)
 {
 	char	*line;
@@ -20,11 +21,9 @@ int	here_doc(char *lim, t_list *env)
 
 	pipe(pi_pe);
 	limtter = ft_strjoin(lim, "\n");
-	printf(" %s \n", limtter);
 	while (1)
 	{
-		ft_putstr_fd("here_doc> ", 1);
-		line = get_next_line(0);
+		line = readline("> ");//signels
 		if (line == 0 || ft_strncmp(limtter, line, ft_strlen(limtter)) == 0)
 			break ;
 		if (env_var(line, &env, 2))
@@ -35,5 +34,4 @@ int	here_doc(char *lim, t_list *env)
 	free(line);
 	close(pi_pe[1]);
 	return (pi_pe[0]);
-	//dup2(pi_pe[0],0);
 }

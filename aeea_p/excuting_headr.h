@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 17:38:23 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:25:05 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <readline/history.h>
 # include <signal.h>
 
+//void	rl_replace_line (const char *text, int clear_undo);
+
 typedef struct s_var
 {
 	int		std_out;
@@ -37,6 +39,7 @@ typedef struct s_var
 	t_list	*fds_std_in;
 }	t_var;
 
+char	*ft_getenv(t_list *list, char *str, int a);
 void	print_listt(t_list *list, int a);
 void	handler_sig(int sig);
 int		chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out);

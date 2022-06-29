@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 09:24:48 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/16 06:45:07 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:54:01 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	printf_err(t_list *str)
 		str = str -> next;
 	}
 	ft_lstclear(&str, del);
-	//! good work
 }
 
 static void	here_docc(int *fd, char *str, t_list *env)
@@ -82,8 +81,6 @@ t_list	*chec_for_here_doc(t_list **lst, t_list *env)
 	}
 	ft_lstadd_back(&fds, ft_lstnew(ff(fd)));
 	printf_err(str);
-	//printf("the fd %d\n",*(int *)fds -> content);
-	//bol_infile = chec_for_infile(*lst);
 	delete_here(lst);
 	return (fds);
 }

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:55:36 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 18:41:45 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:31:38 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ static void exe_c(int *id,char *path, char **argv, t_list *env)
 	{
 		if (argv != 0)
 		free_function(argv);
-	
-		if (argv != NULL)
-		 	free_function(argv);
 		return (1);
 	}
 	dup2(std_in, 0);

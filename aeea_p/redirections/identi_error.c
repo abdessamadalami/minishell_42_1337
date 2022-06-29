@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 07:05:44 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/28 11:40:41 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:14:42 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	error_handling(char *str)
 			|| (str[0] <= '9' && str[0] >= '0'))
 		{
 			e_st = 1;
-			printf("error: `%s': not a valid identifier \n", str);// we need cmd
+			printf("error: `%s': not a valid identifier \n", str);
 			return (1);
 		}
 		i++;
@@ -43,10 +43,7 @@ int	error_handlin_g(char *str, int f)
 	i = 0;
 	s = 0;
 	if (!str)
-	    return (0);
-	// if (str[0] <= '9' && str[0] >= '0')
-	//if (str[0] == '$' && p == 0)  // for dolar handling
-	//  i++;
+		return (0);
 	if (!f)
 	{
 		if (str[0] <= '9' && str[0] >= '0')
@@ -82,7 +79,6 @@ int	error_handling_e(char *str, int p)
 			str[p - j] = '=';
 		else
 			str[p - j] = '+';
-		// printf(" _dd %c_", str[p]);
 		printf("error: `%s': not a valid identifier \n", str);
 		return (1);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/28 23:47:37 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/29 17:35:58 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void handler_sig(int sig)
 {
 	if (sig == SIGINT)
     {
-        // rl_on_new_line();
-        // rl_replace_line("", 0);
-        // rl_redisplay();
+		printf("\n");
+       /* rl_on_new_line();
+        rl_replace_line("", 0);
+        rl_redisplay();*/
     }
 }
 
@@ -48,11 +49,14 @@ void	merge(t_arg *pa, t_list *env)
 	{
 		node = ft_lstnew(ft_strdup(pa->data));
 		ft_lstadd_back(&list, node);
-		//printf(" %s ", node -> content);
+	//free(pa->data);
 		pa = pa->next;
 	}
+	// pa = 0;
 	//executing(list, &env_lst);
 	executing(list, &env);
+	
+	ft_lstclear(&list, del);
 }
 
 int	main(int ac, char **av, char **env)
@@ -78,8 +82,12 @@ int	main(int ac, char **av, char **env)
 			if (s[0] == '\0')
 				continue ;
 			mr = ft_parsing(s);
+		
+			//exit(1);
 			if (mr != NULL)
+			{
 				merge(mr,env_lst);
+			}
 			add_history(s);
 			// while (mr != NULL)
 			// {
@@ -88,7 +96,7 @@ int	main(int ac, char **av, char **env)
 			// }
 			ftlstclear(&mr, free);
 			free(s);
-			//system("leaks minishell");
+			system("leaks minishell");
 		}
 		return (0);
 	}
