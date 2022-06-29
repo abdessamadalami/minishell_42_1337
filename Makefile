@@ -25,6 +25,7 @@ SRCS =  minishell.c\
 		parsing/parsing_so/parsing_soperators_utils.c\
 		parsing/env_variables/env_variables.c\
 		parsing/env_variables/env_variables_utils.c\
+		parsing/env_variables/env_variables_utils2.c\
 		parsing/syntax_checking/parsing_syntax.c\
 		parsing/syntax_checking/check_pip/pip_syntax.c\
 		parsing/syntax_checking/check_qt/qt_syntax.c\

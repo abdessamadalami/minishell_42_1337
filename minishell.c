@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **env)
 				break ;
 			if (s[0] == '\0')
 				continue ;
-			mr = ft_parsing(s);
+			mr = ft_parsing(s, env_lst);
 			if (mr != NULL)
 				merge(mr,env_lst);
 			add_history(s);

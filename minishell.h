@@ -64,7 +64,7 @@ struct sigaction c;
 void	parse_quotes_fordq(char *s, char *t, int *i, int *j);////////update
 void	parse_quotes_forsq(char *s, char *t, int *i, int *j);
 void	parse_quotes_lastone(char *s, char *t, int *i, int *j);
-t_arg	*ft_parsing(char *s);
+t_arg	*ft_parsing(char *s, t_list *env_lst);
 // t_arg	*parsin_dyalbss7(t_arg *arg, t_gg *gg);
 t_arg	*parse_so(t_arg *arg);
 int		ft_condistions(char *s);
@@ -114,8 +114,8 @@ int		just_while(char *s, char c, int i);
 
 //>>	env variables
 int		is_alphanum(char c);
-void	normal_case(char **t, char *s, int *i, int *j);
-void	mult_case(char **t, int count, int *j);
+int		normal_case(t_list *env_lst, char **t, char *s, int *i);
+int		mult_case(char **t, int count);
 void	ft_lock(char c, int *lock, int *dlock);
 
 //>>	wildcard
@@ -177,7 +177,7 @@ char	*ft_allocate(char *s);
 // void	addback_wsf2(t_arg **z3ta, char *s);
 // char	*check_get_env2(char *var, int *lock);
 
-t_arg	*check_envvars(t_arg *arg);
+t_arg	*check_envvars(t_arg *arg, t_list *env_lst);
 
 // --------------------- errors -----------------------//
 int		print_syntax_error(int x, char c);
