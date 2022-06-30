@@ -61,9 +61,3 @@ int	ft_echo_o(char **av)
 	printf("\n");
 	return (1);
 }
-
-// int	main(int ac, char **av)
-// {
-// 	ac = 1;
-// 	ft_echo(&av[1]);
-// }

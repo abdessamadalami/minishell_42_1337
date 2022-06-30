@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/30 21:58:51 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 22:03:53 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_var
 }	t_var;
 
 char	*ft_getenv(t_list *list, char *str, int a);
-void	print_listt(t_list *list, int a);
+int	print_listt(t_list *list, int a);
 void	handler_sig(int sig);
 int		chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out);
 void	pipe_excuting(t_var *v_pipe, t_list **env, t_list *pars_il);
