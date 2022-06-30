@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 20:04:48 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/29 19:58:55 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 21:59:15 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_arg
 	struct s_arg	*next;
 }	t_arg;
 
-struct sigaction c;
+
 
 // --------------------- parsing -------------------------//
 void	parse_quotes_fordq(char *s, char *t, int *i, int *j);////////update

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/29 20:00:23 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 21:58:51 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	close_aff(t_var *v_pipe);
 int		pip_number(t_list *list);
 void	wait_exit_status(int *ids, int n_p);
 int		e_st;
-int		sigg;
 void	dup_parm(t_list **pars_il, int *fd, t_list **std_in);
 void	get_par( t_list *list, char *env);
 void	std_files(char *std_out, int fd);//minishell intra video
