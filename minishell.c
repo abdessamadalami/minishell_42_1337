@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/30 18:38:07 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 20:52:25 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	merge(t_arg *pa, t_list *env)
 {
 	t_list	*list;
 	t_list	*node;
-	
 
 	list = 0;
 	node = 0;
@@ -65,10 +64,9 @@ int	main(int ac, char **av, char **env)
 	char	*s;
 	t_arg	*mr;
 	t_list	*env_lst;
-	
-	
-    c.sa_handler = &handler_sig;
-    c.sa_flags = SA_RESTART;
+
+	c.sa_handler = &handler_sig;
+	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
 	mr = NULL;
 	(void)*av;

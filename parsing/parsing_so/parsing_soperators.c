@@ -50,7 +50,8 @@ void	parse_so_forso(char *s, char **t, int *i, t_normsht *normsht)
 	}
 	else
 	{
-		if (*i != 0)
+		if (*i != 0 && s[(*i) - 1] != '>'
+			&& s[(*i) - 1] != '<' && s[(*i) - 1] != '|')
 			normsht->count++;
 		normsht->init = *i;
 		(*i)++;
