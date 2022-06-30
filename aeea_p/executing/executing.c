@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/29 17:51:29 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:44:22 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,30 @@ void	executing(t_list *pars_il, t_list **env)
 	v_pipe.fd[1] = 1;
 	v_pipe.ids = 0;
 	v_pipe.fds_std_in = 0;
+	t_list *fds;
+	fds = 0;
 	if (check_redirec_list(pars_il))
 	{
 		v_pipe.fds_std_in = here_doc_return(&pars_il, *env);
+		fds = v_pipe.fds_std_in;
 		v_pipe.std_in = *(int *)v_pipe.fds_std_in->content;
 		v_pipe.fds_std_in = v_pipe.fds_std_in->next;
 		if (pars_il == 0)
 			return ;
 	}
 	if (f_building(env, pars_il, &v_pipe) == 1)
+	{
+		if (fds != NULL)
+		{
+			ft_lstclear(&fds,del);
+			fds= 0;
+		}
 		return ;
+	}
 	pipe_excuting(&v_pipe, env, pars_il);
+	if (fds != NULL)
+	{
+		ft_lstclear(&fds,del);
+		fds = 0;
+	}
 }

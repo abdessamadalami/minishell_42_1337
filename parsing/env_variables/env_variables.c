@@ -22,11 +22,13 @@ char	*ft_allocate(char *s)
 	return (t);
 }
 
-void	env_varhandling(char **t, char *s, int *i, int *j)
+int	env_varhandling(t_list *env_lst, char **t, char *s, int *i)
 {
-	int		count;
+	int	count;
+	int	j;
 
 	count = 0;
+	j = 0;
 	while (s[*i] == '$')
 	{
 		count++;
@@ -35,18 +37,19 @@ void	env_varhandling(char **t, char *s, int *i, int *j)
 	if (count > 1)
 	{
 		if (!(count % 2))
-			mult_case(t, count, j);
+			j += mult_case(t, count);
 		else
 		{
-			mult_case(t, count - 1, j);
-			normal_case(t, s, i, j);
+			j += mult_case(t, count - 1);
+			j += normal_case(env_lst, t, s, i);
 		}
 	}
 	else
-		normal_case(t, s, i, j);
+		j += normal_case(env_lst, t, s, i);
+	return (j);
 }
 
-char	*ft_putenv_variables(char *s)
+char	*ft_putenv_variables(char *s, t_list *env_lst)
 {
 	char	*t;
 	int		i;
@@ -63,7 +66,7 @@ char	*ft_putenv_variables(char *s)
 	{
 		ft_lock(s[i], &lock, &dlock);
 		if (s[i] == '$' && lock)
-			env_varhandling(&t, s, &i, &j);
+			j += env_varhandling(env_lst, &t, s, &i);
 		else
 			t[j++] = s[i++];
 	}
@@ -91,7 +94,7 @@ void	ftlstadd_backfff(t_arg **lst, t_arg *new)
 	list->next = new;
 }
 
-t_arg	*check_envvars(t_arg *arg)
+t_arg	*check_envvars(t_arg *arg, t_list *env_lst)
 {
 	t_arg	*sfa;
 	char	*t;
@@ -100,10 +103,10 @@ t_arg	*check_envvars(t_arg *arg)
 	t = NULL;
 	while (arg != NULL)
 	{
-		if (!(arg->data[0] == '$' && arg->data[1] == '\0') 
+		if (!(arg->data[0] == '$' && arg->data[1] == '\0')
 			&& (check_so(arg->data, '$')))
 		{
-			t = ft_putenv_variables(arg->data);
+			t = ft_putenv_variables(arg->data, env_lst);
 			if (t[0] != '\0')
 				ftlstadd_backfff(&sfa, ftlstnew(t));
 			free (t);

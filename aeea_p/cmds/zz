@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   here_doc.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 09:24:48 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/30 19:49:09 by ael-oual         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../excuting_headr.h"
 
 void	printf_err(t_list *str)
@@ -91,10 +79,32 @@ t_list	*chec_for_here_doc(t_list **lst, t_list *env)
 	fd = 0;
 	str = NULL;
 	str = here_statment(&fd, list, &fds, env);
+	// while (list && fd != 1337)
+	// {
+	// 	if (ft_strncmp(list->content, "|\0", 3) == 0)
+	// 	{
+	// 		ft_lstadd_back(&fds, ft_lstnew(ff(fd)));
+	// 		fd = 0;
+	// 	}
+	// 	if (ft_strncmp(list->content, "<<\0", 4) == 0)
+	// 		if(here_docc(&fd, list->next->content, env) == 1337)
+	// 			fd = 1337;
+	// 	if (ft_strncmp(list->content, "<\0", 3) == 0)
+	// 	{
+	// 		input(&fd, list->next->content);
+	// 		if (fd == -1)
+	// 		{
+	// 			ft_lstadd_back(&str, ft_lstnew(list->next->content));
+	// 		}
+	// 	}
+	// 	list = list->next;
+	// }
 	if (fd == 1337)
 		return NULL;
 	ft_lstadd_back(&fds, ft_lstnew(ff(fd)));
 	printf_err(str);
 	delete_here(lst);
+	// system("leaks minishell");
+	// exit(0);
 	return (fds);
 }

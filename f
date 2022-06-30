@@ -7,3 +7,8 @@ minishell.c
 minishell.h
 minishell.o
 parsing
+a$
+a$
+a$
+a$
+a$
