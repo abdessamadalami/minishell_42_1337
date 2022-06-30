@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/30 20:52:25 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 21:59:24 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ int	main(int ac, char **av, char **env)
 	char	*s;
 	t_arg	*mr;
 	t_list	*env_lst;
-
+	struct sigaction c;
+	
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);

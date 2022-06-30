@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:42:06 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 17:42:34 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 22:03:05 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	unset_cmd(char **argv, t_list *env)
 	return (1);
 }
 
-void	print_listt(t_list *list, int a)//s= 0 || s=1 print wirh order
+int	print_listt(t_list *list, int a)//s= 0 || s=1 print wirh order
 {
 	while (list != 0)
 	{
@@ -51,6 +51,7 @@ void	print_listt(t_list *list, int a)//s= 0 || s=1 print wirh order
 			printf("%s\n", (char *)list->content);
 		list = list->next;
 	}
+	return (1);
 }
 
 static int	other_statment( char *content)
@@ -79,14 +80,9 @@ int	chec_for_cmds(char **argv, t_list *env)
 	else if (!ft_strncmp(argv[index], "cd\0", 8))
 		return (c_cd(env, argv));
 	else if (!ft_strncmp(argv[index], "unset\0", 7))
-	{
 		return (unset_cmd(argv, env));
-	}
 	else if (!ft_strncmp(argv[index], "env\0", 7))// what about agr with env
-	{
-		print_listt(env, 0);
-		return (1);
-	}
+		return (print_listt(env, 0));
 	else if (!ft_strncmp(argv[index], "exit\0", 4))// exit status
 	{
 		c_exit(argv);
