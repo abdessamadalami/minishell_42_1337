@@ -62,10 +62,10 @@ void	ft_shift_plus(char *str)
 			// ptr = 0;
 			// return (list->content);
 */
-char *getenv_statment(int a, char *content, char *str ,int len)
+char	*getenv_statment(int a, char *content, char *str, int len)
 {
 	char	*tem;
-	
+
 	if (a == 1)//for remplace
 	{
 		str[ft_strlen(str)] = '=';
@@ -98,10 +98,8 @@ char	*ft_getenv(t_list *list, char *str, int a)
 	{
 		len = ft_strlen(str);
 		ptr = (char *)list -> content;
-		
 		if ((ft_strncmp(str, ptr, len)) == 0)
 		{
-		
 			list->content = getenv_statment(a, list->content, str, len);
 			return(list->content);
 		}
@@ -109,10 +107,11 @@ char	*ft_getenv(t_list *list, char *str, int a)
 	}
 	return (0);
 }
-static int non_arg(char *var, char **check, char **env_var , t_list *env)
+
+static int	non_arg(char *var, char **check, char **env_var, t_list *env)
 {
 	int		re;
-	
+
 	re = 0;
 	if (var == 0)
 	{
@@ -135,11 +134,10 @@ static int non_arg(char *var, char **check, char **env_var , t_list *env)
 	return (0);
 }
 
-void add_replace(int *p, t_list *env, char *check, char *var, char *env_var)
+void	add_replace(int *p, t_list *env, char *check, char *var, char *env_var)
 {
 	char	*str_return;
-	char *c;
-	 
+	char	*c;
 
 	c = ft_strdup(env_var);
 	str_return = 0;
@@ -169,7 +167,7 @@ void	c_export(t_list *env, char *var)
 
 	p = 1;
 	str_return = 0;
-	if (non_arg(var, &check ,&env_var, env))
+	if (non_arg(var, &check, &env_var, env))
 		return ;
 	if (check)
 		add_replace(&p, env, check, var, env_var);

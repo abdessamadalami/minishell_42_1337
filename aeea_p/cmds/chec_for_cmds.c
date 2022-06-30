@@ -43,7 +43,7 @@ static int	unset_cmd(char **argv, t_list *env)
 	return (1);
 }
 
- void	print_listt(t_list *list, int a)//s= 0 || s=1 print wirh order
+void	print_listt(t_list *list, int a)//s= 0 || s=1 print wirh order
 {
 	while (list != 0)
 	{
