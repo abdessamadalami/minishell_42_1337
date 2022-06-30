@@ -76,14 +76,14 @@ int	main(int ac, char **av, char **env)
 			if (s[0] == '\0')
 				continue ;
 			mr = ft_parsing(s, env_lst);
-			// if (mr != NULL)
-			// 	merge(mr, env_lst);
+			if (mr != NULL)
+				merge(mr, env_lst);
 			add_history(s);
-			while (mr != NULL)
-			{
-				printf("--[%s\n", mr->data);
-				mr = mr->next;
-			}
+			// while (mr != NULL)
+			// {
+			// 	printf("--[%s\n", mr->data);
+			// 	mr = mr->next;
+			// }
 			ftlstclear(&mr, free);
 			free(s);
 			//system("leaks minishell");
