@@ -81,13 +81,14 @@ int	suffix_checker(char *s, char **suffix)
 	i = 0;
 	j = 0;
 	f = 1;
+	if (suffix[0][0] == '\0')
+		return (1);
 	while (suffix[j] != NULL)
 	{
 		if (ft_index(s, suffix[j]) != -1)
 		{
-			if (suffix[j + 1] == NULL)
-				if (s[ft_strln(s) - 1] != suffix[j][ft_strln(suffix[j]) - 1])
-					return (0);
+			if (!checkk_suf(s, suffix, j))
+				return (0);
 			if (!ft_wildstrcmp(s, suffix[j], ft_index(s, suffix[j])))
 				return (0);
 		}

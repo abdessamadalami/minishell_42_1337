@@ -19,7 +19,7 @@
 //(a == 3)// for dolar
 
 
-static char    *getenv_statment(int a, char *content, char *str, int len)
+static char	*getenv_statment(int a, char *content, char *str, int len)
 {
 	char	*tem;
 
@@ -55,12 +55,10 @@ char	*ft_getenv(t_list *list, char *str, int a)
 	{
 		len = ft_strlen(str);
 		ptr = (char *)list -> content;
-		
 		if ((ft_strncmp(str, ptr, len)) == 0)
 		{
-		
 			list->content = getenv_statment(a, list->content, str, len);
-			return(list->content);
+			return (list->content);
 		}
 		list = list->next;
 	}

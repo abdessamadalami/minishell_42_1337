@@ -12,11 +12,11 @@
 
 #include "../excuting_headr.h"
 
-static void del_fun(t_list *list, t_list **lst)
+static void	del_fun(t_list *list, t_list **lst)
 {
 	t_list	*prev;
 	t_list	*node;
-	
+
 	node = 0;
 	list = *lst;
 	while (list != NULL && (ft_strncmp(list ->content, "<<\0", 4) != 0

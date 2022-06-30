@@ -42,7 +42,7 @@ int	c_cd(t_list *env, char **argv )
 	if (old_pwd == NULL)
 		old_pwd = ft_strdup(" ");
 	if (argv[1] == NULL)
-		new_pwd = ft_getenv(env, "HOME=", 0) + 5; 
+		new_pwd = ft_getenv(env, "HOME=", 0) + 5;
 	if (chdir(new_pwd) == -1)
 	{
 		free(old_pwd);

@@ -134,18 +134,11 @@ static int	non_arg(char *var, char **check, char **env_var, t_list *env)
 	return (0);
 }
 
-<<<<<<< HEAD
-void	add_replace(int *p, t_list *env, char *check, char *var, char *env_var)
-{
-	char	*str_return;
-	char	*c;
-=======
 static int	add_replace(t_list *env, char *check, char *var, char *env_var)
 {
 	char	*str_return;
 	char	*c;
 	int		p;
->>>>>>> b0566eee98a91d73624ded08adbe63bf72919a6e
 
 	p = 0;
 	c = ft_strdup(env_var);

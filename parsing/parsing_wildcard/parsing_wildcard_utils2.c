@@ -46,6 +46,14 @@ int	just_fileincrement(char *s, int i, int x)
 	return (i);
 }
 
+int	checkk_suf(char *s, char **suffix, int j)
+{
+	if (suffix[j + 1] == NULL)
+		if (s[ft_strln(s) - 1] != suffix[j][ft_strln(suffix[j]) - 1])
+			return (0);
+	return (1);
+}
+
 int	ft_index(char *s, char *needle)
 {
 	int	i;

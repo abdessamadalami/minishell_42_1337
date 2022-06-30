@@ -90,6 +90,7 @@ void	executing(t_list *pars_il, t_list **env)
 {
 	int		i;
 	t_var	v_pipe;
+	t_list *fds;
 
 	i = 0;
 	v_pipe.a = dup(0);
@@ -98,7 +99,6 @@ void	executing(t_list *pars_il, t_list **env)
 	v_pipe.fd[1] = 1;
 	v_pipe.ids = 0;
 	v_pipe.fds_std_in = 0;
-	t_list *fds;
 	fds = 0;
 	if (check_redirec_list(pars_il))
 	{
@@ -113,15 +113,15 @@ void	executing(t_list *pars_il, t_list **env)
 	{
 		if (fds != NULL)
 		{
-			ft_lstclear(&fds,del);
-			fds= 0;
+			ft_lstclear(&fds, del);
+			fds = 0;
 		}
 		return ;
 	}
 	pipe_excuting(&v_pipe, env, pars_il);
 	if (fds != NULL)
 	{
-		ft_lstclear(&fds,del);
+		ft_lstclear(&fds, del);
 		fds = 0;
 	}
 }

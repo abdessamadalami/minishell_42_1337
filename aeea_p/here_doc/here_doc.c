@@ -37,13 +37,13 @@ static int	here_docc(int *fd, char *str, t_list *env)
 	}
 	else
 	{
-		if (*fd != 0 &&  *fd != 5)
+		if (*fd != 0 && *fd != 5)
 			close(*fd);
 		*fd = here_doc(str, env);
 	}
 	if (a == 1337 || *fd == 1337)
-		return 1337;
-	return 0;
+		return (1337);
+	return (0);
 }
 //! file input q// the content in the fd vaiable is the the fd of the last one 
 
@@ -53,9 +53,10 @@ static void	input(int *fd, char *str)
 		close(*fd);
 	*fd = redirect_inpu(str);
 }
-static t_list *here_statment(int *fd, t_list *list, t_list **fds, t_list *env)
+
+static t_list	*here_statment(int *fd, t_list *list, t_list **fds, t_list *env)
 {
-	t_list *str;
+	t_list	*str;
 
 	str = 0;
 	while (list && *fd != 1337)
@@ -66,7 +67,7 @@ static t_list *here_statment(int *fd, t_list *list, t_list **fds, t_list *env)
 			*fd = 0;
 		}
 		if (ft_strncmp(list->content, "<<\0", 4) == 0)
-			if(here_docc(fd, list->next->content, env) == 1337)
+			if (here_docc(fd, list->next->content, env) == 1337)
 				*fd = 1337;
 		if (ft_strncmp(list->content, "<\0", 3) == 0)
 		{
@@ -76,7 +77,7 @@ static t_list *here_statment(int *fd, t_list *list, t_list **fds, t_list *env)
 		}
 		list = list->next;
 	}
-	return str;
+	return (str);
 }
 
 t_list	*chec_for_here_doc(t_list **lst, t_list *env)
@@ -92,7 +93,7 @@ t_list	*chec_for_here_doc(t_list **lst, t_list *env)
 	str = NULL;
 	str = here_statment(&fd, list, &fds, env);
 	if (fd == 1337)
-		return NULL;
+		return (NULL);
 	ft_lstadd_back(&fds, ft_lstnew(ff(fd)));
 	printf_err(str);
 	delete_here(lst);

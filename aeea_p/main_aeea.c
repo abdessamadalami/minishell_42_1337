@@ -13,38 +13,37 @@
 #include "excuting_headr.h"
 //#include "../stronk/minishell.h"
 
-static void header_inline(char *s, t_list *env)
-{  
+static void	header_inline(char *s, t_list *env)
+{
 	printf("\n");
 	exit(e_st);
 }
 
-void handler_sig(int sig)
+void	handler_sig(int sig)
 {
 	if (sig == SIGINT)
-    {
-        printf("\n");
-        // rl_on_new_line();
-        // rl_replace_line("", 0);
-        // rl_redisplay();
-    }
+	{
+	    printf("\n");
+	    // rl_on_new_line();
+	    // rl_replace_line("", 0);
+	    // rl_redisplay();
+	}
 }
 
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {	
-    t_list *env_lst;
-	t_list *par;
-	struct sigaction c;
-    c.sa_handler = &handler_sig;
-    c.sa_flags = SA_RESTART;
-	sigaction(SIGINT, &c, 0);
-	char	*s;
-	char **str;
+	t_list				*env_lst;
+	t_list				*par;
+	struct sigaction	c;
+	char				*s;
+	char				**str;
 
+	c.sa_handler = &handler_sig;
+	c.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &c, 0);
 	str = 0;
 	s = 0;
 	env_lst = c_env(env);
-	
 	while (1)
 	{
 		//list = ft_new_parsing(s);
@@ -60,7 +59,6 @@ int main(int argc, char **argv, char **env)
 			// exit(0);
 			executing(par, &env_lst);
 			free_function(str);
-			
 		}
 		add_history(s);
 		str = 0;
