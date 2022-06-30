@@ -121,7 +121,6 @@ void	get_files(t_arg **sfa, char *s, char **suffix, char *prefix)
 				&& suffix_checker(de->d_name, suffix))
 			|| (prefix[0] == '\0' && suffix[0][0] == '\0'))
 		{
-		//	printf("file: %s\n", de->d_name);
 			ftlstadd_back(&node, ftlstnew(de->d_name));
 			w = 1;
 		}

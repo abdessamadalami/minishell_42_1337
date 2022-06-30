@@ -40,7 +40,6 @@ void	merge(t_arg *pa, t_list *env)
 {
 	t_list	*list;
 	t_list	*node;
-	
 
 	list = 0;
 	node = 0;
@@ -60,10 +59,9 @@ int	main(int ac, char **av, char **env)
 	char	*s;
 	t_arg	*mr;
 	t_list	*env_lst;
-	
-	
-    c.sa_handler = &handler_sig;
-    c.sa_flags = SA_RESTART;
+
+	c.sa_handler = &handler_sig;
+	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
 	mr = NULL;
 	(void)*av;
@@ -78,14 +76,14 @@ int	main(int ac, char **av, char **env)
 			if (s[0] == '\0')
 				continue ;
 			mr = ft_parsing(s, env_lst);
-			if (mr != NULL)
-				merge(mr,env_lst);
+			// if (mr != NULL)
+			// 	merge(mr, env_lst);
 			add_history(s);
-			// while (mr != NULL)
-			// {
-			// 	printf("--[%s\n", mr->data);
-			// 	mr = mr->next;
-			// }
+			while (mr != NULL)
+			{
+				printf("--[%s\n", mr->data);
+				mr = mr->next;
+			}
 			ftlstclear(&mr, free);
 			free(s);
 			//system("leaks minishell");
