@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 08:07:22 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/16 17:34:24 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:28:35 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
 int		ft_isalpha(int a);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

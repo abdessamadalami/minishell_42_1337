@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 07:49:35 by ael-oual          #+#    #+#             */
-/*   Updated: 2021/11/17 07:55:21 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:30:30 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
+
 #include<stdlib.h>
 #include"libft.h"
 

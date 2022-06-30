@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:11:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 13:43:45 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:13:52 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	redir(t_list **list, int *bol, int *std_in, int *std_out)
 {
-	int	fd;// just test for
+	int	fd;
 
 	fd = g_redirections((*list)->next->content,
 			(*list)->content, std_in, std_out);
@@ -33,26 +33,19 @@ static int	redir(t_list **list, int *bol, int *std_in, int *std_out)
 
 static void	str_f(char **str, char *content)
 {
-	*str = ft_strjoin_n(*str, content);
+	*str = ft_strjoin_n(*str, ft_strdup(content));
 	*str = ft_strjoin_n(*str, ft_strdup(" "));
 }
 
 static int	statment_f(char *content, t_list *env)
 {
-	//char *ptr;
 	if (env_var(content, &env, 0)
-			&& ft_strncmp(content, "$?\0", 4))// for dollar sign
+		&& ft_strncmp(content, "$?\0", 4))
 		content = env_var(content, &env, 3);
 	if (check_for_pipe(content))
 		return (1);
 	return (0);
 }
-		// if(ft_strncmp(list ->content,"$?\0",4) == 0)
-		// 	list ->content = ft_itoa(e_st);
-		// if(env_var(list ->content, &env ,0) && ft_strncmp(list ->content,"$?\0",4))// for dollar sign
-		// 	list -> content = env_var(list ->content, &env ,3);
-		// if (check_for_pipe(list ->content))
-		// 	break;
 
 static char	**sp_str(char *str)
 {
@@ -61,11 +54,10 @@ static char	**sp_str(char *str)
 	argv = ft_split(str, ' ');
 	free(str);
 	str = 0;
-	//print_tab(argv);
 	return (argv);
 }
 
-char 	**make_argv(t_list *list, t_list *env, int *std_in, int *std_out)
+char	**make_argv(t_list *list, t_list *env, int *std_in, int *std_out)
 {
 	char	*str;
 	int		bol;
@@ -76,7 +68,7 @@ char 	**make_argv(t_list *list, t_list *env, int *std_in, int *std_out)
 	{
 		if (statment_f(list->content, env))
 			break ;
-		if (check_redirec(list ->content))// good idea abou 
+		if (check_redirec(list ->content))
 		{
 			redir(&list, &bol, std_in, std_out);
 			if (list == 0 || *std_in == -1)

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 17:38:23 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 20:00:23 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <readline/history.h>
 # include <signal.h>
 
+//void	rl_replace_line (const char *text, int clear_undo);
+
 typedef struct s_var
 {
 	int		std_out;
@@ -37,6 +39,7 @@ typedef struct s_var
 	t_list	*fds_std_in;
 }	t_var;
 
+char	*ft_getenv(t_list *list, char *str, int a);
 void	print_listt(t_list *list, int a);
 void	handler_sig(int sig);
 int		chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out);
@@ -61,6 +64,7 @@ void	close_aff(t_var *v_pipe);
 int		pip_number(t_list *list);
 void	wait_exit_status(int *ids, int n_p);
 int		e_st;
+int		sigg;
 void	dup_parm(t_list **pars_il, int *fd, t_list **std_in);
 void	get_par( t_list *list, char *env);
 void	std_files(char *std_out, int fd);//minishell intra video

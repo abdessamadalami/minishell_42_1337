@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_fun.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 10:15:05 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 10:56:06 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/29 17:54:24 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,3 @@ int	*ff(int a)
 	*ptr = a;
 	return (ptr);
 }
-
-// void free_function(char **str)
-// {
-//     int index;
-    
-//     index = 0;
-//     while (str[index])
-//     {
-//         free(str[index]);
-//         index++;
-//     }
-// }

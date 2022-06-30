@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/28 23:47:37 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/30 20:52:25 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 
 void handler_sig(int sig)
 {
+	if (e_st == 1)
+	{
+		e_st = 1337;
+	}
+	
 	if (sig == SIGINT)
     {
-        // rl_on_new_line();
-        // rl_replace_line("", 0);
-        // rl_redisplay();
+		printf("\n");
+        /* rl_on_new_line();
+        rl_replace_line("", 0);
+        rl_redisplay();*/
     }
 }
 
@@ -47,11 +53,10 @@ void	merge(t_arg *pa, t_list *env)
 	{
 		node = ft_lstnew(ft_strdup(pa->data));
 		ft_lstadd_back(&list, node);
-		//printf(" %s ", node -> content);
 		pa = pa->next;
 	}
-	//executing(list, &env_lst);
 	executing(list, &env);
+	ft_lstclear(&list, del);
 }
 
 int	main(int ac, char **av, char **env)
@@ -75,9 +80,12 @@ int	main(int ac, char **av, char **env)
 				break ;
 			if (s[0] == '\0')
 				continue ;
-			mr = ft_parsing(s, env_lst);
+			mr = ft_parsing(s,env_lst);
+			//exit(1);
 			if (mr != NULL)
-				merge(mr, env_lst);
+			{
+				merge(mr,env_lst);
+			}
 			add_history(s);
 			// while (mr != NULL)
 			// {
@@ -86,7 +94,7 @@ int	main(int ac, char **av, char **env)
 			// }
 			ftlstclear(&mr, free);
 			free(s);
-			//system("leaks minishell");
+			system("leaks minishell");
 		}
 		return (0);
 	}

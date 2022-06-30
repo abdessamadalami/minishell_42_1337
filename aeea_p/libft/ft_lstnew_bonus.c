@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:11:38 by ael-oual          #+#    #+#             */
-/*   Updated: 2021/11/17 06:54:06 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:17:28 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
+
 #include<stdlib.h>
 #include"libft.h"
 

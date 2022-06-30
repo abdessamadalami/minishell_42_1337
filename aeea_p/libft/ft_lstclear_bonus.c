@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 09:07:59 by ael-oual          #+#    #+#             */
-/*   Updated: 2021/11/17 08:24:48 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:30:14 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
+
 #include "libft.h"
 #include<stdlib.h>
 

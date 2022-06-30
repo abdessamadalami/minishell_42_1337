@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_export.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 07:32:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/28 23:49:54 by sultan           ###   ########.fr       */
+/*   Updated: 2022/06/29 18:33:50 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,28 +134,38 @@ static int	non_arg(char *var, char **check, char **env_var, t_list *env)
 	return (0);
 }
 
+<<<<<<< HEAD
 void	add_replace(int *p, t_list *env, char *check, char *var, char *env_var)
 {
 	char	*str_return;
 	char	*c;
+=======
+static int	add_replace(t_list *env, char *check, char *var, char *env_var)
+{
+	char	*str_return;
+	char	*c;
+	int		p;
+>>>>>>> b0566eee98a91d73624ded08adbe63bf72919a6e
 
+	p = 0;
 	c = ft_strdup(env_var);
 	str_return = 0;
 	if (c[check - var - 1] == '+')
 	{
 		ft_shift_plus(c);
 		c[check - var - 1] = '\0';
-		*p = 2;
+		p = 2;
 	}
 	else
 		c[check - var] = '\0';
-	str_return = ft_getenv(env, c, *p);
+	str_return = ft_getenv(env, c, p);
 	if (str_return == NULL)
 	{
 		var[check - var] = '=';
 		ft_lstadd_back(&env, ft_lstnew(ft_strdup(var)));
 		free(c);
 	}
+	return (p);
 }
 
 void	c_export(t_list *env, char *var)
@@ -170,11 +180,9 @@ void	c_export(t_list *env, char *var)
 	if (non_arg(var, &check, &env_var, env))
 		return ;
 	if (check)
-		add_replace(&p, env, check, var, env_var);
+		p = add_replace(env, check, var, env_var);
 	else if (!check && var != NULL)
 		if (ft_getenv(env, env_var, 5) == NULL)
 			ft_lstadd_back(&env, ft_lstnew(ft_strdup(env_var)));
 	free(env_var);
-	//system("leaks minishell");
-
 }
