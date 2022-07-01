@@ -68,7 +68,6 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			index_line;
 
-	
 	str = read_join(fd, str, &k);
 	if (str == NULL)
 		return (0);

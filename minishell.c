@@ -60,11 +60,11 @@ void	merge(t_arg *pa, t_list *env)
 
 int	main(int ac, char **av, char **env)
 {
-	char	*s;
-	t_arg	*mr;
-	t_list	*env_lst;
-	struct sigaction c;
-	
+	char				*s;
+	t_arg				*mr;
+	t_list				*env_lst;
+	struct sigaction	c;
+
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
@@ -80,23 +80,13 @@ int	main(int ac, char **av, char **env)
 				break ;
 			if (s[0] == '\0')
 				continue ;
-			mr = ft_parsing(s,env_lst);
-			//exit(1);
+			mr = ft_parsing(s, env_lst);
 			if (mr != NULL)
-			{
-				merge(mr,env_lst);
-			}
+				merge(mr, env_lst);
 			add_history(s);
-			// while (mr != NULL)
-			// {
-			// 	printf("--[%s\n", mr->data);
-			// 	mr = mr->next;
-			// }
-			// exit(1);
 			ftlstclear(&mr, free);
 			free(s);
-		//	system("leaks minishell");
 		}
-		return (0);
 	}
+	return (0);
 }

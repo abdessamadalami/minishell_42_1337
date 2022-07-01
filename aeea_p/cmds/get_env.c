@@ -18,7 +18,6 @@
 //(a == 5)//for replace with out value
 //(a == 3)// for dolar
 
-
 static char	*getenv_statment(int a, char *content, char *str, int len)
 {
 	char	*tem;

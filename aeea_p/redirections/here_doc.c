@@ -12,7 +12,8 @@
 
 #include "../excuting_headr.h"
 #include "../../minishell.h"
-// read from  here_doc to fd (we can choise between write to pipe or file or terminal) here is to pipe
+/* read from  here_doc to fd (we can choise between
+write to pipe or file or terminal) here is to pipe*/
 static int	here(int *pi_pe, char *line)
 {
 	if (e_st == 1337)

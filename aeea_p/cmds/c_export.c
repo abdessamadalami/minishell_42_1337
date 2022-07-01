@@ -63,7 +63,7 @@ void	ft_shift_plus(char *str)
 			// return (list->content);
 */
 
-static int non_arg(char *var, char **check, char **env_var , t_list *env)
+static int	non_arg(char *var, char **check, char **env_var, t_list *env)
 {
 	int		re;
 
