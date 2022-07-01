@@ -48,7 +48,7 @@ char	*get_path(char **env, char *cmd)
 			ptr = 0;
 		}
 		else
-			break;
+			break ;
 		i++;
 	}
 	free_function(str1);

@@ -12,8 +12,14 @@
 
 #include "../excuting_headr.h"
 #include "../../minishell.h"
+<<<<<<< HEAD
 // read from  here_doc to fd (we can choise between write to pipe or file or terminal) here is to pipe
 int    ft_strcmpp(char *s1, char *s2)
+=======
+/* read from  here_doc to fd (we can choise between
+write to pipe or file or terminal) here is to pipe*/
+static int	here(int *pi_pe, char *line)
+>>>>>>> 6d4a8f2981c624f0d23d576c3403dc793bdae9cf
 {
     int    i;
 

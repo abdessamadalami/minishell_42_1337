@@ -83,7 +83,6 @@ void	error_print(char **str)
 	ft_putstr_fd(str[0], 2);
 	if (chec_slash(str[0]))
 	{
-		
 		ft_putstr_fd(": no such file or directory\n", 2);
 	}
 	else

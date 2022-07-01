@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/07/01 23:16:33 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:20:53 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,29 @@ void	merge(t_arg *pa, t_list *env)
 	ft_lstclear(&list, del);
 }
 
+int	check_s(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s[0] == '\0')
+		return (0);
+	while (s[i] != '\0')
+	{
+		if (s[i] != ' ')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	main(int ac, char **av, char **env)
 {
-	char	*s;
-	t_arg	*mr;
-	t_list	*env_lst;
-	struct sigaction c;
-	
+	char				*s;
+	t_arg				*mr;
+	t_list				*env_lst;
+	struct sigaction	c;
+
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
@@ -82,24 +97,14 @@ int	main(int ac, char **av, char **env)
 			s = readline("$>prompt ");
 			if (!s)
 				break ;
-			if (s[0] == '\0')
+			if (!check_s(s))
 			{
 				free(s);
 				continue ;
 			}
-			
-			mr = ft_parsing(s,env_lst);
-			while (mr != NULL)
-			{
-				printf("--[%s]\n", mr->data);
-				mr = mr->next;
-			}
-			exit(1);
-			//
+			mr = ft_parsing(s, env_lst);
 			if (mr != NULL)
-			{
-				merge(mr,env_lst);
-			}
+				merge(mr, env_lst);
 			add_history(s);
 			// while (mr != NULL)
 			// {
@@ -111,6 +116,6 @@ int	main(int ac, char **av, char **env)
 			free(s);
 			system("leaks minishell");
 		}
-		return (0);
 	}
+	return (0);
 }

@@ -65,7 +65,7 @@ char	*ft_putenv_variables(char *s, t_list *env_lst)
 	while (s[i] != '\0')
 	{
 		ft_lock(s[i], &lock, &dlock);
-		if (s[i] == '$' && lock)
+		if (s[i] == '$' && lock && (is_alphanum(s[i + 1]) || s[i + 1] == '?'))
 			j += env_varhandling(env_lst, &t, s, &i);
 		else
 			t[j++] = s[i++];

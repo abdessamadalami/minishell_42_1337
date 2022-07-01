@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:16:51 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/07/01 22:49:35 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:21:19 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ static char	*getenv_statment(int a, char *content, char *str, int len)
 		free(tem);
 		free(str);
 	}
-	else if (a == 3)
-		return (content + len + 1);
+	// else if (a == 5)//for replace with out value
+	// 	content = ft_strdup(str);
+	// else if (a == 3)// for dolar
+	// 	return (content + len + 1);
 	return (content);
 }
 

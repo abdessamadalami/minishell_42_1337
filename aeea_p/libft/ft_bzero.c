@@ -32,10 +32,8 @@ void	ft_bzero(void *s, size_t n)
 //    char *tab;
 
 //    tab = strdup("abdessamad alami SULTAN ALAMI ");
-   
 //     // bzero(tab,2);
 //     //ft_bzero(tab,2);
 // 	printf("%s\n",tab);
 // 	system("leaks a.out");
 // }
-

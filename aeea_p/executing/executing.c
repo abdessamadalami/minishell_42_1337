@@ -84,14 +84,13 @@ t_list	*here_doc_return(t_list **pars_il, t_list *env)
 	fds_std_in = 0;
 	fds_std_in = chec_for_here_doc(pars_il, env);
 	return (fds_std_in);
-} 
-
+}
 
 void	executing(t_list *pars_il, t_list **env)
 {
 	int		i;
 	t_var	v_pipe;
-	t_list *fds;
+	t_list	*fds;
 
 	i = 0;
 	v_pipe.a = dup(0);

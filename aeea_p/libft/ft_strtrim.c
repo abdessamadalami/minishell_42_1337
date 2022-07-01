@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
+
 static int	chec_in_set(char *ptr, char c)
 {
 	int	index;
@@ -26,7 +26,7 @@ static int	chec_in_set(char *ptr, char c)
 	return (0);
 }
 
- char	*ft_strdup_n(char *src, int n)
+char	*ft_strdup_n(char *src, int n)
 {
 	char	*ptr;
 	int		i;
