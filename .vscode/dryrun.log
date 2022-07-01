@@ -14,7 +14,6 @@ cc -Wall -Wextra -Werror    -c -o parsing/utils/splits/wildsplit.o parsing/utils
 cc -Wall -Wextra -Werror    -c -o parsing/utils/splits/splits_utils.o parsing/utils/splits/splits_utils.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/parsing_utils.o parsing/utils/parsing_utils.c
 cc -Wall -Wextra -Werror    -c -o parsing/utils/parsing_utils2.o parsing/utils/parsing_utils2.c
- 
 cc -Wall -Wextra -Werror    -c -o parsing/parsing.o parsing/parsing.c
 cc -Wall -Wextra -Werror    -c -o parsing/parsing_spaces/parsing_spaces.o parsing/parsing_spaces/parsing_spaces.c
 cc -Wall -Wextra -Werror    -c -o parsing/parsing_spaces/parsing_spaces_utils.o parsing/parsing_spaces/parsing_spaces_utils.c

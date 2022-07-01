@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:11:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/29 15:46:23 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 22:22:43 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,39 +74,6 @@ void	*f(void *ptr)
 	}
 	ptr2 = ft_strdup(ptr);
 	return (ptr2);
-}
-
-void	del(void *ptr)
-{
-	free(ptr);
-}
-
-void	print_list(t_list *list, int a)//s= 0 || s=1 print wirh order
-{
-	while (list != NULL)
-	{
-		if (ft_strchr(list -> content, '=') && a == 0)
-			printf("%s\n", (char *)list->content);
-		else if (a == 1 && ft_strchr(list->content, '=') != NULL)
-			printf("%s \n", (char *)list->content);
-		else if (a == 4)
-			printf("%d \n", *(int *)list->content);
-		else if (a > 10)
-			printf(" content %s \n", (char *)list->next);
-		list = list->next;
-	}
-}
-
-void	print_tab(char **str)
-{
-	int	index;
-
-	index = 0;
-	while (str[index])
-	{
-		printf("element %d %s \n", index, str[index]);
-		index++;
-	}
 }
 
 int	check_redirec(char *red)

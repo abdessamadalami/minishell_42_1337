@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 08:34:05 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/28 11:53:56 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 09:26:09 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ static void	export_path(char *new_pwd, char *old_pwd, t_list *env)
 
 	t_new = new_pwd;
 	t_old = old_pwd;
-	c_export(env, old_pwd);
-	c_export(env, new_pwd);
+		printf("%s \n", new_pwd);
+	printf( "%s \n", old_pwd);
+	c_export(env, ft_strdup(old_pwd));
+	c_export(env, ft_strdup (new_pwd));
+
 	e_st = 0;
 	free(t_new);
 	free(t_old);
@@ -38,15 +41,19 @@ int	c_cd(t_list *env, char **argv )
 	char	*new_pwd;
 	char	*old_pwd;
 
+	new_pwd = 0;
 	old_pwd = getcwd(0, 0);
 	if (old_pwd == NULL)
 		old_pwd = ft_strdup(" ");
 	if (argv[1] == NULL)
 		new_pwd = ft_getenv(env, "HOME=", 0) + 5; 
-	if (chdir(new_pwd) == -1)
+	if (chdir(argv[1]) == -1)
 	{
-		free(old_pwd);
-		return (cd_error(argv));
+		if (chdir(new_pwd) == -1)
+		{
+			free(old_pwd);
+			return (cd_error(argv));
+		}
 	}
 	new_pwd = getcwd(0, 0);
 	if (ft_strncmp(new_pwd, "//\0", 4) == 0)
@@ -54,6 +61,7 @@ int	c_cd(t_list *env, char **argv )
 	else
 		new_pwd = ft_strjoin_n(ft_strdup("PWD="), new_pwd);
 	old_pwd = ft_strjoin_n(ft_strdup("OLDPWD="), old_pwd);
+
 	export_path(new_pwd, old_pwd, env);
 	return (1);
 }

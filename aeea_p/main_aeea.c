@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/29 16:44:06 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:34:57 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(int argc, char **argv, char **env)
     t_list *env_lst;
 	t_list *par;
 	struct sigaction c;
+	
     c.sa_handler = &handler_sig;
     c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
@@ -66,8 +67,6 @@ int main(int argc, char **argv, char **env)
 		str = 0;
 		free(s);
 		s = 0;
-		// ft_lstclear(&par, del);
-	
 		//system("leaks a.out");
 	}
 	return (0);

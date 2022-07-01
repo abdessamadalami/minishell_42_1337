@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/06/30 21:59:24 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:59:56 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	main(int ac, char **av, char **env)
 			// }
 			ftlstclear(&mr, free);
 			free(s);
-			system("leaks minishell");
+		//	system("leaks minishell");
 		}
 		return (0);
 	}

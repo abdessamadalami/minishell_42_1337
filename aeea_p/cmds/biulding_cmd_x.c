@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:55:36 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/29 17:31:38 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:58:01 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	chiled_build(t_list *pars_il, t_list *env, int std_in, int std_out)
 	argv = make_argv(pars_il, env, &std_in, &std_out);
 	if (argv == 0 || std_in == -1 || std_out == -1)
 	{
-		if (argv != 0)
-			free_function(argv);
-		if (argv != NULL)
-			free_function(argv);
+		free_function(argv);
 		return (1);
 	}
 	dup2(std_in, 0);

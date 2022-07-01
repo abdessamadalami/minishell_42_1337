@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 15:00:26 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/05/19 08:44:45 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:57:17 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	free_function(char **str)
 	int	i;
 
 	i = 0;
+	if (str == 0)
+		return;
 	while (str[i])
 	{
 		free(str[i]);
