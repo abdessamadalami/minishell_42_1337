@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/07/01 07:59:56 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:16:33 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	handler_sig(int sig)
 {
 	if (e_st == 1)
 	{
+		printf("iam rere\n");
 		e_st = 1337;
+		close(0);
 	}
 	if (sig == SIGINT)
 	{
@@ -58,6 +60,7 @@ void	merge(t_arg *pa, t_list *env)
 	ft_lstclear(&list, del);
 }
 
+
 int	main(int ac, char **av, char **env)
 {
 	char	*s;
@@ -68,6 +71,7 @@ int	main(int ac, char **av, char **env)
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
+	sigaction(SIGQUIT, &c, 0);
 	mr = NULL;
 	(void)*av;
 	env_lst = c_env(env);
@@ -79,9 +83,19 @@ int	main(int ac, char **av, char **env)
 			if (!s)
 				break ;
 			if (s[0] == '\0')
+			{
+				free(s);
 				continue ;
+			}
+			
 			mr = ft_parsing(s,env_lst);
-			//exit(1);
+			while (mr != NULL)
+			{
+				printf("--[%s]\n", mr->data);
+				mr = mr->next;
+			}
+			exit(1);
+			//
 			if (mr != NULL)
 			{
 				merge(mr,env_lst);
@@ -89,13 +103,13 @@ int	main(int ac, char **av, char **env)
 			add_history(s);
 			// while (mr != NULL)
 			// {
-			// 	printf("--[%s\n", mr->data);
+			// 	printf("--[%s]\n", mr->data);
 			// 	mr = mr->next;
 			// }
 			// exit(1);
 			ftlstclear(&mr, free);
 			free(s);
-		//	system("leaks minishell");
+			system("leaks minishell");
 		}
 		return (0);
 	}

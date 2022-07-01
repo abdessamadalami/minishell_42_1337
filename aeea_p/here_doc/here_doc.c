@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 09:24:48 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/30 19:49:09 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:04:44 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static t_list	*here_statment(int *fd, t_list *list, t_list **fds, t_list *env)
 			*fd = 0;
 		}
 		if (ft_strncmp(list->content, "<<\0", 4) == 0)
-			if (here_docc(fd, list->next->content, env) == 1337)
-				*fd = 1337;
+			if (here_docc(fd, (list->next->content), env) == 1337)
+				return 0;
 		if (ft_strncmp(list->content, "<\0", 3) == 0)
 		{
 			input(fd, list->next->content);

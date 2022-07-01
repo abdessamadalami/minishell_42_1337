@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 09:46:29 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/30 20:50:08 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:10:25 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void	delete_here(t_list **lst)
 	list = *lst;
 	if (list != NULL && (ft_strncmp(list ->content, "<<\0", 4) == 0
 			|| ft_strncmp(list ->content, "<\0", 3) == 0))
+	{
 		*lst = list->next->next;
+	}
 	else
 		del_fun(list, lst);
 	if (*lst != NULL && check_redirec_d(*lst))
