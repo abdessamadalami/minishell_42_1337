@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 07:56:11 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 18:38:48 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:51:10 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	c_exit(char **args)
 		{
 			if (args[2] != 0)
 			{
+				printf("exit: too many arguments");
 				e_st = 1;
 				return ;
 			}

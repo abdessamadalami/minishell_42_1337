@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 07:32:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/30 22:05:11 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 09:17:06 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,35 +35,7 @@ void	ft_shift_plus(char *str)
 	str[index] = '\0';
 }
 
-/*
-	// printf("ptr %p\n", ptr);
-			// if (a == 1)//for remplace
-			// {
-			// 	str[ft_strlen(str)] = '=';
-			// 	tem = list->content;
-			// 	list->content = ft_strdup(str);
-			// 	free(tem);
-			// 	tem = 0;
-			// 	return (str);
-			// 	// list->content = a_one(&str, &ptr);
-			// 	// return (list->content);
-			// }
-			// else if (a == 2)// a= 2 for += var
-			// {
-			// 	str[ft_strlen(str)] = '=';
-			// 	if (ft_strchr(list->content, '=') == NULL)
-			// 		len--;
-			// 	list->content = ft_strjoin(list->content, str + len + 1);
-			// }
-			// else if (a == 5)//
-			// 	list->content = ft_strdup(str);
-			// else if (a == 3)// for dolar
-			// 	return (ptr + len + 1);
-			// ptr = 0;
-			// return (list->content);
-*/
-
-static int	non_arg(char *var, char **check, char **env_var, t_list *env)
+static int non_arg(char *var, char **check, char **env_var , t_list *env)
 {
 	int		re;
 
@@ -95,7 +67,7 @@ static int	add_replace(t_list *env, char *check, char *var, char *env_var)
 	char	*c;
 	int		p;
 
-	p = 0;
+	p = 1;
 	c = ft_strdup(env_var);
 	str_return = 0;
 	if (c[check - var - 1] == '+')

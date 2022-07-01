@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/30 22:03:53 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:09:16 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_var
 	int		*ids;
 	t_list	*fds_std_in;
 }	t_var;
-
+void	fr(t_list *fds);
 char	*ft_getenv(t_list *list, char *str, int a);
 int	print_listt(t_list *list, int a);
 void	handler_sig(int sig);

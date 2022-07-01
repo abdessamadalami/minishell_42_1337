@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:52:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/29 16:44:06 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:34:57 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,23 @@ void	handler_sig(int sig)
 
 int	main(int argc, char **argv, char **env)
 {	
+<<<<<<< HEAD
+    t_list *env_lst;
+	t_list *par;
+	struct sigaction c;
+	
+    c.sa_handler = &handler_sig;
+    c.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &c, 0);
+	char	*s;
+	char **str;
+=======
 	t_list				*env_lst;
 	t_list				*par;
 	struct sigaction	c;
 	char				*s;
 	char				**str;
+>>>>>>> 84484eb94e0cf532b7020084bde4bd229c18e0b3
 
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
@@ -64,8 +76,6 @@ int	main(int argc, char **argv, char **env)
 		str = 0;
 		free(s);
 		s = 0;
-		// ft_lstclear(&par, del);
-	
 		//system("leaks a.out");
 	}
 	return (0);

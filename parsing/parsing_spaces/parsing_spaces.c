@@ -38,9 +38,17 @@ void	parse_spaces_lastone(char *s, char **t, int *i, t_normsht *normsht)
 {
 	if (s[(*i) + 1] == '\0')
 	{
-		t[normsht->count] = ft_strjn(t[normsht->count],
-				ft_subtr(s, (normsht->init), (*i) + 1));
-		(*i)++;
+		if (s[*i] == ' ')
+			t[normsht->count] = ft_strjn(t[normsht->count],
+					ft_subtr(s, (normsht->init), (*i)));
+		else
+		{
+			t[normsht->count] = ft_strjn(t[normsht->count],
+					ft_subtr(s, (normsht->init), (*i) + 1));
+			(*i)++;
+		}
+		while (s[*i] == ' ' && s[*i] != '\0')
+			(*i)++;
 		return ;
 	}
 	t[normsht->count] = ft_strjn(t[normsht->count],

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/30 17:44:22 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 10:56:09 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ t_list	*here_doc_return(t_list **pars_il, t_list *env)
 	fds_std_in = 0;
 	fds_std_in = chec_for_here_doc(pars_il, env);
 	return (fds_std_in);
-}
+} 
+
 
 void	executing(t_list *pars_il, t_list **env)
 {
@@ -109,19 +110,7 @@ void	executing(t_list *pars_il, t_list **env)
 		if (pars_il == 0)
 			return ;
 	}
-	if (f_building(env, pars_il, &v_pipe) == 1)
-	{
-		if (fds != NULL)
-		{
-			ft_lstclear(&fds, del);
-			fds = 0;
-		}
-		return ;
-	}
-	pipe_excuting(&v_pipe, env, pars_il);
-	if (fds != NULL)
-	{
-		ft_lstclear(&fds, del);
-		fds = 0;
-	}
+	if (f_building(env, pars_il, &v_pipe) != 1)
+		pipe_excuting(&v_pipe, env, pars_il);
+	fr(fds);
 }

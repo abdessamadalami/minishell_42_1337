@@ -6,11 +6,16 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:33:22 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 19:27:16 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/06/30 22:22:59 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
+
+void	del(void *ptr)
+{
+	free(ptr);
+}
 
 void	ft_pwd(void)
 {
