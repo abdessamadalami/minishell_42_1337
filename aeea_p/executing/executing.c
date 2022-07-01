@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:40:34 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/07/01 07:09:23 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 10:56:09 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	executing(t_list *pars_il, t_list **env)
 {
 	int		i;
 	t_var	v_pipe;
+	t_list *fds;
 
 	i = 0;
 	v_pipe.a = dup(0);
@@ -99,7 +100,6 @@ void	executing(t_list *pars_il, t_list **env)
 	v_pipe.fd[1] = 1;
 	v_pipe.ids = 0;
 	v_pipe.fds_std_in = 0;
-	t_list *fds;
 	fds = 0;
 	if (check_redirec_list(pars_il))
 	{

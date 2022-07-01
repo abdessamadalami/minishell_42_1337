@@ -26,20 +26,19 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 	}
 }
 
-void handler_sig(int sig)
+void	handler_sig(int sig)
 {
 	if (e_st == 1)
 	{
 		e_st = 1337;
 	}
-	
 	if (sig == SIGINT)
-    {
+	{
 		printf("\n");
         /* rl_on_new_line();
         rl_replace_line("", 0);
         rl_redisplay();*/
-    }
+	}
 }
 
 void	merge(t_arg *pa, t_list *env)
@@ -93,6 +92,7 @@ int	main(int ac, char **av, char **env)
 			// 	printf("--[%s\n", mr->data);
 			// 	mr = mr->next;
 			// }
+			// exit(1);
 			ftlstclear(&mr, free);
 			free(s);
 		//	system("leaks minishell");

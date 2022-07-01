@@ -59,8 +59,6 @@ typedef struct s_arg
 	struct s_arg	*next;
 }	t_arg;
 
-
-
 // --------------------- parsing -------------------------//
 void	parse_quotes_fordq(char *s, char *t, int *i, int *j);////////update
 void	parse_quotes_forsq(char *s, char *t, int *i, int *j);
@@ -126,6 +124,7 @@ int		prefix_checker(char *s, char *prefix);
 int		ft_wildstrcmp(char *s1, char *suff, int x);
 char	*get_prefix(char *s);
 char	**get_suffix(char *s);
+int		checkk_suf(char *s, char **suffix, int j);
 void	fill_fileslist(t_arg **sfa, t_arg *node, char *s, int w);
 int		just_fileincrement(char *s, int i, int x);
 int		ft_index(char *s, char *needle);

@@ -73,7 +73,8 @@ int		redirect_output(char *std_out, char c);
 int		redirect_input(char *std_in);
 void	ft_merge_sort(t_list **list);
 void	mid_list(t_list *list, t_list **fast, t_list **slow);
-int		g_redirections(char *cmd, char *red, int *std_in, int *std_out); //we can addapt it 
+int		g_redirections(char *cmd, char *red,
+			int *std_in, int *std_out);//we can addapt it 
 void	ft_merge_sort_u(t_list *env);
 void	*f(void *ptr);
 void	del(void *ptr);
