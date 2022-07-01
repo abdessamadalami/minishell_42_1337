@@ -12,14 +12,15 @@
 
 #include "../excuting_headr.h"
 
-void fr(t_list *fds)
+void	fr(t_list *fds)
 {
 	if (fds != NULL)
 	{
-		ft_lstclear(&fds,del);
-		fds= 0;
+		ft_lstclear(&fds, del);
+		fds = 0;
 	}
-} 
+}
+
 int	pip_number(t_list *list)
 {
 	int		index;

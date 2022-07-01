@@ -40,8 +40,8 @@ static char	*getenv_statment(int a, char *content, char *str, int len)
 	}
 	// else if (a == 5)//for replace with out value
 	// 	content = ft_strdup(str);
-	else if (a == 3)// for dolar
-		return (content + len + 1);
+	// else if (a == 3)// for dolar
+	// 	return (content + len + 1);
 	return (content);
 }
 

@@ -58,6 +58,22 @@ void	merge(t_arg *pa, t_list *env)
 	ft_lstclear(&list, del);
 }
 
+int	check_s(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s[0] == '\0')
+		return (0);
+	while (s[i] != '\0')
+	{
+		if (s[i] != ' ')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int ac, char **av, char **env)
 {
 	char				*s;
@@ -78,7 +94,7 @@ int	main(int ac, char **av, char **env)
 			s = readline("$>prompt ");
 			if (!s)
 				break ;
-			if (s[0] == '\0')
+			if (!check_s(s))
 				continue ;
 			mr = ft_parsing(s, env_lst);
 			if (mr != NULL)
@@ -86,6 +102,7 @@ int	main(int ac, char **av, char **env)
 			add_history(s);
 			ftlstclear(&mr, free);
 			free(s);
+			system("leaks minishell");
 		}
 	}
 	return (0);
