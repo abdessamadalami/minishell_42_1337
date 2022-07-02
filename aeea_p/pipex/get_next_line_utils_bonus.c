@@ -87,9 +87,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (0);
 	ft_strcat_p(ptr, s1, 0);
 	ft_strcat_p(ptr, s2, 1);
-	// free(s1);
-	// free(s2);
-	// s1 = 0;
-	// s2 = 0;
 	return (ptr);
 }

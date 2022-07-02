@@ -71,3 +71,17 @@ int	ftlstsize(t_arg *lst)
 	}
 	return (count);
 }
+
+void	ftlstclear(t_arg **lst, void (*del)(void	*))
+{
+	t_arg	*list;
+
+	list = *lst;
+	while (*lst != NULL)
+	{
+		*lst = list->next;
+		del(list->data);
+		free(list);
+		list = *lst;
+	}
+}

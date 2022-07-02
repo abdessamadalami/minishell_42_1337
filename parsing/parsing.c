@@ -27,13 +27,29 @@ void	ft_pfree(t_arg **mr, t_arg **arg, t_gg **gg, char ***line)
 	}
 }
 
+void	ftlstclearrt(t_list **lst, void (*del)(void	*))
+{
+	t_list	*list;
+
+	list = *lst;
+	while (*lst != NULL)
+	{
+		*lst = list->next;
+		del(list->content);
+		free(list);
+		list = *lst;
+	}
+}
+
 t_arg	*ft_parsing(char *s, t_list *env_lst)
 {
 	t_arg	*arg;
 	t_arg	*mr;
 	t_arg	*dv;
 	t_arg	*dg;
+//	t_list	*yo;
 
+//	yo = env_lst;
 	arg = parsing_spaces(s);
 	if (!check_syntax(arg))
 	{
@@ -48,5 +64,10 @@ t_arg	*ft_parsing(char *s, t_list *env_lst)
 	ftlstclear(&arg, free);
 	ftlstclear(&dg, free);
 	ftlstclear(&mr, free);
+//	ftlstclearrt(&yo, free);
+//	free(yo);
+	// env_lst = 0;
+	// system("leaks minishell");
+	// exit(1);
 	return (dv);
 }

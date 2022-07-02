@@ -12,20 +12,6 @@
 
 #include "minishell.h"
 
-void	ftlstclear(t_arg **lst, void (*del)(void	*))
-{
-	t_arg	*list;
-
-	list = *lst;
-	while (*lst != NULL)
-	{
-		*lst = list->next;
-		del(list->data);
-		free(list);
-		list = *lst;
-	}
-}
-
 void	handler_sig(int sig)
 {
 	if (e_st == 1)
@@ -57,22 +43,6 @@ void	merge(t_arg *pa, t_list *env)
 	}
 	executing(list, &env);
 	ft_lstclear(&list, del);
-}
-
-int	check_s(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (s[0] == '\0')
-		return (0);
-	while (s[i] != '\0')
-	{
-		if (s[i] != ' ')
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 void	sigg(void)
@@ -109,18 +79,14 @@ int	main(int ac, char **av, char **env)
 			if (!s)
 				break ;
 			if (!check_s(s))
-			{
-				free(s);
 				continue ;
-			}
 			mr = ft_parsing(s, env_lst);
+			// system("leaks minishell");
+			// exit(1);
 			if (mr != NULL)
 				merge(mr, env_lst);
 			add_history(s);
-			ftlstclear(&mr, free);
-			free(s);
-		//	system("leaks minishell");
-			// exit(1);
+			ft_freelistands(mr, s);
 		}
 	}
 	return (0);

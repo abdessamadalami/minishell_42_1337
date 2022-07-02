@@ -158,6 +158,7 @@ void	addbacki_sf(t_arg **sfa, char **t);
 char	*ft_itoa(int n);
 int		is_there_dq(char *s);
 void	ft_putstr(char *s);
+int		check_s(char *s);
 //>>	dollar handling:
 // int		checki_checki(char *s);
 // int		check_dollar_mark(char *s);

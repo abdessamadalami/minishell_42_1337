@@ -45,7 +45,7 @@ static int	here_docc(int *fd, char *str, t_list *env)
 		return (1337);
 	return (0);
 }
-//! file input q// the content in the fd vaiable is the the fd of the last one 
+//! file input q// the content in the fd vaiable is the the fd of the last one
 
 static void	input(int *fd, char *str)
 {

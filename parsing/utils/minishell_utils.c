@@ -85,3 +85,23 @@ char	**ft_msplit(char *s, char c)
 		return (0);
 	return (chek_and_fill(t, s, c));
 }
+
+int	check_s(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s[0] == '\0')
+	{
+		free(s);
+		return (0);
+	}
+	while (s[i] != '\0')
+	{
+		if (s[i] != ' ')
+			return (1);
+		i++;
+	}
+	free(s);
+	return (0);
+}

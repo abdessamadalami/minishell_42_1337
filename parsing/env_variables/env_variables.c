@@ -98,9 +98,11 @@ t_arg	*check_envvars(t_arg *arg, t_list *env_lst)
 {
 	t_arg	*sfa;
 	char	*t;
+//	t_list	*yo;
 
 	sfa = NULL;
 	t = NULL;
+//	yo = env_lst;
 	while (arg != NULL)
 	{
 		if (!(arg->data[0] == '$' && arg->data[1] == '\0')
