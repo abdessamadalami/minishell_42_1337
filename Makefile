@@ -51,10 +51,11 @@ BOBJS = $(BSRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror  #-fsanitize=address -g
 
 all: $(NAME)
-
+export LDFLAGS="-L/goinfre/ael-asri/.brew/opt/readline/lib"
+export CPPFLAGS="-I/goinfre/ael-asri/.brew/opt/readline/include"
 $(NAME): $(OBJS)
 		cd aeea_p ; make
-		cc $(CFLAGS) $(OBJS) aeea_p/minishell.a -lreadline -L/goinfre/$(USER)/.brew/opt/readline/lib -I/goinfre/$(USER)/.brew/opt/readline/include -o $(NAME)
+		cc $(CFLAGS) $(OBJS) aeea_p/minishell.a -lreadline -L /goinfre/$(USER)/.brew/opt/readline/lib -I /goinfre/$(USER)/.brew/opt/readline/include -o $(NAME)
 clean:
 	cd aeea_p ; rm minishell.a ;make clean
 	rm -f $(OBJS)

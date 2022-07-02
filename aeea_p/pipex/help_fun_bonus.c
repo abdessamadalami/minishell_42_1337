@@ -61,7 +61,7 @@ void	free_function(char **str)
 
 	i = 0;
 	if (str == 0)
-		return;
+		return ;
 	while (str[i])
 	{
 		free(str[i]);

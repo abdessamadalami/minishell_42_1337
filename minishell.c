@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/07/02 11:59:24 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 13:49:16 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	handler_sig(int sig)
 	if (sig == SIGINT)
 	{
 		printf("\n");
-        /* rl_on_new_line();
-        rl_replace_line("", 0);
-        rl_redisplay();*/
+		rl_on_new_line();
+	//	rl_replace_line("", 0);
+		//rl_redisplay();
 	}
 }
 
@@ -78,19 +78,31 @@ int	check_s(char *s)
 	return (0);
 }
 
-int	main(int ac, char **av, char **env)
+void	sigg(void)
 {
-	char				*s;
-	t_arg				*mr;
-	t_list				*env_lst;
 	struct sigaction	c;
 
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c ,0);
 	sigaction(SIGQUIT, &c, 0);
+}
+
+void	ft_freelistands(t_arg *mr, char *s)
+{
+	ftlstclear(&mr, free);
+	free(s);
+}
+
+int	main(int ac, char **av, char **env)
+{
+	char				*s;
+	t_arg				*mr;
+	t_list				*env_lst;
+
 	mr = NULL;
 	(void)*av;
+	sigg();
 	env_lst = c_env(env);
 	if (ac == 1)
 	{
@@ -105,19 +117,8 @@ int	main(int ac, char **av, char **env)
 				continue ;
 			}
 			mr = ft_parsing(s, env_lst);
-			// while (mr != NULL)
-			// {
-			// 	printf("--[%s]\n", mr->data);
-			// 	mr = mr->next;
-			// }
-			// exit(1);
-			if (mr != NULL)
-				merge(mr, env_lst);
-			add_history(s);
-			
-			ftlstclear(&mr, free);
-			free(s);
 			system("leaks minishell");
+			// exit(1);
 		}
 	}
 	return (0);

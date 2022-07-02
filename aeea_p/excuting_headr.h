@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef EXCUTING_HEADR_H
-#define EXCUTING_HEADR_H
+# define EXCUTING_HEADR_H
 
 # include <stdio.h>
 # include "pipex/pipex_42_1337.h"
@@ -40,7 +40,7 @@ typedef struct s_var
 }	t_var;
 void	fr(t_list *fds);
 char	*ft_getenv(t_list *list, char *str, int a);
-int	print_listt(t_list *list, int a);
+int		print_listt(t_list *list, int a);
 void	handler_sig(int sig);
 int		chiled_processe(t_list *pars_il, t_list *env, int std_in, int std_out);
 void	pipe_excuting(t_var *v_pipe, t_list **env, t_list *pars_il);
