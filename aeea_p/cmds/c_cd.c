@@ -59,8 +59,7 @@ int	c_cd(t_list *env, char **argv )
 		new_pwd = ft_strdup("PWD=//");
 	else
 		new_pwd = ft_strjoin_n(ft_strdup("PWD="), new_pwd);
-	old_pwd = ft_strjoin_n( ft_strdup("OLDPWD="), old_pwd);
+	old_pwd = ft_strjoin_n(ft_strdup("OLDPWD="), old_pwd);
 	export_path(new_pwd, old_pwd, env);
-
 	return (1);
 }

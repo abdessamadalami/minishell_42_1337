@@ -16,7 +16,7 @@ void	fr(t_list *fds)
 {
 	if (fds != NULL)
 	{
-		ft_lstclear(&fds,del);
+		ft_lstclear(&fds, del);
 		fds = 0;
 	}
 }

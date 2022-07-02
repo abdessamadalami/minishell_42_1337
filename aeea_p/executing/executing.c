@@ -103,7 +103,7 @@ void	executing(t_list *pars_il, t_list **env)
 	if (check_redirec_list(pars_il))
 	{
 		v_pipe.fds_std_in = here_doc_return(&pars_il, *env);
-		if (pars_il == 0 ||v_pipe.fds_std_in == 0)
+		if (pars_il == 0 || v_pipe.fds_std_in == 0)
 		{
 			if (e_st == 1337)
 			{
@@ -111,7 +111,6 @@ void	executing(t_list *pars_il, t_list **env)
 				e_st = 1;
 				return ;
 			}
-			
 			fr(pars_il);
 			fr(v_pipe.fds_std_in);
 			return ;

@@ -61,11 +61,22 @@ char	**make_argv(t_list *list, t_list *env, int *std_in, int *std_out)
 {
 	char	*str;
 	int		bol;
+	char	*ptr;
+	int		bol2;
 
 	str = 0;
 	bol = 1;
+	bol2 = 0;
 	while (list)
 	{
+		ptr = list->content;
+		if (ft_strncmp(ptr, "-la", 4) != 0)
+			bol2 = 1;
+		if (ptr[0] == '.' && bol2)
+		{
+			list = list->next;
+			continue ;
+		}
 		if (statment_f(list->content, env))
 			break ;
 		if (check_redirec(list ->content))

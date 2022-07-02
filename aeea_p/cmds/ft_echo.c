@@ -52,16 +52,12 @@ int	ft_echo_o(char **av)
 				printf("%s", av[i]);
 				if (av[i + 1] != 0)
 					printf(" ");
-			//	free(av[i]);
 				i++;
 			}
-		//	free(av);
 			if (f)
 				return (1);
 		}
 	}
 	printf("\n");
-	// system("leaks minishell");
-	// exit(1);
 	return (1);
 }

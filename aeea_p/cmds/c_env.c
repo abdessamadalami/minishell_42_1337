@@ -12,6 +12,7 @@
 
 #include "../excuting_headr.h"
 
+// this is the environment for cmd env and for the current prossece 
 t_list	*env_list(char **env)
 {
 	int		index;
@@ -31,6 +32,5 @@ t_list	*env_list(char **env)
 
 t_list	*c_env(char **env)
 {
-	// this is the environment for cmd env and for the current prossece 
 	return (env_list(env));
 }

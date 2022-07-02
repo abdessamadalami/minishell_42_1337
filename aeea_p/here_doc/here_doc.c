@@ -68,7 +68,7 @@ static t_list	*here_statment(int *fd, t_list *list, t_list **fds, t_list *env)
 		}
 		if (ft_strncmp(list->content, "<<\0", 4) == 0)
 			if (here_docc(fd, (list->next->content), env) == 1337)
-				return 0;
+				return (0);
 		if (ft_strncmp(list->content, "<\0", 3) == 0)
 		{
 			input(fd, list->next->content);

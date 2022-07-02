@@ -21,7 +21,6 @@ void	print_list_x(t_list **a)
 	ptr = *a;
 	p = 0;
 	c = 0;
-	//start from the beginning
 	while (ptr)
 	{
 		if (p != 0 && c != 0)
@@ -46,7 +45,6 @@ t_list	*mergesortedlist(t_list *lst1, t_list *lst2)
 	t_list	*result;
 
 	result = NULL;
-	// Base Cases
 	if (lst1 == NULL)
 		return (lst2);
 	else if (lst2 == NULL)
@@ -107,31 +105,3 @@ void	ft_merge_sort_u(t_list *env)
 	ft_merge_sort(&new_list);
 	print_list_x(&new_list);
 }
-
-/*
-int main()
-{
-	t_list *a;
-	t_list *node;
-    t_list *n;
-	int *ptr;
-    char  **tab1;
-    tab1 = ft_split("ABDESSA ELOULI SULTAN ALAMI", ' ');
-    int i = 0;
-    a = ft_lstnew(ft_strdup("1337"));
-    while (tab1[i])
-	{
-        node = ft_lstnew(ft_strdup(tab1[i]));
-      //  printf("the content of node is = %d \n", *(int *)a -> content);
-        ft_lstadd_back(&a,node);
-        i++;
-    }
-	print_list(a);
-    t_list *new_list;
-    new_list = ft_lstmap(a, f, del);
-   ft_merge_sort(&new_list);
-   print_list(a);
-    print_list(new_list);
-   // printf("\nthe content of node is = %d \n", *(int *)a -> content);//static variable
-}
-*/

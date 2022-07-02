@@ -16,11 +16,11 @@
 // unset for delet var in env variables
 // export for inssrt a local var to environment
 // env is the environment variables in environment
-// best tutorial for this in https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux
+
 static void	help_un(t_list *node, t_list *list, t_list *lst)
 {
 	char	*ptr;
-	t_list *temp;
+	t_list	*temp;
 
 	ptr = 0;
 	if (node == 0)
@@ -32,15 +32,11 @@ static void	help_un(t_list *node, t_list *list, t_list *lst)
 	}
 	else
 	{
-		// printf("JKDHSF  %p  \n" , lst->next);
 		temp = lst;
-		node->next=lst->next;
-		// printf(" %p  %p %p  %p \n" ,node->next, lst->next , node , temp);
+		node->next = lst->next;
 		free(lst->content);
 		free(temp);
 		temp = 0;
-		//lst->content = NULL;
-		
 	}
 }
 
@@ -58,18 +54,6 @@ void	c_unset(t_list *list, char *str)
 		if (ft_strncmp(str, lst->content, ft_strlen(str)) == 0)
 		{
 			help_un(node, list, lst);
-			// if (node == 0)
-			// {
-			// 	ptr = list->content;
-			// 	list = list->next;
-			// 	free(ptr);
-			// 	ptr = 0;
-			// }
-			// else
-			// {
-			// 	node->next = lst->next;
-			// 	free(lst -> content);
-			// }
 			break ;
 		}
 		node = lst;

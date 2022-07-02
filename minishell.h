@@ -117,6 +117,7 @@ int		normal_case(t_list *env_lst, char **t, char *s, int *i);
 int		mult_case(char **t, int count);
 void	ft_lock(char c, int *lock, int *dlock);
 void	fill_withenv(char **t, char *env, int *j);
+char	*get_env(t_list *env_lst, char *s);
 
 //>>	wildcard
 void	get_files(t_arg **sfa, char *s, char **suffix, char *prefix);

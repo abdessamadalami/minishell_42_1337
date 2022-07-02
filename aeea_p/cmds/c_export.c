@@ -49,7 +49,7 @@ static int	non_arg(char *var, char **check, char **env_var, t_list *env)
 	*check = ft_strchr(var, '=');
 	if (ft_strncmp(var, "=\0", 3) == 0)
 	{
-		printf("error: `=': not a valid identifier \n");// we need cmd
+		printf("error: `=': not a valid identifier \n");
 		return (1);
 	}
 	if (*check == NULL )

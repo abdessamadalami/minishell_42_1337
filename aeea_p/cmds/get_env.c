@@ -34,7 +34,7 @@ static char	*getenv_statment(int a, char *content, char *str, int len)
 	if (a == 1)
 	{
 		str[ft_strlen(str)] = '=';
-		 free(content);
+		free(content);
 		return (str);
 	}
 	else if (a == 2)
@@ -47,10 +47,6 @@ static char	*getenv_statment(int a, char *content, char *str, int len)
 		free(tem);
 		free(str);
 	}
-	// else if (a == 5)//for replace with out value
-	// 	content = ft_strdup(str);
-	// else if (a == 3)// for dolar
-	// 	return (content + len + 1);
 	return (content);
 }
 
