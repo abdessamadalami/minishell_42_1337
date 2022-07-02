@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 09:24:48 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/07/01 18:04:44 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:49:42 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int	here_docc(int *fd, char *str, t_list *env)
 		return (1337);
 	return (0);
 }
-//! file input q// the content in the fd vaiable is the the fd of the last one 
 
 static void	input(int *fd, char *str)
 {

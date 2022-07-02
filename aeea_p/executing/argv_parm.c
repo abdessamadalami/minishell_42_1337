@@ -6,30 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:11:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/29 18:13:52 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 20:02:33 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../excuting_headr.h"
-
-static int	redir(t_list **list, int *bol, int *std_in, int *std_out)
-{
-	int	fd;
-
-	fd = g_redirections((*list)->next->content,
-			(*list)->content, std_in, std_out);
-	if (fd == -1)
-		return (-1);
-	if ((*list)->next->next == 0)
-	{
-		*list = 0;
-		return (2);
-	}
-	else
-		*list = (*list)->next;
-	*bol = 0;
-	return (1);
-}
 
 static void	str_f(char **str, char *content)
 {
@@ -37,11 +18,19 @@ static void	str_f(char **str, char *content)
 	*str = ft_strjoin_n(*str, ft_strdup(" "));
 }
 
-static int	statment_f(char *content, t_list *env)
+static int	statment_f(int *bol2, char *content, t_list *env, t_list **list)
 {
-	if (env_var(content, &env, 0)
-		&& ft_strncmp(content, "$?\0", 4))
-		content = env_var(content, &env, 3);
+	env = 0;
+	if (ft_strncmp(content, "-la", 4) != 0)
+		*bol2 = 1;
+	if (content[0] == '.' && *bol2)
+	{
+		*list = (*list)->next;
+		return (-13);
+	}
+	// if (env_var(content, &env, 0)
+	// 	&& ft_strncmp(content, "$?\0", 4))
+	// 	content = env_var(content, &env, 3);
 	if (check_for_pipe(content))
 		return (1);
 	return (0);
@@ -57,39 +46,36 @@ static char	**sp_str(char *str)
 	return (argv);
 }
 
+void	init_var(t_var1 *nor)
+{
+	nor->str = 0;
+	nor->bol = 1;
+	nor->bol2 = 0;
+}
+
 char	**make_argv(t_list *list, t_list *env, int *std_in, int *std_out)
 {
-	char	*str;
-	int		bol;
-	char	*ptr;
-	int		bol2;
+	t_var1	nor;
 
-	str = 0;
-	bol = 1;
-	bol2 = 0;
+	init_var(&nor);
 	while (list)
 	{
-		ptr = list->content;
-		if (ft_strncmp(ptr, "-la", 4) != 0)
-			bol2 = 1;
-		if (ptr[0] == '.' && bol2)
-		{
-			list = list->next;
+		nor.rturnv = statment_f(&nor.bol2, list->content, env, &list);
+		if (nor.rturnv == -13)
 			continue ;
-		}
-		if (statment_f(list->content, env))
+		else if (nor.rturnv == 1)
 			break ;
 		if (check_redirec(list ->content))
 		{
-			redir(&list, &bol, std_in, std_out);
+			redir(&list, &nor.bol, std_in, std_out);
 			if (list == 0 || *std_in == -1)
 				break ;
 		}
 		else
-			bol = 1;
-		if (bol == 1)
-			str_f(&str, list -> content);
+			nor.bol = 1;
+		if (nor.bol == 1)
+			str_f(&nor.str, list->content);
 		list = list -> next;
 	}
-	return (sp_str(str));
+	return (sp_str(nor.str));
 }

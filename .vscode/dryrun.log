@@ -1,5 +1,38 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/ael-oual/Desktop/minishell_42_1337'
-make: Nothing to be done for `all'.
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o minishell.o minishell.c
+ 
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/minishell_utils.o parsing/utils/minishell_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/minishell_utils2.o parsing/utils/minishell_utils2.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/minishell_utils3.o parsing/utils/minishell_utils3.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/minishell_list_utils.o parsing/utils/minishell_list_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/minishell_list_utils2.o parsing/utils/minishell_list_utils2.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/errors/minishell_erroring.o parsing/errors/minishell_erroring.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/splits/sosplit.o parsing/utils/splits/sosplit.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/splits/dosplit.o parsing/utils/splits/dosplit.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/splits/wildsplit.o parsing/utils/splits/wildsplit.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/splits/splits_utils.o parsing/utils/splits/splits_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/parsing_utils.o parsing/utils/parsing_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/utils/parsing_utils2.o parsing/utils/parsing_utils2.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing.o parsing/parsing.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_spaces/parsing_spaces.o parsing/parsing_spaces/parsing_spaces.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_spaces/parsing_spaces_utils.o parsing/parsing_spaces/parsing_spaces_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_wildcard/parsing_wildcard.o parsing/parsing_wildcard/parsing_wildcard.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_wildcard/parsing_wildcard_utils.o parsing/parsing_wildcard/parsing_wildcard_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_wildcard/parsing_wildcard_utils2.o parsing/parsing_wildcard/parsing_wildcard_utils2.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_quotes/parsing_quotes.o parsing/parsing_quotes/parsing_quotes.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_quotes/parsing_quotes_utils.o parsing/parsing_quotes/parsing_quotes_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_so/parsing_soperators.o parsing/parsing_so/parsing_soperators.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/parsing_so/parsing_soperators_utils.o parsing/parsing_so/parsing_soperators_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/env_variables/env_variables.o parsing/env_variables/env_variables.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/env_variables/env_variables_utils.o parsing/env_variables/env_variables_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/env_variables/env_variables_utils2.o parsing/env_variables/env_variables_utils2.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/syntax_checking/parsing_syntax.o parsing/syntax_checking/parsing_syntax.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/syntax_checking/check_pip/pip_syntax.o parsing/syntax_checking/check_pip/pip_syntax.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/syntax_checking/check_qt/qt_syntax.o parsing/syntax_checking/check_qt/qt_syntax.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/syntax_checking/check_qt/qt_syntax_utils.o parsing/syntax_checking/check_qt/qt_syntax_utils.c
+cc -Wall -Wextra -Werror   "-I/goinfre/ael-asri/.brew/opt/readline/include"  -c -o parsing/syntax_checking/check_red/red_syntax.o parsing/syntax_checking/check_red/red_syntax.c
+cd aeea_p ; make
+cc -Wall -Wextra -Werror   minishell.o parsing/utils/minishell_utils.o parsing/utils/minishell_utils2.o parsing/utils/minishell_utils3.o parsing/utils/minishell_list_utils.o parsing/utils/minishell_list_utils2.o parsing/errors/minishell_erroring.o parsing/utils/splits/sosplit.o parsing/utils/splits/dosplit.o parsing/utils/splits/wildsplit.o parsing/utils/splits/splits_utils.o parsing/utils/parsing_utils.o parsing/utils/parsing_utils2.o parsing/parsing.o parsing/parsing_spaces/parsing_spaces.o parsing/parsing_spaces/parsing_spaces_utils.o parsing/parsing_wildcard/parsing_wildcard.o parsing/parsing_wildcard/parsing_wildcard_utils.o parsing/parsing_wildcard/parsing_wildcard_utils2.o parsing/parsing_quotes/parsing_quotes.o parsing/parsing_quotes/parsing_quotes_utils.o parsing/parsing_so/parsing_soperators.o parsing/parsing_so/parsing_soperators_utils.o parsing/env_variables/env_variables.o parsing/env_variables/env_variables_utils.o parsing/env_variables/env_variables_utils2.o parsing/syntax_checking/parsing_syntax.o parsing/syntax_checking/check_pip/pip_syntax.o parsing/syntax_checking/check_qt/qt_syntax.o parsing/syntax_checking/check_qt/qt_syntax_utils.o parsing/syntax_checking/check_red/red_syntax.o aeea_p/minishell.a -lreadline -L /goinfre/ael-oual/.brew/opt/readline/lib -I /goinfre/ael-oual/.brew/opt/readline/include -o minishell
 make: Leaving directory `/Users/ael-oual/Desktop/minishell_42_1337'
  

@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:41:41 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/07/01 07:09:16 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:47:31 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,18 @@ typedef struct s_var
 	int		*ids;
 	t_list	*fds_std_in;
 }	t_var;
+
+typedef struct s_var1
+{
+	char	*str;
+	int		bol;
+	int		rturnv;
+	int		bol2;
+}	t_var1;
+
+int		f_building(t_list **env, t_list *pars_il, t_var *v_pipe);
 void	fr(t_list *fds);
+int		redir(t_list **list, int *bol, int *std_in, int *std_out);
 char	*ft_getenv(t_list *list, char *str, int a);
 int		print_listt(t_list *list, int a);
 void	handler_sig(int sig);
@@ -92,7 +103,7 @@ int		check_redirec(char *red);
 char	*get_path_env(t_list *env, char *cmd);
 int		check_for_pipe(char *str);
 int		chec_for_cmds(char **argv, t_list *env);
-void	executing(t_list *pars_il, t_list **env);
+int		executing(t_list *pars_il, t_list **env);
 t_list	*make_list_fork(t_list *list);
 int		chec_for_pipe(t_list *list);
 char	**make_argv(t_list *list, t_list *env, int *std_in, int *std_out);
