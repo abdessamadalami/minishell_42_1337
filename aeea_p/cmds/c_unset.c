@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 07:22:59 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/27 18:40:10 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 09:29:35 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 static void	help_un(t_list *node, t_list *list, t_list *lst)
 {
 	char	*ptr;
+	t_list *temp;
 
 	ptr = 0;
 	if (node == 0)
@@ -31,8 +32,15 @@ static void	help_un(t_list *node, t_list *list, t_list *lst)
 	}
 	else
 	{
-		node->next = lst->next;
+		// printf("JKDHSF  %p  \n" , lst->next);
+		temp = lst;
+		node->next=lst->next;
+		// printf(" %p  %p %p  %p \n" ,node->next, lst->next , node , temp);
 		free(lst->content);
+		free(temp);
+		temp = 0;
+		//lst->content = NULL;
+		
 	}
 }
 

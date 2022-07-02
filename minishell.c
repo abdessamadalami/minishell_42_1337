@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/07/01 23:20:53 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 11:59:24 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*))
 
 void	handler_sig(int sig)
 {
+	if (sig == SIGQUIT)
+		e_st = 131;
 	if (e_st == 1)
 	{
 		printf("iam rere\n");
@@ -85,7 +87,7 @@ int	main(int ac, char **av, char **env)
 
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
-	sigaction(SIGINT, &c, 0);
+	sigaction(SIGINT, &c ,0);
 	sigaction(SIGQUIT, &c, 0);
 	mr = NULL;
 	(void)*av;
@@ -103,15 +105,16 @@ int	main(int ac, char **av, char **env)
 				continue ;
 			}
 			mr = ft_parsing(s, env_lst);
-			if (mr != NULL)
-				merge(mr, env_lst);
-			add_history(s);
 			// while (mr != NULL)
 			// {
 			// 	printf("--[%s]\n", mr->data);
 			// 	mr = mr->next;
 			// }
 			// exit(1);
+			if (mr != NULL)
+				merge(mr, env_lst);
+			add_history(s);
+			
 			ftlstclear(&mr, free);
 			free(s);
 			system("leaks minishell");
