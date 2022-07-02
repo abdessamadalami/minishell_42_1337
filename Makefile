@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ael-asri <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 14:09:14 by ael-asri          #+#    #+#              #
-#    Updated: 2022/06/30 14:09:18 by ael-asri         ###   ########.fr        #
+#    Updated: 2022/07/01 17:04:17 by ael-oual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ OBJS = $(SRCS:.c=.o)
 
 BOBJS = $(BSRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror  #-fsanitize=address -g
 
 all: $(NAME)
 export LDFLAGS="-L/goinfre/ael-asri/.brew/opt/readline/lib"

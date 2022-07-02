@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:12:50 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/07/01 07:09:48 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 16:09:12 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ void	fr(t_list *fds)
 {
 	if (fds != NULL)
 	{
+<<<<<<< HEAD
+		ft_lstclear(&fds,del);
+=======
 		ft_lstclear(&fds, del);
+>>>>>>> 6d4a8f2981c624f0d23d576c3403dc793bdae9cf
 		fds = 0;
 	}
 }

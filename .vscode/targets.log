@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Fri Jul  1 07:03:22 2022
+# Make data base, printed on Fri Jul  1 21:50:21 2022
 
 # Variables
 
@@ -33,7 +32,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 51)
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror  
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # makefile (from `Makefile', line 15)
@@ -43,11 +42,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 47)
 OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000jj00004c8/T/vscode-ipc-b42770e6-c2fe-4753-b5ca-65e19e50a729.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000jj00004c8/T/vscode-ipc-fe264d90-9461-4537-aae0-eea00cd55d64.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.P3nyNhbDvt/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.6qv2NiEbRb/Render
 # environment
 PATH = /goinfre/ael-oual//.brew/bin:/Users/ael-oual/goinfre/.brew/bin:/goinfre/ael-oual//.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -61,7 +60,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.2cvvcCOc9o/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.vlqnbZl4Dc/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -93,7 +92,6 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
- 
 XPC_FLAGS = 0x0
 # default
 MAKE = $(MAKE_COMMAND)
@@ -150,7 +148,7 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 18789
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -162,7 +160,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 96915
+VSCODE_PID = 3236
 # variable set hash-table stats:
 # Load=75/1024=7%, Rehash=0, Collisions=6/103=6%
 
@@ -172,9 +170,9 @@ VSCODE_PID = 96915
 
 # Directories
 
-# . (device 16777227, inode 5066227): 18 files, no impossibilities.
+# . (device 16777227, inode 5066227): 13 files, no impossibilities.
 
-# 18 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -185,7 +183,7 @@ VSCODE_PID = 96915
 # Not a target:
 parsing/utils/splits/sosplit.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -194,7 +192,7 @@ parsing/utils/splits/sosplit.o:
 # Not a target:
 parsing/utils/minishell_list_utils2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -203,7 +201,7 @@ parsing/utils/minishell_list_utils2.o:
 # Not a target:
 parsing/syntax_checking/check_qt/qt_syntax.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -222,7 +220,7 @@ all: minishell
 # Not a target:
 parsing/syntax_checking/check_red/red_syntax.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -231,7 +229,7 @@ parsing/syntax_checking/check_red/red_syntax.o:
 # Not a target:
 parsing/env_variables/env_variables.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -245,7 +243,7 @@ parsing/env_variables/env_variables.o:
 # Not a target:
 parsing/parsing_quotes/parsing_quotes.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -254,7 +252,7 @@ parsing/parsing_quotes/parsing_quotes.o:
 # Not a target:
 parsing/env_variables/env_variables_utils2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -269,7 +267,8 @@ parsing/env_variables/env_variables_utils2.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 20:51:57
+#  Last modified 2022-07-01 17:04:17
+ 
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -278,7 +277,7 @@ Makefile:
 # Not a target:
 parsing/utils/splits/dosplit.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -287,7 +286,7 @@ parsing/utils/splits/dosplit.o:
 # Not a target:
 parsing/utils/minishell_utils2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -296,7 +295,7 @@ parsing/utils/minishell_utils2.o:
 # Not a target:
 parsing/utils/parsing_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -304,7 +303,7 @@ parsing/utils/parsing_utils.o:
 
 minishell: minishell.o parsing/utils/minishell_utils.o parsing/utils/minishell_utils2.o parsing/utils/minishell_utils3.o parsing/utils/minishell_list_utils.o parsing/utils/minishell_list_utils2.o parsing/errors/minishell_erroring.o parsing/utils/splits/sosplit.o parsing/utils/splits/dosplit.o parsing/utils/splits/wildsplit.o parsing/utils/splits/splits_utils.o parsing/utils/parsing_utils.o parsing/utils/parsing_utils2.o parsing/parsing.o parsing/parsing_spaces/parsing_spaces.o parsing/parsing_spaces/parsing_spaces_utils.o parsing/parsing_wildcard/parsing_wildcard.o parsing/parsing_wildcard/parsing_wildcard_utils.o parsing/parsing_wildcard/parsing_wildcard_utils2.o parsing/parsing_quotes/parsing_quotes.o parsing/parsing_quotes/parsing_quotes_utils.o parsing/parsing_so/parsing_soperators.o parsing/parsing_so/parsing_soperators_utils.o parsing/env_variables/env_variables.o parsing/env_variables/env_variables_utils.o parsing/env_variables/env_variables_utils2.o parsing/syntax_checking/parsing_syntax.o parsing/syntax_checking/check_pip/pip_syntax.o parsing/syntax_checking/check_qt/qt_syntax.o parsing/syntax_checking/check_qt/qt_syntax_utils.o parsing/syntax_checking/check_red/red_syntax.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-30 22:32:24
+#  Last modified 2022-07-01 21:01:51
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -317,7 +316,7 @@ minishell: minishell.o parsing/utils/minishell_utils.o parsing/utils/minishell_u
 # Not a target:
 minishell.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:18
+#  Last modified 2022-07-01 18:39:15
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -326,7 +325,7 @@ minishell.o:
 # Not a target:
 parsing/parsing_wildcard/parsing_wildcard_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -345,7 +344,7 @@ fclean: clean
 # Not a target:
 parsing/parsing_spaces/parsing_spaces_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -354,7 +353,7 @@ parsing/parsing_spaces/parsing_spaces_utils.o:
 # Not a target:
 parsing/utils/minishell_list_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -367,10 +366,9 @@ parsing/utils/minishell_list_utils.o:
 #  File has not been updated.
 
 # Not a target:
- 
 parsing/parsing_so/parsing_soperators_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -379,7 +377,7 @@ parsing/parsing_so/parsing_soperators_utils.o:
 # Not a target:
 parsing/utils/splits/wildsplit.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -388,7 +386,7 @@ parsing/utils/splits/wildsplit.o:
 # Not a target:
 parsing/syntax_checking/check_pip/pip_syntax.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -397,7 +395,7 @@ parsing/syntax_checking/check_pip/pip_syntax.o:
 # Not a target:
 parsing/parsing.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -422,7 +420,7 @@ clean:
 # Not a target:
 parsing/utils/splits/splits_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -431,7 +429,7 @@ parsing/utils/splits/splits_utils.o:
 # Not a target:
 parsing/syntax_checking/check_qt/qt_syntax_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -440,7 +438,7 @@ parsing/syntax_checking/check_qt/qt_syntax_utils.o:
 # Not a target:
 parsing/env_variables/env_variables_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -449,7 +447,7 @@ parsing/env_variables/env_variables_utils.o:
 # Not a target:
 parsing/parsing_quotes/parsing_quotes_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -458,7 +456,7 @@ parsing/parsing_quotes/parsing_quotes_utils.o:
 # Not a target:
 parsing/errors/minishell_erroring.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -467,7 +465,7 @@ parsing/errors/minishell_erroring.o:
 # Not a target:
 parsing/parsing_wildcard/parsing_wildcard.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -476,7 +474,7 @@ parsing/parsing_wildcard/parsing_wildcard.o:
 # Not a target:
 parsing/parsing_spaces/parsing_spaces.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -485,7 +483,7 @@ parsing/parsing_spaces/parsing_spaces.o:
 # Not a target:
 parsing/utils/minishell_utils3.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -494,7 +492,7 @@ parsing/utils/minishell_utils3.o:
 # Not a target:
 parsing/utils/parsing_utils2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -503,7 +501,7 @@ parsing/utils/parsing_utils2.o:
 # Not a target:
 parsing/parsing_wildcard/parsing_wildcard_utils2.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -512,8 +510,9 @@ parsing/parsing_wildcard/parsing_wildcard_utils2.o:
 # Not a target:
 parsing/syntax_checking/parsing_syntax.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
+ 
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -521,7 +520,7 @@ parsing/syntax_checking/parsing_syntax.o:
 # Not a target:
 parsing/utils/minishell_utils.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:19
+#  Last modified 2022-07-01 18:39:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -530,7 +529,7 @@ parsing/utils/minishell_utils.o:
 # Not a target:
 parsing/parsing_so/parsing_soperators.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:32:20
+#  Last modified 2022-07-01 18:39:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -549,6 +548,6 @@ parsing/parsing_so/parsing_soperators.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Jul  1 07:03:22 2022
+# Finished Make data base on Fri Jul  1 21:50:21 2022
 
  

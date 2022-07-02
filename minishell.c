@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/07/01 07:59:56 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:20:53 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	handler_sig(int sig)
 {
 	if (e_st == 1)
 	{
+		printf("iam rere\n");
 		e_st = 1337;
+		close(0);
 	}
 	if (sig == SIGINT)
 	{
@@ -82,6 +84,7 @@ void	sigg(void)
 	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
 	sigaction(SIGQUIT, &c, 0);
+<<<<<<< HEAD
 }
 
 void	ft_freelistands(t_arg *mr, char *s)
@@ -96,6 +99,8 @@ int	main(int ac, char **av, char **env)
 	t_arg				*mr;
 	t_list				*env_lst;
 
+=======
+>>>>>>> 785be0bde05d96763dc6e6a3e0b8555d67c822d0
 	mr = NULL;
 	(void)*av;
 	sigg();
@@ -116,9 +121,20 @@ int	main(int ac, char **av, char **env)
 			if (mr != NULL)
 				merge(mr, env_lst);
 			add_history(s);
+<<<<<<< HEAD
 			ft_freelistands(mr, s);
 			// ftlstclear(&mr, free);
 			// free(s);
+=======
+			// while (mr != NULL)
+			// {
+			// 	printf("--[%s]\n", mr->data);
+			// 	mr = mr->next;
+			// }
+			// exit(1);
+			ftlstclear(&mr, free);
+			free(s);
+>>>>>>> 785be0bde05d96763dc6e6a3e0b8555d67c822d0
 			system("leaks minishell");
 			// exit(1);
 		}
