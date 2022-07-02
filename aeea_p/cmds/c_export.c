@@ -35,7 +35,7 @@ void	ft_shift_plus(char *str)
 	str[index] = '\0';
 }
 
-static int non_arg(char *var, char **check, char **env_var , t_list *env)
+static int	non_arg(char *var, char **check, char **env_var, t_list *env)
 {
 	int		re;
 

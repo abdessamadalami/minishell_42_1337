@@ -36,7 +36,10 @@ t_arg	*ft_parsing(char *s, t_list *env_lst)
 
 	arg = parsing_spaces(s);
 	if (!check_syntax(arg))
+	{
+		ftlstclear(&arg, free);
 		return (NULL);
+	}
 	mr = parse_so(arg);
 	dg = check_envvars(mr, env_lst);
 	ftlstclear(&mr, free);

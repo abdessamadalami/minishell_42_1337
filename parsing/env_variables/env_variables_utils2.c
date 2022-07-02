@@ -31,3 +31,13 @@ void	ft_lock(char c, int *lock, int *dlock)
 	else if (c == '\'' && !(*lock) && !(*dlock))
 		*lock = 1;
 }
+
+void	fill_withenv(char **t, char *env, int *j)
+{
+	char	*tmp;
+
+	tmp = *t;
+	*t = ft_strjnnn(*t, env);
+	*j += ft_strln(env);
+	free(tmp);
+}

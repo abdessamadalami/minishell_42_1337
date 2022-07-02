@@ -35,9 +35,9 @@ void	handler_sig(int sig)
 	if (sig == SIGINT)
 	{
 		printf("\n");
-        /* rl_on_new_line();
-        rl_replace_line("", 0);
-        rl_redisplay();*/
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
 }
 
@@ -74,18 +74,31 @@ int	check_s(char *s)
 	return (0);
 }
 
-int	main(int ac, char **av, char **env)
+void	sigg(void)
 {
-	char				*s;
-	t_arg				*mr;
-	t_list				*env_lst;
 	struct sigaction	c;
 
 	c.sa_handler = &handler_sig;
 	c.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &c, 0);
+	sigaction(SIGQUIT, &c, 0);
+}
+
+void	ft_freelistands(t_arg *mr, char *s)
+{
+	ftlstclear(&mr, free);
+	free(s);
+}
+
+int	main(int ac, char **av, char **env)
+{
+	char				*s;
+	t_arg				*mr;
+	t_list				*env_lst;
+
 	mr = NULL;
 	(void)*av;
+	sigg();
 	env_lst = c_env(env);
 	if (ac == 1)
 	{
@@ -95,14 +108,19 @@ int	main(int ac, char **av, char **env)
 			if (!s)
 				break ;
 			if (!check_s(s))
+			{
+				free(s);
 				continue ;
+			}
 			mr = ft_parsing(s, env_lst);
 			if (mr != NULL)
 				merge(mr, env_lst);
 			add_history(s);
-			ftlstclear(&mr, free);
-			free(s);
+			ft_freelistands(mr, s);
+			// ftlstclear(&mr, free);
+			// free(s);
 			system("leaks minishell");
+			// exit(1);
 		}
 	}
 	return (0);

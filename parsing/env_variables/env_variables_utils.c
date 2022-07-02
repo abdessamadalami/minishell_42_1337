@@ -52,7 +52,7 @@ int	ft_check_for_env(char *content, char *s)
 		j++;
 		i++;
 	}
-	if (content[i] == '=')
+	if (content[i] == '=' && s[i] == '\0')
 		return (1);
 	else
 		return (0);
@@ -75,11 +75,7 @@ char	*get_env(t_list *env_lst, char *s)
 			while (t[j] != '=' && t[j] != '\0')
 				j++;
 			if (t[j] == '=')
-			{
-			//	while (t[j] == '=' && t[j] != '\0')
-			//	if (t[j + 1] == '=')
-					j++;
-			}
+				j++;
 			return (ft_subtr(t, j, ft_strln(t)));
 		}
 		env_lst = env_lst->next;
@@ -90,7 +86,6 @@ char	*get_env(t_list *env_lst, char *s)
 int	normal_case(t_list *env_lst, char **t, char *s, int *i)
 {
 	char	*var;
-	char	*tmp;
 	int		x;
 	int		j;
 	char	*env;
@@ -107,12 +102,7 @@ int	normal_case(t_list *env_lst, char **t, char *s, int *i)
 		var[x] = '\0';
 		env = get_env(env_lst, var);
 		if (env != NULL)
-		{
-			tmp = *t;
-			*t = ft_strjnnn(*t, env);
-			j += ft_strln(env);
-			free(tmp);
-		}
+			fill_withenv(t, env, &j);
 		free(var);
 		free(env);
 	}
