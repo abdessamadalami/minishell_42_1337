@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:41:37 by ael-asri          #+#    #+#             */
-/*   Updated: 2022/07/01 23:20:53 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 23:43:51 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	handler_sig(int sig)
 {
-	if (e_st == 1)
+	if (g_st == 1)
 	{
-		e_st = 1337;
+		g_st = 1337;
 		close(0);
 	}
 	if (sig == SIGINT)
@@ -81,8 +81,6 @@ int	main(int ac, char **av, char **env)
 			if (!check_s(s))
 				continue ;
 			mr = ft_parsing(s, env_lst);
-			// system("leaks minishell");
-			// exit(1);
 			if (mr != NULL)
 				merge(mr, env_lst);
 			add_history(s);

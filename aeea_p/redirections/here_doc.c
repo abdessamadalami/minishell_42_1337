@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 07:34:28 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/07/01 23:23:05 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 23:28:24 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,41 +26,71 @@ int	ft_strcmpp(char *s1, char *s2)
 	return (s1[i] + s2[i]);
 }
 
-static int	here(int *pi_pe)
+static int	here(int *pi_pe, char *line)
 {
+	free(line);
+	line = 0;
 	close(pi_pe[1]);
 	return (pi_pe[0]);
 }
 
-void	ftlstclearrrrr(t_list **lst, void (*del)(void	*))
+void	ff_nor(char **ptr_s, char **ptr, char **s, int index)
 {
-	t_list	*list;
-
-	list = *lst;
-	while (*lst != NULL)
+	if (*ptr != NULL)
 	{
-		*lst = list->next;
-		del(list->content);
-		free(list);
-		list = *lst;
+		if (*s == 0)
+			*s = *ptr;
+		else
+			*s = (ft_strjoin_n(*s, *ptr));
+		free(ptr_s[index]);
 	}
+	else
+	{
+		if (*s == 0)
+			*s = ptr_s[index];
+		else
+			*s = ft_strjoin_n(*s, ptr_s[index]);
+	}
+}
+
+char	*ft_help(t_list *env, char *line, int *pi_pe)
+{
+	char	*ptr;
+	char	**ptr_s;
+	int		index;
+	char	*s;
+
+	ptr_s = ft_split(line, '$');
+	free(line);
+	line = 0;
+	index = 0;
+	s = 0;
+	while (ptr_s[index])
+	{
+		ptr = get_env(env, ptr_s[index]);
+		ff_nor(ptr_s, &ptr, &s, index);
+		index++;
+	}
+	s = (ft_strjoin_n(s, ft_strdup("\n")));
+	ft_putstr_fd(s, pi_pe[1]);
+	free(s);
+	free(ptr_s);
+	s = 0;
+	return (0);
 }
 
 int	here_doc(char *lim, t_list *env)
 {
 	char	*line;
 	int		pi_pe[2];
-	char	*ptr;
 
-//	env = 0;
 	pipe(pi_pe);
 	line = 0;
-	ptr = 0;
 	while (1)
 	{
-		e_st = 1;
+		g_st = 1;
 		line = readline("> ");
-		if (e_st == 1337)
+		if (g_st == 1337)
 			return (1337);
 		if (line == 0)
 		{
@@ -69,22 +99,7 @@ int	here_doc(char *lim, t_list *env)
 		}
 		if (ft_strcmpp(lim, line) == 0)
 			break ;
-		ptr = ft_strchr(line, '$');
-		if (ptr != 0)
-		{
-			ptr++;
-			ptr = get_env(env, ptr);
-			free(line);
-			line = 0;
-			if (ptr != NULL)
-				line = ft_strjoin_n(ptr, ft_strdup("\n"));
-		}
-		else
-			line = ft_strjoin_n(line, ft_strdup("\n"));
-		ft_putstr_fd(line, pi_pe[1]);
-		free(line);
+		ft_help(env, line, pi_pe);
 	}
-	free(line);
-	free(ptr);
-	return (here(pi_pe));
+	return (here(pi_pe, line));
 }

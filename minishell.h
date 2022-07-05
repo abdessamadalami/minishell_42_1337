@@ -155,7 +155,7 @@ void	ftlstclear(t_arg **lst, void (*del)(void	*));
 t_arg	*akhirw7da(t_arg **arg, char **t, int x);
 t_arg	*machi_akhirw7da(t_arg **arg, char **t, int x);
 void	addbacki_sf(t_arg **sfa, char **t);
-char	*ft_itoa(int n);
+char	*ftitoa(int n);
 int		is_there_dq(char *s);
 void	ft_putstr(char *s);
 int		check_s(char *s);

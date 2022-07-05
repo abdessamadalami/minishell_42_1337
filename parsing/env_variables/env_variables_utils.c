@@ -22,7 +22,7 @@ int	ques_mark(char **t, char *s, int *i)
 	var = ft_allocate(s);
 	x = 0;
 	j = 0;
-	*t = ft_strjnnn(*t, ft_itoa(e_st));
+	*t = ft_strjnnn(*t, ftitoa(g_st));
 	(*i)++;
 	while (s[*i] == '?' && s[*i] != '\0')
 		var[x++] = s[(*i)++];
@@ -31,7 +31,7 @@ int	ques_mark(char **t, char *s, int *i)
 	{
 		tmp = *t;
 		*t = ft_strjnnn(*t, var);
-		j += ft_strln(ft_itoa(e_st)) + ft_strln(var);
+		j += ft_strln(ftitoa(g_st)) + ft_strln(var);
 		free(tmp);
 	}
 	free(var);

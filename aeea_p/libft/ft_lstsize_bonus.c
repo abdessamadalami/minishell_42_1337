@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-oual <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:53:30 by ael-oual          #+#    #+#             */
-/*   Updated: 2021/11/17 10:02:43 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/07/02 23:46:54 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include	"libft.h"
+
+#include<stdlib.h>
+#include"libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

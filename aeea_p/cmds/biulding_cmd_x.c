@@ -19,7 +19,7 @@ static void	catch_s(int id)
 	exit_s = 0;
 	waitpid(id, &exit_s, 0);
 	if (WIFEXITED(exit_s))
-		e_st = WEXITSTATUS(exit_s);
+		g_st = WEXITSTATUS(exit_s);
 }
 
 static void	exe_c(int *id, char *path, char **argv, t_list *env)

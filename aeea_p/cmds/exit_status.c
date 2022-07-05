@@ -14,6 +14,6 @@
 
 void	exit_status(void)
 {
-	printf(" %d :command not found\n", e_st);
+	printf(" %d :command not found\n", g_st);
 	exit(1);
 }

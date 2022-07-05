@@ -26,7 +26,7 @@ int	error_handling(char *str)
 		if (((!ft_isalnum(str[i])) && str[i] != '_' )
 			|| (str[0] <= '9' && str[0] >= '0'))
 		{
-			e_st = 1;
+			g_st = 1;
 			printf("error: `%s': not a valid identifier \n", str);
 			return (1);
 		}
@@ -53,7 +53,7 @@ int	error_handlin_g(char *str, int f)
 	{
 		if ((!ft_isalnum(str[i])) && str[i] != '_')
 		{
-			e_st = 1;
+			g_st = 1;
 			return (0);
 		}
 		i++;

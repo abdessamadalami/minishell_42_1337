@@ -94,7 +94,7 @@ static char	*allocate(long n)
 	return (s);
 }
 
-char	*ft_itoa(int n)
+char	*ftitoa(int n)
 {
 	int		count;
 	char	*s;

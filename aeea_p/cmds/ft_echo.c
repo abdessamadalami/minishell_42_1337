@@ -12,40 +12,42 @@
 
 #include "../excuting_headr.h"
 
-int	check_forflag(char *s)
+int	check_forflag(char **s)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (s[i] == '\\')
-		i++;
-	if (s[0] != '-')
-		return (0);
-	while (s[i] == '\\')
-		i++;
-	i++;
-	while (s[i] != '\0')
+	j = 0;
+	while (s[j] != NULL)
 	{
-		if (s[i] != 'n')
-			return (0);
+		i = 0;
+		if (s[j][0] != '-')
+			return (j);
 		i++;
+		while (s[j][i] != '\0')
+		{
+			if (s[j][i] != 'n')
+				return (j);
+			i++;
+		}
+		j++;
 	}
-	return (1);
+	return (j);
 }
 
 int	ft_echo_o(char **av)
 {
 	int	i;
-	int	f;
+	int	k;
 
 	i = 1;
-	f = 0;
 	if (av[i] != NULL)
 	{
 		if (*av != NULL)
 		{
-			f = check_forflag(av[i]);
-			if (f)
+			k = check_forflag(&av[i]);
+			while (k--)
 				i++;
 			while (av[i] != NULL)
 			{
@@ -54,7 +56,7 @@ int	ft_echo_o(char **av)
 					printf(" ");
 				i++;
 			}
-			if (f)
+			if (check_forflag(&av[1]))
 				return (1);
 		}
 	}

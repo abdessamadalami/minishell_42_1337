@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_remplace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:22:02 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 11:13:40 by sultan           ###   ########.fr       */
+/*   Updated: 2022/07/02 20:01:21 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*bezero_seprateur(char *str)
 	}
 	return (ptr);
 }
-
+/*
 char	*env_var(char *arg, t_list **env, int a)
 {
 	char	*check_d;
@@ -66,7 +66,7 @@ char	*env_var(char *arg, t_list **env, int a)
 	}
 	return (s);
 }
-
+*/
 // int main(int argc, char *argv[], char **env)
 // {
 //   printf(" %s ", env_var("$var",env));

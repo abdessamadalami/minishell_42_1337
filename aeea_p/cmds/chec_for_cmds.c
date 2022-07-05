@@ -58,7 +58,7 @@ static int	other_statment( char *content)
 {
 	if (!ft_strncmp(content, "$?\0", 4))
 	{
-		printf("command not found: %d\n", e_st);
+		printf("command not found: %d\n", g_st);
 		return (1);
 	}
 	else if (!ft_strncmp(content, "pwd\0", 5))

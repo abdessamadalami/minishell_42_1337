@@ -47,7 +47,7 @@ void	wait_exit_status(int *ids, int n_p)
 	{
 		waitpid(ids[i], &exit_s, 0);
 		if (WIFEXITED(exit_s))
-			e_st = WEXITSTATUS(exit_s);
+			g_st = WEXITSTATUS(exit_s);
 		i++;
 	}
 	free(ids);

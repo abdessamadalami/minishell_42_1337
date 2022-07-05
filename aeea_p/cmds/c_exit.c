@@ -80,8 +80,8 @@ void	c_exit(char **args)
 		{
 			if (args[2] != 0)
 			{
-				printf("exit: too many arguments");
-				e_st = 1;
+				printf("exit: too many arguments\n");
+				g_st = 1;
 				return ;
 			}
 			f = ft_atoi_l(args[1]);

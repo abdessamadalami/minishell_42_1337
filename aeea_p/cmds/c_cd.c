@@ -15,7 +15,7 @@
 int	cd_error(char **argv)
 {
 	printf("%s : No such file or directory\n", argv[1]);
-	e_st = 1;
+	g_st = 1;
 	return (1);
 }
 
@@ -28,7 +28,7 @@ static void	export_path(char *new_pwd, char *old_pwd, t_list *env)
 	t_old = old_pwd;
 	c_export(env, old_pwd);
 	c_export(env, new_pwd);
-	e_st = 0;
+	g_st = 0;
 	free(t_new);
 	t_new = 0;
 	free(t_old);
@@ -45,7 +45,7 @@ int	c_cd(t_list *env, char **argv )
 	if (old_pwd == NULL)
 		old_pwd = ft_strdup(" ");
 	if (argv[1] == NULL)
-		new_pwd = ft_getenv(env, "HOME=", 0) + 5; 
+		new_pwd = ft_getenv(env, "HOME=", 0) + 5;
 	if (chdir(argv[1]) == -1)
 	{
 		if (chdir(new_pwd) == -1)

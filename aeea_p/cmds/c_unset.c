@@ -59,5 +59,5 @@ void	c_unset(t_list *list, char *str)
 		node = lst;
 		lst = lst->next;
 	}
-	e_st = 0;
+	g_st = 0;
 }

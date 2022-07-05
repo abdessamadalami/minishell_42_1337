@@ -18,13 +18,13 @@ void	error_printf(char	*cmd)
 	{
 		ft_putstr_fd(cmd, 2);
 		ft_putstr_fd(": command not found\n", 2);
-		e_st = 127;
+		g_st = 127;
 	}
 	else if (ft_strchr(cmd, 47))
 	{
 		ft_putstr_fd(cmd, 2);
-		e_st = 1;
+		g_st = 1;
 		ft_putstr_fd(": No such file or directory\n", 2);
 	}
-	exit(e_st);
+	exit(g_st);
 }

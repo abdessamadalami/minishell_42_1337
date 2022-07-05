@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merg_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sultan <sultan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 07:54:03 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/06/26 10:46:02 by sultan           ###   ########.fr       */
+/*   Updated: 2022/07/02 23:44:47 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void	ft_merge_sort_u(t_list *env)
 	t_list	*new_list;
 
 	new_list = NULL;
+	if (env == NULL)
+		return ;
 	new_list = ft_lstmap(env, f, del);
 	ft_merge_sort(&new_list);
 	print_list_x(&new_list);
